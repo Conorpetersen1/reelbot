@@ -53,13 +53,15 @@ def analysis_video(path, max_seconds=600):
     return out
 
 
-def ask(prompt, system=None, video=None, images=()):
+def ask(prompt, system=None, video=None, images=(), video_fps=None):
     """Send a prompt (plus optional video or images) and return the JSON object in the reply."""
     global _working_model
     parts = []
     if video:
-        parts.append({"inline_data": {"mime_type": "video/mp4",
-                                      "data": base64.b64encode(video.read_bytes()).decode()}})
+        part = {"inline_data": {"mime_type": "video/mp4", "data": base64.b64encode(video.read_bytes()).decode()}}
+        if video_fps:  # Gemini looks at 1 frame a second unless told otherwise
+            part["video_metadata"] = {"fps": video_fps}
+        parts.append(part)
     for img in images:
         parts.append({"inline_data": {"mime_type": "image/jpeg",
                                       "data": base64.b64encode(img.read_bytes()).decode()}})

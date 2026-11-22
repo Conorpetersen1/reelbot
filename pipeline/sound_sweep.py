@@ -1,8 +1,9 @@
 """Sound sweeps: screen-record yourself scrolling Instagram's trending audio list, drop the recording in
 Drive/sound_sweeps, and the bot cuts it into separate sounds in Drive/audio.
 
-Gemini listens to the recording and reads the song titles off the screen to find where each preview starts and
-stops. Without Gemini, the recording is split at the quiet gaps between previews and the sounds are numbered.
+Gemini watches for the taps: a sound starts when Conor taps play on a track and ends when he switches to another.
+Sounds Gemini isn't sure about, or shorter than MIN_SOUND, are skipped. If Gemini can't read the recording at all,
+it's left in sound_sweeps to try again the next day.
 Songs you already have (same title, added in the last max_age_days) are skipped.
 """
 import re, subprocess
@@ -11,11 +12,17 @@ from .common import CFG, WORK, days_since, load_ledger, log, now, save_ledger, p
 from .render import probe_duration
 
 VIDEO = (".mp4", ".mov", ".m4v")
-PROMPT = """This is a screen recording of someone browsing Instagram's trending audio list, previewing songs one
-after another. List every distinct song or sound that plays for at least 4 seconds. Use the song title and artist
-shown on screen while it plays. Times are in seconds from the start of the recording; trim off any tapping,
-loading or silence at the edges. Mark is_music false for speech, voiceovers or app noises.
-Return only JSON: {"sounds": [{"start": s, "end": s, "title": "...", "artist": "...", "is_music": true}]}"""
+MIN_SOUND = 8.0  # seconds; shorter previews would have to loop under a reel
+PROMPT = """This is a screen recording of Conor browsing Instagram's trending audio list. He taps a track to play
+its preview, listens, then taps a different track (or pauses, or leaves the list). Use the VISUAL cues to find each
+preview: it STARTS the moment he taps a track and its play/pause icon or waveform/progress starts moving, and it
+ENDS the moment he taps another track, taps pause, scrolls that track away or the screen changes. Never let one
+sound run across a tap on another track. Read the title and artist of the track that is visibly playing.
+Times are seconds from the start of the recording, accurate to about 0.3s.
+For each preview give "confidence": "high" only if you clearly saw both the tap that started it and the tap or
+switch that ended it, and you can read its title; otherwise "low". Mark is_music false for speech, voiceovers
+or app noises. Return only JSON:
+{"sounds": [{"start": s, "end": s, "title": "...", "artist": "...", "is_music": true, "confidence": "high"}]}"""
 
 
 def safe(text):
@@ -38,6 +45,20 @@ def quiet_gaps(path, dur):
     return out
 
 
+def redo(date):
+    """Undo a day's sweep: bin the sounds it made and put its recordings back in sound_sweeps to be cut again."""
+    led = load_ledger()
+    gone = [f for f in drive.list_files("audio") if f["name"].startswith(f"sweep {date} - ")]
+    for f in gone:
+        drive.trash(f["id"])
+    back = [f for f in drive.list_files("sound_sweeps_done") if f["name"].lower().endswith(VIDEO)
+            and (f.get("createdTime") or "")[:10] >= date]
+    for f in back:
+        drive.move(f["id"], "sound_sweeps")
+    log(led, f"Redo sweep {date}: removed {len(gone)} sounds, {len(back)} recordings back in sound_sweeps")
+    save_ledger(led)
+
+
 def main():
     if paused():
         print("reelbot is paused (paused: true in config.yaml)"); return
@@ -57,16 +78,25 @@ def main():
             found, who = None, "quiet gaps"
             if gemini.available():
                 try:
-                    found = gemini.ask(PROMPT, video=gemini.small_video(p, max_seconds=900, fps=2)).get("sounds")
+                    v = gemini.small_video(p, max_seconds=900, fps=4)
+                    try:  # 4 frames a second so it sees each tap
+                        found = gemini.ask(PROMPT, video=v, video_fps=4).get("sounds")
+                    except Exception:
+                        found = gemini.ask(PROMPT, video=v).get("sounds")
                     who = "gemini"
                 except Exception as e:
                     log(led, f"Gemini couldn't read sweep {f['name']}, splitting at gaps: {e}")
             if found is None:
-                found = quiet_gaps(p, dur)
-            added = 0
+                # Not sure where the sounds are: leave the recording in sound_sweeps to try again tomorrow,
+                # rather than guessing and cutting sounds in the wrong places.
+                log(led, f"Left sweep {f['name']} for tomorrow: Gemini couldn't read it")
+                continue
+            added = skipped = 0
             for s in found:
-                a, b = max(0.0, float(s.get("start", 0))), min(dur, float(s.get("end", 0)))
-                if not s.get("is_music", True) or b - a < 4:
+                # Trim a little inside the taps so no tap sound or neighbouring track gets in
+                a, b = max(0.0, float(s.get("start", 0)) + 0.3), min(dur, float(s.get("end", 0)) - 0.5)
+                if not s.get("is_music", True) or s.get("confidence", "low") != "high" or b - a < MIN_SOUND:
+                    skipped += 1
                     continue
                 label = safe(f"{s.get('title', '')}" + (f" - {s['artist']}" if s.get("artist") else ""))
                 if s.get("dedupe", True) and label.lower() in have:
@@ -78,7 +108,7 @@ def main():
                 drive.upload(out, "audio", out.name, mime="audio/mp4")
                 have.add(label.lower()); added += 1
             drive.move(f["id"], "sound_sweeps_done")
-            log(led, f"Sound sweep {f['name']} ({who}): {added} new sounds added to audio")
+            log(led, f"Sound sweep {f['name']} ({who}): {added} new sounds added to audio, {skipped} skipped (unsure or too short)")
             save_ledger(led)
         except Exception as e:
             log(led, f"Couldn't process sound sweep {f['name']}: {e}")
@@ -86,4 +116,7 @@ def main():
 
 
 if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 2 and sys.argv[1] == "--redo":
+        redo(sys.argv[2])
     main()

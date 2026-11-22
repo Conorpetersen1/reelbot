@@ -1,6 +1,11 @@
 name: Fix a queued reel
 on:
   workflow_dispatch:
+    inputs:
+      redo_sweep:
+        description: "Re-cut a day's sound sweep (date like 2026-11-22), or leave empty"
+        required: false
+        default: ""
 permissions: {contents: write, issues: write}
 concurrency: {group: ledger, cancel-in-progress: false}
 jobs:
@@ -25,7 +30,10 @@ jobs:
         with: {python-version: "3.12", cache: pip}
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: pip install -q -r requirements.txt
-      - run: python -m pipeline.sound_sweep
+      - name: Cut sound sweeps
+        env: {REDO: "${{ inputs.redo_sweep }}"}
+        run: |
+          if [ -n "$REDO" ]; then python -m pipeline.sound_sweep --redo "$REDO"; else python -m pipeline.sound_sweep; fi
         continue-on-error: true
       - run: python -m pipeline.rerender
       - run: python -m pipeline.dashboard
