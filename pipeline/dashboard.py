@@ -89,7 +89,7 @@ def main():
         r = []
         for mid, p in items:
             i = p.get("insights") or {}
-            r.append(f"<tr><td>{E(p['date'])}</td><td>{'AI' if p['kind']=='ai' else 'Real'}</td><td>{link(p)}</td>"
+            r.append(f"<tr><td>{E(p['date'])}</td><td>{'AI' if p['kind']=='ai' else 'Real'}</td><td>{'🔥 ' if p.get('alerted') else ''}{link(p)}</td>"
                      f"<td class='n'>{i.get('views',0):,}</td><td class='n'>{i.get('reach',0):,}</td>"
                      f"<td class='n'>{i.get('shares',0):,}</td><td class='n'>{i.get('saved',0):,}</td>"
                      f"<td class='n'>{(i.get('ig_reels_avg_watch_time',0) or 0)/1000:.1f}s</td></tr>")

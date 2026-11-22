@@ -48,6 +48,9 @@ key_expiry:
   ANTHROPIC_API_KEY: "2026-12-22"
   FAL_KEY: "2026-12-22"
 
+# View alerts: you get a GitHub notification (email / GitHub app) when a trial reel passes each of these
+alert_views: [2000, 10000, 50000]
+
 # Instagram
 ig_api_version: v25.0
 
