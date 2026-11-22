@@ -88,6 +88,18 @@ Instagram doesn't let apps read your Saved folder, so the trend inbox is a Drive
 Screenshots work too. Only the format is copied: their footage, audio, wording and name are never used.
 Analysed reels move to `trends_done`, and the results show in the dashboard's *Trend inbox* section.
 
+## How the bot learns what brings followers
+Instagram doesn't say which reel brought which follower, so every hour the bot records your follower count and
+each recent reel's views. When followers go up, it works out which reels were getting views at that moment.
+Over hundreds of hours this shows which reels actually bring followers. A statistical model then learns how each
+choice affects followers: topic, mascot vs your footage, text style, hook type, sound, posting time, and reused footage.
+Each evening it plans tomorrow by drawing from what it has learned. Proven winners get used most, but untested
+options still get tried. It also shifts the mascot/real split and the posting times towards what works.
+Topics that clearly flop are rested for 30 days, and every Monday Claude writes 3 insights and adds new topic ideas
+modelled on your winners. All of it shows in the dashboard's "What's bringing followers" section.
+Until about 60 followers have been traced to reels, it leans on engagement (views, shares, saves) instead.
+`python -m tools.simulate_learning` tests it on a fake account where the right answers are known.
+
 ## Alerts, pausing and cleanup
 - **Alerts (GitHub app or email):** you get one when a reel passes 2k, 10k or 50k views, when a reel fails to post 3 times,
   when fewer than half a day's reels could be built, when a run crashes, when a key is 3 days from expiring,

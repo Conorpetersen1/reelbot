@@ -4,7 +4,7 @@ When a reel from the last 3 days passes one of the view thresholds in config.yam
 the bot opens an issue in your GitHub repo and @mentions you. GitHub emails you, or pushes to the GitHub app.
 """
 import os, requests
-from . import ig
+from . import ig, learn
 from .common import CFG, days_since, load_ledger, log, now, save_ledger
 
 
@@ -23,6 +23,7 @@ def main():
     led = load_ledger()
     levels = sorted(CFG.get("alert_views") or [2000, 10000, 50000])
     owner = (os.environ.get("GITHUB_REPOSITORY") or "/").split("/")[0]
+    fresh = {}
     for mid, p in led["posts"].items():
         if days_since(p["posted_at"]) > 3:
             continue
@@ -32,6 +33,7 @@ def main():
                 p["permalink"] = ig.permalink(mid)
         except Exception as e:
             log(led, f"Alert check failed for {mid}: {e}"); continue
+        fresh[mid] = p["insights"]
         views = p["insights"].get("views", 0) or 0
         new = [lv for lv in levels if views >= lv and lv not in p.get("alerted", [])]
         if not new:
@@ -53,6 +55,10 @@ def main():
             log(led, f"View alert sent: {p['hook']} ({views:,} views)")
         except Exception as e:
             log(led, str(e))
+    try:  # hourly follower count + reel views: what the learner uses to work out which reels bring followers
+        learn.record(led, ig.me("followers_count").get("followers_count"), fresh)
+    except Exception as e:
+        log(led, f"Couldn't record hourly stats for the learner: {e}")
     save_ledger(led)
 
 

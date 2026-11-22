@@ -15,7 +15,15 @@ def _json(text):
     return json.loads(m.group(0))
 
 
-def write_reel(topic, recent_hooks, winning_hooks, clip_note):
+HOOK_GUIDE = {"how_i": 'starts "How I..." / "The one cue that..." (a personal fix)',
+              "why": 'starts "Why..." (names the problem the viewer has)',
+              "question": "a question to the viewer, not starting with Why",
+              "pov": 'starts "POV:" (a relatable situation)',
+              "number": 'starts with a number, e.g. "3 mistakes..."',
+              "statement": "a bold statement or hot take, no question mark"}
+
+
+def write_reel(topic, recent_hooks, winning_hooks, clip_note, hook_type=None):
     """Returns {"hook": str, "description": [str], "caption": str}."""
     if os.environ.get("LOCAL_LLM"):  # offline test mode: use the topic bank text
         return {"hook": topic["hook"], "description": topic["description"].split("|"),
@@ -33,8 +41,8 @@ Hooks already used recently (don't repeat them word for word):
 Hooks that performed best so far (learn from their style, don't copy):
 {json.dumps(winning_hooks[:10])}
 
-You can reuse the topic's hook or write a fresh variation in the same spirit
-(question, "How I fixed...", "Why do I...", "POV:", or a bold statement).
+{("Write the hook in this format (the learner is testing it): " + HOOK_GUIDE[hook_type] + "."
+  if hook_type in HOOK_GUIDE else "You can reuse the topic's hook or write a fresh variation in the same spirit.")}
 The description must say the same thing as the topic's description, reworded if you like, never adding new technique.
 End the caption with one call to action from the rules (never promise to DM anything).
 

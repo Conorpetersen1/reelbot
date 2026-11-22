@@ -50,7 +50,10 @@ def main():
     today = now().date()
     posts = sorted(led["posts"].items(), key=lambda kv: kv[1]["posted_at"], reverse=True)
 
-    fol = sorted(led["followers"].items())
+    daily_f = dict(led.get("followers", {}))
+    for ts, n in led.get("followers_hourly", []):  # hourly snapshots fill any gaps (last value per day)
+        daily_f[ts[:10]] = n
+    fol = sorted(daily_f.items())
     fol_now = fol[-1][1] if fol else 0
     fol_week = next((v for d, v in reversed(fol) if dt.date.fromisoformat(d) <= today - dt.timedelta(days=7)),
                     fol[0][1] if fol else 0)
@@ -92,8 +95,9 @@ def main():
             r.append(f"<tr><td>{E(p['date'])}</td><td>{'AI' if p['kind']=='ai' else 'Real'}</td><td>{'🔥 ' if p.get('alerted') else ''}{link(p)}</td>"
                      f"<td class='n'>{i.get('views',0):,}</td><td class='n'>{i.get('reach',0):,}</td>"
                      f"<td class='n'>{i.get('shares',0):,}</td><td class='n'>{i.get('saved',0):,}</td>"
-                     f"<td class='n'>{(i.get('ig_reels_avg_watch_time',0) or 0)/1000:.1f}s</td></tr>")
-        return "".join(r) or "<tr><td colspan=8 class='muted'>Nothing posted yet.</td></tr>"
+                     f"<td class='n'>{(i.get('ig_reels_avg_watch_time',0) or 0)/1000:.1f}s</td>"
+                     f"<td class='n'>{p.get('est_follows', '–')}</td></tr>")
+        return "".join(r) or "<tr><td colspan=9 class='muted'>Nothing posted yet.</td></tr>"
 
     from .common import CFG
     fal_spent = led.get("fal_spend", {}).get(now().strftime("%Y-%m"), 0)
@@ -116,6 +120,43 @@ def main():
         f"<br><span class='muted'>{E(t.get('why') or '')}</span>"
         + "".join(f"<br>→ {E(topics[i]['hook'])}" for i in t.get('ideas', []) if i in topics) + "</li>"
         for t in reversed(led.get("trends", [])[-8:])) or "<li class='muted'>Save trending reels to Drive › reelbot › trends.</li>"
+    # ---- what the follower learner has found
+    m = led.get("model") or {}
+    names = {"kind": {"ai": "Mascot reels", "real": "Your own footage"},
+             "style": {"question": "Question-box style", "list": "Numbered-list style", "pov": "POV caption style"},
+             "hook": {"how_i": '"How I…" hooks', "why": '"Why…" hooks', "question": "Question hooks",
+                      "pov": '"POV:" hooks', "number": 'Number hooks ("3 mistakes…")', "statement": "Bold-statement hooks"},
+             "sound": {"sound": "With a sound", "none": "No added sound"},
+             "reuse": {"reuse": "Reused footage", "first": "Fresh footage"},
+             "source": {"bank": "Your topic bank", "trend": "Trend-inbox ideas", "analyst": "Analyst ideas"}}
+
+    def label(e):
+        g, lv = e["group"], e["level"]
+        if g == "topic":
+            return "Topic: " + topics.get(lv, {}).get("hook", lv)
+        if g == "slot":
+            return f"Posting around {int(lv)}:00"
+        return names.get(g, {}).get(lv, f"{g}: {lv}")
+    strong = [e for e in m.get("effects", []) if e["sure"] >= 0.7 and abs(e["x"] - 1) >= 0.15]
+    strong.sort(key=lambda e: -e["x"])
+    learn_rows = "".join(
+        f"<tr><td>{E(label(e))}</td><td class='n'>{e['x']:.2f}×</td><td class='n'>{e['sure']:.0%}</td></tr>"
+        for e in strong[:6] + [e for e in strong[-4:] if e not in strong[:6]]) \
+        or "<tr><td colspan=3 class='muted'>Nothing confident yet. Learning starts once reels are 3 days old.</td></tr>"
+    an = led.get("analyst") or {}
+    an_html = ("".join(f"<li>{E(i)}</li>" for i in an.get("insights", []))
+               + (f"<li><b>Next week:</b> {E(an['focus'])}</li>" if an.get("focus") else "")) \
+        or "<li class='muted'>The weekly analyst starts after about 10 reels have matured.</li>"
+    rested = ", ".join(E(topics.get(t, {}).get("hook", t)) for t in led.get("retired", {})) or "none"
+    w = m.get("follower_data_weight", 0)
+    learn_html = (f"<div class='card'><h2>What's bringing followers</h2>"
+                  f"<p class='muted' style='margin:0 0 8px'>Learned from {m.get('reels_learned_from', 0)} reels · "
+                  f"{m.get('attributed_follows', 0)} followers traced to reels · based {w:.0%} on follower data, "
+                  f"{1 - w:.0%} on engagement · ~{m.get('background_follows_per_day', 0)} followers/day from elsewhere</p>"
+                  f"<div class='wrap'><table><tr><th>Factor</th><th class='n'>Followers vs average</th>"
+                  f"<th class='n'>Confidence</th></tr>{learn_rows}</table></div>"
+                  f"<h2 style='margin-top:14px'>Weekly analyst {('(' + E(an['date']) + ')') if an.get('date') else ''}</h2>"
+                  f"<ul>{an_html}</ul><p class='muted' style='margin:8px 0 0'>Resting (few followers): {rested}</p></div>")
     log_rows = "".join(f"<li>{E(l)}</li>" for l in reversed(led.get("log", [])[-15:]))
     delta = fol_now - fol_week
     grad_html = "".join(
@@ -153,6 +194,7 @@ ul{{margin:0;padding-left:18px}}li{{margin:3px 0}}#tip{{position:fixed;pointer-e
 <div class="card muted">Weekly: check Instagram › Settings › <b>Account Status</b> for any recommendation or originality warnings.</div>
 <div class="card"><h2>Graduate these in the Instagram app</h2><ul>{grad_html}</ul>
 <p class="muted" style="margin:8px 0 0">Best 5 of the last 10 days by views, shares and saves. Open the reel in the app, then share it to your profile.</p></div>
+{learn_html}
 <div class="two">
 <div class="card"><h2>Followers</h2>{line_chart(fol[-60:], "Followers")}</div>
 <div class="card"><h2>Views by posting day</h2>{line_chart(daily_pts, "Views by posting day")}</div>
@@ -161,7 +203,7 @@ ul{{margin:0;padding-left:18px}}li{{margin:3px 0}}#tip{{position:fixed;pointer-e
 <p class="muted" style="margin:8px 0 0">Score = views + 20×shares + 10×saves. The planner picks high scorers more often.</p></div>
 <div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
 <div class="card"><h2>Today and tomorrow</h2><div class="wrap"><table><tr><th>Date</th><th>Time</th><th>Type</th><th>Hook</th><th>Status</th></tr>{queue_rows}</table></div></div>
-<div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th></tr>{reel_rows(posts[:50])}</table></div></div>
+<div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
 <div class="card"><h2>Bot log</h2><ul class="muted">{log_rows or '<li>Nothing yet.</li>'}</ul></div>
 </main><div id="tip"></div>
 <script>

@@ -23,7 +23,9 @@ def main():
             mid = ig.publish_trial_reel(path, e["caption"])
             e.update(status="posted", media_id=mid, posted_at=t.isoformat())
             led["posts"][mid] = {"topic": e["topic"], "kind": e["kind"], "hook": e["hook"], "date": e["date"],
-                                 "posted_at": t.isoformat(), "file": e["file"], "insights": {}}
+                                 "posted_at": t.isoformat(), "file": e["file"], "insights": {},
+                                 **{k: e.get(k) for k in ("style", "hook_type", "sound_kind", "time", "variation",
+                                                          "source", "sound", "fit")}}
             drive.move(e["file_id"], "posted")
             log(led, f"Posted trial reel {e['file']} -> {mid}")
         except Exception as err:

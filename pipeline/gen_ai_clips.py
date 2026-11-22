@@ -2,8 +2,8 @@
 
 Each clip: (1) place the chosen mascot into the topic's scene, (2) animate it for a few seconds.
 """
-import os, random
-from . import drive, fal
+import os
+from . import drive, fal, learn
 from .common import CFG, WORK, days_since, load_ledger, save_ledger, load_topics, log, now, paused
 
 
@@ -13,19 +13,12 @@ def pick_topics(led, n):
     for c in led["ai_clips"].values():
         if c["uses"] < CFG["ai_clip_max_uses"]:
             stock[c["topic"]] = stock.get(c["topic"], 0) + 1
-    # topics with the least unused stock first, weighted toward performing topics
-    perf = topic_scores(led)
-    ranked = sorted(topics, key=lambda t: (stock.get(t["id"], 0), -perf.get(t["id"], 0), random.random()))
+    # topics with the least unused stock first, then the ones the learner rates most promising for followers
+    draw = learn.fit(led).draw()
+    retired = {t for t, d in led.get("retired", {}).items() if days_since(d) < CFG.get("learning", {}).get("retire_days", 30)}
+    topics = [t for t in topics if t["id"] not in retired] or topics
+    ranked = sorted(topics, key=lambda t: (stock.get(t["id"], 0), -draw.score({"topic": t["id"], "kind": "ai"})))
     return [ranked[i % len(ranked)] for i in range(n)]
-
-
-def topic_scores(led):
-    s = {}
-    for p in led["posts"].values():
-        ins = p.get("insights", {})
-        if ins:
-            s.setdefault(p["topic"], []).append(ins.get("views", 0) + 20 * ins.get("shares", 0) + 10 * ins.get("saved", 0))
-    return {k: sum(v) / len(v) for k, v in s.items()}
 
 
 def mascot_ref():

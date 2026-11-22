@@ -1,18 +1,8 @@
 """Evening job: build tomorrow's reels and put them in Drive/queue. Delete any you don't want before they post."""
-import datetime as dt, random, re, subprocess
-from . import drive, gemini, llm
+import datetime as dt, math, random, re, subprocess
+from . import drive, gemini, learn, llm
 from .common import CFG, WORK, days_since, load_ledger, load_topics, log, now, save_ledger, paused, notify_once
 from .render import render
-
-
-def score(led):
-    """Average performance per topic: views, with shares/saves/follows weighted up (those drive followers)."""
-    s = {}
-    for p in led["posts"].values():
-        i = p.get("insights") or {}
-        if i:
-            s.setdefault(p["topic"], []).append(i.get("views", 0) + 20 * i.get("shares", 0) + 10 * i.get("saved", 0))
-    return {k: sum(v) / len(v) for k, v in s.items()}
 
 
 def recent_topics(led):
@@ -31,20 +21,19 @@ def last_used_topic(led, tid):
     return max([e["date"] for d in led["queue"].values() for e in d if e["topic"] == tid] or [""])
 
 
-def weighted_pick(cands, perf):
-    """Mostly exploit good topics, sometimes explore untested ones. Fresh trend ideas get a boost."""
+def weighted_pick(cands, draw, kind, uses_of):
+    """Pick the candidate the learner's current Thompson draw rates highest for followers.
+    Fresh trend ideas get a head start because trends fade."""
     if not cands:
         return None
-    fresh = [c for c in cands if is_fresh_trend(c[0]) and c[0]["id"] not in perf]
-    if fresh and random.random() < 0.5:
-        return random.choice(fresh)
-    if random.random() < 0.3:
-        untested = [c for c in cands if c[0]["id"] not in perf]
-        if untested:
-            return random.choice(untested)
-    base = sum(perf.values()) / len(perf) if perf else 1
-    w = [max(perf.get(c[0]["id"], base), 1) for c in cands]
-    return random.choices(cands, weights=w)[0]
+    boost = math.log(CFG.get("learning", {}).get("fresh_trend_boost", 1.5))
+
+    def val(c):
+        t, ref = c
+        feats = {"topic": t["id"], "kind": kind, "reuse": "reuse" if uses_of(ref) else "first",
+                 "source": t.get("source_kind") or ("trend" if t["id"].startswith("x") else "bank")}
+        return draw.score(feats) + (boost if is_fresh_trend(t) else 0)
+    return max(cands, key=val)
 
 
 CTAS = ['Follow for more snowboard tips', 'Save this for your next day on snow', 'Send this to a mate who needs it', 'Follow for a tip every day', 'Save this and try it next run', 'Tag the mate you ride with']
@@ -70,8 +59,8 @@ def technique_ok(topic, seg):
     return (tech == "mistake") == wants_mistake(topic)
 
 
-def choose(led, topics, n_ai, n_real):
-    perf, cooldown = score(led), recent_topics(led)
+def choose(led, topics, n_ai, n_real, draw):
+    cooldown = recent_topics(led)
     by_id = {t["id"]: t for t in topics}
     picks, used_topics, today = [], set(cooldown), set()
     # AI slots: topics that have unused AI clips in the library
@@ -82,7 +71,7 @@ def choose(led, topics, n_ai, n_real):
                  and not any(pk[2] == cid for pk in picks)]
         cands = [x for x in stock if x[0]["id"] not in used_topics]
         # If every topic with clips is on cooldown, reuse the one rested longest rather than skip the slot
-        pick = weighted_pick(cands, perf) or (min(stock, key=lambda x: last_used_topic(led, x[0]["id"]))
+        pick = weighted_pick(cands, draw, "ai", lambda cid: led["ai_clips"][cid]["uses"]) or (min(stock, key=lambda x: last_used_topic(led, x[0]["id"]))
                                               if stock else None)
         if not pick:
             n_real += 1  # no AI stock: fall back to a real clip
@@ -111,7 +100,7 @@ def choose(led, topics, n_ai, n_real):
         # Prefer topics whose angle matches the riding: mistakes -> "why do I...", good riding -> "how I fixed..."
         cands = [x for x in cands if technique_ok(x[0], c)] or cands
         rested = [x for x in cands if x[0]["id"] not in used_topics]
-        pick = weighted_pick(rested, perf) or (min(cands, key=lambda x: last_used_topic(led, x[0]["id"]))
+        pick = weighted_pick(rested, draw, "real", lambda ref: segments(led["clips"][ref[0]])[ref[1]].get("uses", 0)) or (min(cands, key=lambda x: last_used_topic(led, x[0]["id"]))
                                                if cands else None)
         if pick:
             picks.append(("real", pick[0], pick[1])); used_topics.add(pick[0]["id"]); today.add(pick[0]["id"])
@@ -200,23 +189,40 @@ def variation(uses):
             "mirror": random.random() < 0.5, "speed": round(random.choice([0.9, 0.95, 1.05, 1.1]), 2)}
 
 
-def pick_style(topic, led, avoid=None):
-    """Topics with a set style (from trends) keep it. Others rotate so the day's reels don't all look the same."""
+def pick_style(topic, led, draw, avoid=None):
+    """Topics with a set style (from trends) keep it. Otherwise the learner picks, never repeating a clip's
+    last style (so reused footage looks different)."""
     if topic.get("style"):
         return topic["style"]
-    options = ["question", "list"] if topic.get("category") == "tip" else ["question", "pov"]
-    recent = [e.get("style", "question") for d in sorted(led["queue"])[-2:] for e in led["queue"][d]]
+    options = ["question", "list", "pov"]
     options = [o for o in options if o != avoid] or options
-    return min(options, key=lambda o: (recent.count(o), random.random()))
+    return draw.best("style", options)
 
 
-def text_for(topic, led, clip_note):
+def active_retired(led):
+    days = CFG.get("learning", {}).get("retire_days", 30)
+    return {t for t, d in led.get("retired", {}).items() if days_since(d) < days}
+
+
+def retire_losers(led, model):
+    """Rest topics that have clearly under-performed on followers (enough reels to be sure) for 30 days."""
+    counts = {}
+    for p in led["posts"].values():
+        counts[p["topic"]] = counts.get(p["topic"], 0) + 1
+    lc = CFG.get("learning", {})
+    for t in learn.retire_candidates(model, threshold=lc.get("retire_below", -0.4), sure=lc.get("retire_sure", 0.8)):
+        if counts.get(t, 0) >= lc.get("retire_min_reels", 4) and t not in active_retired(led):
+            led.setdefault("retired", {})[t] = now().isoformat()
+            log(led, f"Learner rested topic {t} for 30 days (consistently few followers)")
+
+
+def text_for(topic, led, clip_note, hook_type=None):
     recent = [e["hook"] for d in led["queue"].values() for e in d]
     winners = [p["hook"] for p in sorted(led["posts"].values(),
                key=lambda p: -(p.get("insights") or {}).get("views", 0))]
     for _ in range(2):
         try:
-            reel = llm.write_reel(topic, recent, winners, clip_note)
+            reel = llm.write_reel(topic, recent, winners, clip_note, hook_type)
             ok, why = llm.check_reel(topic, reel)
             if ok:
                 return reel, "written"
@@ -243,10 +249,22 @@ def main():
         for cid in [c for c in led[store] if c not in present]:
             led[store].pop(cid)
     n_ai, n_real = CFG["reels_per_day"]["ai"], CFG["reels_per_day"]["real"]
-    target = min(n_ai + n_real, len(CFG["post_times"]))
+    model = learn.fit(led)
+    draw = model.draw()
+    retire_losers(led, model)
+    topics = [t for t in topics if t["id"] not in active_retired(led)]
+    # Shift the mascot/real split by one reel towards whichever the learner currently rates higher
+    gap = draw.effect("kind", "real") - draw.effect("kind", "ai")
+    if gap > 0.15 and n_ai > 1 and led["clips"]:
+        n_ai, n_real = n_ai - 1, n_real + 1
+    elif gap < -0.15 and n_real > 1 and led["ai_clips"]:
+        n_ai, n_real = n_ai + 1, n_real - 1
+    target = n_ai + n_real
+    times = learn.choose_times(draw, target, CFG.get("learning", {}).get("candidate_times") or CFG["post_times"])
+    target = min(target, len(times))
     # Plan spares too, so a reel that fails the fit check can be swapped for another
     spare = CFG.get("fit_spares", 3)
-    picks = choose(led, topics, n_ai + spare, n_real + spare)
+    picks = choose(led, topics, n_ai + spare, n_real + spare, draw)
     main_picks = [p for p in picks if p[0] == "ai"][:n_ai] + [p for p in picks if p[0] == "real"][:n_real]
     random.shuffle(main_picks)  # mix AI and real across the day's posting times
     picks = main_picks + [p for p in picks if p not in main_picks]
@@ -271,19 +289,21 @@ def main():
                     drive.download(cid, full)
                 src = cut(full, meta["start"], meta["end"], WORK / f"src_{n}.mp4")
                 note = f"Conor's real footage: {meta.get('summary', '')} ({meta.get('technique', 'n/a')} technique)"
-            reel, source = text_for(topic, led, note)
+            want_hook = draw.best("hook", learn.HOOK_TYPES)
+            reel, source = text_for(topic, led, note, want_hook)
             music = None
             sound = None
-            if audio and (kind == "ai" or CFG.get("sounds", {}).get("use_on", "all") == "all"):
+            sound_ok = audio and (kind == "ai" or CFG.get("sounds", {}).get("use_on", "all") == "all")
+            if sound_ok and draw.best("sound", ["sound", "none"]) == "sound":
                 sound = pick_sound(led, audio)
                 music = sound["path"]
             out = WORK / f"{day}_{len(entries)+1}_{topic['id']}.mp4"
             snd = CFG.get("sounds", {})
             var = variation(meta.get("uses", 0))
-            style = pick_style(topic, led, avoid=meta.get("last_style"))
+            style = pick_style(topic, led, draw, avoid=meta.get("last_style"))
             style = style if len(reel["description"]) > 1 or style != "list" else "question"
             today_styles = [e.get("style") for e in entries]
-            if today_styles.count(style) >= 2 and not topic.get("style"):
+            if today_styles.count(style) >= 3 and not topic.get("style"):
                 style = "list" if style == "question" and topic.get("category") == "tip" else "question"
             render(src, out, reel["hook"], reel["description"], music=music, style=style,
                    music_volume=snd.get("sound_volume", 0.9), clip_volume=snd.get("clip_sound_volume", 0.25),
@@ -305,12 +325,14 @@ def main():
                 clip["uses"] = clip.get("uses", 0) + 1; clip["last_used"] = now().isoformat()
             if sound:
                 u = led.setdefault("sound_uses", {}); u[sound["name"]] = u.get(sound["name"], 0) + 1
-            entries.append({"date": day, "slot": slot + 1, "time": CFG["post_times"][slot], "kind": kind,
+            entries.append({"date": day, "slot": slot + 1, "time": times[slot], "kind": kind,
                             "topic": topic["id"], "clip": clip_id if kind == "ai" else f"{clip_id[0]}#{clip_id[1]}",
                             "file_id": fid, "file": out.name, "fit": score,
                             "hook": reel["hook"], "description": reel["description"], "caption": reel["caption"],
                             "text_source": source, "status": "queued", "sound": sound["name"] if sound else None,
-                            "style": style, "variation": var})
+                            "style": style, "variation": var, "hook_type": learn.hook_type(reel["hook"]),
+                            "asked_hook": want_hook, "sound_kind": "sound" if sound else "none",
+                            "source": topic.get("source_kind") or ("trend" if topic["id"].startswith("x") else "bank")})
             save_ledger(led)
         except Exception as e:
             log(led, f"Couldn't build a reel for {topic['id']}: {e}")
