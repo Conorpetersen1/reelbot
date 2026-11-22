@@ -43,4 +43,7 @@ creator's footage, audio, exact wording, name or handle. Technique in a trend id
 ## Format
 - hook: the on-screen question/line, max 50 characters.
 - description: 2 to 4 short lines, each max 45 characters.
-- caption: 1 to 2 sentences + "Comment <KEYWORD> and I'll send you the drill" (or similar) + 5 to 8 relevant hashtags.
+- caption: 1 to 2 sentences + ONE call to action + 5 to 8 relevant hashtags.
+  Calls to action that are allowed (vary them): follow for more tips, save this for your next day on snow,
+  send this to a mate who needs it, tag the mate you ride with, "what should I cover next?".
+  NEVER promise to send anything by DM or comment reply ("comment X and I'll send you..."), because nothing sends it.

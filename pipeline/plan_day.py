@@ -43,6 +43,8 @@ def weighted_pick(cands, perf):
     return random.choices(cands, weights=w)[0]
 
 
+CTAS = ['Follow for more snowboard tips', 'Save this for your next day on snow', 'Send this to a mate who needs it', 'Follow for a tip every day', 'Save this and try it next run', 'Tag the mate you ride with']
+
 MISTAKE = re.compile(r"^(why|stop|\d+ mistakes)|mistake|catch|fall|wash|skid|stuck|lock|chatter|crash|"
                      r"won't|wrong|excuse", re.I)
 
@@ -155,7 +157,7 @@ def text_for(topic, led, clip_note):
             log(led, f"Writer error for {topic['id']}: {e}")
     # Fallback: the topic bank's own text, which was checked against the manual by hand.
     return {"hook": topic["hook"], "description": topic["description"].split("|"),
-            "caption": f"{topic['hook']} Comment {topic['cta_keyword'] or 'LESSON'} and I'll send you the drill. "
+            "caption": f"{topic['hook']} {random.choice(CTAS)}. "
                        "#snowboarding #snowboardtips #learntosnowboard #snowboardinstructor"}, "topic_bank"
 
 

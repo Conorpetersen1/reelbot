@@ -19,7 +19,7 @@ def write_reel(topic, recent_hooks, winning_hooks, clip_note):
     """Returns {"hook": str, "description": [str], "caption": str}."""
     if os.environ.get("LOCAL_LLM"):  # offline test mode: use the topic bank text
         return {"hook": topic["hook"], "description": topic["description"].split("|"),
-                "caption": f"{topic['hook']} Comment {topic['cta_keyword']} for the drill. #snowboarding"}
+                "caption": f"{topic['hook']} Follow for more snowboard tips. #snowboarding"}
     prompt = f"""Write one Instagram trial reel for Conor's snowboard account.
 
 TOPIC (from his topic bank; manual_ref = the APSI manual section it's based on):
@@ -36,7 +36,7 @@ Hooks that performed best so far (learn from their style, don't copy):
 You can reuse the topic's hook or write a fresh variation in the same spirit
 (question, "How I fixed...", "Why do I...", "POV:", or a bold statement).
 The description must say the same thing as the topic's description, reworded if you like, never adding new technique.
-Use the CTA keyword "{topic.get('cta_keyword') or 'LESSON'}" in the caption.
+End the caption with one call to action from the rules (never promise to DM anything).
 
 Return only JSON: {{"hook": "...", "description": ["line", "line", "line"], "caption": "..."}}"""
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=800, system=RULES,
