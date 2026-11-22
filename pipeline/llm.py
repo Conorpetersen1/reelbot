@@ -117,6 +117,31 @@ TAGS = ["heelside", "toeside", "turns", "linked_turns", "carving", "sideslip", "
         "scenery", "lifestyle"]
 
 
+def segment_prompt(duration, how):
+    return f"""{how} Conor's own snowboarding clip, {duration:.0f}s long.
+Find the BEST moments to use as short reel backgrounds: 4-12 seconds each, not overlapping, skipping standing
+around, setup, blurry or shaky bits. At most 12 segments; fewer is fine if the clip is short or mostly boring.
+For each segment pick tags from: {TAGS}. Judge whether the riding shows good technique or a mistake.
+Return only JSON: {{"segments": [{{"start": seconds, "end": seconds, "tags": [...], "summary": "one short sentence",
+"technique": "good|mistake|n/a", "usable": true/false}}]}}"""
+
+
+def segment_clip_frames(frames_with_times, duration):
+    """Claude fallback: frames sampled through the clip, each labelled with its timestamp."""
+    if os.environ.get("LOCAL_LLM"):
+        return {"segments": [{"start": 0, "end": min(duration, 8), "tags": ["turns"], "summary": "offline",
+                              "technique": "good", "usable": True}]}
+    content = []
+    for t, p in frames_with_times:
+        content.append({"type": "text", "text": f"t={t:.1f}s"})
+        content.append({"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
+                                                     "data": base64.b64encode(p.read_bytes()).decode()}})
+    content.append({"type": "text", "text": segment_prompt(duration, "These frames (with timestamps) are from")})
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=1500,
+                                    messages=[{"role": "user", "content": content}])
+    return _json(msg.content[0].text)
+
+
 def tag_clip(frame_paths, duration):
     content = []
     for p in frame_paths:

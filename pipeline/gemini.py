@@ -33,6 +33,15 @@ def small_video(path):
     return out
 
 
+def analysis_video(path, max_seconds=600):
+    """Small, silent, low-res copy of a long clip so Gemini can watch all of it (up to 10 min)."""
+    out = WORK / (path.stem + "_a.mp4")
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(path), "-t", str(max_seconds),
+                    "-vf", "scale=-2:360,fps=4", "-c:v", "libx264", "-preset", "veryfast", "-crf", "35",
+                    "-an", str(out)], check=True)
+    return out
+
+
 def ask(prompt, system=None, video=None, images=()):
     """Send a prompt (plus optional video or images) and return the JSON object in the reply."""
     global _working_model

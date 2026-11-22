@@ -1,8 +1,8 @@
 """Evening job: build tomorrow's reels and put them in Drive/queue. Delete any you don't want before they post."""
-import datetime as dt, random
+import datetime as dt, random, subprocess
 from . import drive, llm
 from .common import CFG, WORK, days_since, load_ledger, load_topics, log, now, save_ledger
-from .render import probe_duration, render
+from .render import render
 
 
 def score(led):
@@ -56,22 +56,46 @@ def choose(led, topics, n_ai, n_real):
             n_real += 1  # no AI stock: fall back to a real clip
             continue
         picks.append(("ai", pick[0], pick[1])); used_topics.add(pick[0]["id"])
-    # Real slots: least-used usable clips matched to a topic by tags
-    clips = sorted([(cid, c) for cid, c in led["clips"].items() if c.get("usable", True)
-                    and days_since(c.get("last_used")) >= CFG["real_clip_cooldown_days"]],
-                   key=lambda x: (x[1]["uses"], random.random()))
-    for cid, c in clips:
+    # Real slots: least-used usable moments (segments) of your clips, matched to a topic by tags
+    moments = sorted([((cid, i), seg) for cid, c in led["clips"].items() for i, seg in enumerate(segments(c))
+                      if seg.get("usable", True)
+                      and days_since(seg.get("last_used")) >= CFG["real_clip_cooldown_days"]],
+                     key=lambda x: (x[1].get("uses", 0), random.random()))
+    used_clips = set()
+    # First pass: one moment per clip per day. Second pass: allow more from the same clip if short on clips.
+    for (cid, i), c in moments + moments:
         if n_real <= 0:
             break
+        if any(pk[0] == "real" and pk[2] == (cid, i) for pk in picks):
+            continue
+        if cid in used_clips and len(used_clips) < len({k[0] for k, _ in moments}):
+            continue
         ctags = set(c.get("tags", []))
         # Tips need the clip to show their main subject (first tag); snow-life topics just need some overlap.
-        cands = [(t, cid) for t in topics if t["id"] not in used_topics and (
+        cands = [(t, (cid, i)) for t in topics if t["id"] not in used_topics and (
                  t["clip_tags"].split(",")[0] in ctags if t["category"] == "tip"
                  else set(t["clip_tags"].split(",")) & ctags)]
         pick = weighted_pick(cands, perf)
         if pick:
-            picks.append(("real", pick[0], cid)); used_topics.add(pick[0]["id"]); n_real -= 1
+            picks.append(("real", pick[0], pick[1])); used_topics.add(pick[0]["id"]); used_clips.add(cid)
+            n_real -= 1
     return picks
+
+
+def segments(clip):
+    """A clip's best moments. Clips tagged before segments existed count as one moment."""
+    if not clip.get("segments"):
+        clip["segments"] = [{"start": 0, "end": clip.get("duration") or 12, "tags": clip.get("tags", []),
+                             "summary": clip.get("summary", ""), "technique": clip.get("technique", "n/a"),
+                             "usable": clip.get("usable", True), "uses": clip.get("uses", 0),
+                             "last_used": clip.get("last_used")}]
+    return clip["segments"]
+
+
+def cut(src, start, end, out):
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", f"{start:.2f}", "-i", str(src), "-t", f"{end - start:.2f}",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-c:a", "aac", str(out)], check=True)
+    return out
 
 
 def text_for(topic, led, clip_note):
@@ -110,24 +134,32 @@ def main():
     entries = []
     for slot, (kind, topic, clip_id) in enumerate(picks[:len(CFG["post_times"])]):
         try:
-            meta = led["ai_clips"][clip_id] if kind == "ai" else led["clips"][clip_id]
-            src = drive.download(clip_id, WORK / f"src_{slot}{'.mp4' if kind == 'ai' else '_' + meta['name']}")
-            note = (f"an animated blocky cartoon snowboarder: {topic['ai_scene']}" if kind == "ai"
-                    else f"Conor's real footage: {meta.get('summary', '')}")
+            if kind == "ai":
+                meta = led["ai_clips"][clip_id]
+                src = drive.download(clip_id, WORK / f"src_{slot}.mp4")
+                note = f"an animated blocky cartoon snowboarder: {topic['ai_scene']}"
+            else:
+                cid, i = clip_id
+                clip = led["clips"][cid]; meta = segments(clip)[i]
+                full = WORK / f"full_{cid[-12:].replace('/', '_')}_{clip['name']}"
+                if not full.exists():
+                    drive.download(cid, full)
+                src = cut(full, meta["start"], meta["end"], WORK / f"src_{slot}.mp4")
+                note = f"Conor's real footage: {meta.get('summary', '')}"
+                clip["uses"] = clip.get("uses", 0) + 1; clip["last_used"] = now().isoformat()
             reel, source = text_for(topic, led, note)
             music = None
             if kind == "ai" and audio:
                 a = random.choice(audio); music = drive.download(a["id"], WORK / a["name"])
-            # Reused real clips start from a different point each time
-            length = probe_duration(src)
-            start = random.uniform(0, max(0, length - 8)) if kind == "real" and meta["uses"] else 0
+            start = 0
             out = WORK / f"{day}_{slot+1}_{topic['id']}.mp4"
             render(src, out, reel["hook"], reel["description"], music=music, start=start,
                    style=topic.get("style") or "question")
             fid = drive.upload(out, "queue", out.name)
             meta["uses"] += 1; meta["last_used"] = now().isoformat()
             entries.append({"date": day, "slot": slot + 1, "time": CFG["post_times"][slot], "kind": kind,
-                            "topic": topic["id"], "clip": clip_id, "file_id": fid, "file": out.name,
+                            "topic": topic["id"], "clip": clip_id if kind == "ai" else f"{clip_id[0]}#{clip_id[1]}",
+                            "file_id": fid, "file": out.name,
                             "hook": reel["hook"], "description": reel["description"], "caption": reel["caption"],
                             "text_source": source, "status": "queued"})
             save_ledger(led)

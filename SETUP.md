@@ -75,7 +75,7 @@ Instagram app, and drop new clips into Drive › reelbot › real.
    **Delete all but your favourite.**
 2. **AI clips:** go to Actions › *Weekly AI clips* › Run workflow. It takes about 30–60 minutes. Watch a few clips in
    Drive › reelbot › ai_library, and delete any that look wrong (the planner skips deleted clips automatically).
-3. **Your clips:** drop 20–30 clips into Drive › reelbot › real, trimmed to the best 5–10 seconds.
+3. **Your clips:** drop your clips into Drive › reelbot › real, any length up to about 10 minutes. The bot finds the best 4–12 second moments in each and tags them separately, so one long clip can become several reels.
    Only use people who are happy to be on your account.
 4. **Go:** Actions › *Daily plan* › Run workflow. Tomorrow's 5 reels land in Drive › reelbot › queue. Watch them, and delete
    any you don't like. From then on everything runs on schedule.
