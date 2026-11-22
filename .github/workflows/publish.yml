@@ -28,8 +28,8 @@ jobs:
       - run: pip install -q -r requirements.txt
       - run: python -m pipeline.publish
       - run: python -m pipeline.alerts
-      - run: python -m pipeline.ratings
         continue-on-error: true
+      - run: python -m pipeline.ratings
         continue-on-error: true
       - run: python -m pipeline.dashboard
       - name: Save the bot's memory and dashboard
