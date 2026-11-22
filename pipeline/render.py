@@ -109,7 +109,10 @@ def has_audio(path):
     return bool(r.stdout.strip())
 
 
-def render(clip, out, hook, desc_lines, music=None, start=0.0, mirror=False, style="question"):
+def render(clip, out, hook, desc_lines, music=None, start=0.0, mirror=False, style="question",
+           music_volume=0.9, clip_volume=0.25):
+    """music: optional sound to lay over the reel (from its start). The clip's own sound stays underneath
+    at clip_volume (0 = off)."""
     desc_lines = [l for l in desc_lines if l.strip()]
     # Last point appears at 1.2 + 1.6*(n-1)s, then ~3.5s to read it. Short reels loop, which helps watch time.
     dur = max(7.0, min(12.0, 1.2 + 1.6 * (len(desc_lines) - 1) + 3.5))
@@ -136,8 +139,13 @@ def render(clip, out, hook, desc_lines, music=None, start=0.0, mirror=False, sty
             last = f"v{i}"
         maps = ["-map", f"[{last}]"]
         a_in = len(overlays) + 1
-        if music:
-            fc.append(f"[{a_in}:a]volume=0.6,afade=t=out:st={dur-1:.2f}:d=1[aout]")
+        if music and has_audio(clip) and clip_volume > 0:
+            fc.append(f"[{a_in}:a]volume={music_volume}[mus]")
+            fc.append(f"[0:a]volume={clip_volume}[nat]")
+            fc.append(f"[mus][nat]amix=inputs=2:duration=first:normalize=0,afade=t=out:st={dur-1:.2f}:d=1[aout]")
+            maps += ["-map", "[aout]"]
+        elif music:
+            fc.append(f"[{a_in}:a]volume={music_volume},afade=t=out:st={dur-1:.2f}:d=1[aout]")
             maps += ["-map", "[aout]"]
         elif has_audio(clip):
             maps += ["-map", "0:a"]

@@ -50,6 +50,13 @@ key_expiry:
   ANTHROPIC_API_KEY: "2026-12-22"
   FAL_KEY: "2026-12-22"
 
+# Sounds from Drive/audio
+sounds:
+  use_on: all             # all = every reel, ai = mascot reels only
+  sound_volume: 0.9
+  clip_sound_volume: 0.25 # your clip's own sound underneath (0 = off)
+  fresh_days: 14          # sounds added in the last 14 days get used about 4x as often
+
 # View alerts: you get a GitHub notification (email / GitHub app) when a trial reel passes each of these
 alert_views: [2000, 10000, 50000]
 
@@ -64,7 +71,7 @@ drive:
   posted: posted
   mascot: mascot        # mascot options; delete all but your favourite
   mascot_source: mascot_source  # put a photo of yourself here to base the mascot on
-  audio: audio          # optional: royalty-free tracks you own
+  audio: audio          # sounds to put on reels: audio files or screen recordings (sound gets pulled out)
   trends: trends        # save trending reels here from your phone (screen recording or download)
   trends_done: trends_done
 

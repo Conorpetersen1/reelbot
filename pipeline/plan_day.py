@@ -142,6 +142,43 @@ def fit_check(out, reel):
     return llm.fit_check_frames(frames, reel)
 
 
+AUDIO = (".mp3", ".m4a", ".wav", ".aac")
+VIDEO = (".mp4", ".mov", ".m4v")
+
+
+def sound_library(led):
+    """Your sounds in Drive/audio. Audio files are used as they are; for screen recordings the sound is pulled out."""
+    out = []
+    for f in drive.list_files("audio"):
+        n = f["name"].lower()
+        if not n.endswith(AUDIO + VIDEO):
+            continue
+        out.append({"id": f["id"], "name": f["name"], "created": f.get("createdTime"), "video": n.endswith(VIDEO)})
+    return out
+
+
+def pick_sound(led, lib):
+    """Newer sounds are used much more (trends fade); less-used sounds are preferred."""
+    fresh_days = CFG.get("sounds", {}).get("fresh_days", 14)
+    uses = led.get("sound_uses", {})
+    w = []
+    for s in lib:
+        age = days_since(s["created"].replace("Z", "+00:00")) if s.get("created") else 30
+        w.append((4 if age <= fresh_days else 1) / (1 + uses.get(s["name"], 0)))
+    s = dict(random.choices(lib, weights=w)[0])
+    path = WORK / f"snd_{s['name']}"
+    if not path.exists():
+        drive.download(s["id"], path)
+    if s["video"]:  # screen recording: keep just the sound
+        a = WORK / f"snd_{s['name']}.m4a"
+        if not a.exists():
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(path), "-vn", "-c:a", "aac", "-b:a", "160k",
+                            str(a)], check=True)
+        path = a
+    s["path"] = path
+    return s
+
+
 def text_for(topic, led, clip_note):
     recent = [e["hook"] for d in led["queue"].values() for e in d]
     winners = [p["hook"] for p in sorted(led["posts"].values(),
@@ -180,7 +217,7 @@ def main():
     main_picks = [p for p in picks if p[0] == "ai"][:n_ai] + [p for p in picks if p[0] == "real"][:n_real]
     random.shuffle(main_picks)  # mix AI and real across the day's posting times
     picks = main_picks + [p for p in picks if p not in main_picks]
-    audio = [f for f in drive.list_files("audio") if f["name"].lower().endswith((".mp3", ".m4a", ".wav"))]
+    audio = sound_library(led)
     entries, n = [], 0
     for kind, topic, clip_id in picks:
         if len(entries) >= target:
@@ -203,11 +240,15 @@ def main():
                 note = f"Conor's real footage: {meta.get('summary', '')} ({meta.get('technique', 'n/a')} technique)"
             reel, source = text_for(topic, led, note)
             music = None
-            if kind == "ai" and audio:
-                a = random.choice(audio); music = drive.download(a["id"], WORK / a["name"])
+            sound = None
+            if audio and (kind == "ai" or CFG.get("sounds", {}).get("use_on", "all") == "all"):
+                sound = pick_sound(led, audio)
+                music = sound["path"]
             out = WORK / f"{day}_{len(entries)+1}_{topic['id']}.mp4"
+            snd = CFG.get("sounds", {})
             render(src, out, reel["hook"], reel["description"], music=music,
-                   style=topic.get("style") or "question")
+                   style=topic.get("style") or "question", music_volume=snd.get("sound_volume", 0.9),
+                   clip_volume=snd.get("clip_sound_volume", 0.25))
             fit = fit_check(out, reel)
             score = int(fit.get("score", 3))
             if score < CFG.get("fit_min_score", 3):
@@ -223,11 +264,13 @@ def main():
             meta["uses"] = meta.get("uses", 0) + 1; meta["last_used"] = now().isoformat()
             if kind == "real":
                 clip["uses"] = clip.get("uses", 0) + 1; clip["last_used"] = now().isoformat()
+            if sound:
+                u = led.setdefault("sound_uses", {}); u[sound["name"]] = u.get(sound["name"], 0) + 1
             entries.append({"date": day, "slot": slot + 1, "time": CFG["post_times"][slot], "kind": kind,
                             "topic": topic["id"], "clip": clip_id if kind == "ai" else f"{clip_id[0]}#{clip_id[1]}",
                             "file_id": fid, "file": out.name, "fit": score,
                             "hook": reel["hook"], "description": reel["description"], "caption": reel["caption"],
-                            "text_source": source, "status": "queued"})
+                            "text_source": source, "status": "queued", "sound": sound["name"] if sound else None})
             save_ledger(led)
         except Exception as e:
             log(led, f"Couldn't build a reel for {topic['id']}: {e}")
