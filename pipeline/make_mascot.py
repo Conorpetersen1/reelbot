@@ -1,6 +1,6 @@
 """One-off: generate mascot options into Drive/mascot. Delete all but your favourite.
 
-If there's a photo of you in Drive/mascot_source, the mascot is built from it (a blocky cartoon version of you
+If there are photos of you in Drive/mascot_source (up to 6), the mascot is built from them, one per design, (a blocky cartoon version of you
 in your own kit). Otherwise it's made from the outfit description in config.yaml.
 Run from GitHub: Actions > "Mascot options" > Run workflow.
 """
@@ -28,10 +28,17 @@ def to_png(path):
 def main():
     led = load_ledger()
     outfit = CFG.get("mascot_outfit", "")
-    src = [f for f in drive.list_files("mascot_source") if f["name"].lower().endswith(IMAGE)]
-    ref = to_png(drive.download(src[0]["id"], WORK / src[0]["name"])) if src else None
-    print("Building mascot from your photo" if ref else "No photo in mascot_source, using the outfit description")
+    src = [f for f in drive.list_files("mascot_source") if f["name"].lower().endswith(IMAGE)][:6]
+    refs = []
+    for f in src:
+        try:
+            refs.append(to_png(drive.download(f["id"], WORK / f["name"])))
+        except Exception as e:
+            print(f"Skipping {f['name']} (couldn't read it, use JPG or PNG): {e}")
+    print(f"Building mascot from {len(refs)} photo(s) of you" if refs
+          else "No photo in mascot_source, using the outfit description")
     for i, v in enumerate(VARIANTS):
+        ref = refs[i % len(refs)] if refs else None  # each design uses a different photo
         fal.charge(led, "image"); save_ledger(led)
         if ref:
             prompt = (f"Turn the snowboarder in this photo into an original {CFG['mascot_style']}. "
