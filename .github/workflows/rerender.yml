@@ -25,6 +25,8 @@ jobs:
         with: {python-version: "3.12", cache: pip}
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: pip install -q -r requirements.txt
+      - run: python -m pipeline.sound_sweep
+        continue-on-error: true
       - run: python -m pipeline.rerender
       - run: python -m pipeline.dashboard
       - name: Save the bot's memory and dashboard
