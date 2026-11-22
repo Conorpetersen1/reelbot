@@ -68,32 +68,46 @@ def gemini(model, meta):
         print("Couldn't record Gemini usage:", e)
 
 
+def rate(api):
+    """How many of this API's billing currency one US$ buys (1 for US$)."""
+    cur = ((CFG.get("api_credits") or {}).get(api) or {}).get("currency", "USD")
+    return float(CFG.get("usd_to_aud", 1.54)) if cur == "AUD" else 1.0
+
+
+def symbol(api):
+    cur = ((CFG.get("api_credits") or {}).get(api) or {}).get("currency", "USD")
+    return "A$" if cur == "AUD" else "US$"
+
+
 def summary():
-    """Spend per API: today, last 7 days, this month, all time, and the estimated credit left."""
+    """Spend per API (in its billing currency): today, last 7 days, this month, project total, and credit left
+    = the balance you last entered minus what the bot has spent since that day."""
     u = load()
     today = now().date()
     month = today.strftime("%Y-%m")
     credits = CFG.get("api_credits") or {}
     out = {}
     for api in APIS:
-        days = {d: v.get(api, 0) for d, v in u["days"].items()}
+        k = rate(api)
+        days = {d: v.get(api, 0) * k for d, v in u["days"].items()}
         c = credits.get(api) or {}
-        topups = c.get("topups") or []
-        put_in = sum(float(t.get("usd", 0)) for t in topups)
-        before = float(c.get("spent_before_tracking", 0))
-        total = sum(days.values()) + before
+        bal = c.get("balance") or {}
+        left = None
+        if bal:
+            since = str(bal.get("date", ""))
+            left = float(bal.get("amount", 0)) - sum(v for d, v in days.items() if d > since)
         out[api] = {
+            "sym": symbol(api),
             "today": days.get(today.isoformat(), 0),
             "week": sum(v for d, v in days.items() if (today - dt.date.fromisoformat(d)).days < 7),
             "month": sum(v for d, v in days.items() if d.startswith(month)),
-            "total": total,
-            "put_in": put_in,
-            "left": (put_in - total) if topups else None,
-            "last_topup": max(topups, key=lambda t: str(t.get("date", "")), default=None),
+            "total": sum(days.values()) + float(c.get("spent_before_tracking", 0)),
+            "left": left,
             "calls_week": sum(v.get(api, 0) for d, v in u["calls"].items()
                               if (today - dt.date.fromisoformat(d)).days < 7),
         }
-    # Daily totals for the last 30 days, for the chart
+    # Whole-project figures in US$ for the totals row and the chart
+    out["usd"] = {key: sum(out[a][key] / rate(a) for a in APIS) for key in ("today", "week", "month", "total")}
     out["daily"] = [((today - dt.timedelta(days=i)).isoformat(),
                      round(sum(u["days"].get((today - dt.timedelta(days=i)).isoformat(), {}).values()), 2))
                     for i in range(29, -1, -1)]

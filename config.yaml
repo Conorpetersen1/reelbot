@@ -118,20 +118,24 @@ api_prices:
     gemini-3-flash: [0.5, 3.0]
     gemini-2.5-flash: [0.3, 2.5]
 
-# Each time you add credit, add a line here (date and US$). The dashboard shows an estimate of what's left and
-# you get a reminder before it runs out. spent_before_tracking = what was used before cost tracking began
-# (22 Nov 2026); correct it from each provider's billing page if you like.
+# Your balance on each provider's billing page. Whenever you top up or check, update amount and date here
+# (or just tell Claude). The dashboard subtracts what the bot has spent since that date to estimate what's left.
+# spent_before_tracking = what was used before cost tracking began (22 Nov 2026), in the same currency.
 api_credits:
   claude:
-    topups: [{date: "2026-11-21", usd: 5}]
-    spent_before_tracking: 0.30
+    currency: USD
+    balance: {date: "2026-11-22", amount: 4.89}
+    spent_before_tracking: 0.11
   gemini:
-    topups: [{date: "2026-11-22", usd: 8}]
-    spent_before_tracking: 0.50
+    currency: AUD               # Google bills you in Australian dollars
+    balance: {date: "2026-11-22", amount: 7.11}
+    spent_before_tracking: 0.89
   fal:
-    topups: [{date: "2026-11-21", usd: 10}]
+    currency: USD
+    balance: {date: "2026-11-22", amount: 4.24}
     spent_before_tracking: 5.76
-  warn_when_left_usd: {claude: 1.5, gemini: 2, fal: 12}   # fal: enough for one weekly batch of 10 s clips
+  warn_when_left: {claude: 1.5, gemini: 3, fal: 12}   # in each one's currency; fal: one weekly clip batch
+usd_to_aud: 1.54                # approximate; only used to show Gemini costs in A$
 
 # Reminders shown on the dashboard (and sent as a GitHub notification on the day). Add your own any time.
 reminders: []

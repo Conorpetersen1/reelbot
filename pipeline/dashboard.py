@@ -147,23 +147,23 @@ def main():
                 + "</ul></div>") if rem else ""
     us = usage.summary()
     nice = {"claude": "Claude (writing)", "gemini": "Gemini (watching video)", "fal": "fal (mascot clips)"}
-    def money(x):
-        return "–" if x is None else f"US${x:,.2f}"
+    def money(x, sym="US$"):
+        return "–" if x is None else f"{sym}{x:,.2f}"
     cost_rows = "".join(
-        f"<tr><td>{nice[a]}</td><td class='n'>{money(us[a]['today'])}</td><td class='n'>{money(us[a]['week'])}</td>"
-        f"<td class='n'>{money(us[a]['month'])}</td><td class='n'>{money(us[a]['total'])}</td>"
-        f"<td class='n {'down' if us[a]['left'] is not None and us[a]['left'] < 3 else ''}'>{money(us[a]['left'])}</td></tr>"
+        f"<tr><td>{nice[a]}</td>" + "".join(f"<td class='n'>{money(us[a][k], us[a]['sym'])}</td>"
+                                            for k in ("today", "week", "month", "total"))
+        + f"<td class='n {'down' if us[a]['left'] is not None and us[a]['left'] < 3 else ''}'>"
+          f"{money(us[a]['left'], us[a]['sym'])}</td></tr>"
         for a in usage.APIS)
-    tot = {k: sum(us[a][k] for a in usage.APIS) for k in ("today", "week", "month", "total")}
-    cost_rows += (f"<tr><td><b>Total</b></td><td class='n'><b>{money(tot['today'])}</b></td><td class='n'><b>{money(tot['week'])}</b></td>"
-                  f"<td class='n'><b>{money(tot['month'])}</b></td><td class='n'><b>{money(tot['total'])}</b></td><td></td></tr>")
+    cost_rows += ("<tr><td><b>Total (in US$)</b></td>" + "".join(f"<td class='n'><b>{money(us['usd'][k])}</b></td>"
+                                                    for k in ("today", "week", "month", "total")) + "<td></td></tr>")
     cost_html = (f"<div class='card'><h2>Costs</h2><div class='wrap'><table><tr><th>API</th><th class='n'>Today</th>"
                  f"<th class='n'>7 days</th><th class='n'>This month</th><th class='n'>Project total</th>"
                  f"<th class='n'>Credit left (est.)</th></tr>{cost_rows}</table></div>"
-                 f"{line_chart(us['daily'], 'Spend per day (US$)')}"
+                 f"<div class='k' style='margin-top:12px'>Spend per day (US$)</div>{line_chart(us['daily'], 'Spend per day (US$)')}"
                  f"<p class='muted' style='margin:8px 0 0'>Estimates from the bot's own records, tracked since 22 Nov 2026. "
-                 f"Your billing pages are the final word. When you top up, add it under <code>api_credits</code> in "
-                 f"config.yaml so 'credit left' stays right.</p></div>")
+                 f"Your billing pages are the final word. When you top up, update the balance under <code>api_credits</code> "
+                 f"in config.yaml (or tell Claude) so 'credit left' stays right.</p></div>")
     trend_rows = "".join(
         f"<li><b>{E(t.get('format') or '?')}</b> <span class='muted'>({E(t['date'])}, from {E(t['file'])})</span>"
         f"<br><span class='muted'>{E(t.get('why') or '')}</span>"
