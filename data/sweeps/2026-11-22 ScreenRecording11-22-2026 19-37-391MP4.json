@@ -1,0 +1,778 @@
+{
+ "sweep": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+ "duration": 348.57669,
+ "sounds": [
+  {
+   "start": 1.0,
+   "end": 25.8,
+   "title": "Grand Theft Auto: San Andreas (Official Theme Song)",
+   "artist": "Michael Hunter",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 1.4,
+   "cut_end": 26.55,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 25.8,
+   "end": 26.8,
+   "title": "GTA 6 (Grand Theft Auto Six Song)",
+   "artist": "AURIX232",
+   "is_music": true,
+   "confidence": "medium",
+   "cut_start": 26.2,
+   "cut_end": 26.55,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "too short (0.4s)"
+  },
+  {
+   "start": 57.0,
+   "end": 111.8,
+   "title": "Time",
+   "artist": "Pink Floyd",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 57.1,
+   "cut_end": 111.5,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 111.8,
+   "end": 127.4,
+   "title": "DROP IT LIKE ITS HOT x STAYIN ALIV (ALT\u00c9GO MIX)",
+   "artist": "altego_music",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 112.0,
+   "cut_end": 125.85,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 127.4,
+   "end": 138.8,
+   "title": "Vice City",
+   "artist": "Neon Dust",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 126.35,
+   "cut_end": 137.8,
+   "snapped": [
+    true,
+    false
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 138.8,
+   "end": 151.7,
+   "title": "November Magic",
+   "artist": "Peaceful Reveries",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 139.6,
+   "cut_end": 150.7,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 151.7,
+   "end": 206.0,
+   "title": "Think I'm going dumb",
+   "artist": "ACE aqougonk",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 152.5,
+   "cut_end": 205.0,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 206.0,
+   "end": 224.2,
+   "title": "Young Folks",
+   "artist": "NCWU Spectrum",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 206.8,
+   "cut_end": 223.2,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 224.2,
+   "end": 249.2,
+   "title": "Dancing On My Own (Instrumental)",
+   "artist": "Pink Gloves",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 225.0,
+   "cut_end": 248.2,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 249.2,
+   "end": 300.4,
+   "title": "GTA 6 Main Theme (EPIC Version)",
+   "artist": "Apex Sound Odyssey",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 250.0,
+   "cut_end": 299.4,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 300.4,
+   "end": 307.4,
+   "title": "Sand Drawing",
+   "artist": "Judah Earl",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 301.2,
+   "cut_end": 305.8,
+   "snapped": [
+    false,
+    true
+   ],
+   "result": "too short (4.6s)"
+  },
+  {
+   "start": 307.4,
+   "end": 317.4,
+   "title": "Draw You Out",
+   "artist": "Noah Kahan, The Hunger Games",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 306.35,
+   "cut_end": 316.4,
+   "snapped": [
+    true,
+    false
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 317.4,
+   "end": 331.2,
+   "title": "Original audio",
+   "artist": "mitchbrothers_",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 318.2,
+   "cut_end": 329.2,
+   "snapped": [
+    false,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 331.2,
+   "end": 337.2,
+   "title": "Vice City",
+   "artist": "Neon Dust",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 329.7,
+   "cut_end": 336.3,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "too short (6.6s)"
+  },
+  {
+   "start": 337.2,
+   "end": 349.6,
+   "title": "James Bond Theme",
+   "artist": "John Barry Orchestra",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 336.7,
+   "cut_end": 348.33,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 349.6,
+   "end": 401.4,
+   "title": "A GTA 6",
+   "artist": "Dianzi",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 348.73,
+   "cut_end": 348.58,
+   "snapped": [
+    true,
+    false
+   ],
+   "result": "too short (-0.1s)"
+  },
+  {
+   "start": 401.4,
+   "end": 418.6,
+   "title": "Love Is A Long Road",
+   "artist": "Tom Petty",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 402.2,
+   "cut_end": 348.58,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "too short (-53.6s)"
+  },
+  {
+   "start": 418.6,
+   "end": 436.8,
+   "title": "Goldeneye 007 (cinematic)",
+   "artist": "BERT0L1",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 419.4,
+   "cut_end": 348.58,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "too short (-70.8s)"
+  },
+  {
+   "start": 436.8,
+   "end": 445.6,
+   "title": "Original audio",
+   "artist": "projectij21",
+   "is_music": false,
+   "confidence": "high",
+   "cut_start": 437.6,
+   "cut_end": 348.58,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "not music"
+  },
+  {
+   "start": 445.6,
+   "end": 455.2,
+   "title": "eye of ra",
+   "artist": "purc",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 446.4,
+   "cut_end": 348.58,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "too short (-97.8s)"
+  },
+  {
+   "start": 455.2,
+   "end": 506.0,
+   "title": "two faced",
+   "artist": "purc",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 456.0,
+   "cut_end": 348.58,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "too short (-107.4s)"
+  },
+  {
+   "start": 506.0,
+   "end": 520.6,
+   "title": "Don't Stop the Party (feat. TJR)",
+   "artist": "Pitbull",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 506.8,
+   "cut_end": 348.58,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "too short (-158.2s)"
+  },
+  {
+   "start": 520.6,
+   "end": 529.2,
+   "title": "Blood in Your Eyes (from GTAV: The Album)",
+   "artist": "Tove Lo, Grand Theft Auto VI",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 521.4,
+   "cut_end": 348.58,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "too short (-172.8s)"
+  },
+  {
+   "start": 529.2,
+   "end": 548.2,
+   "title": "Midnight City",
+   "artist": "M83",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 530.0,
+   "cut_end": 348.58,
+   "snapped": [
+    false,
+    false
+   ],
+   "result": "too short (-181.4s)"
+  }
+ ],
+ "audio_edges": [
+  {
+   "t": 0.0,
+   "t_end": 1.25,
+   "kind": "silence"
+  },
+  {
+   "t": 0.0,
+   "t_end": 0.0,
+   "kind": "edge"
+  },
+  {
+   "t": 1.25,
+   "t_end": 1.25,
+   "kind": "change"
+  },
+  {
+   "t": 2.0,
+   "t_end": 2.0,
+   "kind": "change"
+  },
+  {
+   "t": 3.85,
+   "t_end": 3.85,
+   "kind": "change"
+  },
+  {
+   "t": 4.4,
+   "t_end": 4.4,
+   "kind": "change"
+  },
+  {
+   "t": 5.1,
+   "t_end": 5.1,
+   "kind": "change"
+  },
+  {
+   "t": 8.8,
+   "t_end": 8.8,
+   "kind": "change"
+  },
+  {
+   "t": 10.05,
+   "t_end": 10.05,
+   "kind": "change"
+  },
+  {
+   "t": 13.75,
+   "t_end": 13.75,
+   "kind": "change"
+  },
+  {
+   "t": 15.0,
+   "t_end": 15.0,
+   "kind": "change"
+  },
+  {
+   "t": 15.6,
+   "t_end": 15.6,
+   "kind": "change"
+  },
+  {
+   "t": 18.7,
+   "t_end": 18.7,
+   "kind": "change"
+  },
+  {
+   "t": 19.95,
+   "t_end": 19.95,
+   "kind": "change"
+  },
+  {
+   "t": 20.55,
+   "t_end": 20.55,
+   "kind": "change"
+  },
+  {
+   "t": 23.65,
+   "t_end": 23.65,
+   "kind": "change"
+  },
+  {
+   "t": 24.9,
+   "t_end": 24.9,
+   "kind": "change"
+  },
+  {
+   "t": 25.5,
+   "t_end": 25.5,
+   "kind": "change"
+  },
+  {
+   "t": 26.05,
+   "t_end": 26.05,
+   "kind": "change"
+  },
+  {
+   "t": 26.8,
+   "t_end": 29.8,
+   "kind": "silence"
+  },
+  {
+   "t": 26.8,
+   "t_end": 26.8,
+   "kind": "change"
+  },
+  {
+   "t": 29.8,
+   "t_end": 29.8,
+   "kind": "change"
+  },
+  {
+   "t": 30.9,
+   "t_end": 32.85,
+   "kind": "silence"
+  },
+  {
+   "t": 30.95,
+   "t_end": 30.95,
+   "kind": "change"
+  },
+  {
+   "t": 32.8,
+   "t_end": 32.8,
+   "kind": "change"
+  },
+  {
+   "t": 34.05,
+   "t_end": 34.05,
+   "kind": "change"
+  },
+  {
+   "t": 41.95,
+   "t_end": 41.95,
+   "kind": "change"
+  },
+  {
+   "t": 43.15,
+   "t_end": 43.15,
+   "kind": "change"
+  },
+  {
+   "t": 44.6,
+   "t_end": 44.9,
+   "kind": "silence"
+  },
+  {
+   "t": 46.05,
+   "t_end": 46.05,
+   "kind": "change"
+  },
+  {
+   "t": 50.25,
+   "t_end": 56.95,
+   "kind": "silence"
+  },
+  {
+   "t": 50.3,
+   "t_end": 50.3,
+   "kind": "change"
+  },
+  {
+   "t": 56.95,
+   "t_end": 56.95,
+   "kind": "change"
+  },
+  {
+   "t": 71.85,
+   "t_end": 71.95,
+   "kind": "silence"
+  },
+  {
+   "t": 72.65,
+   "t_end": 72.75,
+   "kind": "silence"
+  },
+  {
+   "t": 72.8,
+   "t_end": 72.9,
+   "kind": "silence"
+  },
+  {
+   "t": 72.95,
+   "t_end": 73.15,
+   "kind": "silence"
+  },
+  {
+   "t": 74.15,
+   "t_end": 74.35,
+   "kind": "silence"
+  },
+  {
+   "t": 87.45,
+   "t_end": 87.55,
+   "kind": "silence"
+  },
+  {
+   "t": 99.25,
+   "t_end": 99.25,
+   "kind": "change"
+  },
+  {
+   "t": 110.5,
+   "t_end": 110.5,
+   "kind": "change"
+  },
+  {
+   "t": 111.3,
+   "t_end": 111.3,
+   "kind": "change"
+  },
+  {
+   "t": 111.75,
+   "t_end": 111.85,
+   "kind": "silence"
+  },
+  {
+   "t": 113.85,
+   "t_end": 113.85,
+   "kind": "change"
+  },
+  {
+   "t": 118.65,
+   "t_end": 118.65,
+   "kind": "change"
+  },
+  {
+   "t": 122.65,
+   "t_end": 122.95,
+   "kind": "silence"
+  },
+  {
+   "t": 126.1,
+   "t_end": 126.2,
+   "kind": "silence"
+  },
+  {
+   "t": 126.35,
+   "t_end": 126.35,
+   "kind": "change"
+  },
+  {
+   "t": 144.35,
+   "t_end": 144.45,
+   "kind": "silence"
+  },
+  {
+   "t": 144.4,
+   "t_end": 144.4,
+   "kind": "change"
+  },
+  {
+   "t": 169.35,
+   "t_end": 169.45,
+   "kind": "silence"
+  },
+  {
+   "t": 180.6,
+   "t_end": 180.8,
+   "kind": "silence"
+  },
+  {
+   "t": 187.45,
+   "t_end": 187.65,
+   "kind": "silence"
+  },
+  {
+   "t": 197.5,
+   "t_end": 197.7,
+   "kind": "silence"
+  },
+  {
+   "t": 210.6,
+   "t_end": 210.85,
+   "kind": "silence"
+  },
+  {
+   "t": 217.25,
+   "t_end": 217.35,
+   "kind": "silence"
+  },
+  {
+   "t": 229.75,
+   "t_end": 229.9,
+   "kind": "silence"
+  },
+  {
+   "t": 229.8,
+   "t_end": 229.8,
+   "kind": "change"
+  },
+  {
+   "t": 241.65,
+   "t_end": 241.75,
+   "kind": "silence"
+  },
+  {
+   "t": 258.9,
+   "t_end": 259.0,
+   "kind": "silence"
+  },
+  {
+   "t": 259.0,
+   "t_end": 259.0,
+   "kind": "change"
+  },
+  {
+   "t": 267.6,
+   "t_end": 267.6,
+   "kind": "change"
+  },
+  {
+   "t": 268.9,
+   "t_end": 268.9,
+   "kind": "change"
+  },
+  {
+   "t": 270.1,
+   "t_end": 270.1,
+   "kind": "change"
+  },
+  {
+   "t": 274.25,
+   "t_end": 274.25,
+   "kind": "change"
+  },
+  {
+   "t": 276.9,
+   "t_end": 277.05,
+   "kind": "silence"
+  },
+  {
+   "t": 277.1,
+   "t_end": 277.1,
+   "kind": "change"
+  },
+  {
+   "t": 284.3,
+   "t_end": 284.5,
+   "kind": "silence"
+  },
+  {
+   "t": 284.5,
+   "t_end": 284.5,
+   "kind": "change"
+  },
+  {
+   "t": 285.7,
+   "t_end": 285.8,
+   "kind": "silence"
+  },
+  {
+   "t": 286.75,
+   "t_end": 286.75,
+   "kind": "change"
+  },
+  {
+   "t": 295.25,
+   "t_end": 295.35,
+   "kind": "silence"
+  },
+  {
+   "t": 295.35,
+   "t_end": 295.35,
+   "kind": "change"
+  },
+  {
+   "t": 296.15,
+   "t_end": 296.15,
+   "kind": "change"
+  },
+  {
+   "t": 306.05,
+   "t_end": 306.2,
+   "kind": "silence"
+  },
+  {
+   "t": 306.15,
+   "t_end": 306.15,
+   "kind": "change"
+  },
+  {
+   "t": 320.9,
+   "t_end": 321.0,
+   "kind": "silence"
+  },
+  {
+   "t": 323.95,
+   "t_end": 323.95,
+   "kind": "change"
+  },
+  {
+   "t": 324.8,
+   "t_end": 324.8,
+   "kind": "change"
+  },
+  {
+   "t": 329.45,
+   "t_end": 329.55,
+   "kind": "silence"
+  },
+  {
+   "t": 336.55,
+   "t_end": 336.55,
+   "kind": "change"
+  },
+  {
+   "t": 348.5765,
+   "t_end": 348.5765,
+   "kind": "edge"
+  }
+ ]
+}
