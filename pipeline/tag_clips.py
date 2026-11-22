@@ -51,13 +51,15 @@ def main():
             dur = probe_duration(p)
             res, who = None, "claude"
             if gemini.available() and not gemini_down:
-                for attempt in range(2):
+                for attempt in range(3):
                     try:
                         res = gemini.ask(llm.segment_prompt(dur, "This is"), video=gemini.analysis_video(p))
                         who = "gemini"; break
                     except Exception as e:
-                        if attempt == 0 and ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)):
-                            time.sleep(60); continue  # free-tier rate limit: wait a minute and retry once
+                        busy = any(c in str(e) for c in ("429", "500", "502", "503", "504", "RESOURCE_EXHAUSTED",
+                                                         "No Gemini model available"))
+                        if busy and attempt < 2:
+                            time.sleep(90); continue  # every model busy or rate-limited: wait, then retry
                         gemini_down = True
                         log(led, f"Gemini unavailable ({str(e)[:120]}); leaving remaining clips for the next run")
                         break

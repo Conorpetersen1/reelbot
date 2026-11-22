@@ -1,7 +1,7 @@
 """Gemini: watches whole trend videos (with sound) and acts as the second-opinion reviewer.
 Secret: GEMINI_API_KEY (from aistudio.google.com). Optional: if it's missing, Claude does these jobs instead.
 """
-import base64, json, os, re, subprocess
+import base64, json, os, re, subprocess, time
 import requests
 from .common import CFG, WORK
 
@@ -59,10 +59,16 @@ def ask(prompt, system=None, video=None, images=()):
         body["systemInstruction"] = {"parts": [{"text": system}]}
     errors = []
     for model in _models():
-        r = requests.post(f"{BASE}/models/{model}:generateContent", json=body, timeout=300,
-                          headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})
-        if r.status_code == 404:  # model name retired or not available: try the next one
-            errors.append(f"{model}: 404"); continue
+        r = None
+        for attempt in range(3):
+            r = requests.post(f"{BASE}/models/{model}:generateContent", json=body, timeout=300,
+                              headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})
+            if r.status_code in (500, 502, 503, 504) and attempt < 2:
+                time.sleep(15 * (attempt + 1)); continue  # Google busy: wait and retry the same model
+            break
+        if r.status_code in (404, 429, 500, 502, 503, 504):
+            # retired, over its free-tier limit, or overloaded: try the next model (each has its own limits)
+            errors.append(f"{model}: {r.status_code}"); continue
         if r.status_code >= 400:
             raise RuntimeError(f"Gemini {model} {r.status_code}: {r.text[:400]}")
         _working_model = model
@@ -70,4 +76,4 @@ def ask(prompt, system=None, video=None, images=()):
         text = "".join(p.get("text", "") for c in data.get("candidates", [])[:1]
                        for p in c.get("content", {}).get("parts", []))
         return _json(text)
-    raise RuntimeError("No Gemini model available: " + ", ".join(errors))
+    raise RuntimeError("No Gemini model available right now (" + ", ".join(errors) + ")")
