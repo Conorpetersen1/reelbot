@@ -17,7 +17,7 @@ real_clip_cooldown_days: 4          # don't reuse the same real clip within this
 ai_clip_max_uses: 3                 # retire an AI clip after this many reels
 
 # AI clips (fal.ai). Check the model pages on fal.ai if a name changes.
-ai_clips_per_week: 25
+ai_clips_per_week: 12          # you post ~21 AI reels a week and each clip is reused up to 3 times
 mascot_style: >-
   original cute blocky low-poly 3D cartoon snowboarder character, chunky square head, beanie and goggles,
   bright jacket, toy-like proportions, clean stylised game-like render, vertical 9:16 framing
@@ -25,6 +25,11 @@ image_model: fal-ai/flux/dev                              # mascot designs
 scene_model: fal-ai/flux-pro/kontext                      # puts the chosen mascot into each scene
 video_model: fal-ai/kling-video/v2.5-turbo/pro/image-to-video
 video_seconds: 5
+
+# Hard spending cap for fal.ai. The bot estimates its spend and stops generating for the rest of the month
+# once it reaches this. Existing clips keep being reused, so posting carries on.
+fal_monthly_budget_usd: 30
+fal_cost_estimate_usd: {image: 0.04, video_clip: 0.40}
 
 # Claude (writing + clip tagging)
 claude_model: claude-sonnet-5-5
@@ -49,4 +54,4 @@ drive:
 
 # Trend inbox
 trend_boost_days: 7     # new trend-based ideas get picked more often for this many days
-trend_ai_clips: 2       # AI clips made straight away for each new trend idea (trends go stale fast)
+trend_ai_clips: 1       # AI clips made straight away for each new trend idea (trends go stale fast)

@@ -88,8 +88,8 @@ def main():
                             gen_ai_clips.make_clip(led, topic, ref, n)
                     except SystemExit as e:
                         log(led, str(e))
-                    except Exception as e:
-                        log(led, f"Trend AI clip failed for {tid}: {e}")
+                    except Exception as e:  # includes the monthly fal budget being reached
+                        log(led, f"No trend AI clip for {tid}: {e}")
             led["trends"].append({"file": f["name"], "date": now().date().isoformat(),
                                   "format": a.get("format_name"), "template": a.get("hook_template"),
                                   "why": a.get("why_it_works"), "style": a.get("style"), "ideas": kept,

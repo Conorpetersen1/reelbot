@@ -1,6 +1,29 @@
 """fal.ai queue API: one key gets image + video models. Secret: FAL_KEY."""
 import base64, time, requests
-from .common import env
+from .common import CFG, env, now
+
+
+class BudgetReached(Exception):
+    pass
+
+
+def _month():
+    return now().strftime("%Y-%m")
+
+
+def spent(led):
+    return led.setdefault("fal_spend", {}).get(_month(), 0.0)
+
+
+def charge(led, *kinds):
+    """Record the estimated cost of a job (all its steps at once). Raise BudgetReached *before* spending anything
+    if it would go over the monthly cap, so a clip is never half-made."""
+    prices = CFG.get("fal_cost_estimate_usd", {})
+    cost = sum(prices.get(k, 0.4) for k in kinds)
+    if spent(led) + cost > CFG.get("fal_monthly_budget_usd", 30):
+        raise BudgetReached(f"fal budget of US${CFG.get('fal_monthly_budget_usd', 30)} reached for {_month()} "
+                            f"(spent about US${spent(led):.2f})")
+    led["fal_spend"][_month()] = round(spent(led) + cost, 2)
 
 BASE = "https://queue.fal.run"
 

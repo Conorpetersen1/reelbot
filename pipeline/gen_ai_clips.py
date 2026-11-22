@@ -37,6 +37,7 @@ def mascot_ref():
 
 def make_clip(led, t, ref, n):
     """Mascot placed into the topic's scene, then animated. Saves to Drive/ai_library and the ledger."""
+    fal.charge(led, "image", "video_clip"); save_ledger(led)
     scene = fal.run(CFG["scene_model"], {
         "prompt": f"Put this exact character in a new scene: {t['ai_scene']}. Keep the character's design, "
                   f"colours and blocky low-poly 3D style identical. Vertical 9:16 composition, no text.",
@@ -59,6 +60,8 @@ def main():
     for t in pick_topics(led, CFG["ai_clips_per_week"]):
         try:
             make_clip(led, t, ref, made); made += 1
+        except fal.BudgetReached as e:
+            log(led, str(e) + ". Reusing existing clips until next month."); break
         except Exception as e:  # one bad generation shouldn't stop the batch
             log(led, f"AI clip failed for {t['id']}: {e}")
     log(led, f"Generated {made} AI clips")

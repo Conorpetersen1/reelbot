@@ -95,6 +95,9 @@ def main():
                      f"<td class='n'>{(i.get('ig_reels_avg_watch_time',0) or 0)/1000:.1f}s</td></tr>")
         return "".join(r) or "<tr><td colspan=8 class='muted'>Nothing posted yet.</td></tr>"
 
+    from .common import CFG
+    fal_spent = led.get("fal_spend", {}).get(now().strftime("%Y-%m"), 0)
+    fal_cap = CFG.get("fal_monthly_budget_usd", 30)
     tomorrow = (today + dt.timedelta(days=1)).isoformat()
     queue_rows = "".join(
         f"<tr><td>{E(d)}</td><td>{E(e['time'])}</td><td>{'AI' if e['kind']=='ai' else 'Real'}</td>"
@@ -133,7 +136,7 @@ th{{color:var(--ink2);font-weight:600}}td.n{{text-align:right;font-variant-numer
 ul{{margin:0;padding-left:18px}}li{{margin:3px 0}}#tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
 .two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
 </style></head><body><main>
-<h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting.</div>
+<h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting. · AI video spend this month: about US${fal_spent:.2f} of US${fal_cap} cap</div>
 <div class="tiles">
 <div class="card"><div class="k">Followers</div><div class="v">{fol_now:,}</div><div class="d {'up' if delta>=0 else 'down'}">{'+' if delta>=0 else ''}{delta:,} in 7 days</div></div>
 <div class="card"><div class="k">Views, last 7 days</div><div class="v">{views7:,}</div><div class="d muted">{len(recent)} reels posted</div></div>
