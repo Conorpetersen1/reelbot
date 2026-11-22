@@ -19,8 +19,12 @@ ai_clip_max_uses: 3                 # retire an AI clip after this many reels
 # AI clips (fal.ai). Check the model pages on fal.ai if a name changes.
 ai_clips_per_week: 12          # you post ~21 AI reels a week and each clip is reused up to 3 times
 mascot_style: >-
-  original cute blocky low-poly 3D cartoon snowboarder character, chunky square head, beanie and goggles,
-  bright jacket, toy-like proportions, clean stylised game-like render, vertical 9:16 framing
+  blocky low-poly 3D cartoon snowboarder character, chunky square proportions, toy-like,
+  clean stylised game-like render, vertical 9:16 framing
+# Your real kit, so the mascot looks like you (edit if you change gear)
+mascot_outfit: >-
+  black ski helmet, pink-red mirrored goggles, loose sand/beige hooded snow jacket, black gloves,
+  black snow pants, black snowboard boots, white snowboard with pink-red accents
 image_model: fal-ai/flux/dev                              # mascot designs
 scene_model: fal-ai/flux-pro/kontext                      # puts the chosen mascot into each scene
 video_model: fal-ai/kling-video/v2.5-turbo/pro/image-to-video
@@ -38,6 +42,12 @@ claude_model: claude-sonnet-5-5
 # Tried in order; the first one Google still serves is used.
 gemini_models: [gemini-3.8-flash, gemini-3.7-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash]
 
+# When your API keys or credits expire (YYYY-MM-DD). The dashboard warns you a week before.
+# After renewing a key, update the GitHub secret and change or delete the date here.
+key_expiry:
+  ANTHROPIC_API_KEY: "2026-12-12"
+  FAL_KEY: "2026-12-12"
+
 # Instagram
 ig_api_version: v25.0
 
@@ -48,6 +58,7 @@ drive:
   queue: queue          # tomorrow's reels; delete one to veto it
   posted: posted
   mascot: mascot        # mascot options; delete all but your favourite
+  mascot_source: mascot_source  # put a photo of yourself here to base the mascot on
   audio: audio          # optional: royalty-free tracks you own
   trends: trends        # save trending reels here from your phone (screen recording or download)
   trends_done: trends_done

@@ -98,6 +98,13 @@ def main():
     from .common import CFG
     fal_spent = led.get("fal_spend", {}).get(now().strftime("%Y-%m"), 0)
     fal_cap = CFG.get("fal_monthly_budget_usd", 30)
+    warn = []
+    for key, d in (CFG.get("key_expiry") or {}).items():
+        days = (dt.date.fromisoformat(str(d)) - today).days
+        if days <= 7:
+            warn.append(f"{key} {'expired' if days < 0 else 'expires in ' + str(days) + ' days'} ({d}). "
+                        "Make a new key, update the GitHub secret, then update key_expiry in config.yaml.")
+    warn_html = "".join(f"<div class='card warn'>⚠️ {E(w)}</div>" for w in warn)
     tomorrow = (today + dt.timedelta(days=1)).isoformat()
     queue_rows = "".join(
         f"<tr><td>{E(d)}</td><td>{E(e['time'])}</td><td>{'AI' if e['kind']=='ai' else 'Real'}</td>"
@@ -134,10 +141,10 @@ table{{width:100%;border-collapse:collapse;font-size:13px}}th,td{{text-align:lef
 th{{color:var(--ink2);font-weight:600}}td.n{{text-align:right;font-variant-numeric:tabular-nums}}.wrap{{overflow-x:auto}}
 .st{{font-size:12px;padding:1px 7px;border-radius:9px;border:1px solid var(--grid)}}.st-posted{{color:var(--good)}}.st-failed,.st-vetoed{{color:var(--bad)}}
 ul{{margin:0;padding-left:18px}}li{{margin:3px 0}}#tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
-.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
+.warn{{border-color:var(--bad);color:var(--bad);font-weight:600}}.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
 </style></head><body><main>
 <h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting. · AI video spend this month: about US${fal_spent:.2f} of US${fal_cap} cap</div>
-<div class="tiles">
+{warn_html}<div class="tiles">
 <div class="card"><div class="k">Followers</div><div class="v">{fol_now:,}</div><div class="d {'up' if delta>=0 else 'down'}">{'+' if delta>=0 else ''}{delta:,} in 7 days</div></div>
 <div class="card"><div class="k">Views, last 7 days</div><div class="v">{views7:,}</div><div class="d muted">{len(recent)} reels posted</div></div>
 <div class="card"><div class="k">Avg views per AI reel</div><div class="v">{avg['ai']:,.0f}</div><div class="d muted">{len(by_kind['ai'])} reels with stats</div></div>
