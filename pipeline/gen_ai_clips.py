@@ -2,9 +2,9 @@
 
 Each clip: (1) place the chosen mascot into the topic's scene, (2) animate it for a few seconds.
 """
-import random
+import os, random
 from . import drive, fal
-from .common import CFG, WORK, load_ledger, save_ledger, load_topics, log, now
+from .common import CFG, WORK, days_since, load_ledger, save_ledger, load_topics, log, now
 
 
 def pick_topics(led, n):
@@ -55,6 +55,9 @@ def make_clip(led, t, ref, n):
 
 def main():
     led = load_ledger()
+    # If you ran a batch by hand in the last few days, skip the automatic Monday one (saves money).
+    if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and days_since(led.get("last_batch")) < 5:
+        log(led, "Skipped weekly AI clips: a batch was made in the last 5 days"); save_ledger(led); return
     ref = mascot_ref()
     made = 0
     for t in pick_topics(led, CFG["ai_clips_per_week"]):
@@ -64,6 +67,7 @@ def main():
             log(led, str(e) + ". Reusing existing clips until next month."); break
         except Exception as e:  # one bad generation shouldn't stop the batch
             log(led, f"AI clip failed for {t['id']}: {e}")
+    led["last_batch"] = now().isoformat()
     log(led, f"Generated {made} AI clips")
     save_ledger(led)
 
