@@ -11,7 +11,10 @@ def _client():
 
 
 def _text(msg):
-    """The reply's text. Newer Claude models can return thinking blocks before the text block."""
+    """The reply's text. Newer Claude models can return thinking blocks before the text block.
+    Every Claude reply passes through here, so this is also where its cost is recorded."""
+    from . import usage
+    usage.claude(msg)
     return "".join(getattr(b, "text", "") for b in msg.content if getattr(b, "type", "") == "text")
 
 

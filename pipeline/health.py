@@ -32,6 +32,12 @@ def main():
         notify_once(led, f"budget-{month}", "💸 AI video budget reached for this month",
                     "The bot has stopped making new mascot clips until next month and is reusing existing ones. "
                     "To keep generating, top up fal and raise `fal_monthly_budget_usd` in config.yaml.")
+    from . import reminders
+    for r in reminders.active(led):
+        if r["key"].startswith("expiry-soon-"):
+            continue  # key expiry has its own notification above (3 days out)
+        if r.get("due") is None or r["due"] <= today:
+            notify_once(led, f"reminder-{r['key']}", "📌 " + r["text"][:70], r["text"])
     try:
         used, limit = drive.quota()
         if limit and used / limit > 0.9:

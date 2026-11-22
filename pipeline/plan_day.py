@@ -162,7 +162,11 @@ VIDEO = (".mp4", ".mov", ".m4v")
 def sound_library(led):
     """Your sounds in Drive/audio. Audio files are used as they are; for screen recordings the sound is pulled out."""
     out = []
-    for f in drive.list_files("audio"):
+    files = drive.list_files("audio")
+    stamps = [f["createdTime"] for f in files if f.get("createdTime")]
+    if stamps:
+        led["sound_newest"] = max(stamps)  # for the "time for a sound sweep" reminder
+    for f in files:
         n = f["name"].lower()
         if not n.endswith(AUDIO + VIDEO):
             continue

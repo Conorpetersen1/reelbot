@@ -103,3 +103,37 @@ drive:
 # Trend inbox
 trend_boost_days: 7     # new trend-based ideas get picked more often for this many days
 trend_ai_clips: 1       # AI clips made straight away for each new trend idea (trends go stale fast)
+
+# ---- Costs (shown on the dashboard) ----
+# Prices in US$ per million tokens [input, output]. The longest matching model name wins.
+api_prices:
+  claude:
+    default: [2.0, 10.0]           # Claude Sonnet 5.5
+  gemini:
+    default: [1.5, 7.5]
+    gemini-3.8-flash: {until: "2026-12-31", price: [0.75, 3.75], after: [1.5, 7.5]}
+    gemini-3.7-flash: {until: "2026-12-31", price: [0.75, 3.75], after: [1.5, 7.5]}
+    gemini-3.6-flash: {until: "2026-12-31", price: [0.75, 3.75], after: [1.5, 7.5]}
+    gemini-3.5-flash: [1.5, 7.5]
+    gemini-3-flash: [0.5, 3.0]
+    gemini-2.5-flash: [0.3, 2.5]
+
+# Each time you add credit, add a line here (date and US$). The dashboard shows an estimate of what's left and
+# you get a reminder before it runs out. spent_before_tracking = what was used before cost tracking began
+# (22 Nov 2026); correct it from each provider's billing page if you like.
+api_credits:
+  claude:
+    topups: [{date: "2026-11-21", usd: 5}]
+    spent_before_tracking: 0.30
+  gemini:
+    topups: [{date: "2026-11-22", usd: 8}]
+    spent_before_tracking: 0.50
+  fal:
+    topups: [{date: "2026-11-21", usd: 10}]
+    spent_before_tracking: 5.76
+  warn_when_left_usd: {claude: 1.5, gemini: 2, fal: 12}   # fal: enough for one weekly batch of 10 s clips
+
+# Reminders shown on the dashboard (and sent as a GitHub notification on the day). Add your own any time.
+reminders: []
+# e.g. reminders: [{date: "2026-12-20", text: "Make new Claude and fal keys (they expire 22 Dec)"}]
+sound_sweep_every_days: 12   # remind me to do a sound sweep when the newest sound is this old

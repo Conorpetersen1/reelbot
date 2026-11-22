@@ -86,6 +86,8 @@ def ask(prompt, system=None, video=None, images=(), video_fps=None):
             raise RuntimeError(f"Gemini {model} {r.status_code}: {r.text[:400]}")
         _working_model = model
         data = r.json()
+        from . import usage
+        usage.gemini(model, data.get("usageMetadata"))
         text = "".join(p.get("text", "") for c in data.get("candidates", [])[:1]
                        for p in c.get("content", {}).get("parts", []))
         return _json(text)

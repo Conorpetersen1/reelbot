@@ -207,6 +207,7 @@ def main():
                                 "-af", "afade=t=in:d=0.15", str(out)], check=True)
                 drive.upload(out, "audio", out.name, mime="audio/mp4")
                 have.add(label.lower()); added += 1
+                led["sound_newest"] = now().isoformat()
             # Keep a record of every cut so a bad split can be checked
             rec = ROOT / "data" / "sweeps"; rec.mkdir(parents=True, exist_ok=True)
             (rec / f"{stamp} {safe(f['name'])}.json").write_text(json.dumps(

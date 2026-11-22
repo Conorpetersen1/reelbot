@@ -24,6 +24,8 @@ def charge(led, *kinds):
         raise BudgetReached(f"fal budget of US${CFG.get('fal_monthly_budget_usd', 30)} reached for {_month()} "
                             f"(spent about US${spent(led):.2f})")
     led["fal_spend"][_month()] = round(spent(led) + cost, 2)
+    from . import usage
+    usage.add("fal", cost)
 
 BASE = "https://queue.fal.run"
 

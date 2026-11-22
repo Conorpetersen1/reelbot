@@ -1,5 +1,5 @@
 """Build docs/index.html (served by GitHub Pages) from the ledger. Runs after every daily job."""
-import datetime as dt, html, statistics
+import datetime as dt, html, re, statistics
 from .common import ROOT, load_ledger, load_topics, now
 
 E = html.escape
@@ -110,11 +110,60 @@ def main():
                         "Make a new key, update the GitHub secret, then update key_expiry in config.yaml.")
     warn_html = "".join(f"<div class='card warn'>⚠️ {E(w)}</div>" for w in warn)
     tomorrow = (today + dt.timedelta(days=1)).isoformat()
-    queue_rows = "".join(
-        f"<tr><td>{E(d)}</td><td>{E(e['time'])}</td><td>{'AI' if e['kind']=='ai' else 'Real'}</td>"
-        f"<td>{E(e['hook'])}</td><td><span class='st st-{E(e['status'])}'>{E(e['status'])}</span></td></tr>"
-        for d in (today.isoformat(), tomorrow) for e in led["queue"].get(d, [])) \
-        or "<tr><td colspan=5 class='muted'>Nothing queued.</td></tr>"
+    # ---- Review: every reel for yesterday, today and tomorrow, with the video, on-screen words, sound, caption
+    def sound_name(n):
+        if not n:
+            return "No added sound (clip's own audio)"
+        n = re.sub(r"^sweep \S+ - ", "", n.rsplit(".", 1)[0])
+        return n
+
+    def review_card(d, e):
+        fid = e.get("file_id", "")
+        post = led["posts"].get(e.get("media_id") or "", {})
+        link = (f" · <a href='{E(post['permalink'])}'>open on Instagram</a>" if post.get("permalink") else "")
+        lines = "".join(f"<li>{E(l)}</li>" for l in e.get("description", []))
+        src = {"written": "written by Claude", "topic_bank": "from your topic list"}.get(e.get("text_source"), "")
+        when = "Yesterday" if d < today.isoformat() else "Today" if d == today.isoformat() else "Tomorrow"
+        return (f"<details class='rv'><summary><b>{when} {E(e['time'])}</b> · {'Mascot' if e['kind']=='ai' else 'Real'}"
+                f" · {E(e['hook'])} <span class='st st-{E(e['status'])}'>{E(e['status'])}</span></summary>"
+                f"<div class='rvb'><iframe loading='lazy' src='https://drive.google.com/file/d/{E(fid)}/preview' "
+                f"allow='autoplay' title='Reel video'></iframe><div>"
+                f"<div class='k'>a. Video</div><div>{E(e.get('category', '').replace('_', ' '))} · fit check "
+                f"{E(str(e.get('fit', '?')))}/5 · <a href='https://drive.google.com/file/d/{E(fid)}/view'>open in Drive</a>{link}</div>"
+                f"<div class='k'>b. Words on screen <span class='muted'>({E(src)})</span></div>"
+                f"<div><b>{E(e['hook'])}</b><ul>{lines}</ul></div>"
+                f"<div class='k'>c. Sound</div><div>{E(sound_name(e.get('sound')))}</div>"
+                f"<div class='k'>d. Caption</div><div class='cap'>{E(e.get('caption', ''))}</div>"
+                f"<div class='muted' style='margin-top:8px;font-size:12px'>Not happy? Delete it from Drive › queue to stop it, "
+                f"or tell Claude what to change.</div></div></div></details>")
+    yday = (today - dt.timedelta(days=1)).isoformat()
+    review_html = "".join(review_card(d, e) for d in (tomorrow, today.isoformat(), yday)
+                          for e in led["queue"].get(d, [])) or "<p class='muted'>Nothing queued.</p>"
+
+    # ---- Reminders and costs
+    from . import reminders, usage
+    rem = reminders.active(led)
+    rem_html = ("<div class='card rem'><h2>📌 To do</h2><ul>" + "".join(f"<li>{E(r['text'])}</li>" for r in rem)
+                + "</ul></div>") if rem else ""
+    us = usage.summary()
+    nice = {"claude": "Claude (writing)", "gemini": "Gemini (watching video)", "fal": "fal (mascot clips)"}
+    def money(x):
+        return "–" if x is None else f"US${x:,.2f}"
+    cost_rows = "".join(
+        f"<tr><td>{nice[a]}</td><td class='n'>{money(us[a]['today'])}</td><td class='n'>{money(us[a]['week'])}</td>"
+        f"<td class='n'>{money(us[a]['month'])}</td><td class='n'>{money(us[a]['total'])}</td>"
+        f"<td class='n {'down' if us[a]['left'] is not None and us[a]['left'] < 3 else ''}'>{money(us[a]['left'])}</td></tr>"
+        for a in usage.APIS)
+    tot = {k: sum(us[a][k] for a in usage.APIS) for k in ("today", "week", "month", "total")}
+    cost_rows += (f"<tr><td><b>Total</b></td><td class='n'><b>{money(tot['today'])}</b></td><td class='n'><b>{money(tot['week'])}</b></td>"
+                  f"<td class='n'><b>{money(tot['month'])}</b></td><td class='n'><b>{money(tot['total'])}</b></td><td></td></tr>")
+    cost_html = (f"<div class='card'><h2>Costs</h2><div class='wrap'><table><tr><th>API</th><th class='n'>Today</th>"
+                 f"<th class='n'>7 days</th><th class='n'>This month</th><th class='n'>Project total</th>"
+                 f"<th class='n'>Credit left (est.)</th></tr>{cost_rows}</table></div>"
+                 f"{line_chart(us['daily'], 'Spend per day (US$)')}"
+                 f"<p class='muted' style='margin:8px 0 0'>Estimates from the bot's own records, tracked since 22 Nov 2026. "
+                 f"Your billing pages are the final word. When you top up, add it under <code>api_credits</code> in "
+                 f"config.yaml so 'credit left' stays right.</p></div>")
     trend_rows = "".join(
         f"<li><b>{E(t.get('format') or '?')}</b> <span class='muted'>({E(t['date'])}, from {E(t['file'])})</span>"
         f"<br><span class='muted'>{E(t.get('why') or '')}</span>"
@@ -209,10 +258,14 @@ table{{width:100%;border-collapse:collapse;font-size:13px}}th,td{{text-align:lef
 th{{color:var(--ink2);font-weight:600}}td.n{{text-align:right;font-variant-numeric:tabular-nums}}.wrap{{overflow-x:auto}}
 .st{{font-size:12px;padding:1px 7px;border-radius:9px;border:1px solid var(--grid)}}.st-posted{{color:var(--good)}}.st-failed,.st-vetoed{{color:var(--bad)}}
 ul{{margin:0;padding-left:18px}}summary{{cursor:pointer}}li{{margin:3px 0}}#tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
-.warn{{border-color:var(--bad);color:var(--bad);font-weight:600}}.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
+.warn{{border-color:var(--bad);color:var(--bad);font-weight:600}}.rem{{border-color:var(--s1)}}
+details.rv{{border-top:1px solid var(--grid);padding:8px 0}}details.rv summary{{font-size:14px}}
+.rvb{{display:grid;grid-template-columns:240px 1fr;gap:16px;margin-top:10px}}.rvb iframe{{width:240px;height:427px;border:0;border-radius:10px;background:#000}}
+.rvb .k{{margin-top:8px;font-weight:600}}.rvb ul{{margin:2px 0}}.cap{{white-space:pre-wrap}}
+@media(max-width:600px){{.rvb{{grid-template-columns:1fr}}.rvb iframe{{width:100%;height:auto;aspect-ratio:9/16}}}}.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
 </style></head><body><main>
 <h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting. · AI video spend this month: about US${fal_spent:.2f} of US${fal_cap} cap</div>
-{warn_html}<div class="tiles">
+{warn_html}{rem_html}<div class="tiles">
 <div class="card"><div class="k">Followers</div><div class="v">{fol_now:,}</div><div class="d {'up' if delta>=0 else 'down'}">{'+' if delta>=0 else ''}{delta:,} in 7 days</div></div>
 <div class="card"><div class="k">Views, last 7 days</div><div class="v">{views7:,}</div><div class="d muted">{len(recent)} reels posted</div></div>
 <div class="card"><div class="k">Avg views per AI reel</div><div class="v">{avg['ai']:,.0f}</div><div class="d muted">{len(by_kind['ai'])} reels with stats</div></div>
@@ -229,9 +282,10 @@ ul{{margin:0;padding-left:18px}}summary{{cursor:pointer}}li{{margin:3px 0}}#tip{
 <div class="card"><h2>Best topics (avg score)</h2>{bar_chart(board, "Best topics")}
 <p class="muted" style="margin:8px 0 0">Score = views + 20×shares + 10×saves. The planner picks high scorers more often.</p></div>
 <div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
-<div class="card"><h2>Today and tomorrow</h2><div class="wrap"><table><tr><th>Date</th><th>Time</th><th>Type</th><th>Hook</th><th>Status</th></tr>{queue_rows}</table></div></div>
+<div class="card"><h2>Review reels</h2><p class="muted" style="margin:0 0 8px">Tap a reel to watch it and check the words, sound and caption. The video plays if you're signed in to the Google account that owns the Drive folder.</p>{review_html}</div>
 <div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
 {clips_html}
+{cost_html}
 <div class="card"><h2>Bot log</h2><ul class="muted">{log_rows or '<li>Nothing yet.</li>'}</ul></div>
 </main><div id="tip"></div>
 <script>
