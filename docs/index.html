@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>@conor_sends reel dashboard</title>
+<style>
+:root{--bg:#fcfcfb;--card:#ffffff;--ink:#0b0b0b;--ink2:#52514e;--grid:#e1e0d9;--s1:#2a78d6;--good:#006300;--bad:#b42318}
+@media (prefers-color-scheme:dark){:root{--bg:#1a1a19;--card:#232322;--ink:#f0efec;--ink2:#c3c2b7;--grid:#2c2c2a;--s1:#3987e5;--good:#0ca30c;--bad:#ff6b5e}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 60px}h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:0 0 10px}
+.muted{color:var(--ink2)}a{color:inherit;text-decoration-color:var(--s1);text-underline-offset:3px}.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--grid);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.k{font-size:13px;color:var(--ink2)}.v{font-size:28px;font-weight:650;margin-top:2px}.d{font-size:13px}.up{color:var(--good)}.down{color:var(--bad)}
+svg{width:100%;height:auto;display:block}.ln{fill:none;stroke:var(--s1);stroke-width:2}.pt{fill:var(--s1);stroke:var(--card);stroke-width:2}
+.hit{fill:transparent;cursor:default}.grid{stroke:var(--grid);stroke-width:1}.ax{fill:var(--ink2);font-size:11px}
+.bar-row{display:grid;grid-template-columns:minmax(120px,38%) 1fr 70px;gap:10px;align-items:center;margin:6px 0;font-size:13px}
+.bar-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bar-track{height:12px}.bar{display:block;height:12px;background:var(--s1);border-radius:0 4px 4px 0}
+.bar-val{text-align:right;color:var(--ink2);font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{color:var(--ink2);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}.wrap{overflow-x:auto}
+.st{font-size:12px;padding:1px 7px;border-radius:9px;border:1px solid var(--grid)}.st-posted{color:var(--good)}.st-failed,.st-vetoed{color:var(--bad)}
+ul{margin:0;padding-left:18px}li{margin:3px 0}#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:720px){.two{grid-template-columns:1fr}}
+</style></head><body><main>
+<h1>@conor_sends trial reels</h1><div class="muted">Updated Sun 22 Nov 2026, 16:57 · Delete a reel from Drive/queue to stop it posting.</div>
+<div class="tiles">
+<div class="card"><div class="k">Followers</div><div class="v">0</div><div class="d up">+0 in 7 days</div></div>
+<div class="card"><div class="k">Views, last 7 days</div><div class="v">0</div><div class="d muted">0 reels posted</div></div>
+<div class="card"><div class="k">Avg views per AI reel</div><div class="v">0</div><div class="d muted">0 reels with stats</div></div>
+<div class="card"><div class="k">Avg views per real-clip reel</div><div class="v">0</div><div class="d muted">0 reels with stats</div></div>
+</div>
+<div class="card"><h2>Graduate these in the Instagram app</h2><ul><li class='muted'>No candidates yet.</li></ul>
+<p class="muted" style="margin:8px 0 0">Best 5 of the last 10 days by views, shares and saves. Open the reel in the app, then share it to your profile.</p></div>
+<div class="two">
+<div class="card"><h2>Followers</h2><p class="muted">Not enough data yet for followers.</p></div>
+<div class="card"><h2>Views by posting day</h2><p class="muted">Not enough data yet for views by posting day.</p></div>
+</div>
+<div class="card"><h2>Best topics (avg score)</h2><p class="muted">No data yet for best topics.</p>
+<p class="muted" style="margin:8px 0 0">Score = views + 20×shares + 10×saves. The planner picks high scorers more often.</p></div>
+<div class="card"><h2>Trend inbox</h2><ul><li class='muted'>Save trending reels to Drive › reelbot › trends.</li></ul></div>
+<div class="card"><h2>Today and tomorrow</h2><div class="wrap"><table><tr><th>Date</th><th>Time</th><th>Type</th><th>Hook</th><th>Status</th></tr><tr><td colspan=5 class='muted'>Nothing queued.</td></tr></table></div></div>
+<div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th></tr><tr><td colspan=8 class='muted'>Nothing posted yet.</td></tr></table></div></div>
+<div class="card"><h2>Bot log</h2><ul class="muted"><li>2026-11-22 16:57 Queued 0 reels for 2026-11-23: []</li></ul></div>
+</main><div id="tip"></div>
+<script>
+const tip=document.getElementById('tip');
+document.addEventListener('mousemove',e=>{const t=e.target.closest('[data-tip]');
+ if(!t){tip.style.display='none';return}tip.textContent=t.dataset.tip;tip.style.display='block';
+ tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY+12)+'px';});
+</script></body></html>
