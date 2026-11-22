@@ -74,6 +74,18 @@ def publish_trial_reel(path, caption):
                                 data={"creation_id": cid, "access_token": _tok()}, timeout=60))["id"]
 
 
+def is_trial(media_id):
+    """True if Instagram is holding the reel back from followers (a trial), False if it went out as a normal
+    reel, None if Instagram won't say. Trial reels report is_shared_to_feed = false."""
+    time.sleep(5)
+    r = requests.get(f"{graph()}/{media_id}", params={"fields": "is_shared_to_feed,media_product_type",
+                                                       "access_token": _tok()}, timeout=60)
+    if r.status_code >= 300:
+        return None
+    v = r.json().get("is_shared_to_feed")
+    return None if v is None else (not v)
+
+
 METRICS = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions",
            "ig_reels_avg_watch_time"]
 

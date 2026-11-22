@@ -326,6 +326,8 @@ def main():
     hb = led.get("publish_heartbeat")
     if hb and not CFG.get("paused") and (now() - dt.datetime.fromisoformat(hb)).total_seconds() > 3 * 3600:
         warn.append(f"Hourly posting last ran {hb[:16].replace('T', ' ')}: reels aren't posting. Tell Claude.")
+    if led.get("auto_paused"):
+        warn.insert(0, f"Posting stopped itself: {led['auto_paused']}. Tell Claude once it's sorted.")
     todo_items = [f"⚠️ {E(w)}" for w in warn] + [E(r["text"]) for r in rem]
     todo_html = ("<div class='card rem'><h2>To do</h2><ul class='todo'>" + "".join(f"<li>{t}</li>" for t in todo_items)
                  + "</ul></div>") if todo_items else \
@@ -401,7 +403,7 @@ form.rate button{{font:inherit;font-size:14px;padding:7px 14px;border-radius:8px
 @media(max-width:480px){{.tabs{{gap:0;padding:0 4px}}.tabs button{{padding:11px 7px 9px;font-size:13.5px}}.badge{{margin-left:3px;padding:0 5px}}h1{{font-size:19px}}.card{{padding:14px}}}}
 </style></head><body>
 <header><div class="hin"><h1>@conor_sends · trial reels</h1>
-<div class="sub"><span class="pill {'off' if paused_now else 'on'}">{'Paused' if paused_now else 'Posting'}</span>
+<div class="sub"><span class="pill {'off' if paused_now or led.get('auto_paused') else 'on'}">{'Paused' if paused_now or led.get('auto_paused') else 'Posting'}</span>
 Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</span></div></div></header>
 <nav><div class="tabs" role="tablist">
 <button role="tab" data-tab="home" aria-selected="true">Home{f'<span class="badge">{len(todo_items)}</span>' if todo_items else ''}</button>

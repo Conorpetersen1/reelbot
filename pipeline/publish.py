@@ -11,6 +11,8 @@ def main():
     t = now()
     led["publish_heartbeat"] = t.isoformat()  # the daily check warns if hourly posting stops running
     save_ledger(led)
+    if led.get("auto_paused"):
+        print("Posting auto-paused:", led["auto_paused"]); return
     today = led["queue"].get(t.date().isoformat(), [])
     for e in sorted(today, key=lambda e: e["slot"]):
         if e["status"] not in ("queued", "retry"):
@@ -32,7 +34,15 @@ def main():
                                  **{k: e.get(k) for k in ("category", "style", "hook_type", "sound_kind", "time", "variation",
                                                           "source", "sound", "fit")}}
             drive.move(e["file_id"], "posted")
-            log(led, f"Posted trial reel {e['file']} -> {mid}")
+            trial = ig.is_trial(mid)
+            e["trial"] = led["posts"][mid]["trial"] = trial
+            log(led, f"Posted trial reel {e['file']} -> {mid} (Instagram says trial: {trial})")
+            if trial is False:
+                # It went out as a normal reel to followers: stop everything and tell Conor
+                led["auto_paused"] = f"{e['file']} posted as a normal reel, not a trial ({t:%d %b %H:%M})"
+                notify_once(led, f"not-trial-{mid}", "⚠️ reelbot: a reel posted as a NORMAL reel, posting paused",
+                            f"Instagram says **{e['hook']}** went out to followers, not as a trial. Posting is "
+                            "paused. Delete it in the app if you don't want it, then tell Claude.")
         except Exception as err:
             e["attempts"] = e.get("attempts", 0) + 1
             e["status"] = "retry" if e["attempts"] < 3 else "failed"
