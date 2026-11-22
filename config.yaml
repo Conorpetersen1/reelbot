@@ -1,6 +1,6 @@
 # reelbot settings. Change these and commit, and the next run picks them up.
 
-paused: false                       # true = stop posting and generating (stats and alerts keep running)
+paused: true                       # true = stop posting and generating (stats and alerts keep running)
 
 timezone: Australia/Sydney          # switch to Asia/Tokyo while you're in Niseko if you want Japan-time posting
 
