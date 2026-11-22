@@ -27,6 +27,10 @@ def is_fresh_trend(t):
     return bool(t.get("added")) and days_since(t["added"]) < CFG.get("trend_boost_days", 7)
 
 
+def last_used_topic(led, tid):
+    return max([e["date"] for d in led["queue"].values() for e in d if e["topic"] == tid] or [""])
+
+
 def weighted_pick(cands, perf):
     """Mostly exploit good topics, sometimes explore untested ones. Fresh trend ideas get a boost."""
     if not cands:
@@ -69,18 +73,21 @@ def technique_ok(topic, seg):
 def choose(led, topics, n_ai, n_real):
     perf, cooldown = score(led), recent_topics(led)
     by_id = {t["id"]: t for t in topics}
-    picks, used_topics = [], set(cooldown)
+    picks, used_topics, today = [], set(cooldown), set()
     # AI slots: topics that have unused AI clips in the library
     for _ in range(n_ai):
-        cands = [(by_id[c["topic"]], cid) for cid, c in led["ai_clips"].items()
+        stock = [(by_id[c["topic"]], cid) for cid, c in led["ai_clips"].items()
                  if c["uses"] < CFG["ai_clip_max_uses"] and not c.get("rejected")
-                 and c["topic"] in by_id and c["topic"] not in used_topics
+                 and c["topic"] in by_id and c["topic"] not in today
                  and not any(pk[2] == cid for pk in picks)]
-        pick = weighted_pick(cands, perf)
+        cands = [x for x in stock if x[0]["id"] not in used_topics]
+        # If every topic with clips is on cooldown, reuse the one rested longest rather than skip the slot
+        pick = weighted_pick(cands, perf) or (min(stock, key=lambda x: last_used_topic(led, x[0]["id"]))
+                                              if stock else None)
         if not pick:
             n_real += 1  # no AI stock: fall back to a real clip
             continue
-        picks.append(("ai", pick[0], pick[1])); used_topics.add(pick[0]["id"])
+        picks.append(("ai", pick[0], pick[1])); used_topics.add(pick[0]["id"]); today.add(pick[0]["id"])
     # Real slots: least-used usable moments (segments) of your clips, matched to a topic by tags
     moments = sorted([((cid, i), seg) for cid, c in led["clips"].items() for i, seg in enumerate(segments(c))
                       if seg.get("usable", True)
@@ -97,15 +104,18 @@ def choose(led, topics, n_ai, n_real):
             continue
         ctags = set(c.get("tags", []))
         # Tips need the clip to show their main subject (first tag); snow-life topics just need some overlap.
-        cands = [(t, (cid, i)) for t in topics if t["id"] not in used_topics
+        cands = [(t, (cid, i)) for t in topics if t["id"] not in today
                  and t["id"] not in c.get("misfit", []) and (
                  t["clip_tags"].split(",")[0] in ctags if t["category"] == "tip"
                  else set(t["clip_tags"].split(",")) & ctags)]
         # Prefer topics whose angle matches the riding: mistakes -> "why do I...", good riding -> "how I fixed..."
         cands = [x for x in cands if technique_ok(x[0], c)] or cands
-        pick = weighted_pick(cands, perf)
+        rested = [x for x in cands if x[0]["id"] not in used_topics]
+        pick = weighted_pick(rested, perf) or (min(cands, key=lambda x: last_used_topic(led, x[0]["id"]))
+                                               if cands else None)
         if pick:
-            picks.append(("real", pick[0], pick[1])); used_topics.add(pick[0]["id"]); used_clips.add(cid)
+            picks.append(("real", pick[0], pick[1])); used_topics.add(pick[0]["id"]); today.add(pick[0]["id"])
+            used_clips.add(cid)
             n_real -= 1
     return picks
 
@@ -182,6 +192,24 @@ def pick_sound(led, lib):
     return s
 
 
+def variation(uses):
+    """First use: footage as shot. Reuses: a different crop, zoom, mirror and speed so it isn't a duplicate."""
+    if not uses:
+        return {}
+    return {"zoom": round(random.uniform(1.08, 1.22), 2), "pan": round(random.choice([0.15, 0.3, 0.7, 0.85]), 2),
+            "mirror": random.random() < 0.5, "speed": round(random.choice([0.9, 0.95, 1.05, 1.1]), 2)}
+
+
+def pick_style(topic, led, avoid=None):
+    """Topics with a set style (from trends) keep it. Others rotate so the day's reels don't all look the same."""
+    if topic.get("style"):
+        return topic["style"]
+    options = ["question", "list"] if topic.get("category") == "tip" else ["question", "pov"]
+    recent = [e.get("style", "question") for d in sorted(led["queue"])[-2:] for e in led["queue"][d]]
+    options = [o for o in options if o != avoid] or options
+    return min(options, key=lambda o: (recent.count(o), random.random()))
+
+
 def text_for(topic, led, clip_note):
     recent = [e["hook"] for d in led["queue"].values() for e in d]
     winners = [p["hook"] for p in sorted(led["posts"].values(),
@@ -251,9 +279,15 @@ def main():
                 music = sound["path"]
             out = WORK / f"{day}_{len(entries)+1}_{topic['id']}.mp4"
             snd = CFG.get("sounds", {})
-            render(src, out, reel["hook"], reel["description"], music=music,
-                   style=topic.get("style") or "question", music_volume=snd.get("sound_volume", 0.9),
-                   clip_volume=snd.get("clip_sound_volume", 0.25))
+            var = variation(meta.get("uses", 0))
+            style = pick_style(topic, led, avoid=meta.get("last_style"))
+            style = style if len(reel["description"]) > 1 or style != "list" else "question"
+            today_styles = [e.get("style") for e in entries]
+            if today_styles.count(style) >= 2 and not topic.get("style"):
+                style = "list" if style == "question" and topic.get("category") == "tip" else "question"
+            render(src, out, reel["hook"], reel["description"], music=music, style=style,
+                   music_volume=snd.get("sound_volume", 0.9), clip_volume=snd.get("clip_sound_volume", 0.25),
+                   **var)
             fit = fit_check(out, reel)
             score = int(fit.get("score", 3))
             if score < CFG.get("fit_min_score", 3):
@@ -266,7 +300,7 @@ def main():
                 continue
             slot = len(entries)
             fid = drive.upload(out, "queue", out.name)
-            meta["uses"] = meta.get("uses", 0) + 1; meta["last_used"] = now().isoformat()
+            meta["uses"] = meta.get("uses", 0) + 1; meta["last_used"] = now().isoformat(); meta["last_style"] = style
             if kind == "real":
                 clip["uses"] = clip.get("uses", 0) + 1; clip["last_used"] = now().isoformat()
             if sound:
@@ -275,7 +309,8 @@ def main():
                             "topic": topic["id"], "clip": clip_id if kind == "ai" else f"{clip_id[0]}#{clip_id[1]}",
                             "file_id": fid, "file": out.name, "fit": score,
                             "hook": reel["hook"], "description": reel["description"], "caption": reel["caption"],
-                            "text_source": source, "status": "queued", "sound": sound["name"] if sound else None})
+                            "text_source": source, "status": "queued", "sound": sound["name"] if sound else None,
+                            "style": style, "variation": var})
             save_ledger(led)
         except Exception as e:
             log(led, f"Couldn't build a reel for {topic['id']}: {e}")

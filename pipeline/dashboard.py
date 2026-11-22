@@ -150,6 +150,7 @@ ul{{margin:0;padding-left:18px}}li{{margin:3px 0}}#tip{{position:fixed;pointer-e
 <div class="card"><div class="k">Avg views per AI reel</div><div class="v">{avg['ai']:,.0f}</div><div class="d muted">{len(by_kind['ai'])} reels with stats</div></div>
 <div class="card"><div class="k">Avg views per real-clip reel</div><div class="v">{avg['real']:,.0f}</div><div class="d muted">{len(by_kind['real'])} reels with stats</div></div>
 </div>
+<div class="card muted">Weekly: check Instagram › Settings › <b>Account Status</b> for any recommendation or originality warnings.</div>
 <div class="card"><h2>Graduate these in the Instagram app</h2><ul>{grad_html}</ul>
 <p class="muted" style="margin:8px 0 0">Best 5 of the last 10 days by views, shares and saves. Open the reel in the app, then share it to your profile.</p></div>
 <div class="two">

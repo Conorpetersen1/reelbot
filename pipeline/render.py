@@ -110,9 +110,10 @@ def has_audio(path):
 
 
 def render(clip, out, hook, desc_lines, music=None, start=0.0, mirror=False, style="question",
-           music_volume=0.9, clip_volume=0.25):
+           music_volume=0.9, clip_volume=0.25, zoom=1.0, pan=0.5, speed=1.0):
     """music: optional sound to lay over the reel (from its start). The clip's own sound stays underneath
-    at clip_volume (0 = off)."""
+    at clip_volume (0 = off). zoom/pan/speed/mirror make reused footage look different
+    (zoom 1.0-1.2, pan 0-1 = which part of the frame is kept, speed ~0.9-1.1)."""
     desc_lines = [l for l in desc_lines if l.strip()]
     # Last point appears at 1.2 + 1.6*(n-1)s, then ~3.5s to read it. Short reels loop, which helps watch time.
     dur = max(7.0, min(12.0, 1.2 + 1.6 * (len(desc_lines) - 1) + 3.5))
@@ -130,7 +131,10 @@ def render(clip, out, hook, desc_lines, music=None, start=0.0, mirror=False, sty
         if music:
             cmd += ["-stream_loop", "-1", "-i", str(music)]
         flip = ",hflip" if mirror else ""
-        fc = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30{flip},"
+        zw, zh = int(W * zoom) // 2 * 2, int(H * zoom) // 2 * 2
+        spd = f",setpts=PTS/{speed:.3f}" if abs(speed - 1) > 0.01 else ""
+        fc = [f"[0:v]scale={zw}:{zh}:force_original_aspect_ratio=increase,"
+              f"crop={W}:{H}:(iw-{W})*{pan:.3f}:(ih-{H})/2,setsar=1{spd},fps=30{flip},"
               f"eq=brightness=-0.04:contrast=1.03[base]"]
         last = "base"
         for i, (_, t0) in enumerate(overlays, start=1):
@@ -141,14 +145,18 @@ def render(clip, out, hook, desc_lines, music=None, start=0.0, mirror=False, sty
         a_in = len(overlays) + 1
         if music and has_audio(clip) and clip_volume > 0:
             fc.append(f"[{a_in}:a]volume={music_volume}[mus]")
-            fc.append(f"[0:a]volume={clip_volume}[nat]")
+            tempo = f",atempo={speed:.3f}" if abs(speed - 1) > 0.01 else ""
+            fc.append(f"[0:a]volume={clip_volume}{tempo}[nat]")
             fc.append(f"[mus][nat]amix=inputs=2:duration=first:normalize=0,afade=t=out:st={dur-1:.2f}:d=1[aout]")
             maps += ["-map", "[aout]"]
         elif music:
             fc.append(f"[{a_in}:a]volume={music_volume},afade=t=out:st={dur-1:.2f}:d=1[aout]")
             maps += ["-map", "[aout]"]
         elif has_audio(clip):
-            maps += ["-map", "0:a"]
+            if abs(speed - 1) > 0.01:
+                fc.append(f"[0:a]atempo={speed:.3f}[nat]"); maps += ["-map", "[nat]"]
+            else:
+                maps += ["-map", "0:a"]
         else:  # Instagram is happier with an audio track, so add silence
             cmd += ["-f", "lavfi", "-t", f"{dur:.2f}", "-i", "anullsrc=r=44100:cl=stereo"]
             maps += ["-map", f"{a_in}:a"]

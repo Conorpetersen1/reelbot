@@ -15,13 +15,13 @@ graduation: MANUAL                  # MANUAL = nothing reaches followers unless 
 
 # Content rules
 topic_cooldown_days: 6              # don't reuse the same topic within this many days
-real_clip_cooldown_days: 4          # don't reuse the same real clip within this many days
-ai_clip_max_uses: 3                 # retire an AI clip after this many reels
+real_clip_cooldown_days: 10         # wait this long before reusing a moment of your footage
+ai_clip_max_uses: 2                 # retire an AI clip after this many reels (reuses get a new crop/zoom/speed)
 fit_min_score: 3                    # every finished reel is watched; below this (1-5) it's swapped for another
 fit_spares: 3                       # extra reels planned per type so misfits can be replaced
 
 # AI clips (fal.ai). Check the model pages on fal.ai if a name changes.
-ai_clips_per_week: 12          # you post ~21 AI reels a week and each clip is reused up to 3 times
+ai_clips_per_week: 14          # ~21 AI reels a week, each clip used at most twice
 mascot_style: >-
   blocky low-poly 3D cartoon snowboarder character, chunky square proportions, toy-like,
   clean stylised game-like render, vertical 9:16 framing
@@ -36,7 +36,7 @@ video_seconds: 5
 
 # Hard spending cap for fal.ai. The bot estimates its spend and stops generating for the rest of the month
 # once it reaches this. Existing clips keep being reused, so posting carries on.
-fal_monthly_budget_usd: 30
+fal_monthly_budget_usd: 40
 fal_cost_estimate_usd: {image: 0.04, video_clip: 0.40}
 
 # Claude (writing + clip tagging)

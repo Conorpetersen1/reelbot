@@ -21,6 +21,12 @@ def main():
             notify_once(led, f"expiry-{key}-{d}", f"🔑 {key} expires {'today' if days <= 0 else f'in {days} days'}",
                         f"Your **{key}** expires on {d}. Make a new key, update the GitHub secret "
                         "(Settings › Secrets and variables › Actions), then change or delete the date in config.yaml.")
+    if today.weekday() == 0:  # Monday
+        week = today.isocalendar()
+        notify_once(led, f"status-{week[0]}-{week[1]}", "🗓️ Weekly 1-minute check: Instagram Account Status",
+                    "Open Instagram › Settings › **Account Status** and check there are no warnings about "
+                    "*recommendations* or *unoriginal content*. If there are, set `paused: true` in config.yaml and "
+                    "tell Claude what it says. Also worth a look on the dashboard: graduate this week's best reels.")
     month = now().strftime("%Y-%m")
     if led.get("fal_spend", {}).get(month, 0) >= CFG.get("fal_monthly_budget_usd", 30) - 1:
         notify_once(led, f"budget-{month}", "💸 AI video budget reached for this month",
