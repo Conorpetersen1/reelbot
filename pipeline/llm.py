@@ -117,6 +117,29 @@ TAGS = ["heelside", "toeside", "turns", "linked_turns", "carving", "sideslip", "
         "scenery", "lifestyle"]
 
 
+def fit_prompt(reel, kind):
+    return f"""{'This is' if kind == 'video' else 'These frames are from'} a finished Instagram reel for Conor's
+snowboard instructor account. On-screen text: hook "{reel['hook']}", points {json.dumps(reel['description'])}.
+Score how well the FOOTAGE fits the TEXT, 1-5:
+5 = clearly shows what the text is about
+3 = generic but doesn't contradict it (e.g. general riding under a mindset tip)
+1 = contradicts the text (e.g. text about heelside but it's clearly a toeside turn; text about a mistake but the
+    footage shows something unrelated), OR the footage looks broken: for AI animation, a distorted body,
+    board detached from feet, melting or glitchy limbs, unreadable mess.
+Also flag if the on-screen text is cut off or unreadable. Return only JSON: {{"score": 1-5, "reason": "short"}}"""
+
+
+def fit_check_frames(frame_paths, reel):
+    if os.environ.get("LOCAL_LLM"):
+        return {"score": 5, "reason": "offline"}
+    content = [{"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
+                                            "data": base64.b64encode(p.read_bytes()).decode()}} for p in frame_paths]
+    content.append({"type": "text", "text": fit_prompt(reel, "frames")})
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=300,
+                                    messages=[{"role": "user", "content": content}])
+    return _json(msg.content[0].text)
+
+
 def segment_prompt(duration, how):
     return f"""{how} Conor's own snowboarding clip, {duration:.0f}s long.
 Find the BEST moments to use as short reel backgrounds: 4-12 seconds each, not overlapping, skipping standing

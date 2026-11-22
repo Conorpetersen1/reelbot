@@ -1,6 +1,6 @@
 """Evening job: build tomorrow's reels and put them in Drive/queue. Delete any you don't want before they post."""
-import datetime as dt, random, subprocess
-from . import drive, llm
+import datetime as dt, random, re, subprocess
+from . import drive, gemini, llm
 from .common import CFG, WORK, days_since, load_ledger, load_topics, log, now, save_ledger
 from .render import render
 
@@ -43,6 +43,27 @@ def weighted_pick(cands, perf):
     return random.choices(cands, weights=w)[0]
 
 
+MISTAKE = re.compile(r"^(why|stop|\d+ mistakes)|mistake|catch|fall|wash|skid|stuck|lock|chatter|crash|"
+                     r"won't|wrong|excuse", re.I)
+
+
+def wants_mistake(topic):
+    """'Why do I fall...' style topics suit footage of a mistake; 'How I fixed...' suits good riding."""
+    hook = topic["hook"].strip()
+    if re.search(r"\bfall(ing)? without|\bhow to fall", hook, re.I):  # falling tips suit footage of a fall
+        return True
+    if re.match(r"(how|the (one|drill|trick)|where|check)\b", hook, re.I):  # fixes and how-tos want good riding
+        return False
+    return bool(MISTAKE.search(hook)) and topic.get("category") == "tip"
+
+
+def technique_ok(topic, seg):
+    tech = seg.get("technique", "n/a")
+    if tech == "n/a" or topic.get("category") != "tip":
+        return True
+    return (tech == "mistake") == wants_mistake(topic)
+
+
 def choose(led, topics, n_ai, n_real):
     perf, cooldown = score(led), recent_topics(led)
     by_id = {t["id"]: t for t in topics}
@@ -50,7 +71,9 @@ def choose(led, topics, n_ai, n_real):
     # AI slots: topics that have unused AI clips in the library
     for _ in range(n_ai):
         cands = [(by_id[c["topic"]], cid) for cid, c in led["ai_clips"].items()
-                 if c["uses"] < CFG["ai_clip_max_uses"] and c["topic"] in by_id and c["topic"] not in used_topics]
+                 if c["uses"] < CFG["ai_clip_max_uses"] and not c.get("rejected")
+                 and c["topic"] in by_id and c["topic"] not in used_topics
+                 and not any(pk[2] == cid for pk in picks)]
         pick = weighted_pick(cands, perf)
         if not pick:
             n_real += 1  # no AI stock: fall back to a real clip
@@ -72,9 +95,12 @@ def choose(led, topics, n_ai, n_real):
             continue
         ctags = set(c.get("tags", []))
         # Tips need the clip to show their main subject (first tag); snow-life topics just need some overlap.
-        cands = [(t, (cid, i)) for t in topics if t["id"] not in used_topics and (
+        cands = [(t, (cid, i)) for t in topics if t["id"] not in used_topics
+                 and t["id"] not in c.get("misfit", []) and (
                  t["clip_tags"].split(",")[0] in ctags if t["category"] == "tip"
                  else set(t["clip_tags"].split(",")) & ctags)]
+        # Prefer topics whose angle matches the riding: mistakes -> "why do I...", good riding -> "how I fixed..."
+        cands = [x for x in cands if technique_ok(x[0], c)] or cands
         pick = weighted_pick(cands, perf)
         if pick:
             picks.append(("real", pick[0], pick[1])); used_topics.add(pick[0]["id"]); used_clips.add(cid)
@@ -96,6 +122,22 @@ def cut(src, start, end, out):
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", f"{start:.2f}", "-i", str(src), "-t", f"{end - start:.2f}",
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-c:a", "aac", str(out)], check=True)
     return out
+
+
+def fit_check(out, reel):
+    """Watch the finished reel and score how well the footage fits the text (1-5)."""
+    if gemini.available():
+        try:
+            return gemini.ask(llm.fit_prompt(reel, "video"), video=gemini.small_video(out))
+        except Exception as e:
+            print("Gemini fit check failed, using Claude:", e)
+    frames = []
+    for n, t in enumerate((1.0, 3.0, 5.5)):
+        f = WORK / f"{out.stem}_fit{n}.jpg"
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", str(t), "-i", str(out), "-frames:v", "1",
+                        "-vf", "scale=540:-2", str(f)], check=True)
+        frames.append(f)
+    return llm.fit_check_frames(frames, reel)
 
 
 def text_for(topic, led, clip_note):
@@ -128,15 +170,26 @@ def main():
         present = {f["id"] for f in drive.list_files(key)}
         for cid in [c for c in led[store] if c not in present]:
             led[store].pop(cid)
-    picks = choose(led, topics, CFG["reels_per_day"]["ai"], CFG["reels_per_day"]["real"])
-    random.shuffle(picks)
+    n_ai, n_real = CFG["reels_per_day"]["ai"], CFG["reels_per_day"]["real"]
+    target = min(n_ai + n_real, len(CFG["post_times"]))
+    # Plan spares too, so a reel that fails the fit check can be swapped for another
+    spare = CFG.get("fit_spares", 3)
+    picks = choose(led, topics, n_ai + spare, n_real + spare)
+    main_picks = [p for p in picks if p[0] == "ai"][:n_ai] + [p for p in picks if p[0] == "real"][:n_real]
+    random.shuffle(main_picks)  # mix AI and real across the day's posting times
+    picks = main_picks + [p for p in picks if p not in main_picks]
     audio = [f for f in drive.list_files("audio") if f["name"].lower().endswith((".mp3", ".m4a", ".wav"))]
-    entries = []
-    for slot, (kind, topic, clip_id) in enumerate(picks[:len(CFG["post_times"])]):
+    entries, n = [], 0
+    for kind, topic, clip_id in picks:
+        if len(entries) >= target:
+            break
+        if any(e["topic"] == topic["id"] for e in entries):
+            continue
+        n += 1
         try:
             if kind == "ai":
                 meta = led["ai_clips"][clip_id]
-                src = drive.download(clip_id, WORK / f"src_{slot}.mp4")
+                src = drive.download(clip_id, WORK / f"src_{n}.mp4")
                 note = f"an animated blocky cartoon snowboarder: {topic['ai_scene']}"
             else:
                 cid, i = clip_id
@@ -144,27 +197,38 @@ def main():
                 full = WORK / f"full_{cid[-12:].replace('/', '_')}_{clip['name']}"
                 if not full.exists():
                     drive.download(cid, full)
-                src = cut(full, meta["start"], meta["end"], WORK / f"src_{slot}.mp4")
-                note = f"Conor's real footage: {meta.get('summary', '')}"
-                clip["uses"] = clip.get("uses", 0) + 1; clip["last_used"] = now().isoformat()
+                src = cut(full, meta["start"], meta["end"], WORK / f"src_{n}.mp4")
+                note = f"Conor's real footage: {meta.get('summary', '')} ({meta.get('technique', 'n/a')} technique)"
             reel, source = text_for(topic, led, note)
             music = None
             if kind == "ai" and audio:
                 a = random.choice(audio); music = drive.download(a["id"], WORK / a["name"])
-            start = 0
-            out = WORK / f"{day}_{slot+1}_{topic['id']}.mp4"
-            render(src, out, reel["hook"], reel["description"], music=music, start=start,
+            out = WORK / f"{day}_{len(entries)+1}_{topic['id']}.mp4"
+            render(src, out, reel["hook"], reel["description"], music=music,
                    style=topic.get("style") or "question")
+            fit = fit_check(out, reel)
+            score = int(fit.get("score", 3))
+            if score < CFG.get("fit_min_score", 3):
+                log(led, f"Fit check {score}/5, swapped out {topic['id']} ({kind}): {fit.get('reason')}")
+                if kind == "ai" and score <= 1:
+                    meta["rejected"] = fit.get("reason", "failed fit check")  # broken animation: never use again
+                elif kind == "real":
+                    meta.setdefault("misfit", []).append(topic["id"])  # don't pair this moment with this topic again
+                save_ledger(led)
+                continue
+            slot = len(entries)
             fid = drive.upload(out, "queue", out.name)
-            meta["uses"] += 1; meta["last_used"] = now().isoformat()
+            meta["uses"] = meta.get("uses", 0) + 1; meta["last_used"] = now().isoformat()
+            if kind == "real":
+                clip["uses"] = clip.get("uses", 0) + 1; clip["last_used"] = now().isoformat()
             entries.append({"date": day, "slot": slot + 1, "time": CFG["post_times"][slot], "kind": kind,
                             "topic": topic["id"], "clip": clip_id if kind == "ai" else f"{clip_id[0]}#{clip_id[1]}",
-                            "file_id": fid, "file": out.name,
+                            "file_id": fid, "file": out.name, "fit": score,
                             "hook": reel["hook"], "description": reel["description"], "caption": reel["caption"],
                             "text_source": source, "status": "queued"})
             save_ledger(led)
         except Exception as e:
-            log(led, f"Couldn't build slot {slot+1} ({topic['id']}): {e}")
+            log(led, f"Couldn't build a reel for {topic['id']}: {e}")
     led["queue"][day] = entries
     log(led, f"Queued {len(entries)} reels for {day}: {[e['topic'] for e in entries]}")
     save_ledger(led)
