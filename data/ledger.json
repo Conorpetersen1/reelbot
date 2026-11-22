@@ -2499,7 +2499,7 @@
     "kind": "ai",
     "topic": "t01",
     "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
-    "file_id": "16s-FIVJ6MnfAE83Z5-KJgOoV1pnRXU5j",
+    "file_id": "1uplrjvVVNuK4XE9xkAtKl0GSv3HaSmD1",
     "file": "2026-11-23_1_t01.mp4",
     "fit": 5,
     "hook": "Why does my toeside keep washing out?",
@@ -2518,8 +2518,7 @@
     "category": "tip",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank",
-    "rerender": true
+    "source": "bank"
    },
    {
     "date": "2026-11-23",
@@ -2736,7 +2735,8 @@
   "2026-11-22 21:39 Writer error for s01: 'ThinkingBlock' object has no attribute 'text'",
   "2026-11-22 21:40 Writer error for t31: 'ThinkingBlock' object has no attribute 'text'",
   "2026-11-22 21:40 Writer error for t31: 'ThinkingBlock' object has no attribute 'text'",
-  "2026-11-22 21:40 Queued 5 reels for 2026-11-23: ['t01', 's04', 's05', 's01', 't31']"
+  "2026-11-22 21:40 Queued 5 reels for 2026-11-23: ['t01', 's04', 's05', 's01', 't31']",
+  "2026-11-22 21:56 Re-rendered 2026-11-23 09:00 t01 with corrected text"
  ],
  "fal_spend": {
   "2026-11": 5.76
