@@ -1490,8 +1490,8 @@
   "1UxdDq-VecCPJzte9X0SDjYzRUWm9D9Xw": {
    "name": "IMG_6221.MOV",
    "duration": 10.565,
-   "uses": 0,
-   "last_used": null,
+   "uses": 1,
+   "last_used": "2026-11-22T21:38:59.931245+11:00",
    "added": "2026-11-22T21:23:27.141467+11:00",
    "segments": [
     {
@@ -1504,8 +1504,9 @@
      "summary": "POV riding smoothly through deep powder amongst snow-covered trees.",
      "technique": "good",
      "usable": true,
-     "uses": 0,
-     "last_used": null
+     "uses": 1,
+     "last_used": "2026-11-22T21:38:59.931225+11:00",
+     "last_style": "list"
     }
    ],
    "analysed_by": "gemini",
@@ -2435,20 +2436,18 @@
   "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3": {
    "name": "s05_20261122_00.mp4",
    "topic": "s05",
-   "uses": 0,
-   "created": "2026-11-22T18:03:30.835583+11:00"
-  },
-  "1M9sLDm48Bze_VRw5Us9lNKcGW67Kvm8K": {
-   "name": "s03_20261122_01.mp4",
-   "topic": "s03",
-   "uses": 0,
-   "created": "2026-11-22T18:05:05.115263+11:00"
+   "uses": 1,
+   "created": "2026-11-22T18:03:30.835583+11:00",
+   "last_used": "2026-11-22T21:39:32.734678+11:00",
+   "last_style": "list"
   },
   "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8": {
    "name": "s01_20261122_02.mp4",
    "topic": "s01",
-   "uses": 0,
-   "created": "2026-11-22T18:06:49.562315+11:00"
+   "uses": 1,
+   "created": "2026-11-22T18:06:49.562315+11:00",
+   "last_used": "2026-11-22T21:40:10.216701+11:00",
+   "last_style": "question"
   },
   "1w1rTFqv41EzdSrEspp29hi3DjMbMLEhS": {
    "name": "t24_20261122_03.mp4",
@@ -2465,8 +2464,10 @@
   "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS": {
    "name": "t01_20261122_05.mp4",
    "topic": "t01",
-   "uses": 0,
-   "created": "2026-11-22T18:11:46.635164+11:00"
+   "uses": 1,
+   "created": "2026-11-22T18:11:46.635164+11:00",
+   "last_used": "2026-11-22T21:37:53.385902+11:00",
+   "last_style": "list"
   },
   "1cry745n0hpm57CIfQxs0tzNgggCP0Xv9": {
    "name": "t23_20261122_06.mp4",
@@ -2474,42 +2475,169 @@
    "uses": 0,
    "created": "2026-11-22T18:13:41.217753+11:00"
   },
-  "1zP51yY8ot_NR3OyIB6AqeaNTuDxILcZ6": {
-   "name": "t22_20261122_07.mp4",
-   "topic": "t22",
-   "uses": 0,
-   "created": "2026-11-22T18:15:24.966116+11:00"
-  },
   "18r0PTErnWnaplo-PV-wchUteOjYgrbEI": {
    "name": "t30_20261122_08.mp4",
    "topic": "t30",
    "uses": 0,
    "created": "2026-11-22T18:17:24.191559+11:00"
   },
-  "15slKjvIhQQipNhyV0jHwVKq05tzemIkM": {
-   "name": "t03_20261122_09.mp4",
-   "topic": "t03",
-   "uses": 0,
-   "created": "2026-11-22T18:19:29.653016+11:00"
-  },
   "1MOKWz0m3YYQwISnuZTvCvbYXw0biMB0R": {
    "name": "t31_20261122_10.mp4",
    "topic": "t31",
-   "uses": 0,
-   "created": "2026-11-22T18:20:58.196257+11:00"
-  },
-  "1M2H5h6C2__eNSQlDAGeV-MBg-ud0jtwN": {
-   "name": "t18_20261122_11.mp4",
-   "topic": "t18",
-   "uses": 0,
-   "created": "2026-11-22T18:22:37.245372+11:00"
+   "uses": 1,
+   "created": "2026-11-22T18:20:58.196257+11:00",
+   "last_used": "2026-11-22T21:40:45.407345+11:00",
+   "last_style": "question"
   }
  },
  "queue": {
-  "2026-11-23": []
+  "2026-11-23": [
+   {
+    "date": "2026-11-23",
+    "slot": 1,
+    "time": "09:00",
+    "kind": "ai",
+    "topic": "t01",
+    "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
+    "file_id": "16s-FIVJ6MnfAE83Z5-KJgOoV1pnRXU5j",
+    "file": "2026-11-23_1_t01.mp4",
+    "fit": 5,
+    "hook": "Why does my toeside keep washing out?",
+    "description": [
+     "Think tippy toes: press through the balls of your feet",
+     "Keep ankles and knees bent, don't stand up straight",
+     "Hips over the board, no folding at the waist"
+    ],
+    "caption": "Why does my toeside keep washing out? Save this and try it next run. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
+    "text_source": "topic_bank",
+    "status": "queued",
+    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "style": "list",
+    "variation": {},
+    "hook_type": "why",
+    "category": "tip",
+    "asked_hook": "question",
+    "sound_kind": "sound",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-23",
+    "slot": 2,
+    "time": "13:00",
+    "kind": "real",
+    "topic": "s04",
+    "clip": "1UxdDq-VecCPJzte9X0SDjYzRUWm9D9Xw#0",
+    "file_id": "1j7J3PHSQEp50z837gm686yGyJ0VMstGn",
+    "file": "2026-11-23_2_s04.mp4",
+    "fit": 3,
+    "hook": "Aussie slush vs Japan pow",
+    "description": [
+     "Winter in Thredbo",
+     "Then winter again in Japan",
+     "Two winters a year, zero summers"
+    ],
+    "caption": "Aussie slush vs Japan pow Follow for a tip every day. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
+    "text_source": "topic_bank",
+    "status": "queued",
+    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "style": "list",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "snow_life",
+    "asked_hook": "question",
+    "sound_kind": "sound",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-23",
+    "slot": 3,
+    "time": "15:30",
+    "kind": "ai",
+    "topic": "s05",
+    "clip": "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3",
+    "file_id": "17FCklSRgjWgAjUcAMdKyowoDvazRT_AA",
+    "file": "2026-11-23_3_s05.mp4",
+    "fit": 5,
+    "hook": "What a snowboard instructor actually packs",
+    "description": [
+     "Spare gloves",
+     "Snacks for the kids",
+     "Sunscreen and a backup goggle lens"
+    ],
+    "caption": "What a snowboard instructor actually packs Save this and try it next run. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
+    "text_source": "topic_bank",
+    "status": "queued",
+    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "style": "list",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "snow_life",
+    "asked_hook": "question",
+    "sound_kind": "sound",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-23",
+    "slot": 4,
+    "time": "17:30",
+    "kind": "ai",
+    "topic": "s01",
+    "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8",
+    "file_id": "1Yy9k6Hb_UwWMrbLratE5qQe1HrV6TFVV",
+    "file": "2026-11-23_4_s01.mp4",
+    "fit": 3,
+    "hook": "What teaching snowboarding in Japan is like",
+    "description": [
+     "Powder mornings",
+     "Lessons all day",
+     "Onsen after"
+    ],
+    "caption": "What teaching snowboarding in Japan is like Save this and try it next run. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
+    "text_source": "topic_bank",
+    "status": "queued",
+    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "style": "question",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "snow_life",
+    "asked_hook": "question",
+    "sound_kind": "sound",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-23",
+    "slot": 5,
+    "time": "21:30",
+    "kind": "ai",
+    "topic": "t31",
+    "clip": "1MOKWz0m3YYQwISnuZTvCvbYXw0biMB0R",
+    "file_id": "1PPxSzPJ2TS4Tg4xEGqX0FjiLJDeFcwFy",
+    "file": "2026-11-23_5_t31.mp4",
+    "fit": 4,
+    "hook": "Teaching a mate? Start here",
+    "description": [
+     "Heelside edge first, then toeside",
+     "New skill, old terrain",
+     "Keep it short, fun and warm"
+    ],
+    "caption": "Teaching a mate? Start here Tag the mate you ride with. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
+    "text_source": "topic_bank",
+    "status": "queued",
+    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "style": "question",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "tip",
+    "asked_hook": "question",
+    "sound_kind": "sound",
+    "source": "bank"
+   }
+  ]
  },
  "posts": {},
- "followers": {},
+ "followers": {
+  "2026-11-22": 944
+ },
  "log": [
   "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []",
   "2026-11-22 18:22 Generated 12 AI clips",
@@ -2595,9 +2723,24 @@
   "2026-11-22 21:33 IMG_9888 (1).MOV (7s, gemini): 1 usable moments [['stance']]",
   "2026-11-22 21:33 IMG_9888.MOV (7s, gemini): 1 usable moments [['stance']]",
   "2026-11-22 21:34 MVI_8253.MP4 (22s, gemini): 2 usable moments [['powder', 'turns'], ['powder', 'falling']]",
-  "2026-11-22 21:35 MVI_8263.MP4 (20s, gemini): 1 usable moments [['jump', 'powder']]"
+  "2026-11-22 21:35 MVI_8263.MP4 (20s, gemini): 1 usable moments [['jump', 'powder']]",
+  "2026-11-22 21:36 Updated insights for 0 reels",
+  "2026-11-22 21:36 Reviewer rejected text for t01: gemini: The first description line ('Think tippy toes: press the balls of your feet') is 46 characters, exceeding the 45-character limit. Additionally, the caption exceeds the allowed 1 to 2 sentences before the call to action.",
+  "2026-11-22 21:37 Reviewer rejected text for t01: gemini: The first description line ('Think tippy toes: press the balls of your feet') is 46 characters, exceeding the maximum allowed limit of 45 characters per line.",
+  "2026-11-22 21:38 Writer error for s04: 'ThinkingBlock' object has no attribute 'text'",
+  "2026-11-22 21:38 Writer error for s04: 'ThinkingBlock' object has no attribute 'text'",
+  "2026-11-22 21:39 Writer error for s05: 'ThinkingBlock' object has no attribute 'text'",
+  "2026-11-22 21:39 Writer error for s05: 'ThinkingBlock' object has no attribute 'text'",
+  "2026-11-22 21:39 Writer error for s01: 'ThinkingBlock' object has no attribute 'text'",
+  "2026-11-22 21:39 Writer error for s01: 'ThinkingBlock' object has no attribute 'text'",
+  "2026-11-22 21:40 Writer error for t31: 'ThinkingBlock' object has no attribute 'text'",
+  "2026-11-22 21:40 Writer error for t31: 'ThinkingBlock' object has no attribute 'text'",
+  "2026-11-22 21:40 Queued 5 reels for 2026-11-23: ['t01', 's04', 's05', 's01', 't31']"
  ],
  "fal_spend": {
   "2026-11": 5.76
+ },
+ "sound_uses": {
+  "ScreenRecording_11-22-2026 19-37-39_1.MP4": 5
  }
 }
