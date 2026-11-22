@@ -2499,7 +2499,7 @@
     "kind": "ai",
     "topic": "t01",
     "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
-    "file_id": "1uplrjvVVNuK4XE9xkAtKl0GSv3HaSmD1",
+    "file_id": "1-MzOBKjaPPbWrDLwuv0iw5u5q7gO2gRt",
     "file": "2026-11-23_1_t01.mp4",
     "fit": 5,
     "hook": "Why does my toeside keep washing out?",
@@ -2511,16 +2511,14 @@
     "caption": "Why does my toeside keep washing out? Save this and try it next run. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
     "status": "queued",
-    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "sound": "sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a",
     "style": "list",
     "variation": {},
     "hook_type": "why",
     "category": "tip",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "source": "bank"
    },
    {
     "date": "2026-11-23",
@@ -2529,7 +2527,7 @@
     "kind": "real",
     "topic": "s04",
     "clip": "1UxdDq-VecCPJzte9X0SDjYzRUWm9D9Xw#0",
-    "file_id": "1j7J3PHSQEp50z837gm686yGyJ0VMstGn",
+    "file_id": "1kXhQVx4FVP9494ca1xft1TypYxne0jcb",
     "file": "2026-11-23_2_s04.mp4",
     "fit": 3,
     "hook": "Aussie slush vs Japan pow",
@@ -2541,16 +2539,14 @@
     "caption": "Aussie slush vs Japan pow. Tag the mate you ride with. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
     "status": "queued",
-    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "sound": "sweep 2026-11-22 - Original audio - mitchbrothers.m4a",
     "style": "list",
     "variation": {},
     "hook_type": "statement",
     "category": "snow_life",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "source": "bank"
    },
    {
     "date": "2026-11-23",
@@ -2559,7 +2555,7 @@
     "kind": "ai",
     "topic": "s05",
     "clip": "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3",
-    "file_id": "17FCklSRgjWgAjUcAMdKyowoDvazRT_AA",
+    "file_id": "1gGh9VeVpPlno9rtdWL9K7VzQF3CZ9GGV",
     "file": "2026-11-23_3_s05.mp4",
     "fit": 5,
     "hook": "What a snowboard instructor actually packs",
@@ -2571,16 +2567,14 @@
     "caption": "What a snowboard instructor actually packs. Tag the mate you ride with. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
     "status": "queued",
-    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "sound": "sweep 2026-11-22 - Time - Pink Floyd.m4a",
     "style": "list",
     "variation": {},
     "hook_type": "statement",
     "category": "snow_life",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "source": "bank"
    },
    {
     "date": "2026-11-23",
@@ -2589,7 +2583,7 @@
     "kind": "ai",
     "topic": "s01",
     "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8",
-    "file_id": "1Yy9k6Hb_UwWMrbLratE5qQe1HrV6TFVV",
+    "file_id": "1KBBA6eflE2IwRcMxz7b18eJwuLM_37z2",
     "file": "2026-11-23_4_s01.mp4",
     "fit": 3,
     "hook": "What teaching snowboarding in Japan is like",
@@ -2601,16 +2595,14 @@
     "caption": "What teaching snowboarding in Japan is like. Follow for more from the mountain. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
     "status": "queued",
-    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "sound": "sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a",
     "style": "question",
     "variation": {},
     "hook_type": "statement",
     "category": "snow_life",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "source": "bank"
    },
    {
     "date": "2026-11-23",
@@ -2619,7 +2611,7 @@
     "kind": "ai",
     "topic": "t31",
     "clip": "1MOKWz0m3YYQwISnuZTvCvbYXw0biMB0R",
-    "file_id": "1PPxSzPJ2TS4Tg4xEGqX0FjiLJDeFcwFy",
+    "file_id": "1n1ynEOMrS2U07c8jqsHTJsZHszHwgD7R",
     "file": "2026-11-23_5_t31.mp4",
     "fit": 4,
     "hook": "Teaching a mate? Start here",
@@ -2631,16 +2623,14 @@
     "caption": "Teaching a mate? Start here. Follow for more snowboard tips. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
     "status": "queued",
-    "sound": "ScreenRecording_11-22-2026 19-37-39_1.MP4",
+    "sound": "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a",
     "style": "question",
     "variation": {},
     "hook_type": "statement",
     "category": "tip",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "source": "bank"
    }
   ]
  },
@@ -2746,12 +2736,23 @@
   "2026-11-22 21:40 Writer error for t31: 'ThinkingBlock' object has no attribute 'text'",
   "2026-11-22 21:40 Writer error for t31: 'ThinkingBlock' object has no attribute 'text'",
   "2026-11-22 21:40 Queued 5 reels for 2026-11-23: ['t01', 's04', 's05', 's01', 't31']",
-  "2026-11-22 21:56 Re-rendered 2026-11-23 09:00 t01 with corrected text"
+  "2026-11-22 21:56 Re-rendered 2026-11-23 09:00 t01 with corrected text",
+  "2026-11-22 22:05 Sound sweep ScreenRecording_11-22-2026 19-37-39_1.MP4 (gemini): 14 new sounds added to audio",
+  "2026-11-22 22:05 Re-rendered 2026-11-23 09:00 t01 with sound sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a",
+  "2026-11-22 22:06 Re-rendered 2026-11-23 13:00 s04 with sound sweep 2026-11-22 - Original audio - mitchbrothers.m4a",
+  "2026-11-22 22:06 Re-rendered 2026-11-23 15:30 s05 with sound sweep 2026-11-22 - Time - Pink Floyd.m4a",
+  "2026-11-22 22:06 Re-rendered 2026-11-23 17:30 s01 with sound sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a",
+  "2026-11-22 22:07 Re-rendered 2026-11-23 21:30 t31 with sound sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a"
  ],
  "fal_spend": {
   "2026-11": 5.76
  },
  "sound_uses": {
-  "ScreenRecording_11-22-2026 19-37-39_1.MP4": 5
+  "ScreenRecording_11-22-2026 19-37-39_1.MP4": 5,
+  "sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a": 1,
+  "sweep 2026-11-22 - Original audio - mitchbrothers.m4a": 1,
+  "sweep 2026-11-22 - Time - Pink Floyd.m4a": 1,
+  "sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a": 1,
+  "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a": 1
  }
 }
