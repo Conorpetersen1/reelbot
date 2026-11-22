@@ -1,15 +1,89 @@
 {
  "clips": {},
- "ai_clips": {},
+ "ai_clips": {
+  "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3": {
+   "name": "s05_20261122_00.mp4",
+   "topic": "s05",
+   "uses": 0,
+   "created": "2026-11-22T18:03:30.835583+11:00"
+  },
+  "1M9sLDm48Bze_VRw5Us9lNKcGW67Kvm8K": {
+   "name": "s03_20261122_01.mp4",
+   "topic": "s03",
+   "uses": 0,
+   "created": "2026-11-22T18:05:05.115263+11:00"
+  },
+  "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8": {
+   "name": "s01_20261122_02.mp4",
+   "topic": "s01",
+   "uses": 0,
+   "created": "2026-11-22T18:06:49.562315+11:00"
+  },
+  "1w1rTFqv41EzdSrEspp29hi3DjMbMLEhS": {
+   "name": "t24_20261122_03.mp4",
+   "topic": "t24",
+   "uses": 0,
+   "created": "2026-11-22T18:08:02.782966+11:00"
+  },
+  "1xe7i9CctYa-aoVYJN7xhmKtnPBzLH_0O": {
+   "name": "t08_20261122_04.mp4",
+   "topic": "t08",
+   "uses": 0,
+   "created": "2026-11-22T18:09:46.724847+11:00"
+  },
+  "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS": {
+   "name": "t01_20261122_05.mp4",
+   "topic": "t01",
+   "uses": 0,
+   "created": "2026-11-22T18:11:46.635164+11:00"
+  },
+  "1cry745n0hpm57CIfQxs0tzNgggCP0Xv9": {
+   "name": "t23_20261122_06.mp4",
+   "topic": "t23",
+   "uses": 0,
+   "created": "2026-11-22T18:13:41.217753+11:00"
+  },
+  "1zP51yY8ot_NR3OyIB6AqeaNTuDxILcZ6": {
+   "name": "t22_20261122_07.mp4",
+   "topic": "t22",
+   "uses": 0,
+   "created": "2026-11-22T18:15:24.966116+11:00"
+  },
+  "18r0PTErnWnaplo-PV-wchUteOjYgrbEI": {
+   "name": "t30_20261122_08.mp4",
+   "topic": "t30",
+   "uses": 0,
+   "created": "2026-11-22T18:17:24.191559+11:00"
+  },
+  "15slKjvIhQQipNhyV0jHwVKq05tzemIkM": {
+   "name": "t03_20261122_09.mp4",
+   "topic": "t03",
+   "uses": 0,
+   "created": "2026-11-22T18:19:29.653016+11:00"
+  },
+  "1MOKWz0m3YYQwISnuZTvCvbYXw0biMB0R": {
+   "name": "t31_20261122_10.mp4",
+   "topic": "t31",
+   "uses": 0,
+   "created": "2026-11-22T18:20:58.196257+11:00"
+  },
+  "1M2H5h6C2__eNSQlDAGeV-MBg-ud0jtwN": {
+   "name": "t18_20261122_11.mp4",
+   "topic": "t18",
+   "uses": 0,
+   "created": "2026-11-22T18:22:37.245372+11:00"
+  }
+ },
  "queue": {
   "2026-11-23": []
  },
  "posts": {},
  "followers": {},
  "log": [
-  "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []"
+  "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []",
+  "2026-11-22 18:22 Generated 12 AI clips"
  ],
  "fal_spend": {
-  "2026-11": 0.48
+  "2026-11": 5.76
  }
 }
