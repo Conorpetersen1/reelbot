@@ -10,8 +10,9 @@ Only state technique that matches these points (paraphrased from the manual):
 - Hands: relaxed around core height; front hand over the heel edge at the nose, back hand over the toe edge at the tail.
 - Looking down disrupts balance. The fix is focus points ahead.
 - Toe side: weight on the balls of the feet, with ankles, knees and hips flexed. Do not break at the waist.
-  "Tippy toes" means pressure through the balls of the feet. NEVER tell people to straighten their legs
-  or to lift their heels inside their boots.
+  Say "pressure through the balls of your feet". NEVER say "tippy toes", "go up on your toes" or similar
+  (Conor's call: it's the wrong cue). NEVER tell people to straighten their legs or to lift their heels
+  inside their boots.
 - Heel side: needs MORE flexion than toe side (the hips flex more, the rider sinks more), with core/glutes engaged
   so the rider doesn't fold at the waist. NEVER say "stand tall on heelside".
 - Rotation: full-body rotation is the preferred way to turn. Upper-body-only rotation responds more slowly.

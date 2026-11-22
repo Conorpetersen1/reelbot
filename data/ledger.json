@@ -2504,7 +2504,7 @@
     "fit": 5,
     "hook": "Why does my toeside keep washing out?",
     "description": [
-     "Think tippy toes: press through the balls of your feet",
+     "Pressure through the balls of your feet",
      "Keep ankles and knees bent, don't stand up straight",
      "Hips over the board, no folding at the waist"
     ],
@@ -2518,7 +2518,8 @@
     "category": "tip",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank"
+    "source": "bank",
+    "rerender": true
    },
    {
     "date": "2026-11-23",

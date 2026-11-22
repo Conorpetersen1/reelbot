@@ -4,7 +4,7 @@ F = ["id","category","level","hook","description","manual_ref","cta_keyword","cl
 T = [
 # --- Conor's four "friends teaching friends" mistakes ---
 ("t01","tip","beginner","Why does my toeside keep washing out?",
- "Think tippy toes: press through the balls of your feet|Keep ankles and knees bent, don't stand up straight|Hips over the board, no folding at the waist",
+ "Pressure through the balls of your feet|Keep ankles and knees bent, don't stand up straight|Hips over the board, no folding at the waist",
  "5.4 Long Turns / Basic Short Turns: balanced on the balls of the feet; don't break at the waist","TOESIDE","toeside,turns",
  "mascot making a toeside turn on a groomed run, leaning slightly forward, snow spray"),
 ("t02","tip","beginner","How I fixed my heelside",
