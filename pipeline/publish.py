@@ -5,17 +5,19 @@ from .common import WORK, load_ledger, log, now, save_ledger, paused, notify_onc
 
 
 def main():
-    if paused():
+    import os
+    only = os.environ.get("PUBLISH_ONLY", "").strip()  # e.g. "2026-11-23#1": post just this reel, even when paused
+    if paused() and not only:
         print("reelbot is paused (paused: true in config.yaml)"); return
     led = load_ledger()
     t = now()
     led["publish_heartbeat"] = t.isoformat()  # the daily check warns if hourly posting stops running
     save_ledger(led)
-    if led.get("auto_paused"):
+    if led.get("auto_paused") and not only:
         print("Posting auto-paused:", led["auto_paused"]); return
     today = led["queue"].get(t.date().isoformat(), [])
     for e in sorted(today, key=lambda e: e["slot"]):
-        if e["status"] not in ("queued", "retry"):
+        if e["status"] not in ("queued", "retry") or (only and f"{e['date']}#{e['slot']}" != only):
             continue
         hh, mm = map(int, e["time"].split(":"))
         if t < t.replace(hour=hh, minute=mm, second=0, microsecond=0):
