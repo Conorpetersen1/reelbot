@@ -20,8 +20,19 @@ def _models():
 
 
 def _json(text):
-    m = re.search(r"\{.*\}", text, re.S)
-    return json.loads(m.group(0))
+    """Parse the first JSON object in a model reply (tolerates code fences and text before/after it)."""
+    t = (text or "").strip()
+    if t.startswith("```"):
+        t = re.sub(r"^```[a-zA-Z]*\s*|\s*```$", "", t)
+    try:
+        return json.loads(t)
+    except Exception:
+        pass
+    i = t.find("{")
+    if i < 0:
+        raise ValueError("no JSON in reply: " + t[:200])
+    obj, _ = json.JSONDecoder().raw_decode(t[i:])
+    return obj
 
 
 def small_video(path, max_seconds=90, fps=15):

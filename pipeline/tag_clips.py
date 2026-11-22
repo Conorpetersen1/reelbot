@@ -56,17 +56,28 @@ def main():
                         res = gemini.ask(llm.segment_prompt(dur, "This is"), video=gemini.analysis_video(p))
                         who = "gemini"; break
                     except Exception as e:
-                        busy = any(c in str(e) for c in ("429", "500", "502", "503", "504", "RESOURCE_EXHAUSTED",
-                                                         "No Gemini model available"))
-                        if busy and attempt < 2:
-                            time.sleep(90); continue  # every model busy or rate-limited: wait, then retry
-                        gemini_down = True
-                        log(led, f"Gemini unavailable ({str(e)[:120]}); leaving remaining clips for the next run")
+                        err = str(e)
+                        if any(c in err for c in ("401", "403", "API key", "PERMISSION_DENIED")):
+                            gemini_down = True  # key problem: stop and keep the rest for the next run
+                            log(led, f"Gemini key problem ({err[:120]}); leaving remaining clips for the next run")
+                            break
+                        busy = any(c in err for c in ("429", "500", "502", "503", "504", "RESOURCE_EXHAUSTED",
+                                                      "No Gemini model available"))
+                        if attempt < 2:
+                            time.sleep(90 if busy else 5); continue  # busy: wait; odd reply: just ask again
+                        if busy:
+                            gemini_down = True
+                            log(led, f"Gemini busy for too long ({err[:120]}); leaving remaining clips for the next run")
+                        else:
+                            log(led, f"Skipped {f['name']} this run (Gemini reply unreadable: {err[:80]})")
                         break
                 time.sleep(4)  # stay under the free tier's per-minute limit
             if res is None:
                 if gemini.available():
-                    p.unlink(missing_ok=True); break  # don't fall back to paid Claude for a whole backlog
+                    p.unlink(missing_ok=True)
+                    if gemini_down:
+                        break  # don't fall back to paid Claude for a whole backlog
+                    continue  # just this clip failed: it'll be retried next run
                 res = llm.segment_clip_frames(frames(p, dur, n=8), dur)
             segs = clean(res.get("segments"), dur)
             if not segs:  # nothing picked: fall back to the whole clip (or its first 12s)
