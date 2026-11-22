@@ -36,6 +36,9 @@ def weighted_pick(cands, draw, kind, uses_of):
     return max(cands, key=val)
 
 
+# Categories where the footage must show the reel's subject and its technique angle must match
+TECHNIQUE = {"tip", "freestyle", "first_timer"}
+
 CTAS = ['Follow for more snowboard tips', 'Save this for your next day on snow', 'Send this to a mate who needs it', 'Follow for a tip every day', 'Save this and try it next run', 'Tag the mate you ride with']
 
 MISTAKE = re.compile(r"^(why|stop|\d+ mistakes)|mistake|catch|fall|wash|skid|stuck|lock|chatter|crash|"
@@ -49,12 +52,12 @@ def wants_mistake(topic):
         return True
     if re.match(r"(how|the (one|drill|trick)|where|check)\b", hook, re.I):  # fixes and how-tos want good riding
         return False
-    return bool(MISTAKE.search(hook)) and topic.get("category") == "tip"
+    return bool(MISTAKE.search(hook)) and topic.get("category") in TECHNIQUE
 
 
 def technique_ok(topic, seg):
     tech = seg.get("technique", "n/a")
-    if tech == "n/a" or topic.get("category") != "tip":
+    if tech == "n/a" or topic.get("category") not in TECHNIQUE:
         return True
     return (tech == "mistake") == wants_mistake(topic)
 
@@ -95,7 +98,7 @@ def choose(led, topics, n_ai, n_real, draw):
         # Tips need the clip to show their main subject (first tag); snow-life topics just need some overlap.
         cands = [(t, (cid, i)) for t in topics if t["id"] not in today
                  and t["id"] not in c.get("misfit", []) and (
-                 t["clip_tags"].split(",")[0] in ctags if t["category"] == "tip"
+                 t["clip_tags"].split(",")[0] in ctags if t["category"] in TECHNIQUE
                  else set(t["clip_tags"].split(",")) & ctags)]
         # Prefer topics whose angle matches the riding: mistakes -> "why do I...", good riding -> "how I fixed..."
         cands = [x for x in cands if technique_ok(x[0], c)] or cands

@@ -122,7 +122,9 @@ def main():
         for t in reversed(led.get("trends", [])[-8:])) or "<li class='muted'>Save trending reels to Drive › reelbot › trends.</li>"
     # ---- what the follower learner has found
     m = led.get("model") or {}
-    names = {"category": {"tip": "Technique tips", "snow_life": "Snow-life reels", "niseko": "Niseko reels"},
+    names = {"category": {"tip": "Technique tips", "snow_life": "Snow-life reels", "niseko": "Niseko reels",
+                          "gear": "Gear & setup reels", "freestyle": "Freestyle reels",
+                          "first_timer": "First-timer reels", "instructor": "Instructor-life reels"},
              "kind": {"ai": "Mascot reels", "real": "Your own footage"},
              "style": {"question": "Question-box style", "list": "Numbered-list style", "pov": "POV caption style"},
              "hook": {"how_i": '"How I…" hooks', "why": '"Why…" hooks', "question": "Question hooks",
