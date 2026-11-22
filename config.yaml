@@ -34,12 +34,12 @@ mascot_outfit: >-
 image_model: fal-ai/flux/dev                              # mascot designs
 scene_model: fal-ai/flux-pro/kontext                      # puts the chosen mascot into each scene
 video_model: fal-ai/kling-video/v2.5-turbo/pro/image-to-video
-video_seconds: 5
+video_seconds: 10
 
 # Hard spending cap for fal.ai. The bot estimates its spend and stops generating for the rest of the month
 # once it reaches this. Existing clips keep being reused, so posting carries on.
-fal_monthly_budget_usd: 40
-fal_cost_estimate_usd: {image: 0.04, video_clip: 0.40}
+fal_monthly_budget_usd: 60
+fal_cost_estimate_usd: {image: 0.04, video_clip: 0.75}
 
 # Claude (writing + clip tagging)
 claude_model: claude-sonnet-5-5
