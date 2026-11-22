@@ -1,13 +1,36 @@
-"""Instagram API (Instagram Login): publish trial reels, read insights. Secret: IG_ACCESS_TOKEN."""
-import json, time, requests
+"""Instagram API: publish trial reels, read insights.
+
+Works with either token type:
+- Unified login / Facebook Login for Business (token starts "EAA", never expires): graph.facebook.com,
+  needs IG_USER_ID (your Instagram account's ID, shown next to the account when you generate the token).
+- Instagram login (token starts "IG", lasts 60 days, refreshed weekly): graph.instagram.com.
+"""
+import json, os, time, requests
 from .common import CFG, env
 
 VER = CFG["ig_api_version"]
-GRAPH = f"https://graph.instagram.com/{VER}"
 
 
 def _tok():
-    return env("IG_ACCESS_TOKEN")
+    return env("IG_ACCESS_TOKEN").strip()
+
+
+def facebook_token():
+    return _tok().startswith("EAA")
+
+
+def graph():
+    host = "graph.facebook.com" if facebook_token() else "graph.instagram.com"
+    return f"https://{host}/{VER}"
+
+
+def user_id():
+    if os.environ.get("IG_USER_ID"):
+        return os.environ["IG_USER_ID"].strip()
+    if facebook_token():
+        raise SystemExit("Missing IG_USER_ID. Add your Instagram account ID as a GitHub Actions secret.")
+    r = requests.get(f"{graph()}/me", params={"fields": "user_id", "access_token": _tok()}, timeout=60)
+    return _check(r)["user_id"]
 
 
 def _check(r):
@@ -16,12 +39,14 @@ def _check(r):
     return r.json()
 
 
-def me(fields="user_id,username,followers_count"):
-    return _check(requests.get(f"{GRAPH}/me", params={"fields": fields, "access_token": _tok()}, timeout=60))
+def me(fields="username,followers_count"):
+    return _check(requests.get(f"{graph()}/{user_id()}", params={"fields": fields, "access_token": _tok()},
+                               timeout=60))
 
 
 def publish_trial_reel(path, caption):
-    uid = me("user_id")["user_id"]
+    uid = user_id()
+    GRAPH = graph()
     # 1) container, resumable upload, trial reel with MANUAL graduation (you decide what reaches followers)
     c = _check(requests.post(f"{GRAPH}/{uid}/media", data={
         "media_type": "REELS", "upload_type": "resumable", "caption": caption,
@@ -54,6 +79,7 @@ METRICS = ["views", "reach", "likes", "comments", "shares", "saved", "total_inte
 
 
 def insights(media_id):
+    GRAPH = graph()
     out = {}
     r = requests.get(f"{GRAPH}/{media_id}/insights",
                      params={"metric": ",".join(METRICS), "access_token": _tok()}, timeout=60)
@@ -72,11 +98,13 @@ def insights(media_id):
 
 
 def permalink(media_id):
-    r = requests.get(f"{GRAPH}/{media_id}", params={"fields": "permalink", "access_token": _tok()}, timeout=60)
+    r = requests.get(f"{graph()}/{media_id}", params={"fields": "permalink", "access_token": _tok()}, timeout=60)
     return r.json().get("permalink") if r.ok else None
 
 
 def refresh_token():
+    if facebook_token():
+        return None  # system-user tokens never expire
     r = requests.get("https://graph.instagram.com/refresh_access_token",
                      params={"grant_type": "ig_refresh_token", "access_token": _tok()}, timeout=60)
     return _check(r)["access_token"]
