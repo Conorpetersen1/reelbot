@@ -258,59 +258,161 @@ def main():
         f"<li><b>{link(p)}</b> <span class='muted'>({E(p['date'])}, {p['insights'].get('views',0):,} views, "
         f"{p['insights'].get('shares',0)} shares)</span></li>" for _, p in grad) or "<li class='muted'>No candidates yet.</li>"
 
+    # ---- Home tab pieces
+    paused_now = bool(CFG.get("paused"))
+    upcoming = [(d, e) for d in (today.isoformat(), tomorrow) for e in led["queue"].get(d, [])]
+    nxt = next(((d, e) for d, e in upcoming if e["status"] in ("queued", "retry")), None)
+    nxt_txt = (f"{'Today' if nxt[0] == today.isoformat() else 'Tomorrow'} {E(nxt[1]['time'])} · {E(nxt[1]['hook'])}"
+               if nxt else "nothing queued")
+    sched_rows = "".join(
+        f"<tr><td>{'Today' if d == today.isoformat() else 'Tomorrow'}</td><td>{E(e['time'])}</td>"
+        f"<td>{'Mascot' if e['kind'] == 'ai' else 'Real'}</td><td>{E(e['hook'])}</td>"
+        f"<td><span class='st st-{E(e['status'])}'>{E(e['status'])}</span></td></tr>" for d, e in upcoming) \
+        or "<tr><td colspan=5 class='muted'>Nothing queued. Tomorrow's reels are built at 4pm.</td></tr>"
+    todo_items = [f"⚠️ {E(w)}" for w in warn] + [E(r["text"]) for r in rem]
+    todo_html = ("<div class='card rem'><h2>To do</h2><ul class='todo'>" + "".join(f"<li>{t}</li>" for t in todo_items)
+                 + "</ul></div>") if todo_items else \
+        "<div class='card ok'><h2>To do</h2><p class='muted' style='margin:0'>Nothing. The bot's running by itself.</p></div>"
+    posted7 = len(recent)
+    n_review = len([1 for d in (tomorrow, today.isoformat(), yday) for _ in led["queue"].get(d, [])])
+    # Sounds on real reels (queued or posted), most used first, with when each was last used
+    su = {}
+    for d, items in led["queue"].items():
+        for e in items:
+            if e.get("sound") and e.get("status") != "vetoed":
+                n, last = su.get(e["sound"], (0, ""))
+                su[e["sound"]] = (n + 1, max(last, d))
+    sounds_used = sorted(((n, c) for n, (c, _) in su.items()), key=lambda kv: -kv[1])
+    sound_rows = "".join(f"<tr><td>{E(sound_name(n))}</td><td class='n'>{c}</td></tr>" for n, c in sounds_used[:25]) \
+        or "<tr><td colspan=2 class='muted'>No sounds used yet.</td></tr>"
+    newest_sound = (led.get("sound_newest") or "")[:10]
+    log_all = "".join(f"<li>{E(l)}</li>" for l in reversed(led.get("log", [])[-60:])) or "<li>Nothing yet.</li>"
+
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>@conor_sends reel dashboard</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>@conor_sends · reelbot</title>
 <style>
-:root{{--bg:#fcfcfb;--card:#ffffff;--ink:#0b0b0b;--ink2:#52514e;--grid:#e1e0d9;--s1:#2a78d6;--good:#006300;--bad:#b42318}}
-@media (prefers-color-scheme:dark){{:root{{--bg:#1a1a19;--card:#232322;--ink:#f0efec;--ink2:#c3c2b7;--grid:#2c2c2a;--s1:#3987e5;--good:#0ca30c;--bad:#ff6b5e}}}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}}
-main{{max-width:1000px;margin:0 auto;padding:20px 16px 60px}}h1{{font-size:22px;margin:0 0 4px}}h2{{font-size:16px;margin:0 0 10px}}
-.muted{{color:var(--ink2)}}a{{color:inherit;text-decoration-color:var(--s1);text-underline-offset:3px}}.tiles{{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}}
-.card{{background:var(--card);border:1px solid var(--grid);border-radius:12px;padding:14px 16px;margin-bottom:14px}}
-.k{{font-size:13px;color:var(--ink2)}}.v{{font-size:28px;font-weight:650;margin-top:2px}}.d{{font-size:13px}}.up{{color:var(--good)}}.down{{color:var(--bad)}}
+:root{{--bg:#f6f6f4;--card:#ffffff;--ink:#0b0b0b;--ink2:#5c5b57;--grid:#e3e2dc;--s1:#2a78d6;--s1soft:#e8f1fc;--good:#006300;--bad:#b42318;--warnbg:#fff4f2}}
+@media (prefers-color-scheme:dark){{:root{{--bg:#161615;--card:#212120;--ink:#f0efec;--ink2:#b9b8ae;--grid:#2f2f2d;--s1:#3987e5;--s1soft:#1d2a3a;--good:#0ca30c;--bad:#ff6b5e;--warnbg:#3a1f1c}}}}
+*{{box-sizing:border-box}}html{{scroll-padding-top:70px}}
+body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}}
+header{{background:var(--card);border-bottom:1px solid var(--grid)}}
+.hin{{max-width:1040px;margin:0 auto;padding:16px 16px 0}}h1{{font-size:21px;margin:0}}
+.sub{{color:var(--ink2);font-size:14px;margin:2px 0 10px}}.pill{{display:inline-block;font-size:13px;padding:2px 9px;border-radius:999px;border:1px solid var(--grid);margin-right:6px}}
+.pill.on{{color:var(--good)}}.pill.off{{color:var(--bad);border-color:var(--bad)}}
+nav{{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--grid)}}
+.tabs{{max-width:1040px;margin:0 auto;padding:0 8px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}}
+.tabs button{{all:unset;cursor:pointer;padding:12px 12px 10px;font-size:15px;color:var(--ink2);border-bottom:3px solid transparent;white-space:nowrap}}
+.tabs button[aria-selected=true]{{color:var(--ink);border-bottom-color:var(--s1);font-weight:600}}
+.tabs button:focus-visible{{outline:2px solid var(--s1);outline-offset:-2px}}
+.badge{{display:inline-block;min-width:20px;padding:0 6px;margin-left:5px;border-radius:999px;background:var(--s1soft);color:var(--s1);font-size:12px;text-align:center}}
+main{{max-width:1040px;margin:0 auto;padding:18px 16px 60px}}section[hidden]{{display:none}}
+h2{{font-size:17px;margin:0 0 10px}}.muted{{color:var(--ink2)}}.small{{font-size:13px}}
+a{{color:inherit;text-decoration-color:var(--s1);text-underline-offset:3px}}
+.card{{background:var(--card);border:1px solid var(--grid);border-radius:14px;padding:16px 18px;margin-bottom:16px}}
+.rem{{border-color:var(--bad);background:var(--warnbg)}}.todo li{{margin:6px 0}}
+.tiles{{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:16px}}
+.tiles .card{{margin:0}}.k{{font-size:13px;color:var(--ink2)}}.v{{font-size:30px;font-weight:650;margin-top:2px;font-variant-numeric:tabular-nums}}
+.d{{font-size:13px}}.up{{color:var(--good)}}.down{{color:var(--bad)}}
+.two{{display:grid;grid-template-columns:1fr 1fr;gap:16px}}@media(max-width:760px){{.two{{grid-template-columns:1fr}}}}
+.two .card{{margin-bottom:0}}.stack>.card:last-child{{margin-bottom:0}}.gap{{height:16px}}
 svg{{width:100%;height:auto;display:block}}.ln{{fill:none;stroke:var(--s1);stroke-width:2}}.pt{{fill:var(--s1);stroke:var(--card);stroke-width:2}}
-.hit{{fill:transparent;cursor:default}}.grid{{stroke:var(--grid);stroke-width:1}}.ax{{fill:var(--ink2);font-size:11px}}
-.bar-row{{display:grid;grid-template-columns:minmax(120px,38%) 1fr 70px;gap:10px;align-items:center;margin:6px 0;font-size:13px}}
+.hit{{fill:transparent}}.grid{{stroke:var(--grid);stroke-width:1}}.ax{{fill:var(--ink2);font-size:11px}}
+.bar-row{{display:grid;grid-template-columns:minmax(120px,40%) 1fr 70px;gap:10px;align-items:center;margin:7px 0;font-size:14px}}
 .bar-label{{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.bar-track{{height:12px}}.bar{{display:block;height:12px;background:var(--s1);border-radius:0 4px 4px 0}}
 .bar-val{{text-align:right;color:var(--ink2);font-variant-numeric:tabular-nums}}
-table{{width:100%;border-collapse:collapse;font-size:13px}}th,td{{text-align:left;padding:7px 6px;border-bottom:1px solid var(--grid);vertical-align:top}}
-th{{color:var(--ink2);font-weight:600}}td.n{{text-align:right;font-variant-numeric:tabular-nums}}.wrap{{overflow-x:auto}}
-.st{{font-size:12px;padding:1px 7px;border-radius:9px;border:1px solid var(--grid)}}.st-posted{{color:var(--good)}}.st-failed,.st-vetoed{{color:var(--bad)}}
-ul{{margin:0;padding-left:18px}}summary{{cursor:pointer}}li{{margin:3px 0}}#tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
-.warn{{border-color:var(--bad);color:var(--bad);font-weight:600}}.rem{{border-color:var(--s1)}}
-details.rv{{border-top:1px solid var(--grid);padding:8px 0}}details.rv summary{{font-size:14px}}
-.rvb{{display:grid;grid-template-columns:270px 1fr;gap:16px;margin-top:10px}}
-.vbox{{width:270px;height:480px;overflow:hidden;border-radius:10px;background:#000}}
+table{{width:100%;border-collapse:collapse;font-size:14px}}th,td{{text-align:left;padding:8px 6px;border-bottom:1px solid var(--grid);vertical-align:top}}
+th{{color:var(--ink2);font-weight:600;font-size:13px}}td.n,th.n{{text-align:right;font-variant-numeric:tabular-nums}}.wrap{{overflow-x:auto}}
+.st{{font-size:12px;padding:1px 8px;border-radius:9px;border:1px solid var(--grid);white-space:nowrap}}.st-posted{{color:var(--good)}}.st-failed,.st-vetoed{{color:var(--bad)}}
+ul{{margin:0;padding-left:20px}}li{{margin:4px 0}}summary{{cursor:pointer}}
+details.rv{{border-top:1px solid var(--grid);padding:12px 0}}details.rv:first-of-type{{border-top:0}}details.rv summary{{font-size:15px;line-height:1.6}}
+.rvb{{display:grid;grid-template-columns:270px 1fr;gap:20px;margin-top:12px}}
+.vbox{{width:270px;height:480px;overflow:hidden;border-radius:12px;background:#000}}
 .vbox iframe{{width:360px;height:640px;border:0;transform:scale(.75);transform-origin:0 0}}
-.rvb .k{{margin-top:8px;font-weight:600}}.rvb ul{{margin:2px 0}}.cap{{white-space:pre-wrap}}
-@media(max-width:600px){{.rvb{{grid-template-columns:1fr}}.vbox{{margin:0 auto}}}}.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
-</style></head><body><main>
-<h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting. · AI video spend this month: about US${fal_spent:.2f} of US${fal_cap} cap (≈A${fal_spent * float(CFG.get('usd_to_aud', 1.54)):.0f} of A${fal_cap * float(CFG.get('usd_to_aud', 1.54)):.0f})</div>
-{warn_html}{rem_html}<div class="tiles">
+.rvb .k{{margin-top:12px;font-weight:600;font-size:13px;text-transform:none}}.rvb .k:first-child{{margin-top:0}}.rvb ul{{margin:2px 0}}.cap{{white-space:pre-wrap}}
+@media(max-width:640px){{.rvb{{grid-template-columns:1fr}}.vbox{{margin:0 auto}}}}
+#tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
+code{{font-size:13px}}
+@media(max-width:480px){{.tabs{{gap:0;padding:0 4px}}.tabs button{{padding:11px 7px 9px;font-size:13.5px}}.badge{{margin-left:3px;padding:0 5px}}h1{{font-size:19px}}.card{{padding:14px}}}}
+</style></head><body>
+<header><div class="hin"><h1>@conor_sends · trial reels</h1>
+<div class="sub"><span class="pill {'off' if paused_now else 'on'}">{'Paused' if paused_now else 'Posting'}</span>
+Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</span></div></div></header>
+<nav><div class="tabs" role="tablist">
+<button role="tab" data-tab="home" aria-selected="true">Home{f'<span class="badge">{len(todo_items)}</span>' if todo_items else ''}</button>
+<button role="tab" data-tab="review">Review<span class="badge">{n_review}</span></button>
+<button role="tab" data-tab="results">Results</button>
+<button role="tab" data-tab="library">Library</button>
+<button role="tab" data-tab="costs">Costs</button>
+<button role="tab" data-tab="log">Log</button>
+</div></nav>
+<main>
+
+<section id="tab-home" role="tabpanel">
+{todo_html}
+<div class="tiles">
 <div class="card"><div class="k">Followers</div><div class="v">{fol_now:,}</div><div class="d {'up' if delta>=0 else 'down'}">{'+' if delta>=0 else ''}{delta:,} in 7 days</div></div>
-<div class="card"><div class="k">Views, last 7 days</div><div class="v">{views7:,}</div><div class="d muted">{len(recent)} reels posted</div></div>
-<div class="card"><div class="k">Avg views per AI reel</div><div class="v">{avg['ai']:,.0f}</div><div class="d muted">{len(by_kind['ai'])} reels with stats</div></div>
+<div class="card"><div class="k">Views, last 7 days</div><div class="v">{views7:,}</div><div class="d muted">{posted7} reels posted</div></div>
+<div class="card"><div class="k">Spent this month</div><div class="v">A${us['aud_total']['month']:,.2f}</div><div class="d muted">A${us['aud_total']['total']:,.2f} on the project so far</div></div>
+</div>
+<div class="card"><h2>Posting schedule</h2><div class="wrap"><table><tr><th>Day</th><th>Time</th><th>Type</th><th>Hook</th><th>Status</th></tr>{sched_rows}</table></div>
+<p class="muted small" style="margin:8px 0 0">Reels go out at about 5 past the hour. Check them in the <a href="#review" data-go="review">Review</a> tab.</p></div>
+<div class="card"><h2>Graduate these in the Instagram app</h2><ul>{grad_html}</ul>
+<p class="muted small" style="margin:8px 0 0">Best 5 of the last 10 days by views, shares and saves. Open the reel in the app, then share it to your profile.</p></div>
+<div class="card muted small">Every Monday: check Instagram › Settings › <b>Account Status</b> for recommendation or originality warnings.</div>
+</section>
+
+<section id="tab-review" role="tabpanel" hidden>
+<div class="card"><h2>Review reels</h2><p class="muted small" style="margin:0 0 6px">Tap a reel to watch it and check (a) the video, (b) the words on screen, (c) the sound and (d) the caption. The video plays when you're signed in to the Google account that owns the Drive folder. To stop a reel, delete it from Drive › queue; mascot clips you bin teach the clip maker.</p>{review_html}</div>
+</section>
+
+<section id="tab-results" role="tabpanel" hidden>
+<div class="tiles">
+<div class="card"><div class="k">Avg views per mascot reel</div><div class="v">{avg['ai']:,.0f}</div><div class="d muted">{len(by_kind['ai'])} reels with stats</div></div>
 <div class="card"><div class="k">Avg views per real-clip reel</div><div class="v">{avg['real']:,.0f}</div><div class="d muted">{len(by_kind['real'])} reels with stats</div></div>
 </div>
-<div class="card muted">Weekly: check Instagram › Settings › <b>Account Status</b> for any recommendation or originality warnings.</div>
-<div class="card"><h2>Graduate these in the Instagram app</h2><ul>{grad_html}</ul>
-<p class="muted" style="margin:8px 0 0">Best 5 of the last 10 days by views, shares and saves. Open the reel in the app, then share it to your profile.</p></div>
-{learn_html}
 <div class="two">
 <div class="card"><h2>Followers</h2>{line_chart(fol[-60:], "Followers")}</div>
 <div class="card"><h2>Views by posting day</h2>{line_chart(daily_pts, "Views by posting day")}</div>
-</div>
+</div><div class="gap"></div>
+{learn_html}
 <div class="card"><h2>Best topics (avg score)</h2>{bar_chart(board, "Best topics")}
-<p class="muted" style="margin:8px 0 0">Score = views + 20×shares + 10×saves. The planner picks high scorers more often.</p></div>
-<div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
-<div class="card"><h2>Review reels</h2><p class="muted" style="margin:0 0 8px">Tap a reel to watch it and check the words, sound and caption. The video plays if you're signed in to the Google account that owns the Drive folder.</p>{review_html}</div>
+<p class="muted small" style="margin:8px 0 0">Score = views + 20×shares + 10×saves. The planner picks high scorers more often.</p></div>
 <div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
+</section>
+
+<section id="tab-library" role="tabpanel" hidden>
 {taste_html}
+<div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
+<div class="card"><h2>Sounds</h2><p class="muted small" style="margin:0 0 6px">Newest sound added {E(newest_sound) or 'never'}. Drop a new sweep in Drive › sound_sweeps every week or two.</p>
+<div class="wrap"><table><tr><th>Sound</th><th class='n'>Reels</th></tr>{sound_rows}</table></div></div>
 {clips_html}
+</section>
+
+<section id="tab-costs" role="tabpanel" hidden>
 {cost_html}
-<div class="card"><h2>Bot log</h2><ul class="muted">{log_rows or '<li>Nothing yet.</li>'}</ul></div>
+<div class="card muted small">Mascot clip budget: about US${fal_spent:.2f} of the US${fal_cap} monthly cap used (≈A${fal_spent * float(CFG.get('usd_to_aud', 1.54)):.0f} of A${fal_cap * float(CFG.get('usd_to_aud', 1.54)):.0f}). The bot stops making new clips at the cap and reuses existing ones.</div>
+</section>
+
+<section id="tab-log" role="tabpanel" hidden>
+<div class="card"><h2>Bot log</h2><ul class="muted small">{log_all}</ul></div>
+</section>
+
 </main><div id="tip"></div>
 <script>
+const tabs=[...document.querySelectorAll('[role=tab]')];
+function show(name){{
+  if(!document.getElementById('tab-'+name)) name='home';
+  tabs.forEach(b=>b.setAttribute('aria-selected', b.dataset.tab===name));
+  document.querySelectorAll('[role=tabpanel]').forEach(s=>s.hidden = s.id!=='tab-'+name);
+  try{{localStorage.setItem('tab', name)}}catch(e){{}}
+  if(location.hash!=='#'+name) history.replaceState(null,'','#'+name);
+}}
+tabs.forEach(b=>b.addEventListener('click',()=>{{show(b.dataset.tab);window.scrollTo(0,0)}}));
+document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{{e.preventDefault();show(a.dataset.go);window.scrollTo(0,0)}}));
+let start=location.hash.slice(1);
+if(!start){{try{{start=localStorage.getItem('tab')||'home'}}catch(e){{start='home'}}}}
+show(start);window.scrollTo(0,0);
+const first=document.querySelector('details.rv'); if(first) first.open=true;
 const tip=document.getElementById('tip');
 document.addEventListener('mousemove',e=>{{const t=e.target.closest('[data-tip]');
  if(!t){{tip.style.display='none';return}}tip.textContent=t.dataset.tip;tip.style.display='block';
