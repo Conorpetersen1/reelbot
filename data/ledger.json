@@ -2510,7 +2510,7 @@
     ],
     "caption": "Why does my toeside keep washing out? Save this and try it next run. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
-    "status": "queued",
+    "status": "posted",
     "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
     "style": "list",
     "variation": {},
@@ -2518,7 +2518,9 @@
     "category": "tip",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank"
+    "source": "bank",
+    "media_id": "18155447869514779",
+    "posted_at": "2026-11-23T09:37:38.733124+11:00"
    },
    {
     "date": "2026-11-23",
@@ -2634,7 +2636,46 @@
    }
   ]
  },
- "posts": {},
+ "posts": {
+  "18155447869514779": {
+   "topic": "t01",
+   "kind": "ai",
+   "hook": "Why does my toeside keep washing out?",
+   "date": "2026-11-23",
+   "posted_at": "2026-11-23T09:37:38.733124+11:00",
+   "file": "2026-11-23_1_t01.mp4",
+   "insights": {
+    "views": 0,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0
+   },
+   "category": "tip",
+   "style": "list",
+   "hook_type": "why",
+   "sound_kind": "sound",
+   "time": "09:00",
+   "variation": {},
+   "source": "bank",
+   "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
+   "fit": 5,
+   "insights_at": "2026-11-23T09:38:22.684139+11:00",
+   "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
+   "series": [
+    [
+     0.01,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  }
+ },
  "followers": {
   "2026-11-22": 944
  },
@@ -2756,7 +2797,8 @@
   "2026-11-22 22:52 Sound sweep ScreenRecording_11-22-2026 19-37-39_1.MP4 (gemini): 20 new sounds added to audio, 4 skipped (unsure or too short)",
   "2026-11-23 07:38 Skipped weekly AI clips: a batch was made in the last 5 days",
   "2026-11-23 09:27 Posted trial reel 2026-11-23_1_t01.mp4 -> 17955926130342614",
-  "2026-11-23 09:38 Re-queued the 9am reel: Instagram posted it as a normal reel, Conor deleted it"
+  "2026-11-23 09:38 Re-queued the 9am reel: Instagram posted it as a normal reel, Conor deleted it",
+  "2026-11-23 09:38 Posted trial reel 2026-11-23_1_t01.mp4 -> 18155447869514779"
  ],
  "fal_spend": {
   "2026-11": 5.76
@@ -2783,7 +2825,11 @@
   [
    "2026-11-23T09:27+11:00",
    944
+  ],
+  [
+   "2026-11-23T09:38+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-23T09:26:52.287458+11:00"
+ "publish_heartbeat": "2026-11-23T09:37:38.733124+11:00"
 }
