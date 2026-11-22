@@ -1,7 +1,7 @@
 """Evening job: build tomorrow's reels and put them in Drive/queue. Delete any you don't want before they post."""
 import datetime as dt, random, re, subprocess
 from . import drive, gemini, llm
-from .common import CFG, WORK, days_since, load_ledger, load_topics, log, now, save_ledger
+from .common import CFG, WORK, days_since, load_ledger, load_topics, log, now, save_ledger, paused, notify_once
 from .render import render
 
 
@@ -202,6 +202,8 @@ def text_for(topic, led, clip_note):
 
 
 def main():
+    if paused():
+        print("reelbot is paused (paused: true in config.yaml)"); return
     led = load_ledger()
     day = (now() + dt.timedelta(days=1)).date().isoformat()
     if led["queue"].get(day):
@@ -279,6 +281,11 @@ def main():
             log(led, f"Couldn't build a reel for {topic['id']}: {e}")
     led["queue"][day] = entries
     log(led, f"Queued {len(entries)} reels for {day}: {[e['topic'] for e in entries]}")
+    if len(entries) < max(1, target // 2):
+        notify_once(led, f"lowqueue-{day}", f"⚠️ Only {len(entries)} reel(s) queued for {day}",
+                    "The bot couldn't build a full day of reels. Usual causes: out of AI clips (budget reached or "
+                    "none left), no usable moments in your clips, or a key problem. Recent bot log:\n\n```\n"
+                    + "\n".join(led.get("log", [])[-12:]) + "\n```")
     save_ledger(led)
 
 

@@ -88,6 +88,15 @@ Instagram doesn't let apps read your Saved folder, so the trend inbox is a Drive
 Screenshots work too. Only the format is copied: their footage, audio, wording and name are never used.
 Analysed reels move to `trends_done`, and the results show in the dashboard's *Trend inbox* section.
 
+## Alerts, pausing and cleanup
+- **Alerts (GitHub app or email):** you get one when a reel passes 2k, 10k or 50k views, when a reel fails to post 3 times,
+  when fewer than half a day's reels could be built, when a run crashes, when a key is 3 days from expiring,
+  when the monthly AI video budget is hit, and when Drive is over 90% full.
+- **Pause:** set `paused: true` in config.yaml (the pencil icon on GitHub works from your phone). Set it back to `false` to restart.
+  Stats and alerts keep running while paused.
+- **Cleanup:** rendered reels in `posted` go to Drive's bin after 14 days, and old trend and sound-sweep recordings after 30 days.
+  Your own clips, mascot clips and sounds are never deleted automatically.
+
 ## Changing things later
 - **Topics:** edit `content/topics.csv`. Each row is a tip or snow-life idea, and the `|` character separates description lines.
 - **Rules the writer must follow** (the APSI manual guardrails): `content/rules.md`.

@@ -1,5 +1,7 @@
 # reelbot settings. Change these and commit, and the next run picks them up.
 
+paused: false                       # true = stop posting and generating (stats and alerts keep running)
+
 timezone: Australia/Sydney          # switch to Asia/Tokyo while you're in Niseko if you want Japan-time posting
 
 # Reels per day. Start low: Instagram's trial reel cap varies by account and isn't published.
@@ -57,6 +59,11 @@ sounds:
   clip_sound_volume: 0.25 # your clip's own sound underneath (0 = off)
   fresh_days: 14          # sounds added in the last 14 days get used about 4x as often
   max_age_days: 45        # sounds older than this are retired from rotation
+
+# Drive cleanup (files go to Drive's bin)
+cleanup:
+  keep_posted_days: 14        # rendered reels in 'posted' (they're already on Instagram)
+  keep_recordings_days: 30    # analysed trend and sound-sweep recordings
 
 # View alerts: you get a GitHub notification (email / GitHub app) when a trial reel passes each of these
 alert_views: [2000, 10000, 50000]

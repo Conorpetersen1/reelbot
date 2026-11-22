@@ -7,7 +7,7 @@ Their footage and audio are never used. Only the format gets copied.
 """
 import re, subprocess
 from . import drive, gemini, llm
-from .common import CFG, WORK, load_ledger, load_topics, log, now, save_ledger
+from .common import CFG, WORK, load_ledger, load_topics, log, now, save_ledger, paused
 from .render import probe_duration
 
 VIDEO = (".mp4", ".mov", ".m4v", ".webm")
@@ -38,6 +38,8 @@ def to_jpg(path):
 
 
 def main():
+    if paused():
+        print("reelbot is paused (paused: true in config.yaml)"); return
     led = load_ledger()
     led.setdefault("trends", []); led.setdefault("trend_topics", {})
     files = [f for f in drive.list_files("trends") if f["name"].lower().endswith(VIDEO + IMAGE)]

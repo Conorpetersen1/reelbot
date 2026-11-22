@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
+      GITHUB_TOKEN: ${{ github.token }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       FAL_KEY: ${{ secrets.FAL_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -28,8 +29,10 @@ jobs:
       - run: python -m pipeline.publish
       - run: python -m pipeline.alerts
         continue-on-error: true
-        env: {GITHUB_TOKEN: "${{ github.token }}"}
       - run: python -m pipeline.dashboard
+      - name: Tell Conor if this run crashed
+        if: failure()
+        run: python -m pipeline.health --crashed "Publish"
       - name: Save the bot's memory and dashboard
         if: always()
         run: |

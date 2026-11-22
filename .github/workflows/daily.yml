@@ -2,13 +2,14 @@ name: Daily plan
 on:
   schedule: [{cron: "0 6 * * *"}]   # 5pm Sydney (summer time)
   workflow_dispatch:
-permissions: {contents: write}
+permissions: {contents: write, issues: write}
 concurrency: {group: ledger, cancel-in-progress: false}
 jobs:
   run:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
+      GITHUB_TOKEN: ${{ github.token }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       FAL_KEY: ${{ secrets.FAL_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -33,7 +34,14 @@ jobs:
       - run: python -m pipeline.insights
         continue-on-error: true
       - run: python -m pipeline.plan_day
+      - run: python -m pipeline.cleanup
+        continue-on-error: true
+      - run: python -m pipeline.health
+        continue-on-error: true
       - run: python -m pipeline.dashboard
+      - name: Tell Conor if this run crashed
+        if: failure()
+        run: python -m pipeline.health --crashed "Daily plan"
       - name: Save the bot's memory and dashboard
         if: always()
         run: |

@@ -7,7 +7,7 @@ Songs you already have (same title, added in the last max_age_days) are skipped.
 """
 import re, subprocess
 from . import drive, gemini
-from .common import CFG, WORK, days_since, load_ledger, log, now, save_ledger
+from .common import CFG, WORK, days_since, load_ledger, log, now, save_ledger, paused
 from .render import probe_duration
 
 VIDEO = (".mp4", ".mov", ".m4v")
@@ -39,6 +39,8 @@ def quiet_gaps(path, dur):
 
 
 def main():
+    if paused():
+        print("reelbot is paused (paused: true in config.yaml)"); return
     led = load_ledger()
     sweeps = [f for f in drive.list_files("sound_sweeps") if f["name"].lower().endswith(VIDEO)]
     if not sweeps:

@@ -86,6 +86,16 @@ def move(file_id, key):
                          removeParents=",".join(f.get("parents", [])), supportsAllDrives=True).execute()
 
 
+def trash(file_id):
+    svc().files().update(fileId=file_id, body={"trashed": True}, supportsAllDrives=True).execute()
+
+
+def quota():
+    """(used_bytes, limit_bytes or None)."""
+    q = svc().about().get(fields="storageQuota").execute()["storageQuota"]
+    return int(q.get("usage", 0)), (int(q["limit"]) if q.get("limit") else None)
+
+
 # ---- Local stand-in for testing without Google (set LOCAL_DRIVE=/some/folder) ----
 import os as _os, shutil as _sh, pathlib as _pl
 if _os.environ.get("LOCAL_DRIVE"):
@@ -95,7 +105,10 @@ if _os.environ.get("LOCAL_DRIVE"):
         p = _LD / CFG["drive"][key]; p.mkdir(parents=True, exist_ok=True); return str(p)
 
     def list_files(key):
-        return [{"id": str(f), "name": f.name, "mimeType": "x"} for f in sorted(_pl.Path(folder(key)).iterdir())]
+        import datetime as _dt
+        return [{"id": str(f), "name": f.name, "mimeType": "x",
+                 "createdTime": _dt.datetime.fromtimestamp(f.stat().st_mtime, _dt.timezone.utc).isoformat()}
+                for f in sorted(_pl.Path(folder(key)).iterdir())]
 
     def exists(file_id):
         return _pl.Path(file_id).exists()
@@ -108,3 +121,9 @@ if _os.environ.get("LOCAL_DRIVE"):
 
     def move(file_id, key):
         _sh.move(file_id, _pl.Path(folder(key)) / _pl.Path(file_id).name)
+
+    def trash(file_id):
+        _pl.Path(file_id).unlink(missing_ok=True)
+
+    def quota():
+        return 0, None

@@ -4,7 +4,7 @@ Each clip: (1) place the chosen mascot into the topic's scene, (2) animate it fo
 """
 import os, random
 from . import drive, fal
-from .common import CFG, WORK, days_since, load_ledger, save_ledger, load_topics, log, now
+from .common import CFG, WORK, days_since, load_ledger, save_ledger, load_topics, log, now, paused
 
 
 def pick_topics(led, n):
@@ -54,6 +54,8 @@ def make_clip(led, t, ref, n):
 
 
 def main():
+    if paused():
+        print("reelbot is paused (paused: true in config.yaml)"); return
     led = load_ledger()
     # If you ran a batch by hand in the last few days, skip the automatic Monday one (saves money).
     newest = max([c.get("created", "") for c in led["ai_clips"].values()] + [led.get("last_batch") or ""])

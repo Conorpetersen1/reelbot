@@ -2,13 +2,14 @@ name: Weekly AI clips
 on:
   schedule: [{cron: "0 14 * * 0"}]   # Monday 1am Sydney
   workflow_dispatch:
-permissions: {contents: write}
+permissions: {contents: write, issues: write}
 concurrency: {group: ledger, cancel-in-progress: false}
 jobs:
   run:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
+      GITHUB_TOKEN: ${{ github.token }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       FAL_KEY: ${{ secrets.FAL_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -27,6 +28,9 @@ jobs:
       - run: pip install -q -r requirements.txt
       - run: python -m pipeline.gen_ai_clips
       - run: python -m pipeline.refresh_token
+      - name: Tell Conor if this run crashed
+        if: failure()
+        run: python -m pipeline.health --crashed "Weekly AI clips"
       - name: Save the bot's memory and dashboard
         if: always()
         run: |

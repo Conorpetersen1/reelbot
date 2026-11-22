@@ -52,3 +52,19 @@ def days_since(iso):
     if not iso:
         return 9999
     return (now() - dt.datetime.fromisoformat(iso)).total_seconds() / 86400
+
+
+def paused():
+    return bool(CFG.get("paused"))
+
+
+def notify_once(led, key, title, body):
+    """Send a GitHub notification (issue that @mentions you) once per key."""
+    sent = led.setdefault("notified", {})
+    if key in sent:
+        return
+    from .alerts import notify
+    owner = (os.environ.get("GITHUB_REPOSITORY") or "/").split("/")[0]
+    notify(title, (f"@{owner} " if owner else "") + body)
+    sent[key] = now().isoformat()
+    log(led, f"Notification sent: {title}")
