@@ -4,9 +4,9 @@ Long clips are fine: each clip is split into its best 4-12 second segments, each
 (heelside, powder, falling...). Gemini watches the whole clip if GEMINI_API_KEY is set; otherwise Claude
 looks at frames spread through it.
 """
-import subprocess
+import subprocess, sys, time
 from . import drive, gemini, llm
-from .common import WORK, load_ledger, save_ledger, log, now
+from .common import CFG, WORK, load_ledger, save_ledger, log, now
 from .render import probe_duration
 
 
@@ -36,22 +36,36 @@ def clean(segs, dur):
 
 
 def main():
+    """Tags up to tag_per_run new clips (oldest first) so a big upload never blocks the evening plan.
+    `python -m pipeline.tag_clips --all` (the 'Tag my clips' workflow) works through the whole backlog."""
     led = load_ledger()
-    new = [f for f in drive.list_files("real") if f["id"] not in led["clips"]
-           and f["name"].lower().endswith((".mp4", ".mov", ".m4v"))]
-    for f in new:
+    new = sorted([f for f in drive.list_files("real") if f["id"] not in led["clips"]
+                  and f["name"].lower().endswith((".mp4", ".mov", ".m4v"))], key=lambda f: f.get("createdTime", ""))
+    cap = len(new) if "--all" in sys.argv else CFG.get("tag_per_run", 15)
+    if len(new) > cap:
+        log(led, f"{len(new)} new clips: tagging {cap} now, the rest in later runs")
+    gemini_down = False
+    for f in new[:cap]:
         try:
             p = drive.download(f["id"], WORK / f["name"])
             dur = probe_duration(p)
             res, who = None, "claude"
-            if gemini.available():
-                try:
-                    res = gemini.ask(llm.segment_prompt(dur, "This is"), video=gemini.analysis_video(p))
-                    who = "gemini"
-                except Exception as e:
-                    log(led, f"Gemini couldn't watch {f['name']}, using Claude: {e}")
+            if gemini.available() and not gemini_down:
+                for attempt in range(2):
+                    try:
+                        res = gemini.ask(llm.segment_prompt(dur, "This is"), video=gemini.analysis_video(p))
+                        who = "gemini"; break
+                    except Exception as e:
+                        if attempt == 0 and ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)):
+                            time.sleep(60); continue  # free-tier rate limit: wait a minute and retry once
+                        gemini_down = True
+                        log(led, f"Gemini unavailable ({str(e)[:120]}); leaving remaining clips for the next run")
+                        break
+                time.sleep(4)  # stay under the free tier's per-minute limit
             if res is None:
-                res = llm.segment_clip_frames(frames(p, dur), dur)
+                if gemini.available():
+                    p.unlink(missing_ok=True); break  # don't fall back to paid Claude for a whole backlog
+                res = llm.segment_clip_frames(frames(p, dur, n=8), dur)
             segs = clean(res.get("segments"), dur)
             if not segs:  # nothing picked: fall back to the whole clip (or its first 12s)
                 segs = clean([{"start": 0, "end": min(dur, 12), "tags": ["lifestyle"], "summary": f["name"]}], dur)
@@ -62,6 +76,7 @@ def main():
             log(led, f"{f['name']} ({dur:.0f}s, {who}): {len(segs)} usable moments "
                      f"{[s['tags'][:2] for s in segs if s['usable']][:6]}")
             p.unlink(missing_ok=True)
+            save_ledger(led)  # save after every clip so a long run never loses work
         except Exception as e:
             log(led, f"Couldn't tag {f['name']}: {e}")
     save_ledger(led)

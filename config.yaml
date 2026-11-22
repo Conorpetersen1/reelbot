@@ -11,6 +11,8 @@ reels_per_day:
 # Local posting times (one reel per slot, in order). Needs at least ai + real entries.
 post_times: ["07:30", "11:30", "15:30", "18:30", "20:30"]
 
+tag_per_run: 15                     # new clips analysed per evening run (big uploads are spread out)
+
 graduation: MANUAL                  # MANUAL = nothing reaches followers unless you graduate it in the app
 
 # Content rules
