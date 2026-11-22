@@ -6,7 +6,7 @@ e.g. "this hook is gold - do it about catching edges.mp4". Screenshots work too.
 Their footage and audio are never used. Only the format gets copied.
 """
 import re, subprocess
-from . import drive, llm
+from . import drive, gemini, llm
 from .common import CFG, WORK, load_ledger, load_topics, log, now, save_ledger
 from .render import probe_duration
 
@@ -53,7 +53,18 @@ def main():
             else:
                 fr, dur, cuts = [to_jpg(p)], 0, 0
             hooks = [t["hook"] for t in load_topics(led)]
-            a = llm.analyze_trend(fr, dur, cuts, note, hooks)
+            a, who = None, "claude"
+            if gemini.available():  # Gemini watches the whole video with sound; Claude only sees frames
+                try:
+                    vid = gemini.small_video(p) if f["name"].lower().endswith(VIDEO) else None
+                    a = gemini.ask(llm.trend_prompt("This is" if vid else "This screenshot is from", dur, cuts,
+                                                    note, hooks), system=llm.RULES, video=vid,
+                                   images=() if vid else fr)
+                    who = "gemini"
+                except Exception as e:
+                    log(led, f"Gemini trend analysis failed, using Claude: {e}")
+            if a is None:
+                a = llm.analyze_trend(fr, dur, cuts, note, hooks)
             kept = []
             for idea in a.get("ideas", [])[:3]:
                 idea["description"] = idea["description"] if isinstance(idea["description"], list) \
@@ -81,9 +92,10 @@ def main():
                         log(led, f"Trend AI clip failed for {tid}: {e}")
             led["trends"].append({"file": f["name"], "date": now().date().isoformat(),
                                   "format": a.get("format_name"), "template": a.get("hook_template"),
-                                  "why": a.get("why_it_works"), "style": a.get("style"), "ideas": kept})
+                                  "why": a.get("why_it_works"), "style": a.get("style"), "ideas": kept,
+                                  "analysed_by": who})
             drive.move(f["id"], "trends_done")
-            log(led, f"Trend '{f['name']}' -> {a.get('format_name')}: {len(kept)} new ideas {kept}")
+            log(led, f"Trend '{f['name']}' ({who}) -> {a.get('format_name')}: {len(kept)} new ideas {kept}")
             save_ledger(led)
         except Exception as e:
             log(led, f"Couldn't analyse trend {f['name']}: {e}")

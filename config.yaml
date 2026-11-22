@@ -29,6 +29,10 @@ video_seconds: 5
 # Claude (writing + clip tagging)
 claude_model: claude-sonnet-5-5
 
+# Gemini (optional second AI: watches trend videos with sound, double-checks every reel).
+# Tried in order; the first one Google still serves is used.
+gemini_models: [gemini-3.8-flash, gemini-3.7-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash]
+
 # Instagram
 ig_api_version: v25.0
 

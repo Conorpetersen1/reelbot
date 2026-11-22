@@ -47,19 +47,50 @@ Return only JSON: {{"hook": "...", "description": ["line", "line", "line"], "cap
     return out
 
 
-def check_reel(topic, reel):
-    """Second pass: a strict reviewer that rejects anything contradicting the rules. Returns (ok, reason)."""
-    if os.environ.get("LOCAL_LLM"):
-        return True, "offline"
-    prompt = f"""You are reviewing reel text before it's posted. Rules are in the system prompt.
+def review_prompt(topic, reel):
+    return f"""You are reviewing reel text before it's posted. Rules are in the system prompt.
 Topic: {json.dumps(topic)}
 Reel: {json.dumps(reel)}
 Does the reel contradict any rule, add technique not supported by the rules or the topic's manual_ref,
 or contain anything misleading, unsafe, or off-brand? Return only JSON: {{"ok": true/false, "reason": "..."}}"""
+
+
+def check_reel(topic, reel):
+    """Second pass by a strict reviewer. Gemini reviews if GEMINI_API_KEY is set (a different model catches
+    different mistakes), otherwise Claude. Returns (ok, reason)."""
+    if os.environ.get("LOCAL_LLM"):
+        return True, "offline"
+    prompt = review_prompt(topic, reel)
+    from . import gemini
+    if gemini.available():
+        try:
+            r = gemini.ask(prompt, system=RULES)
+            return bool(r.get("ok")), "gemini: " + r.get("reason", "")
+        except Exception as e:
+            print("Gemini review failed, using Claude:", e)
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=300, system=RULES,
                                     messages=[{"role": "user", "content": prompt}])
     r = _json(msg.content[0].text)
     return bool(r.get("ok")), r.get("reason", "")
+
+
+def trend_prompt(what, duration, cuts, note, existing_hooks):
+    return f"""{what} a trending reel Conor saved (any niche, not
+necessarily snowboarding). Length {duration:.0f}s, about {cuts} cuts. His note: "{note}".
+
+1. Work out the FORMAT: hook structure, on-screen text layout, pacing, audio/voiceover style if you can hear it,
+   and why it holds attention.
+2. Adapt that format into 1-3 reel ideas for his snowboard instructor account. Each will be made with either an
+   animated blocky mascot clip or his own riding footage, plus on-screen text. Use a technique only if the rules allow it.
+   Don't repeat these existing hooks: {json.dumps(existing_hooks[-60:])}
+3. Pick the closest text style: "question" (hook in a box + points), "list" (numbered points), or "pov" (bare captions).
+
+Return only JSON:
+{{"format_name": "...", "hook_template": "...", "why_it_works": "one sentence", "style": "question|list|pov",
+ "ideas": [{{"category": "tip|snow_life", "level": "beginner|new_rider|any", "hook": "max 50 chars",
+   "description": ["2-4 lines, max 45 chars each"], "manual_ref": "APSI section or empty",
+   "cta_keyword": "ONEWORD", "clip_tags": "main_tag,other_tags from {TAGS}",
+   "ai_scene": "what the animated mascot clip should show"}}]}}"""
 
 
 def analyze_trend(frame_paths, duration, cuts, note, existing_hooks):
@@ -75,21 +106,7 @@ def analyze_trend(frame_paths, duration, cuts, note, existing_hooks):
     for p in frame_paths:
         content.append({"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
                                                      "data": base64.b64encode(p.read_bytes()).decode()}})
-    content.append({"type": "text", "text": f"""These frames are from a trending reel Conor saved (any niche, not
-necessarily snowboarding). Length {duration:.0f}s, about {cuts} cuts. His note: "{note}".
-
-1. Work out the FORMAT: hook structure, on-screen text layout, pacing, and why it holds attention.
-2. Adapt that format into 1-3 reel ideas for his snowboard instructor account. Each will be made with either an
-   animated blocky mascot clip or his own riding footage, plus on-screen text. Use a technique only if the rules allow it.
-   Don't repeat these existing hooks: {json.dumps(existing_hooks[-60:])}
-3. Pick the closest text style: "question" (hook in a box + points), "list" (numbered points), or "pov" (bare captions).
-
-Return only JSON:
-{{"format_name": "...", "hook_template": "...", "why_it_works": "one sentence", "style": "question|list|pov",
- "ideas": [{{"category": "tip|snow_life", "level": "beginner|new_rider|any", "hook": "max 50 chars",
-   "description": ["2-4 lines, max 45 chars each"], "manual_ref": "APSI section or empty",
-   "cta_keyword": "ONEWORD", "clip_tags": "main_tag,other_tags from {TAGS}",
-   "ai_scene": "what the animated mascot clip should show"}}]}}"""})
+    content.append({"type": "text", "text": trend_prompt("These frames are from", duration, cuts, note, existing_hooks)})
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=1500, system=RULES,
                                     messages=[{"role": "user", "content": content}])
     return _json(msg.content[0].text)

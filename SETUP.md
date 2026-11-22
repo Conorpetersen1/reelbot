@@ -5,7 +5,7 @@ What it does every day, on its own:
   (3 AI mascot, 2 of your clips) and puts them in **Drive › reelbot › queue**.
 - **Next day, hourly:** it posts each reel at its time as a **trial reel with MANUAL graduation**.
   If you deleted a reel from the queue, it gets skipped.
-- **Mondays:** it generates about 25 new mascot clips and refreshes your Instagram login.
+- **Mondays:** it generates about 25 new mascot clips.
 - **Dashboard:** a web page (GitHub Pages) with followers, views, best topics and a "graduate these" list.
 
 - **Trend inbox:** reels you save to Drive › reelbot › trends get analysed each evening. The bot copies the
@@ -38,16 +38,24 @@ Instagram app, and drop new clips into Drive › reelbot › real.
    - Click "Exchange authorization code for tokens" and copy the **refresh token**.
    - You now have **GOOGLE_CLIENT_ID**, **GOOGLE_CLIENT_SECRET** and **GOOGLE_REFRESH_TOKEN**.
 
-## 3. Instagram API token (20 min, the fiddly bit)
-1. On developers.facebook.com, go to My Apps › Create app. Choose the use case for managing content on Instagram
-   (it's the Instagram API with Instagram Login).
-2. In the app, open **API setup with Instagram login**, then go to **Generate access tokens** › Add account and log in as @conor_sends.
-   Approve the permissions, including content publishing and insights.
-3. Copy the generated token. That's **IG_ACCESS_TOKEN**. It lasts 60 days, and the bot refreshes it every Monday.
-4. The app can stay in development mode, because it only ever posts to your own account.
+## 3. Instagram API token (20–40 min, the fiddliest bit)
+1. Go to developers.facebook.com › My Apps › Create app. Choose the use case **Manage messaging & content on Instagram**.
+   Don't connect a business portfolio yet.
+2. Go to Use cases › Customise. Under Permissions and features, **Add** `instagram_basic`, `instagram_content_publish`
+   and `instagram_manage_insights`.
+3. Go to App roles › Roles › Add people › **Instagram Tester** and add your account. Accept the invite at
+   instagram.com › Settings › Apps and websites › Tester invites.
+4. Go to Customise › **API setup with Unified login**. Connect your business portfolio when asked, then create a configuration:
+   General, **System-user access token**, **never expires**, with your Instagram account as the asset. Include the 3 permissions above.
+5. Under Generate access tokens, generate a token for your account. It starts with `EAA`. Save it as **IG_ACCESS_TOKEN**.
+   It never expires, so treat it like a password.
+6. Save your Instagram account ID (a long number, usually starting 1784) as **IG_USER_ID**.
+   To check the token has the insights permission, paste it into developers.facebook.com/tools/debug/accesstoken.
 
 ## 4. AI keys (10 min)
 - console.anthropic.com: create an API key (**ANTHROPIC_API_KEY**), add US$10 credit, and set a monthly limit of about US$15.
+- aistudio.google.com: sign in with the reelbot Google account, then go to Get API key › Create API key (**GEMINI_API_KEY**).
+  This one is optional. Gemini watches trend videos with sound and double-checks every reel. Without it, Claude does both.
 - fal.ai: create an API key (**FAL_KEY**) and add US$30–50 credit. Expect roughly US$40–50 a month at 25 clips a week.
   Set a spending cap in your billing settings.
 
@@ -56,7 +64,8 @@ Instagram app, and drop new clips into Drive › reelbot › real.
    - **Public** is simplest: Actions minutes are free and the dashboard can go on GitHub Pages. Nothing secret is in the code.
    - If you'd rather keep it private, the dashboard on Pages needs GitHub Pro (US$4/month).
 2. Go to Settings › Secrets and variables › Actions › New repository secret, and add:
-   `ANTHROPIC_API_KEY`, `FAL_KEY`, `IG_ACCESS_TOKEN`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`,
+   `ANTHROPIC_API_KEY`, `FAL_KEY`, `GEMINI_API_KEY`, `IG_ACCESS_TOKEN`, `IG_USER_ID`, `GOOGLE_CLIENT_ID`,
+   `GOOGLE_CLIENT_SECRET`, `GOOGLE_REFRESH_TOKEN`, `GDRIVE_FOLDER_ID`. Add them under **Actions**, not Agents.
    `GOOGLE_REFRESH_TOKEN`, `GDRIVE_FOLDER_ID`, `GH_PAT`.
    - **GH_PAT** lets the bot save the refreshed Instagram token. Create it under GitHub › Settings › Developer settings ›
      Fine-grained tokens, limited to this repo only, with the permission **Secrets: Read and write**.
