@@ -106,9 +106,14 @@ def summary():
             "calls_week": sum(v.get(api, 0) for d, v in u["calls"].items()
                               if (today - dt.date.fromisoformat(d)).days < 7),
         }
-    # Whole-project figures in US$ for the totals row and the chart
-    out["usd"] = {key: sum(out[a][key] / rate(a) for a in APIS) for key in ("today", "week", "month", "total")}
+    # Everything again in A$ for the dashboard (Conor's currency)
+    aud = float(CFG.get("usd_to_aud", 1.54))
+    for api in APIS:
+        f = aud / rate(api)
+        out[api]["aud"] = {key: (None if out[api][key] is None else out[api][key] * f)
+                           for key in ("today", "week", "month", "total", "left")}
+    out["aud_total"] = {key: sum(out[a]["aud"][key] for a in APIS) for key in ("today", "week", "month", "total")}
     out["daily"] = [((today - dt.timedelta(days=i)).isoformat(),
-                     round(sum(u["days"].get((today - dt.timedelta(days=i)).isoformat(), {}).values()), 2))
+                     round(aud * sum(u["days"].get((today - dt.timedelta(days=i)).isoformat(), {}).values()), 2))
                     for i in range(29, -1, -1)]
     return out

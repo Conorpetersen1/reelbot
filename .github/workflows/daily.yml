@@ -1,6 +1,6 @@
 name: Daily plan
 on:
-  schedule: [{cron: "0 6 * * *"}]   # 5pm Sydney (summer time)
+  schedule: [{cron: "0 5 * * *"}]   # 4pm Sydney in summer time (3pm from April, when clocks go back)
   workflow_dispatch:
 permissions: {contents: write, issues: write}
 concurrency: {group: ledger, cancel-in-progress: false}

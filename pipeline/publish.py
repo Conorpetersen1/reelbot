@@ -17,7 +17,10 @@ def main():
         if t < t.replace(hour=hh, minute=mm, second=0, microsecond=0):
             break  # not due yet
         if not drive.exists(e["file_id"]):
-            e["status"] = "vetoed"; log(led, f"Skipped {e['file']} (deleted from queue)"); continue
+            e["status"] = "vetoed"; log(led, f"Skipped {e['file']} (deleted from queue)")
+            from . import taste
+            taste.note_veto(led, e)
+            continue
         try:
             path = drive.download(e["file_id"], WORK / e["file"])
             mid = ig.publish_trial_reel(path, e["caption"])

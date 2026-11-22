@@ -29,7 +29,9 @@ def active(led):
         if left is not None and left < float(warn.get(api, 2)):
             bal = ((CFG.get("api_credits") or {}).get(api) or {}).get("balance") or {}
             out.append({"key": f"credit-{api}-{bal.get('date')}-{bal.get('amount')}", "due": today,
-                        "text": f"Top up {NAMES[api]}: about {s[api]['sym']}{max(left, 0):.2f} left ({WHERE[api]}). "
+                        "text": f"Top up {NAMES[api]}: about A${max(s[api]['aud']['left'], 0):.2f} left"
+                                + (f" ({s[api]['sym']}{max(left, 0):.2f})" if s[api]['sym'] != "A$" else "")
+                                + f" ({WHERE[api]}). "
                                 f"Then update its balance under api_credits in config.yaml, or tell Claude."})
     # Sounds going stale
     every = CFG.get("sound_sweep_every_days", 12)

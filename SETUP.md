@@ -1,7 +1,7 @@
 # reelbot setup (about 1–2 hours, once)
 
 What it does every day, on its own:
-- **5pm:** it tags any new clips you've dropped in Drive, pulls yesterday's stats, then builds tomorrow's 5 reels
+- **4pm:** it tags any new clips you've dropped in Drive, pulls yesterday's stats, then builds tomorrow's 5 reels
   (3 AI mascot, 2 of your clips) and puts them in **Drive › reelbot › queue**.
 - **Next day, hourly:** it posts each reel at its time as a **trial reel with MANUAL graduation**.
   If you deleted a reel from the queue, it gets skipped.

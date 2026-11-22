@@ -260,11 +260,14 @@ def main():
     if led["queue"].get(day):
         print("Already planned", day); return
     topics = load_topics(led)
-    # Forget clips you've deleted from Drive, so they're never picked
-    for key, store in (("ai_library", "ai_clips"), ("real", "clips")):
-        present = {f["id"] for f in drive.list_files(key)}
-        for cid in [c for c in led[store] if c not in present]:
-            led[store].pop(cid)
+    # Clips you've deleted from Drive are never picked again; binned mascot clips teach the clip maker
+    from . import taste
+    taste.note_deleted(led)
+    try:
+        taste.review(led)
+    except Exception as e:
+        log(led, f"Taste review skipped: {e}")
+    save_ledger(led)
     n_ai, n_real = CFG["reels_per_day"]["ai"], CFG["reels_per_day"]["real"]
     model = learn.fit(led)
     draw = model.draw()

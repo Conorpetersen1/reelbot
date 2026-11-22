@@ -140,6 +140,20 @@ def main():
     review_html = "".join(review_card(d, e) for d in (tomorrow, today.isoformat(), yday)
                           for e in led["queue"].get(d, [])) or "<p class='muted'>Nothing queued.</p>"
 
+    # ---- What the bot has learned from mascot clips Conor binned
+    tst, binned = led.get("ai_taste") or {}, led.get("ai_binned", [])
+    taste_html = ""
+    if binned:
+        pending = sum(1 for b in binned if not b.get("reviewed"))
+        taste_html = ("<div class='card'><h2>Learned from mascot clips you binned</h2>"
+                      f"<p class='muted' style='margin:0 0 6px'>{len(binned)} binned so far"
+                      + (f", {pending} still to look at (tomorrow's run)" if pending else "") + ". "
+                      "New clips are made to avoid:</p>"
+                      + ("<ul>" + "".join(f"<li>{E(a)}</li>" for a in tst.get("avoid", [])) + "</ul>"
+                         if tst.get("avoid") else "<p class='muted'>Nothing yet.</p>")
+                      + (f"<p style='margin:8px 0 0'>{E(tst['summary'])}</p>" if tst.get("summary") else "")
+                      + "</div>")
+
     # ---- Reminders and costs
     from . import reminders, usage
     rem = reminders.active(led)
@@ -147,21 +161,26 @@ def main():
                 + "</ul></div>") if rem else ""
     us = usage.summary()
     nice = {"claude": "Claude (writing)", "gemini": "Gemini (watching video)", "fal": "fal (mascot clips)"}
-    def money(x, sym="US$"):
+    def money(x, sym="A$"):
         return "–" if x is None else f"{sym}{x:,.2f}"
+
+    def left_cell(a):
+        v, own = us[a]["aud"]["left"], us[a]["left"]
+        extra = (f" <span class='muted'>({us[a]['sym']}{own:,.2f})</span>"
+                 if own is not None and us[a]["sym"] != "A$" else "")
+        low = v is not None and v < 4.5
+        return f"<td class='n {'down' if low else ''}'>{money(v)}{extra}</td>"
     cost_rows = "".join(
-        f"<tr><td>{nice[a]}</td>" + "".join(f"<td class='n'>{money(us[a][k], us[a]['sym'])}</td>"
+        f"<tr><td>{nice[a]}</td>" + "".join(f"<td class='n'>{money(us[a]['aud'][k])}</td>"
                                             for k in ("today", "week", "month", "total"))
-        + f"<td class='n {'down' if us[a]['left'] is not None and us[a]['left'] < 3 else ''}'>"
-          f"{money(us[a]['left'], us[a]['sym'])}</td></tr>"
-        for a in usage.APIS)
-    cost_rows += ("<tr><td><b>Total (in US$)</b></td>" + "".join(f"<td class='n'><b>{money(us['usd'][k])}</b></td>"
-                                                    for k in ("today", "week", "month", "total")) + "<td></td></tr>")
+        + left_cell(a) + "</tr>" for a in usage.APIS)
+    cost_rows += ("<tr><td><b>Total</b></td>" + "".join(f"<td class='n'><b>{money(us['aud_total'][k])}</b></td>"
+                                              for k in ("today", "week", "month", "total")) + "<td></td></tr>")
     cost_html = (f"<div class='card'><h2>Costs</h2><div class='wrap'><table><tr><th>API</th><th class='n'>Today</th>"
                  f"<th class='n'>7 days</th><th class='n'>This month</th><th class='n'>Project total</th>"
                  f"<th class='n'>Credit left (est.)</th></tr>{cost_rows}</table></div>"
-                 f"<div class='k' style='margin-top:12px'>Spend per day (US$)</div>{line_chart(us['daily'], 'Spend per day (US$)')}"
-                 f"<p class='muted' style='margin:8px 0 0'>Estimates from the bot's own records, tracked since 22 Nov 2026. "
+                 f"<div class='k' style='margin-top:12px'>Spend per day (A$)</div>{line_chart(us['daily'], 'Spend per day (A$)')}"
+                 f"<p class='muted' style='margin:8px 0 0'>All in A$ (Claude and fal bill in US$, converted at about {usage.CFG.get('usd_to_aud', 1.54)} A$ per US$; their US$ balance is in brackets). Estimates from the bot's own records, tracked since 22 Nov 2026. "
                  f"Your billing pages are the final word. When you top up, update the balance under <code>api_credits</code> "
                  f"in config.yaml (or tell Claude) so 'credit left' stays right.</p></div>")
     trend_rows = "".join(
@@ -266,7 +285,7 @@ details.rv{{border-top:1px solid var(--grid);padding:8px 0}}details.rv summary{{
 .rvb .k{{margin-top:8px;font-weight:600}}.rvb ul{{margin:2px 0}}.cap{{white-space:pre-wrap}}
 @media(max-width:600px){{.rvb{{grid-template-columns:1fr}}.vbox{{margin:0 auto}}}}.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
 </style></head><body><main>
-<h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting. · AI video spend this month: about US${fal_spent:.2f} of US${fal_cap} cap</div>
+<h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting. · AI video spend this month: about US${fal_spent:.2f} of US${fal_cap} cap (≈A${fal_spent * float(CFG.get('usd_to_aud', 1.54)):.0f} of A${fal_cap * float(CFG.get('usd_to_aud', 1.54)):.0f})</div>
 {warn_html}{rem_html}<div class="tiles">
 <div class="card"><div class="k">Followers</div><div class="v">{fol_now:,}</div><div class="d {'up' if delta>=0 else 'down'}">{'+' if delta>=0 else ''}{delta:,} in 7 days</div></div>
 <div class="card"><div class="k">Views, last 7 days</div><div class="v">{views7:,}</div><div class="d muted">{len(recent)} reels posted</div></div>
@@ -286,6 +305,7 @@ details.rv{{border-top:1px solid var(--grid);padding:8px 0}}details.rv summary{{
 <div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
 <div class="card"><h2>Review reels</h2><p class="muted" style="margin:0 0 8px">Tap a reel to watch it and check the words, sound and caption. The video plays if you're signed in to the Google account that owns the Drive folder.</p>{review_html}</div>
 <div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
+{taste_html}
 {clips_html}
 {cost_html}
 <div class="card"><h2>Bot log</h2><ul class="muted">{log_rows or '<li>Nothing yet.</li>'}</ul></div>

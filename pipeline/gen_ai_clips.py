@@ -17,7 +17,11 @@ def pick_topics(led, n):
     draw = learn.fit(led).draw()
     retired = {t for t, d in led.get("retired", {}).items() if days_since(d) < CFG.get("learning", {}).get("retire_days", 30)}
     topics = [t for t in topics if t["id"] not in retired] or topics
-    ranked = sorted(topics, key=lambda t: (stock.get(t["id"], 0), -draw.score({"topic": t["id"], "kind": "ai"})))
+    # Topics where Conor has binned 2+ clips go to the back of the line
+    from . import taste
+    bad = taste.binned_topics(led)
+    ranked = sorted(topics, key=lambda t: (t["id"] in bad, stock.get(t["id"], 0),
+                                           -draw.score({"topic": t["id"], "kind": "ai"})))
     return [ranked[i % len(ranked)] for i in range(n)]
 
 
@@ -30,18 +34,22 @@ def mascot_ref():
 
 def make_clip(led, t, ref, n):
     """Mascot placed into the topic's scene, then animated. Saves to Drive/ai_library and the ledger."""
+    from . import taste
     fal.charge(led, "image", "video_clip"); save_ledger(led)
     scene = fal.run(CFG["scene_model"], {
         "prompt": f"Put this exact character in a new scene: {t['ai_scene']}. Keep the character's design, "
-                  f"colours and blocky low-poly 3D style identical. Vertical 9:16 composition, no text.",
+                  f"colours and blocky low-poly 3D style identical. Vertical 9:16 composition, no text."
+                  + taste.scene_extra(led),
         "image_url": fal.data_uri(ref), "aspect_ratio": "9:16"})
     vid = fal.run(CFG["video_model"], {
         "prompt": f"{t['ai_scene']}. Stylised blocky 3D animation, smooth motion, camera follows, no text, no logos.",
-        "image_url": fal.first_url(scene, "image"), "duration": str(CFG["video_seconds"])})
+        "image_url": fal.first_url(scene, "image"), "duration": str(CFG["video_seconds"]),
+        "negative_prompt": taste.negative(led)})
     name = f"{t['id']}_{now():%Y%m%d}_{n:02d}.mp4"
     path = fal.fetch(fal.first_url(vid, "video"), WORK / name)
     fid = drive.upload(path, "ai_library", name)
-    led["ai_clips"][fid] = {"name": name, "topic": t["id"], "uses": 0, "created": now().isoformat()}
+    led["ai_clips"][fid] = {"name": name, "topic": t["id"], "uses": 0, "created": now().isoformat(),
+                            "scene": t["ai_scene"]}
     save_ledger(led)
     return fid
 
@@ -54,6 +62,14 @@ def main():
     newest = max([c.get("created", "") for c in led["ai_clips"].values()] + [led.get("last_batch") or ""])
     if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and newest and days_since(newest) < 5:
         log(led, "Skipped weekly AI clips: a batch was made in the last 5 days"); save_ledger(led); return
+    # Learn from any clips binned since the last daily run before making new ones
+    from . import taste
+    taste.note_deleted(led)
+    try:
+        taste.review(led)
+    except Exception as e:
+        log(led, f"Taste review skipped: {e}")
+    save_ledger(led)
     ref = mascot_ref()
     made = 0
     for t in pick_topics(led, CFG["ai_clips_per_week"]):
