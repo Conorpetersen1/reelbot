@@ -4,7 +4,7 @@
  "sounds": [
   {
    "start": 1.0,
-   "end": 25.8,
+   "end": 26.0,
    "title": "Grand Theft Auto: San Andreas (Official Theme Song)",
    "artist": "Michael Hunter",
    "is_music": true,
@@ -18,12 +18,12 @@
    "result": "kept"
   },
   {
-   "start": 25.8,
-   "end": 26.8,
+   "start": 26.0,
+   "end": 26.7,
    "title": "GTA 6 (Grand Theft Auto Six Song)",
    "artist": "AURIX232",
    "is_music": true,
-   "confidence": "medium",
+   "confidence": "high",
    "cut_start": 26.2,
    "cut_end": 26.55,
    "snapped": [
@@ -34,12 +34,57 @@
   },
   {
    "start": 57.0,
-   "end": 111.8,
+   "end": 71.7,
    "title": "Time",
    "artist": "Pink Floyd",
    "is_music": true,
    "confidence": "high",
    "cut_start": 57.1,
+   "cut_end": 71.6,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 71.7,
+   "end": 87.2,
+   "title": "DROP IT LIKE ITS HOT x STAYIN ALIVE (ALT\u00c9GO MIX)",
+   "artist": "altego_music",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 72.1,
+   "cut_end": 87.2,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 87.2,
+   "end": 98.7,
+   "title": "Vice City",
+   "artist": "Neon Dust",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 87.7,
+   "cut_end": 99.0,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 98.7,
+   "end": 111.7,
+   "title": "November Magic",
+   "artist": "Peaceful Reveries",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 99.4,
    "cut_end": 111.5,
    "snapped": [
     true,
@@ -48,10 +93,10 @@
    "result": "kept"
   },
   {
-   "start": 111.8,
-   "end": 127.4,
-   "title": "DROP IT LIKE ITS HOT x STAYIN ALIV (ALT\u00c9GO MIX)",
-   "artist": "altego_music",
+   "start": 111.7,
+   "end": 126.0,
+   "title": "Think I'm going dumb",
+   "artist": "ACE aqougounk",
    "is_music": true,
    "confidence": "high",
    "cut_start": 112.0,
@@ -63,304 +108,259 @@
    "result": "kept"
   },
   {
-   "start": 127.4,
-   "end": 138.8,
-   "title": "Vice City",
-   "artist": "Neon Dust",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 126.35,
-   "cut_end": 137.8,
-   "snapped": [
-    true,
-    false
-   ],
-   "result": "kept"
-  },
-  {
-   "start": 138.8,
-   "end": 151.7,
-   "title": "November Magic",
-   "artist": "Peaceful Reveries",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 139.6,
-   "cut_end": 150.7,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "kept"
-  },
-  {
-   "start": 151.7,
-   "end": 206.0,
-   "title": "Think I'm going dumb",
-   "artist": "ACE aqougonk",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 152.5,
-   "cut_end": 205.0,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "kept"
-  },
-  {
-   "start": 206.0,
-   "end": 224.2,
+   "start": 126.0,
+   "end": 144.2,
    "title": "Young Folks",
    "artist": "NCWU Spectrum",
    "is_music": true,
    "confidence": "high",
-   "cut_start": 206.8,
-   "cut_end": 223.2,
+   "cut_start": 126.35,
+   "cut_end": 144.1,
    "snapped": [
-    false,
-    false
+    true,
+    true
    ],
    "result": "kept"
   },
   {
-   "start": 224.2,
-   "end": 249.2,
+   "start": 144.2,
+   "end": 169.2,
    "title": "Dancing On My Own (Instrumental)",
    "artist": "Pink Gloves",
    "is_music": true,
    "confidence": "high",
-   "cut_start": 225.0,
-   "cut_end": 248.2,
+   "cut_start": 144.6,
+   "cut_end": 169.1,
    "snapped": [
-    false,
-    false
+    true,
+    true
    ],
    "result": "kept"
   },
   {
-   "start": 249.2,
-   "end": 300.4,
+   "start": 169.2,
+   "end": 180.5,
    "title": "GTA 6 Main Theme (EPIC Version)",
    "artist": "Apex Sound Odyssey",
    "is_music": true,
    "confidence": "high",
-   "cut_start": 250.0,
-   "cut_end": 299.4,
+   "cut_start": 169.6,
+   "cut_end": 180.35,
    "snapped": [
-    false,
-    false
+    true,
+    true
    ],
    "result": "kept"
   },
   {
-   "start": 300.4,
-   "end": 307.4,
+   "start": 180.5,
+   "end": 187.5,
    "title": "Sand Drawing",
    "artist": "Judah Earl",
    "is_music": true,
    "confidence": "high",
-   "cut_start": 301.2,
-   "cut_end": 305.8,
+   "cut_start": 180.95,
+   "cut_end": 187.2,
    "snapped": [
-    false,
+    true,
     true
    ],
-   "result": "too short (4.6s)"
+   "result": "too short (6.2s)"
   },
   {
-   "start": 307.4,
-   "end": 317.4,
+   "start": 187.5,
+   "end": 197.5,
    "title": "Draw You Out",
    "artist": "Noah Kahan, The Hunger Games",
    "is_music": true,
    "confidence": "high",
-   "cut_start": 306.35,
-   "cut_end": 316.4,
+   "cut_start": 187.8,
+   "cut_end": 197.25,
    "snapped": [
     true,
-    false
+    true
    ],
    "result": "kept"
   },
   {
-   "start": 317.4,
-   "end": 331.2,
+   "start": 197.5,
+   "end": 211.2,
    "title": "Original audio",
    "artist": "mitchbrothers_",
    "is_music": true,
    "confidence": "high",
-   "cut_start": 318.2,
-   "cut_end": 329.2,
+   "cut_start": 197.85,
+   "cut_end": 210.35,
    "snapped": [
-    false,
+    true,
     true
    ],
    "result": "kept"
   },
   {
-   "start": 331.2,
-   "end": 337.2,
+   "start": 211.2,
+   "end": 217.2,
    "title": "Vice City",
    "artist": "Neon Dust",
    "is_music": true,
    "confidence": "high",
-   "cut_start": 329.7,
-   "cut_end": 336.3,
+   "cut_start": 211.0,
+   "cut_end": 217.0,
    "snapped": [
     true,
     true
    ],
-   "result": "too short (6.6s)"
+   "result": "too short (6.0s)"
   },
   {
-   "start": 337.2,
-   "end": 349.6,
+   "start": 217.2,
+   "end": 229.7,
    "title": "James Bond Theme",
    "artist": "John Barry Orchestra",
    "is_music": true,
    "confidence": "high",
-   "cut_start": 336.7,
+   "cut_start": 217.5,
+   "cut_end": 229.5,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 229.7,
+   "end": 241.5,
+   "title": "A GTA 6",
+   "artist": "Dianzi",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 230.05,
+   "cut_end": 241.4,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 241.5,
+   "end": 258.7,
+   "title": "Love Is A Long Road",
+   "artist": "Tom Petty",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 241.9,
+   "cut_end": 258.65,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 258.7,
+   "end": 276.7,
+   "title": "Goldeneye 007 (cinematic)",
+   "artist": "BERT0LI",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 259.15,
+   "cut_end": 276.65,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 276.7,
+   "end": 285.7,
+   "title": "original audio",
+   "artist": "projectji21",
+   "is_music": false,
+   "confidence": "high",
+   "cut_start": 277.2,
+   "cut_end": 285.45,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "not music"
+  },
+  {
+   "start": 285.7,
+   "end": 295.2,
+   "title": "eye of ra",
+   "artist": "purc",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 285.95,
+   "cut_end": 295.0,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 295.2,
+   "end": 306.0,
+   "title": "two faced",
+   "artist": "purc",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 295.5,
+   "cut_end": 305.8,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 306.0,
+   "end": 320.7,
+   "title": "Don't Stop the Party (feat. TJR)",
+   "artist": "Pitbull",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 306.35,
+   "cut_end": 320.65,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 320.7,
+   "end": 329.2,
+   "title": "Blood in Your Eyes (from GTAVI: The Album)",
+   "artist": "Tove Lo, Grand Theft Auto VI",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 321.15,
+   "cut_end": 329.2,
+   "snapped": [
+    true,
+    true
+   ],
+   "result": "kept"
+  },
+  {
+   "start": 329.2,
+   "end": 348.2,
+   "title": "Midnight City",
+   "artist": "M83",
+   "is_music": true,
+   "confidence": "high",
+   "cut_start": 329.7,
    "cut_end": 348.33,
    "snapped": [
     true,
     true
    ],
    "result": "kept"
-  },
-  {
-   "start": 349.6,
-   "end": 401.4,
-   "title": "A GTA 6",
-   "artist": "Dianzi",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 348.73,
-   "cut_end": 348.58,
-   "snapped": [
-    true,
-    false
-   ],
-   "result": "too short (-0.1s)"
-  },
-  {
-   "start": 401.4,
-   "end": 418.6,
-   "title": "Love Is A Long Road",
-   "artist": "Tom Petty",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 402.2,
-   "cut_end": 348.58,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "too short (-53.6s)"
-  },
-  {
-   "start": 418.6,
-   "end": 436.8,
-   "title": "Goldeneye 007 (cinematic)",
-   "artist": "BERT0L1",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 419.4,
-   "cut_end": 348.58,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "too short (-70.8s)"
-  },
-  {
-   "start": 436.8,
-   "end": 445.6,
-   "title": "Original audio",
-   "artist": "projectij21",
-   "is_music": false,
-   "confidence": "high",
-   "cut_start": 437.6,
-   "cut_end": 348.58,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "not music"
-  },
-  {
-   "start": 445.6,
-   "end": 455.2,
-   "title": "eye of ra",
-   "artist": "purc",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 446.4,
-   "cut_end": 348.58,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "too short (-97.8s)"
-  },
-  {
-   "start": 455.2,
-   "end": 506.0,
-   "title": "two faced",
-   "artist": "purc",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 456.0,
-   "cut_end": 348.58,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "too short (-107.4s)"
-  },
-  {
-   "start": 506.0,
-   "end": 520.6,
-   "title": "Don't Stop the Party (feat. TJR)",
-   "artist": "Pitbull",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 506.8,
-   "cut_end": 348.58,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "too short (-158.2s)"
-  },
-  {
-   "start": 520.6,
-   "end": 529.2,
-   "title": "Blood in Your Eyes (from GTAV: The Album)",
-   "artist": "Tove Lo, Grand Theft Auto VI",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 521.4,
-   "cut_end": 348.58,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "too short (-172.8s)"
-  },
-  {
-   "start": 529.2,
-   "end": 548.2,
-   "title": "Midnight City",
-   "artist": "M83",
-   "is_music": true,
-   "confidence": "high",
-   "cut_start": 530.0,
-   "cut_end": 348.58,
-   "snapped": [
-    false,
-    false
-   ],
-   "result": "too short (-181.4s)"
   }
  ],
  "audio_edges": [
