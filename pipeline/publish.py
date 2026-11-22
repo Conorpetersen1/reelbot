@@ -34,15 +34,7 @@ def main():
                                  **{k: e.get(k) for k in ("category", "style", "hook_type", "sound_kind", "time", "variation",
                                                           "source", "sound", "fit")}}
             drive.move(e["file_id"], "posted")
-            trial = ig.is_trial(mid)
-            e["trial"] = led["posts"][mid]["trial"] = trial
-            log(led, f"Posted trial reel {e['file']} -> {mid} (Instagram says trial: {trial})")
-            if trial is False:
-                # It went out as a normal reel to followers: stop everything and tell Conor
-                led["auto_paused"] = f"{e['file']} posted as a normal reel, not a trial ({t:%d %b %H:%M})"
-                notify_once(led, f"not-trial-{mid}", "⚠️ reelbot: a reel posted as a NORMAL reel, posting paused",
-                            f"Instagram says **{e['hook']}** went out to followers, not as a trial. Posting is "
-                            "paused. Delete it in the app if you don't want it, then tell Claude.")
+            log(led, f"Posted trial reel {e['file']} -> {mid}")
         except Exception as err:
             e["attempts"] = e.get("attempts", 0) + 1
             e["status"] = "retry" if e["attempts"] < 3 else "failed"

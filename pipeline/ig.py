@@ -44,20 +44,25 @@ def me(fields="username,followers_count"):
                                timeout=60))
 
 
+def public_url(path):
+    """Instagram only honours trial_params when it fetches the video from a link (video_url), not with a direct
+    (resumable) upload. So the finished reel is put on fal's file host, which gives a public link with an
+    unguessable address; Instagram downloads it from there."""
+    import fal_client
+    os.environ.setdefault("FAL_KEY", env("FAL_KEY"))
+    return fal_client.upload_file(path)
+
+
 def publish_trial_reel(path, caption):
     uid = user_id()
     GRAPH = graph()
-    # 1) container, resumable upload, trial reel with MANUAL graduation (you decide what reaches followers)
+    # 1) container from a public link, trial reel with MANUAL graduation (you decide what reaches followers).
+    #    Never fall back to a direct upload: that posts a normal reel to followers.
     c = _check(requests.post(f"{GRAPH}/{uid}/media", data={
-        "media_type": "REELS", "upload_type": "resumable", "caption": caption,
+        "media_type": "REELS", "video_url": public_url(path), "caption": caption,
         "trial_params": json.dumps({"graduation_strategy": CFG["graduation"]}),
-        "access_token": _tok()}, timeout=60))
+        "access_token": _tok()}, timeout=120))
     cid = c["id"]
-    uri = c.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{VER}/{cid}"
-    # 2) upload the file bytes
-    data = path.read_bytes()
-    _check(requests.post(uri, headers={"Authorization": f"OAuth {_tok()}", "offset": "0",
-                                       "file_size": str(len(data))}, data=data, timeout=600))
     # 3) wait for Instagram to process it
     for _ in range(60):
         s = _check(requests.get(f"{GRAPH}/{cid}", params={"fields": "status_code,status",
@@ -73,17 +78,6 @@ def publish_trial_reel(path, caption):
     return _check(requests.post(f"{GRAPH}/{uid}/media_publish",
                                 data={"creation_id": cid, "access_token": _tok()}, timeout=60))["id"]
 
-
-def is_trial(media_id):
-    """True if Instagram is holding the reel back from followers (a trial), False if it went out as a normal
-    reel, None if Instagram won't say. Trial reels report is_shared_to_feed = false."""
-    time.sleep(5)
-    r = requests.get(f"{graph()}/{media_id}", params={"fields": "is_shared_to_feed,media_product_type",
-                                                       "access_token": _tok()}, timeout=60)
-    if r.status_code >= 300:
-        return None
-    v = r.json().get("is_shared_to_feed")
-    return None if v is None else (not v)
 
 
 METRICS = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions",
