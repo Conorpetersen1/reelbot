@@ -45,8 +45,8 @@ gemini_models: [gemini-3.8-flash, gemini-3.7-flash, gemini-3.5-flash, gemini-3-f
 # When your API keys or credits expire (YYYY-MM-DD). The dashboard warns you a week before.
 # After renewing a key, update the GitHub secret and change or delete the date here.
 key_expiry:
-  ANTHROPIC_API_KEY: "2026-12-12"
-  FAL_KEY: "2026-12-12"
+  ANTHROPIC_API_KEY: "2026-12-22"
+  FAL_KEY: "2026-12-22"
 
 # Instagram
 ig_api_version: v25.0
