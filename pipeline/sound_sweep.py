@@ -19,7 +19,8 @@ its preview, listens, then taps a different track (or pauses, or leaves the list
 preview: it STARTS the moment he taps a track and its play/pause icon or waveform/progress starts moving, and it
 ENDS the moment he taps another track, taps pause, scrolls that track away or the screen changes. Never let one
 sound run across a tap on another track. Read the title and artist of the track that is visibly playing.
-Times are seconds from the start of the recording, accurate to about 0.3s.
+A yellow clock in the top-left corner shows the recording time in seconds (e.g. "83.4s"). Read every start
+and end time off that clock at the moment of the tap; don't estimate times any other way.
 For each preview give "confidence": "high" if you clearly saw the tap that started it, the tap or switch that
 ended it, and can read its title; "medium" if you can read the title and are fairly sure of both times;
 otherwise "low". Mark is_music false for speech, voiceovers
@@ -44,6 +45,20 @@ def quiet_gaps(path, dur):
             n += 1
             out.append({"start": a, "end": b, "title": f"untitled {now():%H%M} {n}", "artist": "", "is_music": True,
                         "dedupe": False})
+    return out
+
+
+def clocked_video(path):
+    """A small copy of the recording with a big running clock in the corner. Gemini's own sense of time drifts
+    over a long video (it once put a 5:49 recording's last song at 9:08), but it reads an on-screen clock reliably."""
+    from .render import FONT_BOLD
+    out = WORK / (path.stem + "_clock.mp4")
+    font = FONT_BOLD.replace(":", r"\:")
+    clock = (f"drawtext=fontfile='{font}':text='%{{eif\\:t\\:d}}.%{{eif\\:mod(t*10\\,10)\\:d}}s':"
+             "x=12:y=12:fontsize=44:fontcolor=yellow:box=1:boxcolor=black@0.8:boxborderw=8")
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(path), "-t", "900",
+                    "-vf", f"scale=-2:640,fps=4,{clock}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "32",
+                    "-c:a", "aac", "-b:a", "64k", "-ac", "1", str(out)], check=True)
     return out
 
 
@@ -141,7 +156,7 @@ def main():
             found, who = None, "quiet gaps"
             if gemini.available():
                 try:
-                    v = gemini.small_video(p, max_seconds=900, fps=4)
+                    v = clocked_video(p)
                     try:  # 4 frames a second so it sees each tap
                         found = gemini.ask(PROMPT, video=v, video_fps=4).get("sounds")
                     except Exception:
@@ -154,6 +169,13 @@ def main():
                 # rather than guessing and cutting sounds in the wrong places.
                 log(led, f"Left sweep {f['name']} for tomorrow: Gemini couldn't read it")
                 continue
+            last = max([float(x.get("end", 0)) for x in found] or [0])
+            if last > dur + 3:  # times ran past the end of the recording: squeeze them back to fit
+                k = dur / last
+                for x in found:
+                    x["start"], x["end"] = float(x.get("start", 0)) * k, float(x.get("end", 0)) * k
+                    x["confidence"] = "medium" if x.get("confidence") == "high" else x.get("confidence")
+                log(led, f"Sweep {f['name']}: Gemini's times ran past the end, scaled by {k:.2f}")
             added = skipped = 0
             try:
                 edges = audio_edges(p)
