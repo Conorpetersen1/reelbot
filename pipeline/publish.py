@@ -9,6 +9,8 @@ def main():
         print("reelbot is paused (paused: true in config.yaml)"); return
     led = load_ledger()
     t = now()
+    led["publish_heartbeat"] = t.isoformat()  # the daily check warns if hourly posting stops running
+    save_ledger(led)
     today = led["queue"].get(t.date().isoformat(), [])
     for e in sorted(today, key=lambda e: e["slot"]):
         if e["status"] not in ("queued", "retry"):

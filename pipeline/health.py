@@ -32,6 +32,11 @@ def main():
         notify_once(led, f"budget-{month}", "💸 AI video budget reached for this month",
                     "The bot has stopped making new mascot clips until next month and is reusing existing ones. "
                     "To keep generating, top up fal and raise `fal_monthly_budget_usd` in config.yaml.")
+    hb = led.get("publish_heartbeat")
+    if hb and not CFG.get("paused") and (now() - dt.datetime.fromisoformat(hb)).total_seconds() > 3 * 3600:
+        notify_once(led, f"publish-stalled-{today}", "⚠️ reelbot: hourly posting has stopped running",
+                    f"The hourly **Publish** job last ran at {hb[:16].replace('T', ' ')}. Reels won't post until it "
+                    "runs again. Open the repo › Actions › Publish to see why, or tell Claude.")
     from . import reminders
     for r in reminders.active(led):
         if r["key"].startswith("expiry-soon-"):

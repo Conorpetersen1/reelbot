@@ -323,6 +323,9 @@ def main():
         f"<td>{'Mascot' if e['kind'] == 'ai' else 'Real'}</td><td>{E(e['hook'])}</td>"
         f"<td><span class='st st-{E(e['status'])}'>{E(e['status'])}</span></td></tr>" for d, e in upcoming) \
         or "<tr><td colspan=5 class='muted'>Nothing queued. Tomorrow's reels are built at 4pm.</td></tr>"
+    hb = led.get("publish_heartbeat")
+    if hb and not CFG.get("paused") and (now() - dt.datetime.fromisoformat(hb)).total_seconds() > 3 * 3600:
+        warn.append(f"Hourly posting last ran {hb[:16].replace('T', ' ')}: reels aren't posting. Tell Claude.")
     todo_items = [f"⚠️ {E(w)}" for w in warn] + [E(r["text"]) for r in rem]
     todo_html = ("<div class='card rem'><h2>To do</h2><ul class='todo'>" + "".join(f"<li>{t}</li>" for t in todo_items)
                  + "</ul></div>") if todo_items else \
