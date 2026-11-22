@@ -126,8 +126,8 @@ def main():
         when = "Yesterday" if d < today.isoformat() else "Today" if d == today.isoformat() else "Tomorrow"
         return (f"<details class='rv'><summary><b>{when} {E(e['time'])}</b> · {'Mascot' if e['kind']=='ai' else 'Real'}"
                 f" · {E(e['hook'])} <span class='st st-{E(e['status'])}'>{E(e['status'])}</span></summary>"
-                f"<div class='rvb'><iframe loading='lazy' src='https://drive.google.com/file/d/{E(fid)}/preview' "
-                f"allow='autoplay' title='Reel video'></iframe><div>"
+                f"<div class='rvb'><div class='vbox'><iframe loading='lazy' src='https://drive.google.com/file/d/{E(fid)}/preview' "
+                f"allow='autoplay' title='Reel video'></iframe></div><div>"
                 f"<div class='k'>a. Video</div><div>{E(e.get('category', '').replace('_', ' '))} · fit check "
                 f"{E(str(e.get('fit', '?')))}/5 · <a href='https://drive.google.com/file/d/{E(fid)}/view'>open in Drive</a>{link}</div>"
                 f"<div class='k'>b. Words on screen <span class='muted'>({E(src)})</span></div>"
@@ -260,9 +260,11 @@ th{{color:var(--ink2);font-weight:600}}td.n{{text-align:right;font-variant-numer
 ul{{margin:0;padding-left:18px}}summary{{cursor:pointer}}li{{margin:3px 0}}#tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
 .warn{{border-color:var(--bad);color:var(--bad);font-weight:600}}.rem{{border-color:var(--s1)}}
 details.rv{{border-top:1px solid var(--grid);padding:8px 0}}details.rv summary{{font-size:14px}}
-.rvb{{display:grid;grid-template-columns:240px 1fr;gap:16px;margin-top:10px}}.rvb iframe{{width:240px;height:427px;border:0;border-radius:10px;background:#000}}
+.rvb{{display:grid;grid-template-columns:270px 1fr;gap:16px;margin-top:10px}}
+.vbox{{width:270px;height:480px;overflow:hidden;border-radius:10px;background:#000}}
+.vbox iframe{{width:360px;height:640px;border:0;transform:scale(.75);transform-origin:0 0}}
 .rvb .k{{margin-top:8px;font-weight:600}}.rvb ul{{margin:2px 0}}.cap{{white-space:pre-wrap}}
-@media(max-width:600px){{.rvb{{grid-template-columns:1fr}}.rvb iframe{{width:100%;height:auto;aspect-ratio:9/16}}}}.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
+@media(max-width:600px){{.rvb{{grid-template-columns:1fr}}.vbox{{margin:0 auto}}}}.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
 </style></head><body><main>
 <h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting. · AI video spend this month: about US${fal_spent:.2f} of US${fal_cap} cap</div>
 {warn_html}{rem_html}<div class="tiles">
