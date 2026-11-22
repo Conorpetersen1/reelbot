@@ -1,0 +1,18 @@
+name: Check a post
+on:
+  workflow_dispatch:
+    inputs:
+      media_id: {description: "Instagram media id", required: true}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12", cache: pip}
+      - run: pip install -q -r requirements.txt
+      - env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          MEDIA_ID: ${{ inputs.media_id }}
+        run: python -m pipeline.ig_check "$MEDIA_ID"
