@@ -81,7 +81,8 @@
  "followers": {},
  "log": [
   "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []",
-  "2026-11-22 18:22 Generated 12 AI clips"
+  "2026-11-22 18:22 Generated 12 AI clips",
+  "2026-11-22 20:18 Gemini unavailable (Gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d); leaving remaining clips for the next run"
  ],
  "fal_spend": {
   "2026-11": 5.76
