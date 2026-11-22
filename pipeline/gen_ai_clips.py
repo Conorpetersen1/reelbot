@@ -56,7 +56,8 @@ def make_clip(led, t, ref, n):
 def main():
     led = load_ledger()
     # If you ran a batch by hand in the last few days, skip the automatic Monday one (saves money).
-    if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and days_since(led.get("last_batch")) < 5:
+    newest = max([c.get("created", "") for c in led["ai_clips"].values()] + [led.get("last_batch") or ""])
+    if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and newest and days_since(newest) < 5:
         log(led, "Skipped weekly AI clips: a batch was made in the last 5 days"); save_ledger(led); return
     ref = mascot_ref()
     made = 0
