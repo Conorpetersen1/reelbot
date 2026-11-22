@@ -30,6 +30,25 @@ Only state technique that matches these points (paraphrased from the manual):
 If a tip isn't covered above or in the topic's manual_ref, keep it general (feel, mindset, humour) rather
 than inventing new technique.
 
+## Niseko facts (checked Nov 2026; you may state these, nothing more specific)
+- Niseko United = four resorts on one mountain (Mt Annupuri): Grand Hirafu, Hanazono, Niseko Village, Annupuri.
+  They're linked, and one All Mountain Pass covers all four.
+- Snowfall averages around 15 metres a season ("around", never exact). It comes from cold Siberian air picking
+  up moisture over the Sea of Japan and dumping it on Hokkaido as light, dry powder.
+- Night riding: floodlit runs, and Hirafu is widely regarded as having Japan's best night riding.
+- Timing: January is widely seen as the powder peak. Late December to early February gets the most snow.
+  Christmas/New Year and Chinese New Year are the busiest and most expensive times.
+- Niseko Rules (official): only enter the backcountry through the gates; never duck boundary ropes; wear a helmet
+  and carry an avalanche beacon in the backcountry; no backcountry when gates are closed; never enter
+  off-limits areas.
+- Getting there: fly into New Chitose Airport (near Sapporo), then about 2-2.5 hours by bus or transfer in winter.
+- Mt Yotei: a near-symmetrical volcanic cone visible from the slopes. Onsen (hot springs) and ramen are part
+  of the culture. Lessons in English are widely available.
+- Japan is only a couple of hours' time difference from eastern Australia.
+NEVER state prices, specific businesses, flight routes or airlines, event dates, "snowiest in the world" claims,
+or anything about avalanche safety beyond the rules above (point people to the official Niseko Rules instead).
+Don't name or promote any ski school or employer.
+
 ## Trend-inspired ideas
 Copy the FORMAT only: the hook structure, pacing, text layout and the kind of joke or payoff. Never reuse another
 creator's footage, audio, exact wording, name or handle. Technique in a trend idea must still follow the rules above.

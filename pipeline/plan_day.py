@@ -30,7 +30,7 @@ def weighted_pick(cands, draw, kind, uses_of):
 
     def val(c):
         t, ref = c
-        feats = {"topic": t["id"], "kind": kind, "reuse": "reuse" if uses_of(ref) else "first",
+        feats = {"category": t.get("category", "tip"), "topic": t["id"], "kind": kind, "reuse": "reuse" if uses_of(ref) else "first",
                  "source": t.get("source_kind") or ("trend" if t["id"].startswith("x") else "bank")}
         return draw.score(feats) + (boost if is_fresh_trend(t) else 0)
     return max(cands, key=val)
@@ -331,6 +331,7 @@ def main():
                             "hook": reel["hook"], "description": reel["description"], "caption": reel["caption"],
                             "text_source": source, "status": "queued", "sound": sound["name"] if sound else None,
                             "style": style, "variation": var, "hook_type": learn.hook_type(reel["hook"]),
+                            "category": topic.get("category", "tip"),
                             "asked_hook": want_hook, "sound_kind": "sound" if sound else "none",
                             "source": topic.get("source_kind") or ("trend" if topic["id"].startswith("x") else "bank")})
             save_ledger(led)

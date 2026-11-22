@@ -24,8 +24,8 @@ import datetime as dt, math, re
 import numpy as np
 from .common import CFG, now
 
-GROUPS = ["topic", "kind", "style", "hook", "sound", "slot", "reuse", "source"]
-PRIOR_SD = {"topic": 0.6, "kind": 0.5, "style": 0.5, "hook": 0.5, "sound": 0.5, "slot": 0.4,
+GROUPS = ["category", "topic", "kind", "style", "hook", "sound", "slot", "reuse", "source"]
+PRIOR_SD = {"category": 0.5, "topic": 0.6, "kind": 0.5, "style": 0.5, "hook": 0.5, "sound": 0.5, "slot": 0.4,
             "reuse": 0.4, "source": 0.5}
 HOOK_TYPES = ["how_i", "why", "question", "pov", "number", "statement"]
 MATURE_HOURS = 72
@@ -55,7 +55,7 @@ def features(rec):
     """rec: a queue entry or post record. Returns {group: level}."""
     t = rec.get("time") or rec.get("slot_time") or "12:00"
     src = rec.get("source") or ("trend" if str(rec.get("topic", "")).startswith("x") else "bank")
-    return {"topic": rec.get("topic", "?"), "kind": rec.get("kind", "ai"), "style": rec.get("style") or "question",
+    return {"category": rec.get("category") or "tip", "topic": rec.get("topic", "?"), "kind": rec.get("kind", "ai"), "style": rec.get("style") or "question",
             "hook": rec.get("hook_type") or hook_type(rec.get("hook", "")),
             "sound": rec.get("sound_kind") or ("sound" if rec.get("sound") else "none"),
             "slot": t.split(":")[0].zfill(2), "reuse": "reuse" if rec.get("variation") else "first", "source": src}
