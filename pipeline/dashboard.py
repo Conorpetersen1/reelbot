@@ -157,6 +157,30 @@ def main():
                   f"<th class='n'>Confidence</th></tr>{learn_rows}</table></div>"
                   f"<h2 style='margin-top:14px'>Weekly analyst {('(' + E(an['date']) + ')') if an.get('date') else ''}</h2>"
                   f"<ul>{an_html}</ul><p class='muted' style='margin:8px 0 0'>Resting (few followers): {rested}</p></div>")
+    # ---- your clips and the moments the bot found in them
+    def mmss(x):
+        x = int(round(float(x))); return f"{x // 60}:{x % 60:02d}"
+    clip_items = sorted(led.get("clips", {}).values(), key=lambda c: c.get("added", ""), reverse=True)
+    tag_count = {}
+    for c in clip_items:
+        for sg in c.get("segments", []):
+            for tg in sg.get("tags", []):
+                tag_count[tg] = tag_count.get(tg, 0) + 1
+    clip_rows = "".join(
+        f"<tr><td>{E(c['name'])}<br><span class='muted'>{c.get('duration', 0):.0f}s · used {c.get('uses', 0)}×</span></td><td>"
+        + "<br>".join(f"{mmss(sg['start'])}–{mmss(sg['end'])} {E(sg.get('summary', ''))} "
+                      f"<span class='muted'>({E(', '.join(sg.get('tags', [])))}"
+                      f"{'' if sg.get('usable', True) else ', not used'}"
+                      f"{', mistake' if sg.get('technique') == 'mistake' else ''})</span>"
+                      for sg in c.get("segments", [])) + "</td></tr>"
+        for c in clip_items) or "<tr><td colspan=2 class='muted'>No clips analysed yet.</td></tr>"
+    moments = sum(len(c.get("segments", [])) for c in clip_items)
+    tags_txt = ", ".join(f"{k} {v}" for k, v in sorted(tag_count.items(), key=lambda kv: -kv[1])[:10])
+    clips_html = (f"<div class='card'><details><summary><b>Your clips</b> · {len(clip_items)} analysed · "
+                  f"{moments} moments found <span class='muted'>(tap to open)</span></summary>"
+                  f"<p class='muted'>Most common: {E(tags_txt) or 'n/a'}</p><div class='wrap'><table>"
+                  f"<tr><th>Clip</th><th>Moments the bot will use</th></tr>{clip_rows}</table></div>"
+                  f"</details></div>")
     log_rows = "".join(f"<li>{E(l)}</li>" for l in reversed(led.get("log", [])[-15:]))
     delta = fol_now - fol_week
     grad_html = "".join(
@@ -181,7 +205,7 @@ svg{{width:100%;height:auto;display:block}}.ln{{fill:none;stroke:var(--s1);strok
 table{{width:100%;border-collapse:collapse;font-size:13px}}th,td{{text-align:left;padding:7px 6px;border-bottom:1px solid var(--grid);vertical-align:top}}
 th{{color:var(--ink2);font-weight:600}}td.n{{text-align:right;font-variant-numeric:tabular-nums}}.wrap{{overflow-x:auto}}
 .st{{font-size:12px;padding:1px 7px;border-radius:9px;border:1px solid var(--grid)}}.st-posted{{color:var(--good)}}.st-failed,.st-vetoed{{color:var(--bad)}}
-ul{{margin:0;padding-left:18px}}li{{margin:3px 0}}#tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
+ul{{margin:0;padding-left:18px}}summary{{cursor:pointer}}li{{margin:3px 0}}#tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
 .warn{{border-color:var(--bad);color:var(--bad);font-weight:600}}.two{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}@media(max-width:720px){{.two{{grid-template-columns:1fr}}}}
 </style></head><body><main>
 <h1>@conor_sends trial reels</h1><div class="muted">Updated {now():%a %d %b %Y, %H:%M} · Delete a reel from Drive/queue to stop it posting. · AI video spend this month: about US${fal_spent:.2f} of US${fal_cap} cap</div>
@@ -204,6 +228,7 @@ ul{{margin:0;padding-left:18px}}li{{margin:3px 0}}#tip{{position:fixed;pointer-e
 <div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
 <div class="card"><h2>Today and tomorrow</h2><div class="wrap"><table><tr><th>Date</th><th>Time</th><th>Type</th><th>Hook</th><th>Status</th></tr>{queue_rows}</table></div></div>
 <div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
+{clips_html}
 <div class="card"><h2>Bot log</h2><ul class="muted">{log_rows or '<li>Nothing yet.</li>'}</ul></div>
 </main><div id="tip"></div>
 <script>
