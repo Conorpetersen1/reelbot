@@ -10,6 +10,11 @@ def _client():
     return anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"))
 
 
+def _text(msg):
+    """The reply's text. Newer Claude models can return thinking blocks before the text block."""
+    return "".join(getattr(b, "text", "") for b in msg.content if getattr(b, "type", "") == "text")
+
+
 def _json(text):
     """Parse the first JSON object in a model reply (tolerates code fences and text before/after it)."""
     t = (text or "").strip()
@@ -60,7 +65,7 @@ End the caption with one call to action from the rules (never promise to DM anyt
 Return only JSON: {{"hook": "...", "description": ["line", "line", "line"], "caption": "..."}}"""
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=800, system=RULES,
                                     messages=[{"role": "user", "content": prompt}])
-    out = _json(msg.content[0].text)
+    out = _json(_text(msg))
     out["hook"] = out["hook"].strip()[:60]
     out["description"] = [l.strip() for l in out["description"] if l.strip()][:4]
     return out
@@ -71,7 +76,8 @@ def review_prompt(topic, reel):
 Topic: {json.dumps(topic)}
 Reel: {json.dumps(reel)}
 Does the reel contradict any rule, add technique not supported by the rules or the topic's manual_ref,
-or contain anything misleading, unsafe, or off-brand? Return only JSON: {{"ok": true/false, "reason": "..."}}"""
+or contain anything misleading, unsafe, or off-brand? Line and caption lengths are checked in code, so don't
+reject for length or formatting. Return only JSON: {{"ok": true/false, "reason": "..."}}"""
 
 
 def check_reel(topic, reel):
@@ -89,7 +95,7 @@ def check_reel(topic, reel):
             print("Gemini review failed, using Claude:", e)
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=300, system=RULES,
                                     messages=[{"role": "user", "content": prompt}])
-    r = _json(msg.content[0].text)
+    r = _json(_text(msg))
     return bool(r.get("ok")), r.get("reason", "")
 
 
@@ -128,7 +134,7 @@ def analyze_trend(frame_paths, duration, cuts, note, existing_hooks):
     content.append({"type": "text", "text": trend_prompt("These frames are from", duration, cuts, note, existing_hooks)})
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=1500, system=RULES,
                                     messages=[{"role": "user", "content": content}])
-    return _json(msg.content[0].text)
+    return _json(_text(msg))
 
 
 TAGS = ["heelside", "toeside", "turns", "linked_turns", "carving", "sideslip", "falling_leaf", "powder", "park",
@@ -156,7 +162,7 @@ def fit_check_frames(frame_paths, reel):
     content.append({"type": "text", "text": fit_prompt(reel, "frames")})
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=300,
                                     messages=[{"role": "user", "content": content}])
-    return _json(msg.content[0].text)
+    return _json(_text(msg))
 
 
 def segment_prompt(duration, how):
@@ -181,7 +187,7 @@ def segment_clip_frames(frames_with_times, duration):
     content.append({"type": "text", "text": segment_prompt(duration, "These frames (with timestamps) are from")})
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=1500,
                                     messages=[{"role": "user", "content": content}])
-    return _json(msg.content[0].text)
+    return _json(_text(msg))
 
 
 def tag_clip(frame_paths, duration):
@@ -197,4 +203,4 @@ Return only JSON: {{"tags": [...], "summary": "one short sentence", "technique":
 "usable": true/false, "faces": true/false}}"""})
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=400,
                                     messages=[{"role": "user", "content": content}])
-    return _json(msg.content[0].text)
+    return _json(_text(msg))

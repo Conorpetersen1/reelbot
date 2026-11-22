@@ -62,7 +62,7 @@ def main():
     else:
         msg = llm._client().messages.create(model=CFG["claude_model"], max_tokens=1800, system=llm.RULES,
                                             messages=[{"role": "user", "content": prompt}])
-        out = llm._json(msg.content[0].text)
+        out = llm._json(llm._text(msg))
     added = []
     for idea in out.get("new_topics", [])[:6]:
         idea["description"] = idea["description"] if isinstance(idea["description"], list) else str(idea["description"]).split("|")

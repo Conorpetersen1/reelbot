@@ -40,6 +40,17 @@ def weighted_pick(cands, draw, kind, uses_of):
 TECHNIQUE = {"tip", "freestyle", "first_timer"}
 
 CTAS = ['Follow for more snowboard tips', 'Save this for your next day on snow', 'Send this to a mate who needs it', 'Follow for a tip every day', 'Save this and try it next run', 'Tag the mate you ride with']
+# Calls to action that suit reels that aren't technique tips
+LIFE_CTAS = ['Follow for more snow life', 'Send this to a mate who needs a snow trip', 'Tag the mate you ride with',
+             'Save this for your next snow trip', 'Follow for more from the mountain']
+
+
+def bank_caption(topic):
+    hook = topic["hook"].strip()
+    if hook[-1:] not in "?!.":
+        hook += "."
+    cta = random.choice(CTAS if topic.get("category") in ("tip", "first_timer", "freestyle") else LIFE_CTAS)
+    return f"{hook} {cta}. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor"
 
 MISTAKE = re.compile(r"^(why|stop|\d+ mistakes)|mistake|catch|fall|wash|skid|stuck|lock|chatter|crash|"
                      r"won't|wrong|excuse", re.I)
@@ -234,8 +245,7 @@ def text_for(topic, led, clip_note, hook_type=None):
             log(led, f"Writer error for {topic['id']}: {e}")
     # Fallback: the topic bank's own text, which was checked against the manual by hand.
     return {"hook": topic["hook"], "description": topic["description"].split("|"),
-            "caption": f"{topic['hook']} {random.choice(CTAS)}. "
-                       "#snowboarding #snowboardtips #learntosnowboard #snowboardinstructor"}, "topic_bank"
+            "caption": bank_caption(topic)}, "topic_bank"
 
 
 def main():
