@@ -94,7 +94,7 @@ def review(led):
         try:  # deleted files sit in Drive's bin for 30 days and can still be downloaded
             src = drive.download(b["id"], WORK / f"binned_{n}.mp4")
             parts.append(_labelled(src, f"BINNED {n}", WORK / f"lab_b{n}.mp4"))
-            scenes.append(f"BINNED {n}: {b.get('scene', '')}")
+            scenes.append(f"BINNED {n}: {b.get('scene', '')}" + (f" (Conor said: {b['why']})" if b.get("why") else ""))
         except Exception as e:
             print("Couldn't fetch binned clip", b.get("name"), e)
     kept = [(cid, c) for cid, c in led["ai_clips"].items() if not c.get("rejected")]

@@ -1,5 +1,5 @@
 """Build docs/index.html (served by GitHub Pages) from the ledger. Runs after every daily job."""
-import datetime as dt, html, re, statistics
+import datetime as dt, html, json, re, statistics
 from .common import ROOT, load_ledger, load_topics, now
 
 E = html.escape
@@ -123,7 +123,8 @@ def main():
         link = (f" · <a href='{E(post['permalink'])}'>open on Instagram</a>" if post.get("permalink") else "")
         lines = "".join(f"<li>{E(l)}</li>" for l in e.get("description", []))
         src = {"written": "written by Claude", "topic_bank": "from your topic list"}.get(e.get("text_source"), "")
-        when = "Yesterday" if d < today.isoformat() else "Today" if d == today.isoformat() else "Tomorrow"
+        dd = dt.date.fromisoformat(d)
+        when = {0: "Today", 1: "Tomorrow", -1: "Yesterday"}.get((dd - today).days, f"{dd:%a %d %b}")
         return (f"<details class='rv'><summary><b>{when} {E(e['time'])}</b> · {'Mascot' if e['kind']=='ai' else 'Real'}"
                 f" · {E(e['hook'])} <span class='st st-{E(e['status'])}'>{E(e['status'])}</span></summary>"
                 f"<div class='rvb'><div class='vbox'><iframe loading='lazy' src='https://drive.google.com/file/d/{E(fid)}/preview' "
@@ -134,11 +135,64 @@ def main():
                 f"<div><b>{E(e['hook'])}</b><ul>{lines}</ul></div>"
                 f"<div class='k'>c. Sound</div><div>{E(sound_name(e.get('sound')))}</div>"
                 f"<div class='k'>d. Caption</div><div class='cap'>{E(e.get('caption', ''))}</div>"
-                f"<div class='muted' style='margin-top:8px;font-size:12px'>Not happy? Delete it from Drive › queue to stop it, "
-                f"or tell Claude what to change.</div></div></div></details>")
+                f"{rate_form(d, e)}"
+                f"<div class='muted' style='margin-top:8px;font-size:12px'>To stop a reel posting, delete it from Drive › queue.</div>"
+                f"</div></div></details>")
+
+    def rate_form(d, e):
+        key = f"{d}#{e.get('slot')}"
+        got = (led.get("ratings") or {}).get(key, {})
+        rows = ""
+        for part, lab in (("video", "a. Video"), ("words", "b. Words"), ("sound", "c. Sound"), ("caption", "d. Caption")):
+            opts = "".join(f"<label><input type='radio' name='{part}' value='{n}'{' checked' if got.get(part) == n else ''}>"
+                           f"<span>{n}</span></label>" for n in range(1, 6))
+            rows += f"<div class='rrow'><span class='rl'>{lab}</span><span class='stars'>{opts}</span></div>"
+        done = ("✓ Saved: " + " · ".join(f"{p[0]}{got[p]}" for p in ("video", "words", "sound", "caption") if p in got)
+                if got else "")
+        return (f"<form class='rate' data-key='{E(key)}' data-hook='{E(e['hook'])}'><div class='k'>Your rating (1 = bad, 5 = great)</div>"
+                f"{rows}<textarea name='why' rows='2' placeholder='Why? e.g. hook too long, mascot looks off (optional)'>"
+                f"{E(got.get('why', ''))}</textarea>"
+                f"<div><button type='submit'>{'Update rating' if got else 'Save rating'}</button> "
+                f"<span class='saved'>{E(done)}</span></div>"
+                f"<div class='muted small hint' hidden>A GitHub page opened. Tap <b>Submit new issue</b> there; the bot picks it up within the hour.</div></form>")
     yday = (today - dt.timedelta(days=1)).isoformat()
     review_html = "".join(review_card(d, e) for d in (tomorrow, today.isoformat(), yday)
                           for e in led["queue"].get(d, [])) or "<p class='muted'>Nothing queued.</p>"
+    older = [(d, e) for d in sorted(led["queue"], reverse=True)
+             if (today - dt.date.fromisoformat(d)).days in range(2, 8) for e in led["queue"][d] if e["status"] == "posted"]
+    if older:
+        review_html += ("<details class='older'><summary><b>Earlier this week</b> <span class='muted'>"
+                        f"({len(older)} posted reels to rate)</span></summary>"
+                        + "".join(review_card(d, e) for d, e in older) + "</details>")
+    # ---- Your ratings vs the audience
+    from . import ratings as rt
+    rated = []
+    views = [((p.get("insights") or {}).get("views", 0)) for p in led["posts"].values() if p.get("insights")]
+    med_v = statistics.median(views) if views else 0
+    for key, r in sorted((led.get("ratings") or {}).items(), reverse=True):
+        e = rt.entry_for(led, key)
+        if not e:
+            continue
+        o = rt.overall(r)
+        post = led["posts"].get(e.get("media_id") or "", {})
+        v = (post.get("insights") or {}).get("views")
+        flag = ""
+        if v is not None and o is not None and views:
+            if o <= 2.5 and v > med_v:
+                flag = "⚑ you rated it low, the audience liked it"
+            elif o >= 4 and v < med_v:
+                flag = "⚑ you liked it, the audience didn't"
+        rated.append(f"<tr><td>{E(key.split('#')[0])}</td><td>{E(e['hook'])}</td>"
+                     + "".join(f"<td class='n'>{r.get(p, '–')}</td>" for p in rt.PARTS)
+                     + f"<td class='n'>{'–' if v is None else f'{v:,}'}</td><td class='small'>{E(flag)}"
+                     + (f"<br><span class='muted'>“{E(r['why'])}”</span>" if r.get("why") else "") + "</td></tr>")
+    ratings_html = ("<div class='card'><h2>Your ratings vs the audience</h2><div class='wrap'><table><tr><th>Date</th><th>Hook</th>"
+                    "<th class='n'>Video</th><th class='n'>Words</th><th class='n'>Sound</th><th class='n'>Caption</th>"
+                    "<th class='n'>Views</th><th></th></tr>" + "".join(rated) + "</table></div>"
+                    "<p class='muted small' style='margin:8px 0 0'>Your ratings steer quality and taste; followers stay the main "
+                    "signal. A ⚑ means you and the audience disagree, worth a look.</p></div>") if rated else \
+        ("<div class='card'><h2>Your ratings vs the audience</h2><p class='muted' style='margin:0'>No ratings yet. "
+         "Rate reels in the <a href='#review' data-go='review'>Review</a> tab.</p></div>")
 
     # ---- What the bot has learned from mascot clips Conor binned
     tst, binned = led.get("ai_taste") or {}, led.get("ai_binned", [])
@@ -332,6 +386,15 @@ details.rv{{border-top:1px solid var(--grid);padding:12px 0}}details.rv:first-of
 @media(max-width:640px){{.rvb{{grid-template-columns:1fr}}.vbox{{margin:0 auto}}}}
 #tip{{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}}
 code{{font-size:13px}}
+form.rate{{margin-top:14px;padding-top:12px;border-top:1px dashed var(--grid)}}
+.rrow{{display:flex;align-items:center;gap:10px;margin:6px 0}}.rl{{width:86px;font-size:14px}}
+.stars{{display:flex;gap:6px}}.stars input{{position:absolute;opacity:0;pointer-events:none}}
+.stars span{{display:inline-block;width:36px;height:34px;line-height:32px;text-align:center;border:1px solid var(--grid);border-radius:8px;cursor:pointer;font-variant-numeric:tabular-nums}}
+.stars input:checked+span{{background:var(--s1);border-color:var(--s1);color:#fff;font-weight:650}}
+.stars input:focus-visible+span{{outline:2px solid var(--s1);outline-offset:2px}}
+form.rate textarea{{width:100%;margin:8px 0;padding:8px;border:1px solid var(--grid);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px}}
+form.rate button{{font:inherit;font-size:14px;padding:7px 14px;border-radius:8px;border:0;background:var(--s1);color:#fff;cursor:pointer}}
+.saved{{color:var(--good);font-size:13px;margin-left:6px}}details.older{{border-top:1px solid var(--grid);padding-top:12px;margin-top:4px}}
 @media(max-width:480px){{.tabs{{gap:0;padding:0 4px}}.tabs button{{padding:11px 7px 9px;font-size:13.5px}}.badge{{margin-left:3px;padding:0 5px}}h1{{font-size:19px}}.card{{padding:14px}}}}
 </style></head><body>
 <header><div class="hin"><h1>@conor_sends · trial reels</h1>
@@ -375,6 +438,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 <div class="card"><h2>Views by posting day</h2>{line_chart(daily_pts, "Views by posting day")}</div>
 </div><div class="gap"></div>
 {learn_html}
+{ratings_html}
 <div class="card"><h2>Best topics (avg score)</h2>{bar_chart(board, "Best topics")}
 <p class="muted small" style="margin:8px 0 0">Score = views + 20×shares + 10×saves. The planner picks high scorers more often.</p></div>
 <div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
@@ -413,6 +477,21 @@ let start=location.hash.slice(1);
 if(!start){{try{{start=localStorage.getItem('tab')||'home'}}catch(e){{start='home'}}}}
 show(start);window.scrollTo(0,0);
 const first=document.querySelector('details.rv'); if(first) first.open=true;
+const REPO={json.dumps(rt.repo())};
+document.querySelectorAll('form.rate').forEach(f=>f.addEventListener('submit',ev=>{{
+  ev.preventDefault();
+  const parts=['video','words','sound','caption'], lines=['reel: '+f.dataset.key];
+  let any=false;
+  parts.forEach(p=>{{const c=f.querySelector('input[name='+p+']:checked'); if(c){{lines.push(p+': '+c.value); any=true}}}});
+  const why=f.querySelector('textarea').value.trim();
+  if(!any && !why){{const h=f.querySelector('.hint');h.textContent='Pick at least one score first.';h.hidden=false;return}}
+  lines.push('why: '+why);
+  const url='https://github.com/'+REPO+'/issues/new?labels=rating'
+    +'&title='+encodeURIComponent('Rating '+f.dataset.key+': '+f.dataset.hook)
+    +'&body='+encodeURIComponent(lines.join('\\n'));
+  window.open(url,'_blank','noopener');
+  f.querySelector('.hint').hidden=false;
+}}));
 const tip=document.getElementById('tip');
 document.addEventListener('mousemove',e=>{{const t=e.target.closest('[data-tip]');
  if(!t){{tip.style.display='none';return}}tip.textContent=t.dataset.tip;tip.style.display='block';

@@ -21,7 +21,7 @@ def last_used_topic(led, tid):
     return max([e["date"] for d in led["queue"].values() for e in d if e["topic"] == tid] or [""])
 
 
-def weighted_pick(cands, draw, kind, uses_of):
+def weighted_pick(cands, draw, kind, uses_of, led=None):
     """Pick the candidate the learner's current Thompson draw rates highest for followers.
     Fresh trend ideas get a head start because trends fade."""
     if not cands:
@@ -32,7 +32,9 @@ def weighted_pick(cands, draw, kind, uses_of):
         t, ref = c
         feats = {"category": t.get("category", "tip"), "topic": t["id"], "kind": kind, "reuse": "reuse" if uses_of(ref) else "first",
                  "source": t.get("source_kind") or ("trend" if t["id"].startswith("x") else "bank")}
-        return draw.score(feats) + (boost if is_fresh_trend(t) else 0)
+        from . import ratings
+        taste = ratings.bonus(led, t) if led else 0.0  # Conor's own 1-5 ratings: a small nudge
+        return draw.score(feats) + (boost if is_fresh_trend(t) else 0) + taste
     return max(cands, key=val)
 
 
@@ -80,12 +82,12 @@ def choose(led, topics, n_ai, n_real, draw):
     # AI slots: topics that have unused AI clips in the library
     for _ in range(n_ai):
         stock = [(by_id[c["topic"]], cid) for cid, c in led["ai_clips"].items()
-                 if c["uses"] < CFG["ai_clip_max_uses"] and not c.get("rejected")
+                 if c["uses"] < CFG["ai_clip_max_uses"] + (1 if c.get("rated_high") else 0) and not c.get("rejected")
                  and c["topic"] in by_id and c["topic"] not in today
                  and not any(pk[2] == cid for pk in picks)]
         cands = [x for x in stock if x[0]["id"] not in used_topics]
         # If every topic with clips is on cooldown, reuse the one rested longest rather than skip the slot
-        pick = weighted_pick(cands, draw, "ai", lambda cid: led["ai_clips"][cid]["uses"]) or (min(stock, key=lambda x: last_used_topic(led, x[0]["id"]))
+        pick = weighted_pick(cands, draw, "ai", lambda cid: led["ai_clips"][cid]["uses"], led) or (min(stock, key=lambda x: last_used_topic(led, x[0]["id"]))
                                               if stock else None)
         if not pick:
             n_real += 1  # no AI stock: fall back to a real clip
@@ -114,7 +116,7 @@ def choose(led, topics, n_ai, n_real, draw):
         # Prefer topics whose angle matches the riding: mistakes -> "why do I...", good riding -> "how I fixed..."
         cands = [x for x in cands if technique_ok(x[0], c)] or cands
         rested = [x for x in cands if x[0]["id"] not in used_topics]
-        pick = weighted_pick(rested, draw, "real", lambda ref: segments(led["clips"][ref[0]])[ref[1]].get("uses", 0)) or (min(cands, key=lambda x: last_used_topic(led, x[0]["id"]))
+        pick = weighted_pick(rested, draw, "real", lambda ref: segments(led["clips"][ref[0]])[ref[1]].get("uses", 0), led) or (min(cands, key=lambda x: last_used_topic(led, x[0]["id"]))
                                                if cands else None)
         if pick:
             picks.append(("real", pick[0], pick[1])); used_topics.add(pick[0]["id"]); today.add(pick[0]["id"])
@@ -181,10 +183,12 @@ def pick_sound(led, lib):
     """Newer sounds are used much more (trends fade); less-used sounds are preferred."""
     fresh_days = CFG.get("sounds", {}).get("fresh_days", 14)
     uses = led.get("sound_uses", {})
+    from . import ratings
+    lib = [s for s in lib if ratings.sound_weight(led, s["name"]) > 0] or lib  # sounds Conor rated 1-2 are dropped
     w = []
     for s in lib:
         age = days_since(s["created"].replace("Z", "+00:00")) if s.get("created") else 30
-        w.append((4 if age <= fresh_days else 1) / (1 + uses.get(s["name"], 0)))
+        w.append((4 if age <= fresh_days else 1) / (1 + uses.get(s["name"], 0)) * ratings.sound_weight(led, s["name"]))
     s = dict(random.choices(lib, weights=w)[0])
     path = WORK / f"snd_{s['name']}"
     if not path.exists():
@@ -240,7 +244,8 @@ def text_for(topic, led, clip_note, hook_type=None):
                key=lambda p: -(p.get("insights") or {}).get("views", 0))]
     for _ in range(2):
         try:
-            reel = llm.write_reel(topic, recent, winners, clip_note, hook_type)
+            from . import ratings
+            reel = llm.write_reel(topic, recent, winners, clip_note, hook_type, taste=ratings.writer_notes(led))
             ok, why = llm.check_reel(topic, reel)
             if ok:
                 return reel, "written"

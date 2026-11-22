@@ -42,7 +42,7 @@ HOOK_GUIDE = {"how_i": 'starts "How I..." / "The one cue that..." (a personal fi
               "statement": "a bold statement or hot take, no question mark"}
 
 
-def write_reel(topic, recent_hooks, winning_hooks, clip_note, hook_type=None):
+def write_reel(topic, recent_hooks, winning_hooks, clip_note, hook_type=None, taste=""):
     """Returns {"hook": str, "description": [str], "caption": str}."""
     if os.environ.get("LOCAL_LLM"):  # offline test mode: use the topic bank text
         return {"hook": topic["hook"], "description": topic["description"].split("|"),
@@ -62,6 +62,7 @@ Hooks that performed best so far (learn from their style, don't copy):
 
 {("Write the hook in this format (the learner is testing it): " + HOOK_GUIDE[hook_type] + "."
   if hook_type in HOOK_GUIDE else "You can reuse the topic's hook or write a fresh variation in the same spirit.")}
+{taste}
 The description must say the same thing as the topic's description, reworded if you like, never adding new technique.
 End the caption with one call to action from the rules (never promise to DM anything).
 
