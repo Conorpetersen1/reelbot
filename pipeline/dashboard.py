@@ -421,7 +421,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 <div class="card"><div class="k">Spent this month</div><div class="v">A${us['aud_total']['month']:,.2f}</div><div class="d muted">A${us['aud_total']['total']:,.2f} on the project so far</div></div>
 </div>
 <div class="card"><h2>Posting schedule</h2><div class="wrap"><table><tr><th>Day</th><th>Time</th><th>Type</th><th>Hook</th><th>Status</th></tr>{sched_rows}</table></div>
-<p class="muted small" style="margin:8px 0 0">Reels go out at about 5 past the hour. Check them in the <a href="#review" data-go="review">Review</a> tab.</p></div>
+<p class="muted small" style="margin:8px 0 0">Reels go out at the first hourly check after their time (about :17 past, sometimes later). Check them in the <a href="#review" data-go="review">Review</a> tab.</p></div>
 <div class="card"><h2>Graduate these in the Instagram app</h2><ul>{grad_html}</ul>
 <p class="muted small" style="margin:8px 0 0">Best 5 of the last 10 days by views, shares and saves. Open the reel in the app, then share it to your profile.</p></div>
 <div class="card muted small">Every Monday: check Instagram › Settings › <b>Account Status</b> for recommendation or originality warnings.</div>

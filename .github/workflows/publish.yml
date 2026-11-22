@@ -1,6 +1,6 @@
 name: Publish
 on:
-  schedule: [{cron: "5 * * * *"}]   # every hour; posts at most one due reel
+  schedule: [{cron: "17 * * * *"}]   # every hour at :17 (quieter than :05 on GitHub); posts at most one due reel
   workflow_dispatch:
 permissions: {contents: write, issues: write}
 concurrency: {group: ledger, cancel-in-progress: false}
