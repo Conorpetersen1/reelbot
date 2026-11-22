@@ -66,9 +66,6 @@ Instagram app, and drop new clips into Drive › reelbot › real.
 2. Go to Settings › Secrets and variables › Actions › New repository secret, and add:
    `ANTHROPIC_API_KEY`, `FAL_KEY`, `GEMINI_API_KEY`, `IG_ACCESS_TOKEN`, `IG_USER_ID`, `GOOGLE_CLIENT_ID`,
    `GOOGLE_CLIENT_SECRET`, `GOOGLE_REFRESH_TOKEN`, `GDRIVE_FOLDER_ID`. Add them under **Actions**, not Agents.
-   `GOOGLE_REFRESH_TOKEN`, `GDRIVE_FOLDER_ID`, `GH_PAT`.
-   - **GH_PAT** lets the bot save the refreshed Instagram token. Create it under GitHub › Settings › Developer settings ›
-     Fine-grained tokens, limited to this repo only, with the permission **Secrets: Read and write**.
 3. Go to Settings › Actions › General › Workflow permissions and choose **Read and write**.
 4. Go to Settings › Pages, set Source to **Deploy from a branch**, choose branch `main` and folder `/docs`.
    That page is your dashboard, so bookmark it on your phone.
