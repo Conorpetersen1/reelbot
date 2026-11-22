@@ -153,7 +153,10 @@ def sound_library(led):
         n = f["name"].lower()
         if not n.endswith(AUDIO + VIDEO):
             continue
-        out.append({"id": f["id"], "name": f["name"], "created": f.get("createdTime"), "video": n.endswith(VIDEO)})
+        created = f.get("createdTime")
+        if created and days_since(created.replace("Z", "+00:00")) > CFG.get("sounds", {}).get("max_age_days", 45):
+            continue  # old trend: retired from rotation
+        out.append({"id": f["id"], "name": f["name"], "created": created, "video": n.endswith(VIDEO)})
     return out
 
 

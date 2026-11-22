@@ -24,11 +24,11 @@ def _json(text):
     return json.loads(m.group(0))
 
 
-def small_video(path):
+def small_video(path, max_seconds=90, fps=15):
     """Shrink a phone screen recording so it fits in one request (a few MB, keeps the sound)."""
     out = WORK / (path.stem + "_g.mp4")
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(path), "-t", "90",
-                    "-vf", "scale=-2:640,fps=15", "-c:v", "libx264", "-preset", "veryfast", "-crf", "32",
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(path), "-t", str(max_seconds),
+                    "-vf", f"scale=-2:640,fps={fps}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "32",
                     "-c:a", "aac", "-b:a", "64k", "-ac", "1", str(out)], check=True)
     return out
 

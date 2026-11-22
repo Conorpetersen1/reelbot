@@ -26,6 +26,8 @@ jobs:
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: pip install -q -r requirements.txt
       - run: python -m pipeline.tag_clips
+      - run: python -m pipeline.sound_sweep
+        continue-on-error: true
       - run: python -m pipeline.trend_scan
         continue-on-error: true
       - run: python -m pipeline.insights

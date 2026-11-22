@@ -56,6 +56,7 @@ sounds:
   sound_volume: 0.9
   clip_sound_volume: 0.25 # your clip's own sound underneath (0 = off)
   fresh_days: 14          # sounds added in the last 14 days get used about 4x as often
+  max_age_days: 45        # sounds older than this are retired from rotation
 
 # View alerts: you get a GitHub notification (email / GitHub app) when a trial reel passes each of these
 alert_views: [2000, 10000, 50000]
@@ -72,6 +73,8 @@ drive:
   mascot: mascot        # mascot options; delete all but your favourite
   mascot_source: mascot_source  # put a photo of yourself here to base the mascot on
   audio: audio          # sounds to put on reels: audio files or screen recordings (sound gets pulled out)
+  sound_sweeps: sound_sweeps   # screen recordings of you scrolling trending audio
+  sound_sweeps_done: sound_sweeps_done
   trends: trends        # save trending reels here from your phone (screen recording or download)
   trends_done: trends_done
 
