@@ -1,0 +1,48 @@
+# reelbot settings. Change these and commit, and the next run picks them up.
+
+timezone: Australia/Sydney          # switch to Asia/Tokyo while you're in Niseko if you want Japan-time posting
+
+# Reels per day. Start low: Instagram's trial reel cap varies by account and isn't published.
+reels_per_day:
+  ai: 3
+  real: 2
+# Local posting times (one reel per slot, in order). Needs at least ai + real entries.
+post_times: ["07:30", "11:30", "15:30", "18:30", "20:30"]
+
+graduation: MANUAL                  # MANUAL = nothing reaches followers unless you graduate it in the app
+
+# Content rules
+topic_cooldown_days: 6              # don't reuse the same topic within this many days
+real_clip_cooldown_days: 4          # don't reuse the same real clip within this many days
+ai_clip_max_uses: 3                 # retire an AI clip after this many reels
+
+# AI clips (fal.ai). Check the model pages on fal.ai if a name changes.
+ai_clips_per_week: 25
+mascot_style: >-
+  original cute blocky low-poly 3D cartoon snowboarder character, chunky square head, beanie and goggles,
+  bright jacket, toy-like proportions, clean stylised game-like render, vertical 9:16 framing
+image_model: fal-ai/flux/dev                              # mascot designs
+scene_model: fal-ai/flux-pro/kontext                      # puts the chosen mascot into each scene
+video_model: fal-ai/kling-video/v2.5-turbo/pro/image-to-video
+video_seconds: 5
+
+# Claude (writing + clip tagging)
+claude_model: claude-sonnet-5-5
+
+# Instagram
+ig_api_version: v25.0
+
+# Google Drive folder names (created inside the folder you share with the bot)
+drive:
+  real: real            # you drop your own clips here
+  ai_library: ai_library
+  queue: queue          # tomorrow's reels; delete one to veto it
+  posted: posted
+  mascot: mascot        # mascot options; delete all but your favourite
+  audio: audio          # optional: royalty-free tracks you own
+  trends: trends        # save trending reels here from your phone (screen recording or download)
+  trends_done: trends_done
+
+# Trend inbox
+trend_boost_days: 7     # new trend-based ideas get picked more often for this many days
+trend_ai_clips: 2       # AI clips made straight away for each new trend idea (trends go stale fast)

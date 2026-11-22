@@ -1,0 +1,6 @@
+pyyaml
+requests
+pillow
+anthropic
+google-api-python-client
+google-auth
