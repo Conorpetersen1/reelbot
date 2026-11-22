@@ -1,5 +1,455 @@
 {
- "clips": {},
+ "clips": {
+  "145cJw8xEgFvbSkyJxevc68tYC28v6_Cj": {
+   "name": "577afa38-4645-4f26-a2c5-65a5e3f57fc2.mp4",
+   "duration": 3.947392,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:26:30.840030+11:00",
+   "segments": [
+    {
+     "start": 0.0,
+     "end": 3.95,
+     "tags": [
+      "powder",
+      "turns",
+      "scenery"
+     ],
+     "summary": "Conor snowboards down a snowy slope making turns in deep powder.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "powder",
+    "scenery",
+    "turns"
+   ],
+   "usable": true
+  },
+  "1gI21fcS5IU7oCaUtZVjLIDZ-seVhNaKo": {
+   "name": "IMG_1307.mov",
+   "duration": 6.475,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:27:03.292472+11:00",
+   "segments": [
+    {
+     "start": 0.0,
+     "end": 6.0,
+     "tags": [
+      "jump",
+      "powder",
+      "scenery"
+     ],
+     "summary": "Conor drops off a snowy ridge into deep powder and rides down smoothly.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "jump",
+    "powder",
+    "scenery"
+   ],
+   "usable": true
+  },
+  "1lYZ3uCxYX1HF1uIYV5EzW51G-6MgvPtZ": {
+   "name": "9c21b263-663f-41bf-be52-32d34a9d222b.mov",
+   "duration": 18.343764,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:27:13.445764+11:00",
+   "segments": [
+    {
+     "start": 10.0,
+     "end": 18.0,
+     "tags": [
+      "powder",
+      "turns"
+     ],
+     "summary": "Snowboarder drops in and turns through deep powder snow.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "powder",
+    "turns"
+   ],
+   "usable": true
+  },
+  "1Pkuphc4vrcKL0JVqsThghhn4zlAk9uVc": {
+   "name": "IMG_1634.MOV",
+   "duration": 6.573333,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:27:44.129436+11:00",
+   "segments": [
+    {
+     "start": 1.0,
+     "end": 6.0,
+     "tags": [
+      "jump",
+      "powder",
+      "scenery"
+     ],
+     "summary": "Snowboarder drops off a snow ledge landing cleanly into deep powder.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "jump",
+    "powder",
+    "scenery"
+   ],
+   "usable": true
+  },
+  "1Kh4h2ngNpg9EsTGVNgrL0wHf5tLwUVGW": {
+   "name": "21aa850051ab4c0a8dc4224f929e935f.mov",
+   "duration": 10.335,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:27:58.761460+11:00",
+   "segments": [
+    {
+     "start": 0.0,
+     "end": 9.0,
+     "tags": [
+      "powder",
+      "turns",
+      "linked_turns"
+     ],
+     "summary": "Conor rides smoothly through deep powder snow, making fluid turns.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "linked_turns",
+    "powder",
+    "turns"
+   ],
+   "usable": true
+  },
+  "1sLiV4RLrx7Y_jFLKWU7f9xzMyren--8x": {
+   "name": "IMG_1659.MOV",
+   "duration": 13.166667,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:28:25.966598+11:00",
+   "segments": [
+    {
+     "start": 3.0,
+     "end": 10.0,
+     "tags": [
+      "powder",
+      "turns",
+      "linked_turns"
+     ],
+     "summary": "Conor smoothly rides through deep powder snow toward the camera.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "linked_turns",
+    "powder",
+    "turns"
+   ],
+   "usable": true
+  },
+  "1GH7BLc7qa1sWkjc5m-E8ozDi6KEXiQml": {
+   "name": "F0BB0BE8-D1DD-458F-A54F-88A91D205C6A.mp4",
+   "duration": 11.3,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:28:47.443505+11:00",
+   "segments": [
+    {
+     "start": 1.0,
+     "end": 10.0,
+     "tags": [
+      "jump",
+      "powder",
+      "scenery"
+     ],
+     "summary": "Conor executes a big jump off a snow feature into deep powder and rides away through the trees.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "jump",
+    "powder",
+    "scenery"
+   ],
+   "usable": true
+  },
+  "14Lenrx9YxlGxSfNDiG69FQ5gbsxKxaNe": {
+   "name": "IMG_1658.MOV",
+   "duration": 34.866667,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:29:24.263831+11:00",
+   "segments": [
+    {
+     "start": 6.0,
+     "end": 15.0,
+     "tags": [
+      "powder",
+      "turns",
+      "linked_turns"
+     ],
+     "summary": "Conor rides through deep powder toward the camera while making smooth turns.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    },
+    {
+     "start": 20.0,
+     "end": 28.0,
+     "tags": [
+      "powder",
+      "turns",
+      "linked_turns"
+     ],
+     "summary": "Conor continues making turns through the powder snow down the open slope.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "linked_turns",
+    "powder",
+    "turns"
+   ],
+   "usable": true
+  },
+  "1k0XE-2S4Y1NLB51XK0FcCA9gHEnAAw7q": {
+   "name": "IMG_1661.MOV",
+   "duration": 20.32,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:29:51.388757+11:00",
+   "segments": [
+    {
+     "start": 5.0,
+     "end": 14.0,
+     "tags": [
+      "powder",
+      "turns",
+      "linked_turns"
+     ],
+     "summary": "Conor snowboards smoothly down a slope in deep powder toward the camera.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "linked_turns",
+    "powder",
+    "turns"
+   ],
+   "usable": true
+  },
+  "12UMIaA61TUn85TvDqegh6WZcXQo5tsw2": {
+   "name": "IMG_1660.MOV",
+   "duration": 15.47,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:30:26.626389+11:00",
+   "segments": [
+    {
+     "start": 2.0,
+     "end": 7.5,
+     "tags": [
+      "powder",
+      "turns"
+     ],
+     "summary": "Rider drops in and carves through deep powder snow.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "powder",
+    "turns"
+   ],
+   "usable": true
+  },
+  "1qbug0CtBuEZjhig-dxdZeRbwjyB2oJ8u": {
+   "name": "IMG_1770.MOV",
+   "duration": 25.7,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:31:02.882649+11:00",
+   "segments": [
+    {
+     "start": 3.0,
+     "end": 11.0,
+     "tags": [
+      "turns",
+      "linked_turns",
+      "powder",
+      "scenery"
+     ],
+     "summary": "Conor drops in and rides down a steep powder slope against a scenic mountain backdrop.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "linked_turns",
+    "powder",
+    "scenery",
+    "turns"
+   ],
+   "usable": true
+  },
+  "1vkZS2aTNKvIxIXC5Tg1fZ4DE0l4D9WHn": {
+   "name": "IMG_1738.MOV",
+   "duration": 22.64,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:31:27.739475+11:00",
+   "segments": [
+    {
+     "start": 3.0,
+     "end": 11.0,
+     "tags": [
+      "powder",
+      "turns",
+      "linked_turns"
+     ],
+     "summary": "Snowboarder making turns down an off-piste slope through fresh powder.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    },
+    {
+     "start": 11.0,
+     "end": 22.0,
+     "tags": [
+      "powder",
+      "turns",
+      "carving"
+     ],
+     "summary": "Snowboarder carves close to the camera creating a massive powder spray explosion.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "carving",
+    "linked_turns",
+    "powder",
+    "turns"
+   ],
+   "usable": true
+  },
+  "14GwU4uXmZwvwJiwJjHS2wvcKie690Tfp": {
+   "name": "IMG_1771.MOV",
+   "duration": 12.4,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:31:45.928759+11:00",
+   "segments": [
+    {
+     "start": 3.0,
+     "end": 12.0,
+     "tags": [
+      "powder",
+      "turns",
+      "scenery"
+     ],
+     "summary": "Riding smoothly through deep powder snow with scenic mountain views.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "powder",
+    "scenery",
+    "turns"
+   ],
+   "usable": true
+  },
+  "1ZbNhfC52tNsGHFsWRVurLj5-Ti3IlJyx": {
+   "name": "IMG_1772.MOV",
+   "duration": 12.466667,
+   "uses": 0,
+   "last_used": null,
+   "added": "2026-11-22T20:32:07.794436+11:00",
+   "segments": [
+    {
+     "start": 0.0,
+     "end": 7.0,
+     "tags": [
+      "powder",
+      "turns",
+      "linked_turns",
+      "scenery"
+     ],
+     "summary": "Conor rides smoothly down an open powder slope making fluid turns.",
+     "technique": "good",
+     "usable": true,
+     "uses": 0,
+     "last_used": null
+    }
+   ],
+   "analysed_by": "gemini",
+   "tags": [
+    "linked_turns",
+    "powder",
+    "scenery",
+    "turns"
+   ],
+   "usable": true
+  }
+ },
  "ai_clips": {
   "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3": {
    "name": "s05_20261122_00.mp4",
@@ -82,7 +532,22 @@
  "log": [
   "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []",
   "2026-11-22 18:22 Generated 12 AI clips",
-  "2026-11-22 20:18 Gemini unavailable (Gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d); leaving remaining clips for the next run"
+  "2026-11-22 20:18 Gemini unavailable (Gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d); leaving remaining clips for the next run",
+  "2026-11-22 20:26 577afa38-4645-4f26-a2c5-65a5e3f57fc2.mp4 (4s, gemini): 1 usable moments [['powder', 'turns']]",
+  "2026-11-22 20:27 IMG_1307.mov (6s, gemini): 1 usable moments [['jump', 'powder']]",
+  "2026-11-22 20:27 9c21b263-663f-41bf-be52-32d34a9d222b.mov (18s, gemini): 1 usable moments [['powder', 'turns']]",
+  "2026-11-22 20:27 IMG_1634.MOV (7s, gemini): 1 usable moments [['jump', 'powder']]",
+  "2026-11-22 20:27 21aa850051ab4c0a8dc4224f929e935f.mov (10s, gemini): 1 usable moments [['powder', 'turns']]",
+  "2026-11-22 20:28 IMG_1659.MOV (13s, gemini): 1 usable moments [['powder', 'turns']]",
+  "2026-11-22 20:28 F0BB0BE8-D1DD-458F-A54F-88A91D205C6A.mp4 (11s, gemini): 1 usable moments [['jump', 'powder']]",
+  "2026-11-22 20:29 IMG_1658.MOV (35s, gemini): 2 usable moments [['powder', 'turns'], ['powder', 'turns']]",
+  "2026-11-22 20:29 IMG_1661.MOV (20s, gemini): 1 usable moments [['powder', 'turns']]",
+  "2026-11-22 20:30 IMG_1660.MOV (15s, gemini): 1 usable moments [['powder', 'turns']]",
+  "2026-11-22 20:31 IMG_1770.MOV (26s, gemini): 1 usable moments [['turns', 'linked_turns']]",
+  "2026-11-22 20:31 IMG_1738.MOV (23s, gemini): 2 usable moments [['powder', 'turns'], ['powder', 'turns']]",
+  "2026-11-22 20:31 IMG_1771.MOV (12s, gemini): 1 usable moments [['powder', 'turns']]",
+  "2026-11-22 20:32 IMG_1772.MOV (12s, gemini): 1 usable moments [['powder', 'turns']]",
+  "2026-11-22 20:32 Gemini unavailable (Extra data: line 13 column 4 (char 268)); leaving remaining clips for the next run"
  ],
  "fal_spend": {
   "2026-11": 5.76
