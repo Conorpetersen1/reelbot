@@ -2819,7 +2819,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T19:51:27.408789+11:00",
+   "insights_at": "2026-11-23T20:02:38.896029+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2884,6 +2884,13 @@
      1103,
      1,
      7
+    ],
+    [
+     10.42,
+     1442,
+     1118,
+     1,
+     7
     ]
    ],
    "est_follows": 0.0
@@ -2914,7 +2921,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T19:46:31.187370+11:00",
+   "insights_at": "2026-11-23T20:02:39.842454+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -2965,6 +2972,13 @@
      1634,
      1,
      1
+    ],
+    [
+     6.75,
+     2246,
+     1634,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -2980,7 +2994,7 @@
    "posted_at": "2026-11-23T16:01:33.598859+11:00",
    "file": "2026-11-23_3_s05.mp4",
    "insights": {
-    "views": 278,
+    "views": 280,
     "reach": 217,
     "likes": 1,
     "comments": 0,
@@ -2998,7 +3012,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T19:51:29.886469+11:00",
+   "insights_at": "2026-11-23T20:02:40.709572+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3026,6 +3040,13 @@
      3.0,
      256,
      195,
+     0,
+     0
+    ],
+    [
+     4.02,
+     280,
+     217,
      0,
      0
     ]
@@ -3058,7 +3079,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T19:56:27.791025+11:00",
+   "insights_at": "2026-11-23T20:02:41.760347+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3072,6 +3093,13 @@
      0.99,
      144,
      97,
+     0,
+     0
+    ],
+    [
+     2.01,
+     165,
+     138,
      0,
      0
     ]
@@ -3283,9 +3311,13 @@
   [
    "2026-11-23T19:01+11:00",
    944
+  ],
+  [
+   "2026-11-23T20:02+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-23T19:01:31.002954+11:00",
+ "publish_heartbeat": "2026-11-23T20:02:38.003293+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
