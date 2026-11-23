@@ -3026,7 +3026,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T05:41:29.196150+11:00",
+   "insights_at": "2026-11-24T06:01:40.703850+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3168,6 +3168,13 @@
      1143,
      1,
      7
+    ],
+    [
+     20.4,
+     1480,
+     1145,
+     1,
+     8
     ]
    ],
    "est_follows": 0.0
@@ -3198,7 +3205,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T05:36:29.605576+11:00",
+   "insights_at": "2026-11-24T06:01:41.638725+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3326,6 +3333,13 @@
      1641,
      1,
      1
+    ],
+    [
+     16.73,
+     2259,
+     1641,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3359,7 +3373,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T05:56:31.017100+11:00",
+   "insights_at": "2026-11-24T06:01:43.300964+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3466,6 +3480,13 @@
      268,
      0,
      0
+    ],
+    [
+     14.0,
+     362,
+     271,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3478,7 +3499,7 @@
    "posted_at": "2026-11-23T18:02:01.012479+11:00",
    "file": "2026-11-23_4_s01.mp4",
    "insights": {
-    "views": 222,
+    "views": 223,
     "reach": 189,
     "likes": 0,
     "comments": 0,
@@ -3496,7 +3517,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T05:51:27.911109+11:00",
+   "insights_at": "2026-11-24T06:01:44.261203+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3589,6 +3610,13 @@
      183,
      4,
      0
+    ],
+    [
+     12.0,
+     223,
+     189,
+     4,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3601,7 +3629,7 @@
    "posted_at": "2026-11-23T22:01:36.441852+11:00",
    "file": "2026-11-23_5_t31.mp4",
    "insights": {
-    "views": 188,
+    "views": 191,
     "reach": 157,
     "likes": 2,
     "comments": 0,
@@ -3619,7 +3647,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T05:51:28.906868+11:00",
+   "insights_at": "2026-11-24T06:01:45.332524+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -3681,6 +3709,13 @@
     [
      7.0,
      187,
+     157,
+     0,
+     0
+    ],
+    [
+     8.0,
+     191,
      157,
      0,
      0
@@ -3949,9 +3984,13 @@
   [
    "2026-11-24T05:01+11:00",
    944
+  ],
+  [
+   "2026-11-24T06:01+11:00",
+   945
   ]
  ],
- "publish_heartbeat": "2026-11-24T05:01:35.422022+11:00",
+ "publish_heartbeat": "2026-11-24T06:01:39.280540+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
