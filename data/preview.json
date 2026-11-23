@@ -1,0 +1,539 @@
+[
+ {
+  "kind": "ai",
+  "topic": "t23",
+  "category": "tip",
+  "footage": "an animated blocky cartoon snowboarder: mascot hitting a small kicker, tucking up compact in the air, landing clean",
+  "candidates": [
+   {
+    "angle": "Hot take: stop stretching",
+    "hook": "Stretching off the lip is why you crash",
+    "description": [
+     "Every lesson, same mistake on kickers",
+     "Stay compact and compress in the air",
+     "Feels small and tidy, not stretched out"
+    ],
+    "caption": "Reaching for the sky off a small kicker is the fastest way to meet the snow. Start on the smallest one you can find and check it out first. Save this for your next day on snow.\n\n#snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
+    "note": "check line 3 length"
+   },
+   {
+    "angle": "Eyes up",
+    "hook": "Your feet aren't where you're landing",
+    "description": [
+     "Every lesson, eyes drop to the board",
+     "Look at the landing, not your feet"
+    ],
+    "caption": "Your feet already know where they are, so give your eyes the landing to look at. Send this to a mate who stares at their board mid-air.\n\n#snowboarding #snowboardtips #learntosnowboard #snowboardinstructor"
+   },
+   {
+    "angle": "Starfish vs pancake",
+    "hook": "Starfish off the kicker, pancake on landing",
+    "description": [
+     "Fix: stay compact in the air",
+     "Feels small and tidy up there",
+     "Start on the smallest kicker"
+    ],
+    "caption": "If you launch like a starfish, you tend to land like a pancake. Tag the mate you ride with who needs to hear it.\n\n#snowboarding #snowboardtips #snowboardinstructor #learntosnowboard"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 4,
+    "sense": 4,
+    "match": 5,
+    "voice": 4,
+    "problem": "",
+    "note": "Solid technical tip matching the rider's compact tuck in the air."
+   },
+   {
+    "i": 1,
+    "hook": 3,
+    "sense": 4,
+    "match": 3,
+    "voice": 3,
+    "problem": "",
+    "note": "Decent cue, but visual doesn't clearly highlight eye/head direction."
+   },
+   {
+    "i": 2,
+    "hook": 5,
+    "sense": 4,
+    "match": 5,
+    "voice": 5,
+    "problem": "",
+    "note": "Best Conor tone with 'starfish vs pancake' imagery and clean visual match."
+   }
+  ],
+  "winner": 2
+ },
+ {
+  "kind": "ai",
+  "topic": "t24",
+  "category": "tip",
+  "footage": "an animated blocky cartoon snowboarder: mascot standing at the top of a small terrain park looking over the features",
+  "candidates": [
+   {
+    "angle": "Start small hot take",
+    "hook": "Your first jump should be tiny",
+    "description": [
+     "Pick the smallest feature in the park",
+     "One rider on it at a time",
+     "It should feel boring. That's a win."
+    ],
+    "caption": "Nobody ever regretted starting small, but plenty have regretted the big one. Send this to a mate who wants to hit the big kicker on day one. #snowboarding #terrainpark #learntosnowboard #snowboardtips"
+   },
+   {
+    "angle": "Look before you leap",
+    "hook": "Stop hitting features you haven't looked at",
+    "description": [
+     "Check every feature before you hit it",
+     "Look first, every single time",
+     "Then you're riding it, not guessing"
+    ],
+    "caption": "The one thing I see in park lessons: riders just point it and hope. Save this for your next day on snow. #snowboarding #terrainpark #snowboardlesson #beginnersnowboard"
+   },
+   {
+    "angle": "Don't be a roadblock",
+    "hook": "Don't stand in the landing. Seriously.",
+    "description": [
+     "Call your drop before you go in",
+     "Then clear the landing fast"
+    ],
+    "caption": "Park etiquette is mostly just not being the human roadblock. Tag the mate you ride with who still stops right under the jump. #snowboarding #terrainpark #parketiquette #snowboardtips"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 3,
+    "sense": 4,
+    "match": 3,
+    "voice": 3,
+    "problem": "",
+    "note": "Sensible park progression tip matching a tiny mound, though the hook feels a bit tame for Conor's style."
+   },
+   {
+    "i": 1,
+    "hook": 4,
+    "sense": 3,
+    "match": 3,
+    "voice": 3,
+    "problem": "",
+    "note": "Engaging direct callout, but the bullet points just repeat 'look first' without concrete teaching mechanics."
+   },
+   {
+    "i": 2,
+    "hook": 4,
+    "sense": 4,
+    "match": 2,
+    "voice": 4,
+    "problem": "",
+    "note": "Very relatable park etiquette topic in Conor's voice, but visual shows a rider cruising off a bump rather than sitting in a landing."
+   }
+  ],
+  "winner": 2
+ },
+ {
+  "kind": "ai",
+  "topic": "s05",
+  "category": "snow_life",
+  "footage": "an animated blocky cartoon snowboarder: mascot emptying a backpack full of gloves, snacks and goggles onto a bench",
+  "candidates": [
+   {
+    "angle": "Hot take gloves",
+    "hook": "Spare gloves matter more than your board",
+    "description": [
+     "Wet hands end a lesson fast.",
+     "Pack a spare pair. Thank me later.",
+     "Warm hands, happy rider."
+    ],
+    "caption": "Hot take, but I stand by it. Nobody has fun with soggy gloves. Send this to a mate who always forgets theirs. #snowboarding #snowboardinstructor #nisekolife #thredbo"
+   },
+   {
+    "angle": "Instructor bag reality",
+    "hook": "Instructor bag: mostly snacks for the kids",
+    "description": [
+     "Hangry riders don't learn much.",
+     "Fed kids, better lesson."
+    ],
+    "caption": "The bag looks professional until you open it. Tag the mate you ride with who is basically a snack bag with legs. #snowboarding #snowboardinstructor #snowlife #ski"
+   },
+   {
+    "angle": "Backup lens save",
+    "hook": "Pack a backup lens or lose the day",
+    "description": [
+     "Sunscreen and a spare goggle lens.",
+     "Takes ten seconds to pack.",
+     "Sorted before you hit the chairlift."
+    ],
+    "caption": "Boring tip, but future you will be stoked. Save this for your next day on snow. #snowboarding #snowboardtips #snowboardinstructor #japow"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 3,
+    "sense": 3,
+    "match": 3,
+    "voice": 3,
+    "problem": "Not an APSI riding skill; video is predominantly pulling out piles of snacks before the gloves.",
+    "note": "A bit generic; misses the visual joke of the endless snacks."
+   },
+   {
+    "i": 1,
+    "hook": 4,
+    "sense": 4,
+    "match": 5,
+    "voice": 4,
+    "problem": "",
+    "note": "Matches the footage perfectly as packet after packet of snacks spills out of the pack."
+   },
+   {
+    "i": 2,
+    "hook": 2,
+    "sense": 3,
+    "match": 3,
+    "voice": 2,
+    "problem": "Mentions sunscreen not clearly featured, and calling it a 'boring tip' lowers engagement.",
+    "note": "Dry and misses the humor and primary visual focus of the animation."
+   }
+  ],
+  "winner": 1
+ },
+ {
+  "kind": "ai",
+  "topic": "s01",
+  "category": "snow_life",
+  "footage": "an animated blocky cartoon snowboarder: mascot riding powder in a Japanese ski resort, then soaking in a steaming onsen",
+  "candidates": [
+   {
+    "angle": "Hot take",
+    "hook": "Teaching in Japan beats any holiday",
+    "description": [
+     "Powder mornings, lessons all day",
+     "Onsen after fixes the tired legs",
+     "Honestly feels like cheating"
+    ],
+    "caption": "Not a complaint, just a fact from the Japan season. Send this to a mate who needs to see what instructor life looks like. #snowboarding #japow #niseko #snowboardinstructor"
+   },
+   {
+    "angle": "How it feels",
+    "hook": "How it feels clocking off in Niseko",
+    "description": [
+     "Powder mornings, lessons all day",
+     "Then straight into the onsen"
+    ],
+    "caption": "Best part of the day is the soak, and I'll die on that hill. Tag the mate you'd drag to an onsen after riding. #snowboarding #japow #niseko #onsen"
+   },
+   {
+    "angle": "Myth bust",
+    "hook": "Instructors just stand around, apparently",
+    "description": [
+     "Powder mornings to start",
+     "Lessons all day, no standing around",
+     "Onsen after, zero complaints"
+    ],
+    "caption": "Plot twist: it's a full day on snow and I wouldn't swap it. What should I cover next? #snowboarding #snowboardinstructor #japow #niseko"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 3,
+    "sense": 4,
+    "match": 4,
+    "voice": 3,
+    "problem": "",
+    "note": "Reads a bit like generic travel promotion rather than Conor's punchy mountain humor."
+   },
+   {
+    "i": 1,
+    "hook": 5,
+    "sense": 5,
+    "match": 5,
+    "voice": 5,
+    "problem": "",
+    "note": "Perfect fit for Conor's top 'How it feels' format and matches the character riding straight into the onsen."
+   },
+   {
+    "i": 2,
+    "hook": 3,
+    "sense": 3,
+    "match": 4,
+    "voice": 3,
+    "problem": "",
+    "note": "A bit defensive and lacks the strong comedic punchline that makes Conor's reels hit."
+   }
+  ],
+  "winner": 1
+ },
+ {
+  "kind": "ai",
+  "topic": "t01",
+  "category": "tip",
+  "footage": "an animated blocky cartoon snowboarder: mascot making a toeside turn on a groomed run, leaning slightly forward, snow spray",
+  "candidates": [
+   {
+    "angle": "Hot take: stop standing tall",
+    "hook": "Standing tall is killing your toeside",
+    "description": [
+     "Bend your ankles and knees",
+     "Pressure through balls of your feet",
+     "Stiff legs = board slides out"
+    ],
+    "caption": "Every lesson I watch beginners stand up like they're waiting for a bus, then wonder why the edge lets go. Save this for your next day on snow. #snowboarding #snowboardtips #learntosnowboard #beginnersnowboard"
+   },
+   {
+    "angle": "Stop bowing",
+    "hook": "Stop bowing to your board",
+    "description": [
+     "Folding at the waist is the mistake",
+     "Keep your hips over the board",
+     "Stacked, not folded in half"
+    ],
+    "caption": "The board is not royalty, you don't need to bow to it. Send this to a mate who needs it. #snowboarding #snowboardlessons #learntosnowboard #snowboardtips"
+   },
+   {
+    "angle": "Stiff vs springy",
+    "hook": "Toeside keeps washing out? Blame your legs",
+    "description": [
+     "Bend your ankles and knees",
+     "Then pressure through balls of feet",
+     "Should feel springy, not locked up"
+    ],
+    "caption": "Stiff legs are the number one thing I fix on toeside, and it's free. Tag the mate you ride with who needs to hear this. #snowboarding #beginnersnowboard #snowboardtips #snowboardinstructor"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 4,
+    "sense": 4,
+    "match": 4,
+    "voice": 4,
+    "problem": "",
+    "note": "Punchy hook with solid relatable caption humor ('waiting for a bus') that fits the deep flexion shown in the clip."
+   },
+   {
+    "i": 1,
+    "hook": 4,
+    "sense": 4,
+    "match": 4,
+    "voice": 4,
+    "problem": "",
+    "note": "Memorable visual cue ('bowing to your board') paired with a funny caption that accurately mirrors proper stacked toeside alignment."
+   },
+   {
+    "i": 2,
+    "hook": 4,
+    "sense": 4,
+    "match": 4,
+    "voice": 3,
+    "problem": "",
+    "note": "Actionable APSI mechanics, but voice feels a little more like a standard coaching tip than Conor's distinct irreverent banter."
+   }
+  ],
+  "winner": 0
+ },
+ {
+  "kind": "real",
+  "topic": "m38284a",
+  "category": "moment",
+  "footage": "Conor's real footage: Conor snowboards down a snowy slope making turns in deep powder. (tags: powder, turns, scenery; riding looks: good)",
+  "candidates": [
+   {
+    "angle": "Powder hot take",
+    "hook": "Powder ruins every other day",
+    "description": [
+     "groomers are now a personal insult"
+    ],
+    "caption": "One deep day and suddenly everything else is just a commute. Tag the mate you ride with who gets way too precious about pow.",
+    "hashtags_note": "",
+    "caption_full": "One deep day and suddenly everything else is just a commute. Tag the mate you ride with who gets way too precious about pow. #snowboarding #powder #japow #snowboard"
+   },
+   {
+    "angle": "Ice to pow relief",
+    "hook": "How it feels after a week of ice",
+    "description": [
+     "and then this shows up"
+    ],
+    "caption": "Zero complaints. Several noises I'm not proud of. Send this to a mate who needs a pow day right now. #snowboarding #powday #snowboard #thredbo"
+   },
+   {
+    "angle": "Instructor day off",
+    "hook": "Instructor day off. Zero chill.",
+    "description": [
+     "teaches all week",
+     "still can't stay off the board"
+    ],
+    "caption": "Turns out the job and the hobby are the same thing. Follow for more tips and a bit of ski-bum chaos. #snowboarding #snowboardinstructor #powder #snowboard"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 4,
+    "sense": 5,
+    "match": 4,
+    "voice": 5,
+    "problem": "",
+    "note": "Great hot take angle that matches deep night pow slash."
+   },
+   {
+    "i": 1,
+    "hook": 5,
+    "sense": 5,
+    "match": 5,
+    "voice": 5,
+    "problem": "",
+    "note": "Classic Conor 'How it feels' format, matches the huge powder slash and ecstatic audio perfectly."
+   },
+   {
+    "i": 2,
+    "hook": 3,
+    "sense": 4,
+    "match": 4,
+    "voice": 3,
+    "problem": "",
+    "note": "A bit cliché and the CTA 'follow for more tips' doesn't fit a pure slash reel."
+   }
+  ],
+  "winner": 1
+ },
+ {
+  "kind": "real",
+  "topic": "n05",
+  "category": "niseko",
+  "footage": "Conor's real footage: Rider navigates through deep powder across a scenic backcountry mountainside. (tags: powder, turns, scenery; riding looks: good)",
+  "candidates": [
+   {
+    "angle": "Rope hot take",
+    "hook": "Ducking the rope is not a powder strategy",
+    "description": [
+     "Only go in through the gates",
+     "Every lesson someone eyes off the rope",
+     "Pow hits harder when you did it legit"
+    ],
+    "caption": "The untouched stuff over the rope looks tempting, I get it. Send this to a mate who needs to hear it.\n\n#niseko #japow #snowboarding #nisekorules #backcountry"
+   },
+   {
+    "angle": "Rope myth bust",
+    "hook": "That boundary rope is not a suggestion",
+    "description": [
+     "Never duck it, even for fresh pow",
+     "If you want the backcountry, use a gate"
+    ],
+    "caption": "Boundary ropes: the one thing in Japan not up for negotiation. Tag the mate you ride with who needs the reminder.\n\n#niseko #japow #snowboarding #snowboardinstructor #ski"
+   },
+   {
+    "angle": "Gear past gates",
+    "hook": "No beacon, no backcountry. Simple.",
+    "description": [
+     "Past the gates it's a helmet",
+     "and an avalanche beacon",
+     "Check the official Niseko Rules"
+    ],
+    "caption": "Nothing kills a powder day faster than rocking up without the basics. Save this for your next day in Niseko.\n\n#niseko #japow #snowboarding #backcountry #nisekorules"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 4,
+    "sense": 4,
+    "match": 4,
+    "voice": 5,
+    "problem": "",
+    "note": "Great natural instructor voice and relatable Niseko powder culture angle."
+   },
+   {
+    "i": 1,
+    "hook": 3,
+    "sense": 4,
+    "match": 4,
+    "voice": 3,
+    "problem": "",
+    "note": "A bit repetitive and sounds like a generic resort safety advisory."
+   },
+   {
+    "i": 2,
+    "hook": 3,
+    "sense": 4,
+    "match": 3,
+    "voice": 2,
+    "problem": "",
+    "note": "Too corporate brochure-like; doesn't match Conor's self-deprecating or comedic tone."
+   }
+  ],
+  "winner": 0
+ },
+ {
+  "kind": "real",
+  "topic": "n06",
+  "category": "niseko",
+  "footage": "Conor's real footage: Conor links turns down the sunny slope overlooking the valley. (tags: turns, linked_turns, heelside, toeside, scenery; riding looks: good)",
+  "candidates": [
+   {
+    "angle": "Airport hot take",
+    "hook": "Your Niseko trip starts at the airport",
+    "description": [
+     "Fly into New Chitose, near Sapporo",
+     "Book your transfer before you land",
+     "Then about 2.5 hours and you're there"
+    ],
+    "caption": "The first turn is the fun bit, but the airport sets up the whole trip. Save this for your next day on snow. #niseko #japow #snowboarding #japantravel"
+   },
+   {
+    "angle": "Expectation vs reality",
+    "hook": "Landing in Japan isn't landing in Niseko",
+    "description": [
+     "It's about 2.5 hours from New Chitose",
+     "Book your transfer before you land",
+     "Sort it early, sleep on the bus"
+    ],
+    "caption": "Nobody warns you the bus is part of the holiday. Send this to a mate who needs it. #niseko #japow #snowboarding #hokkaido"
+   },
+   {
+    "angle": "Don't wing it",
+    "hook": "Stop rocking up with no transfer booked",
+    "description": [
+     "Fly into New Chitose near Sapporo",
+     "Book it before you land",
+     "About 2.5 hours by bus or transfer"
+    ],
+    "caption": "Standing in an arrivals hall in your board jacket with no plan is a rough start to a powder trip. Tag the mate you ride with. #niseko #japow #snowboarding #japan"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 2,
+    "sense": 2,
+    "match": 1,
+    "voice": 2,
+    "problem": "Travel logistics topic completely mismatched to riding footage and prompt requirement for an APSI teaching reel.",
+    "note": "Bland travel advice over on-snow riding footage."
+   },
+   {
+    "i": 1,
+    "hook": 3,
+    "sense": 2,
+    "match": 1,
+    "voice": 3,
+    "problem": "Travel logistics topic completely mismatched to riding footage and prompt requirement for an APSI teaching reel.",
+    "note": "Decent hook format but totally disconnected from the visual."
+   },
+   {
+    "i": 2,
+    "hook": 3,
+    "sense": 2,
+    "match": 1,
+    "voice": 3,
+    "problem": "Travel logistics topic completely mismatched to riding footage and prompt requirement for an APSI teaching reel.",
+    "note": "Relatable travel banter but completely off-topic for riding footage."
+   }
+  ],
+  "winner": null
+ }
+]

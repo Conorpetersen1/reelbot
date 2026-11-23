@@ -1,14 +1,14 @@
 {
  "calls": {
   "2026-11-23": {
-   "claude": 8,
-   "gemini": 8
+   "claude": 16,
+   "gemini": 17
   }
  },
  "days": {
   "2026-11-23": {
-   "claude": 0.106826,
-   "gemini": 0.020049
+   "claude": 0.313666,
+   "gemini": 0.091328
   }
  }
 }

@@ -3125,7 +3125,8 @@
   "2026-11-23 17:22 Writer error for t30: no JSON in reply: ",
   "2026-11-23 17:29 Queued 5 reels for 2026-11-24: ['t08', 'i05', 't30', 'f05', 'b03']",
   "2026-11-23 17:30 Notification sent: 🗓️ Weekly 1-minute check: Instagram Account Status",
-  "2026-11-23 17:30 Notification sent: 📌 Top up fal.ai: about A$6.53 left (US$4.24) (fal.ai › Billing). Then up"
+  "2026-11-23 17:30 Notification sent: 📌 Top up fal.ai: about A$6.53 left (US$4.24) (fal.ai › Billing). Then up",
+  "2026-11-23 17:45 Studied 37 of your reels for your voice: Conor speaks directly to ski and snowboard culture through self-deprecating, hyper-relatable ski-bum humor and Aussie mo"
  ],
  "fal_spend": {
   "2026-11": 5.76
@@ -3204,5 +3205,73 @@
  "notified": {
   "status-2026-48": "2026-11-23T17:30:00.160045+11:00",
   "reminder-credit-fal-2026-11-22-4.24": "2026-11-23T17:30:00.482506+11:00"
+ },
+ "voice": {
+  "voice_summary": "Conor speaks directly to ski and snowboard culture through self-deprecating, hyper-relatable ski-bum humor and Aussie mountain lifestyle banter. His audience responds strongly to funny green-screen meme cutouts, skier vs. snowboarder rivalries, and real raw mountain condition reports from Niseko and Thredbo.",
+  "what_works": [
+   "Using 'How it feels [doing X]' meme hooks paired with green-screen pop culture cutouts over resort footage",
+   "Poking fun at ski resort culture tropes (first lift hangovers, skier vs. snowboarder banter, late-afternoon powder stashes)",
+   "Contrasting expectations vs. reality (e.g. snowboard instructor car expectations cutting to a public bus, or high-speed lifts vs. slow antique chairs)",
+   "Reporting real-time resort weather extremes and lift incidents with exact dates and locations (e.g., 'Blizzard @ Niseko 13/1/25')",
+   "Satirical listicles with comedic escalation ending on a relatable jab (e.g., '5 things NOT to bring' ending with 'Beginner friends')",
+   "DIY project / street setup storytelling hooks ('come with us to build possibly the world's sketchiest backyard setup')",
+   "Short, punchy captions paired with targeted niche tags (#snowboarding, #japow, #ski) rather than generic engagement spam"
+  ],
+  "what_flops": [
+   "Uncaptioned riding clips or generic terrain montages lacking a comedic premise or clear hook",
+   "Spamming generic Instagram growth hashtags (#reels, #explorepage, #viralreels)",
+   "Flickering one-word lyric sync text on black screens that delays the action",
+   "Vague countdowns or low-stakes hype statements without punchlines (e.g., '25 days till Japan', 'Who’s excited')",
+   "Re-posting low-resolution film clips without a punchy snowboard-specific visual payoff"
+  ],
+  "top_hooks": [
+   "How it feels rocking up to first lift after getting absolutely obliterated last night",
+   "Blizzard @ Niseko 13/1/25\nPpl stuck after gondola shutdown",
+   "No one talks about how hard it is to go from this...",
+   "How skiers be moving down the groomers on a powder day",
+   "How it feels finding a pow stash at 4pm",
+   "come with us to build possibly the world's sketchiest backyard setup",
+   "“Snowboarding is dangerous what happens if u crash?”",
+   "5 things you should NOT bring snowboarding",
+   "He's a snowboard instructor he must drive a -",
+   "How it feels lining up to send shi you have no right to be trying"
+  ],
+  "formats": [
+   "How it feels <relatable mountain scenario> + trending green-screen meme cutout over resort backdrop",
+   "Expectation vs. Reality cut (<Premise: He must drive a...> -> cut to humble reality)",
+   "Two-part contrast transition ('No one talks about how hard it is to go from this...' -> 'To this...')",
+   "Extreme weather / on-mountain event update ('<Event> @ <Resort> <Date>')",
+   "Satirical listicle ('X things you should NOT bring snowboarding' ending on a comedic punchline)",
+   "DIY / behind-the-scenes build vlog ('Come with us to build <sketchy setup>')"
+  ],
+  "tone_rules": [
+   "Use authentic ski/snowboard lingo naturally (pow stash, groomers, first lift, steeze, send)",
+   "Embrace dry, self-deprecating Aussie ski-bum lifestyle humor",
+   "Keep hook text under 15 words so it is readable within the first 1-2 seconds",
+   "Use casual text formatting, lowercase phrases, or simple quotation marks without corporate polish",
+   "Keep censorship or swearing mild and natural ('obliterated', 'shi you have no right to be trying')",
+   "Ensure captions add an extra dry joke or simple prompt rather than repeating the hook text word-for-word"
+  ],
+  "do_not": [
+   "Do not post silent riding edits without an immediate on-screen concept or text hook",
+   "Do not use generic hashtag blocks like #explorepage, #instareels, or #viralreels",
+   "Do not use slow lyric-by-lyric black screen intros that delay visual footage",
+   "Do not rely solely on scenery beauty shots without relatable commentary or humor",
+   "Do not sound like a corporate travel guide or resort brochure"
+  ],
+  "updated": "2026-11-23T17:45:02.186228+11:00",
+  "reels_studied": 37,
+  "top_links": [
+   "https://www.instagram.com/reel/DUiIiMQkRjI/",
+   "https://www.instagram.com/reel/DTdBNcUkSrE/",
+   "https://www.instagram.com/reel/DUILIgLkWOc/",
+   "https://www.instagram.com/reel/DUF4rtIiZ9C/",
+   "https://www.instagram.com/reel/DUnCWW0kdN0/",
+   "https://www.instagram.com/reel/DReAr__keze/",
+   "https://www.instagram.com/reel/DTxDja9EYTc/",
+   "https://www.instagram.com/reel/DTzu5DsEeHB/",
+   "https://www.instagram.com/reel/DUz3Wh_EWZX/",
+   "https://www.instagram.com/reel/DTFJZGwkYNe/"
+  ]
  }
 }
