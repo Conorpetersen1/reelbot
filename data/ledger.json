@@ -2571,7 +2571,7 @@
     ],
     "caption": "What a snowboard instructor actually packs. Tag the mate you ride with. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
-    "status": "queued",
+    "status": "posted",
     "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
     "style": "list",
     "variation": {},
@@ -2579,7 +2579,9 @@
     "category": "snow_life",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank"
+    "source": "bank",
+    "media_id": "17908452777349822",
+    "posted_at": "2026-11-23T16:01:33.598859+11:00"
    },
    {
     "date": "2026-11-23",
@@ -2666,7 +2668,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T15:56:30.085725+11:00",
+   "insights_at": "2026-11-23T16:02:10.596010+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2703,6 +2705,13 @@
      1074,
      1,
      7
+    ],
+    [
+     6.41,
+     1403,
+     1088,
+     1,
+     7
     ]
    ]
   },
@@ -2714,14 +2723,14 @@
    "posted_at": "2026-11-23T13:17:50.196112+11:00",
    "file": "2026-11-23_2_s04.mp4",
    "insights": {
-    "views": 1894,
-    "reach": 1320,
+    "views": 1933,
+    "reach": 1378,
     "likes": 13,
     "comments": 0,
-    "shares": 0,
+    "shares": 1,
     "saved": 0,
-    "total_interactions": 13,
-    "ig_reels_avg_watch_time": 5105
+    "total_interactions": 14,
+    "ig_reels_avg_watch_time": 5117
    },
    "category": "snow_life",
    "style": "list",
@@ -2732,7 +2741,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T15:56:30.909420+11:00",
+   "insights_at": "2026-11-23T16:02:11.234474+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -2753,6 +2762,51 @@
      1.73,
      1637,
      1102,
+     0,
+     0
+    ],
+    [
+     2.74,
+     1933,
+     1378,
+     1,
+     0
+    ]
+   ]
+  },
+  "17908452777349822": {
+   "topic": "s05",
+   "kind": "ai",
+   "hook": "What a snowboard instructor actually packs",
+   "date": "2026-11-23",
+   "posted_at": "2026-11-23T16:01:33.598859+11:00",
+   "file": "2026-11-23_3_s05.mp4",
+   "insights": {
+    "views": 0,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0
+   },
+   "category": "snow_life",
+   "style": "list",
+   "hook_type": "statement",
+   "sound_kind": "sound",
+   "time": "15:30",
+   "variation": {},
+   "source": "bank",
+   "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
+   "fit": 5,
+   "insights_at": "2026-11-23T16:02:11.908695+11:00",
+   "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
+   "series": [
+    [
+     0.01,
+     0,
+     0,
      0,
      0
     ]
@@ -2883,7 +2937,8 @@
   "2026-11-23 09:38 Re-queued the 9am reel: Instagram posted it as a normal reel, Conor deleted it",
   "2026-11-23 09:38 Posted trial reel 2026-11-23_1_t01.mp4 -> 18155447869514779",
   "2026-11-23 12:17 Saved 1 rating from you",
-  "2026-11-23 13:18 Posted trial reel 2026-11-23_2_s04.mp4 -> 18106349906352509"
+  "2026-11-23 13:18 Posted trial reel 2026-11-23_2_s04.mp4 -> 18106349906352509",
+  "2026-11-23 16:02 Posted trial reel 2026-11-23_3_s05.mp4 -> 17908452777349822"
  ],
  "fal_spend": {
   "2026-11": 5.76
@@ -2930,9 +2985,13 @@
   [
    "2026-11-23T15:01+11:00",
    944
+  ],
+  [
+   "2026-11-23T16:02+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-23T15:01:35.681010+11:00",
+ "publish_heartbeat": "2026-11-23T16:01:33.598859+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
