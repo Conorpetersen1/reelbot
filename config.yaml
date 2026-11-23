@@ -21,6 +21,7 @@ real_clip_cooldown_days: 10         # wait this long before reusing a moment of 
 ai_clip_max_uses: 2                 # retire an AI clip after this many reels (reuses get a new crop/zoom/speed)
 fit_min_score: 3                    # every finished reel is watched; below this (1-5) it's swapped for another
 fit_spares: 3                       # extra reels planned per type so misfits can be replaced
+real_moment_share: 0.5    # share of real-clip reels written about what is in the footage (the rest are teaching reels that need footage showing the skill)
 
 # AI clips (fal.ai). Check the model pages on fal.ai if a name changes.
 ai_clips_per_week: 14          # ~21 AI reels a week, each clip used at most twice

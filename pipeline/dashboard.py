@@ -123,6 +123,11 @@ def main():
         link = (f" · <a href='{E(post['permalink'])}'>open on Instagram</a>" if post.get("permalink") else "")
         lines = "".join(f"<li>{E(l)}</li>" for l in e.get("description", []))
         src = {"written": "written by Claude", "topic_bank": "from your topic list"}.get(e.get("text_source"), "")
+        cr = e.get("critic") or {}
+        if cr:
+            src += f" · editor score {cr.get('score')}/25" + (f" · {cr['angle']}" if cr.get("angle") else "")
+        if e.get("category") == "moment":
+            src += " · moment reel (about the footage)"
         dd = dt.date.fromisoformat(d)
         when = {0: "Today", 1: "Tomorrow", -1: "Yesterday"}.get((dd - today).days, f"{dd:%a %d %b}")
         return (f"<details class='rv'><summary><b>{when} {E(e['time'])}</b> · {'Mascot' if e['kind']=='ai' else 'Real'}"

@@ -1,7 +1,7 @@
 """Evening job: build tomorrow's reels and put them in Drive/queue. Delete any you don't want before they post."""
 import datetime as dt, math, random, re, subprocess
 from . import drive, gemini, learn, llm
-from .common import CFG, WORK, days_since, load_ledger, load_topics, log, now, save_ledger, paused, notify_once
+from .common import CFG, ROOT, WORK, days_since, load_ledger, load_topics, log, now, save_ledger, paused, notify_once
 from .render import render
 
 
@@ -108,6 +108,10 @@ def choose(led, topics, n_ai, n_real, draw):
         if cid in used_clips and len(used_clips) < len({k[0] for k, _ in moments}):
             continue
         ctags = set(c.get("tags", []))
+        # Footage first: some real reels are written about what's actually happening in the clip
+        if random.random() < CFG.get("real_moment_share", 0.5):
+            picks.append(("real", moment_topic(cid, i, c), (cid, i))); used_clips.add(cid); n_real -= 1
+            continue
         # Tips need the clip to show their main subject (first tag); snow-life topics just need some overlap.
         cands = [(t, (cid, i)) for t in topics if t["id"] not in today
                  and t["id"] not in c.get("misfit", []) and (
@@ -118,6 +122,8 @@ def choose(led, topics, n_ai, n_real, draw):
         rested = [x for x in cands if x[0]["id"] not in used_topics]
         pick = weighted_pick(rested, draw, "real", lambda ref: segments(led["clips"][ref[0]])[ref[1]].get("uses", 0), led) or (min(cands, key=lambda x: last_used_topic(led, x[0]["id"]))
                                                if cands else None)
+        if not pick:  # nothing in the bank fits this footage: write about the footage instead
+            pick = (moment_topic(cid, i, c), (cid, i))
         if pick:
             picks.append(("real", pick[0], pick[1])); used_topics.add(pick[0]["id"]); today.add(pick[0]["id"])
             used_clips.add(cid)
@@ -238,23 +244,80 @@ def retire_losers(led, model):
             log(led, f"Learner rested topic {t} for 30 days (consistently few followers)")
 
 
-def text_for(topic, led, clip_note, hook_type=None):
+def critique(cands, topic, mode, src, led):
+    """Score each candidate on hook, sense, footage match and voice. Gemini watches the clip; Claude reads only."""
+    from . import voice
+    v = voice.guide(led)
+    if gemini.available() and src is not None:
+        try:
+            return gemini.ask(llm.critic_prompt(cands, topic, mode, v, True), video=gemini.small_video(src)).get("scores", [])
+        except Exception as e:
+            print("Gemini critic failed, using Claude:", e)
+    try:
+        msg = llm._client().messages.create(model=CFG["claude_model"], max_tokens=4000, system=llm.RULES,
+                                            messages=[{"role": "user", "content": llm.critic_prompt(cands, topic, mode, v, False)}])
+        return llm._json(llm._text(msg)).get("scores", [])
+    except Exception as e:
+        print("Critic failed:", e)
+        return []
+
+
+def rank(cands, scores, mode):
+    """Best first; candidates that don't make sense, don't fit the footage or have a problem are dropped."""
+    by_i = {int(x.get("i", -1)): x for x in scores if isinstance(x, dict)}
+    out = []
+    for n, c in enumerate(cands):
+        sc = by_i.get(n)
+        if sc is None:
+            if not scores:  # no critic available: keep the writer's order
+                out.append((0.0, n, {}))
+            continue
+        g = lambda k: int(sc.get(k, 0) or 0)
+        if sc.get("problem") or g("sense") < 3 or g("match") < (3 if mode == "moment" else 2) or g("hook") < 2:
+            continue
+        out.append((1.5 * g("hook") + 1.5 * g("sense") + g("match") + g("voice"), n, sc))
+    return sorted(out, key=lambda x: -x[0])
+
+
+def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None):
+    """Write 3 candidates, let the critic rank them, then the strict reviewer checks the winner against the
+    rules. Returns (reel, source) or (None, reason) for a moment reel nobody could write well."""
+    from . import ratings, voice
+    mode = mode or ("moment" if topic.get("category") == "moment" else "teaching")
     recent = [e["hook"] for d in led["queue"].values() for e in d]
     winners = [p["hook"] for p in sorted(led["posts"].values(),
                key=lambda p: -(p.get("insights") or {}).get("views", 0))]
-    for _ in range(2):
+    for attempt in range(2):
         try:
-            from . import ratings
-            reel = llm.write_reel(topic, recent, winners, clip_note, hook_type, taste=ratings.writer_notes(led))
+            cands = llm.write_candidates(topic, mode, clip_note, recent, winners, hook_type,
+                                         taste=ratings.writer_notes(led), voice=voice.guide(led))
+        except Exception as e:
+            log(led, f"Writer error for {topic['id']}: {e}"); continue
+        ranked = rank(cands, critique(cands, topic, mode, src, led), mode)
+        if not ranked:
+            log(led, f"Critic rejected all {len(cands)} texts for {topic['id']} (attempt {attempt + 1})"); continue
+        for total, n, sc in ranked:
+            reel = {k: cands[n][k] for k in ("hook", "description", "caption")}
             ok, why = llm.check_reel(topic, reel)
             if ok:
+                reel["critic"] = {"score": round(total, 1), "angle": cands[n].get("angle", ""),
+                                  **{k: sc.get(k) for k in ("hook", "sense", "match", "voice", "note") if k in sc}}
                 return reel, "written"
             log(led, f"Reviewer rejected text for {topic['id']}: {why}")
-        except Exception as e:
-            log(led, f"Writer error for {topic['id']}: {e}")
-    # Fallback: the topic bank's own text, which was checked against the manual by hand.
+    if mode == "moment":
+        return None, "no good text for this moment"
+    # Fallback for teaching reels: the topic bank's own text, which was checked against the manual by hand.
     return {"hook": topic["hook"], "description": topic["description"].split("|"),
             "caption": bank_caption(topic)}, "topic_bank"
+
+
+def moment_topic(cid, i, seg):
+    """A reel written about what's in a real clip (footage first), rather than a topic from the bank."""
+    import hashlib
+    return {"id": "m" + hashlib.md5(f"{cid}#{i}".encode()).hexdigest()[:6], "category": "moment", "level": "all",
+            "hook": "", "description": "", "manual_ref": "", "cta_keyword": "",
+            "clip_tags": ",".join(seg.get("tags", [])), "ai_scene": "", "source_kind": "moment",
+            "clip_note": seg.get("summary", "")}
 
 
 def main():
@@ -313,9 +376,13 @@ def main():
                 if not full.exists():
                     drive.download(cid, full)
                 src = cut(full, meta["start"], meta["end"], WORK / f"src_{n}.mp4")
-                note = f"Conor's real footage: {meta.get('summary', '')} ({meta.get('technique', 'n/a')} technique)"
+                note = (f"Conor's real footage: {meta.get('summary', '')} (tags: {', '.join(meta.get('tags', []))}; "
+                        f"riding looks: {meta.get('technique', 'n/a')})")
             want_hook = draw.best("hook", learn.HOOK_TYPES)
-            reel, source = text_for(topic, led, note, want_hook)
+            reel, source = text_for(topic, led, note, want_hook, src=src)
+            if reel is None:
+                log(led, f"Skipped a moment reel ({topic['id']}): {source}"); continue
+            critic = reel.pop("critic", None)
             music = None
             sound = None
             sound_ok = audio and (kind == "ai" or CFG.get("sounds", {}).get("use_on", "all") == "all")
@@ -327,6 +394,8 @@ def main():
             var = variation(meta.get("uses", 0))
             style = pick_style(topic, led, draw, avoid=meta.get("last_style"))
             style = style if len(reel["description"]) > 1 or style != "list" else "question"
+            if topic.get("category") == "moment" and style == "list":
+                style = "pov" if reel["hook"].lower().startswith("pov") else "question"
             today_styles = [e.get("style") for e in entries]
             if today_styles.count(style) >= 3 and not topic.get("style"):
                 style = "list" if style == "question" and topic.get("category") == "tip" else "question"
@@ -354,7 +423,7 @@ def main():
                             "topic": topic["id"], "clip": clip_id if kind == "ai" else f"{clip_id[0]}#{clip_id[1]}",
                             "file_id": fid, "file": out.name, "fit": score,
                             "hook": reel["hook"], "description": reel["description"], "caption": reel["caption"],
-                            "text_source": source, "status": "queued", "sound": sound["name"] if sound else None,
+                            "text_source": source, "critic": critic, "status": "queued", "sound": sound["name"] if sound else None,
                             "style": style, "variation": var, "hook_type": learn.hook_type(reel["hook"]),
                             "category": topic.get("category", "tip"),
                             "asked_hook": want_hook, "sound_kind": "sound" if sound else "none",
@@ -372,5 +441,43 @@ def main():
     save_ledger(led)
 
 
+def preview(n=8):
+    """Write and score texts for a few planned reels without rendering or queuing anything (data/preview.json)."""
+    import json
+    from . import ratings, voice
+    led = load_ledger()
+    topics = [t for t in load_topics(led) if t["id"] not in active_retired(led)]
+    draw = learn.fit(led).draw()
+    picks = choose(led, topics, n // 2 + 1, n // 2 + 1, draw)[:n]
+    out = []
+    for k, (kind, topic, clip_id) in enumerate(picks):
+        try:
+            if kind == "ai":
+                src = drive.download(clip_id, WORK / f"pv_{k}.mp4")
+                note = f"an animated blocky cartoon snowboarder: {topic['ai_scene']}"
+            else:
+                cid, i = clip_id
+                clip = led["clips"][cid]; meta = segments(clip)[i]
+                full = drive.download(cid, WORK / f"pvfull_{k}_{clip['name']}")
+                src = cut(full, meta["start"], meta["end"], WORK / f"pv_{k}.mp4")
+                note = (f"Conor's real footage: {meta.get('summary', '')} (tags: {', '.join(meta.get('tags', []))}; "
+                        f"riding looks: {meta.get('technique', 'n/a')})")
+            mode = "moment" if topic.get("category") == "moment" else "teaching"
+            cands = llm.write_candidates(topic, mode, note, [], [], draw.best("hook", learn.HOOK_TYPES),
+                                         taste=ratings.writer_notes(led), voice=voice.guide(led))
+            scores = critique(cands, topic, mode, src, led)
+            ranked = rank(cands, scores, mode)
+            out.append({"kind": kind, "topic": topic["id"], "category": topic.get("category"), "footage": note,
+                        "candidates": cands, "scores": scores, "winner": ranked[0][1] if ranked else None})
+        except Exception as e:
+            out.append({"kind": kind, "topic": topic["id"], "error": str(e)})
+    (ROOT / "data" / "preview.json").write_text(json.dumps(out, indent=1, ensure_ascii=False))
+    print(json.dumps(out, indent=1, ensure_ascii=False)[:20000])
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--preview" in sys.argv:
+        preview()
+    else:
+        main()

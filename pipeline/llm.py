@@ -42,45 +42,103 @@ HOOK_GUIDE = {"how_i": 'starts "How I..." / "The one cue that..." (a personal fi
               "statement": "a bold statement or hot take, no question mark"}
 
 
-def write_reel(topic, recent_hooks, winning_hooks, clip_note, hook_type=None, taste=""):
-    """Returns {"hook": str, "description": [str], "caption": str}."""
-    if os.environ.get("LOCAL_LLM"):  # offline test mode: use the topic bank text
-        return {"hook": topic["hook"], "description": topic["description"].split("|"),
-                "caption": f"{topic['hook']} Follow for more snowboard tips. #snowboarding"}
-    prompt = f"""Write one Instagram trial reel for Conor's snowboard account.
+BANNED_OPENERS = ("how to ", "what ", "here's", "tips for", "the best way", "you need to know", "did you know")
 
-TOPIC (from his topic bank; manual_ref = the APSI manual section it's based on):
-{json.dumps(topic, indent=1)}
 
-The video shows: {clip_note}
+def writer_prompt(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice):
+    if mode == "moment":
+        job = f"""This is a MOMENT reel: Conor's real footage, and the text is about what is actually happening in it.
+The footage: {clip_note} (tags: {topic.get('clip_tags', '')}).
+Write something his audience relates to or reacts to: a POV, an inside joke about snow/instructor/season life,
+a feeling, a tiny story, a Thredbo-vs-Niseko observation, a hot take. It must make sense with THIS footage.
+Do NOT teach technique or name a fault in his riding (the clip wasn't chosen to show one). Only use facts about
+Conor and places that are in the rules."""
+    else:
+        cues = [c for c in str(topic.get("description", "")).split("|") if c.strip()]
+        job = f"""This is a TEACHING reel ({topic.get('category')}, level {topic.get('level')}). The footage: {clip_note}.
+The teaching content may ONLY come from these checked cues (APSI manual {topic.get('manual_ref', '')}):
+{json.dumps(cues)}
+The topic's own hook, for reference only: {json.dumps(topic.get('hook', ''))}
+Make it make sense to a real learner: ONE problem -> ONE fix -> how it should feel. The hook names the problem or
+promise; the lines deliver exactly that, in order, so someone could try it on their next run. You may use 1-2 of
+the cues (not all), and frame them with an instructor's angle: the mistake you see every lesson, what you tell
+students, a before/after feeling, a myth you bust. No technique beyond the cues; no jargon a beginner wouldn't get."""
+    hint = (f"Make at least one candidate use this hook format (the learner is testing it): {HOOK_GUIDE[hook_type]}."
+            if hook_type in HOOK_GUIDE else "")
+    return f"""Write on-screen text for one Instagram trial reel on Conor's snowboard account (@conor_sends).
+Trial reels are shown to NON-followers: the text must stop a stranger scrolling in the first second.
 
-Hooks already used recently (don't repeat them word for word):
-{json.dumps(recent_hooks[-40:])}
+{voice or "No voice guide yet: write like a laid-back Aussie snowboard instructor talking to a mate."}
 
-Hooks that performed best so far (learn from their style, don't copy):
-{json.dumps(winning_hooks[:10])}
+{job}
 
-{("Write the hook in this format (the learner is testing it): " + HOOK_GUIDE[hook_type] + "."
-  if hook_type in HOOK_GUIDE else "You can reuse the topic's hook or write a fresh variation in the same spirit.")}
+ON-SCREEN TEXT RULES
+- Hook: max 8 words / 45 characters. Specific, with tension, curiosity or a laugh. Sounds like Conor talking, not
+  a coach's handout. Never start with: {", ".join(BANNED_OPENERS)}.
+- Lines under the hook: 0-2 for moment reels, 1-3 for teaching reels. Max 38 characters each. Each line must add
+  something (the fix, the feel, the punchline); no filler, no repeating the hook.
+- No hashtags or emojis on screen. Plain Aussie English.
+- Caption: 1-2 short sentences that add context or a question, then one call to action from the rules (never
+  promise to DM anything), then 3-5 relevant hashtags.
+- Don't reuse these recent hooks: {json.dumps(recent_hooks[-40:])}
+- His best performing bot reels so far (learn, don't copy): {json.dumps(winning_hooks[:8])}
+{hint}
 {taste}
-The description must say the same thing as the topic's description, reworded if you like, never adding new technique.
-End the caption with one call to action from the rules (never promise to DM anything).
+Write 3 clearly DIFFERENT candidates (different angles, not rewordings).
+Return only JSON: {{"candidates": [{{"angle": "2-4 words", "hook": "...", "description": ["..."], "caption": "..."}}]}}"""
 
-Return only JSON: {{"hook": "...", "description": ["line", "line", "line"], "caption": "..."}}"""
-    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=4000, system=RULES,
-                                    messages=[{"role": "user", "content": prompt}])
+
+def _clean(c, mode):
+    c["hook"] = str(c.get("hook", "")).strip()[:60]
+    c["description"] = [str(l).strip() for l in (c.get("description") or []) if str(l).strip()][:(2 if mode == "moment" else 3)]
+    c["caption"] = str(c.get("caption", "")).strip()
+    return c
+
+
+def write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type=None, taste="", voice=""):
+    """Three different on-screen texts for one reel: [{"angle", "hook", "description": [..], "caption"}]."""
+    if os.environ.get("LOCAL_LLM"):  # offline test mode
+        return [{"angle": "offline", "hook": topic.get("hook") or "Offline hook",
+                 "description": [x for x in str(topic.get("description", "")).split("|") if x][:2],
+                 "caption": "Offline caption. Follow for more. #snowboarding"}]
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=6000, system=RULES,
+                                    messages=[{"role": "user", "content": writer_prompt(
+                                        topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice)}])
     out = _json(_text(msg))
-    out["hook"] = out["hook"].strip()[:60]
-    out["description"] = [l.strip() for l in out["description"] if l.strip()][:4]
-    return out
+    cands = [_clean(c, mode) for c in (out.get("candidates") or []) if c.get("hook")]
+    return [c for c in cands if not c["hook"].lower().startswith(BANNED_OPENERS)] or cands
+
+
+def write_reel(topic, recent_hooks, winning_hooks, clip_note, hook_type=None, taste=""):
+    """Older single-text interface (kept for anything still using it)."""
+    mode = "moment" if topic.get("category") == "moment" else "teaching"
+    return write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste)[0]
+
+
+def critic_prompt(cands, topic, mode, voice, with_video):
+    return f"""You are the editor for Conor's snowboard Instagram (@conor_sends). {'Watch this clip: it is the footage the text will sit over.' if with_video else 'The footage: ' + str(topic.get('clip_note', ''))}
+This is a {'MOMENT reel (text about what is happening in the footage)' if mode == 'moment' else 'TEACHING reel (one problem, one fix, from the APSI manual)'}.
+{voice}
+
+Score each candidate 1-5 on:
+- hook: would a stranger who doesn't follow him stop scrolling? (5 = specific, tense or funny; 1 = generic handout)
+- sense: does it make sense and deliver what the hook promises, in order? For teaching: could a learner try it
+  on their next run? (1 = confusing, contradictory or vague)
+- match: does it fit what is actually in the footage? (1 = contradicts it)
+- voice: does it sound like Conor's best reels?
+Also set "problem" to a short note if anything is wrong, misleading, unsafe or not snowboarding-accurate, else "".
+Candidates: {json.dumps(cands, ensure_ascii=False)}
+Return only JSON: {{"scores": [{{"i": 0, "hook": n, "sense": n, "match": n, "voice": n, "problem": "", "note": "short"}}]}}"""
 
 
 def review_prompt(topic, reel):
     return f"""You are reviewing reel text before it's posted. Rules are in the system prompt.
 Topic: {json.dumps(topic)}
 Reel: {json.dumps(reel)}
-Does the reel contradict any rule, add technique not supported by the rules or the topic's manual_ref,
-or contain anything misleading, unsafe, or off-brand? Line and caption lengths are checked in code, so don't
+{"This is a MOMENT reel (text about Conor's real footage, category 'moment'): it has no manual cues. Reject only if "
+ "it teaches technique, invents facts about Conor or places beyond the rules, or breaks a rule. Humour and "
+ "opinions are fine." if topic.get("category") == "moment" else "Does the reel contradict any rule or add technique not supported by the topic's cues or manual_ref?"}
+Is anything misleading, unsafe, or off-brand? Line and caption lengths are checked in code, so don't
 reject for length or formatting. Return only JSON: {{"ok": true/false, "reason": "..."}}"""
 
 

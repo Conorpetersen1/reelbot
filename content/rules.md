@@ -69,9 +69,11 @@ creator's footage, audio, exact wording, name or handle. Technique in a trend id
 - Give medical/injury advice beyond "relax when you fall" and "check your gear".
 
 ## Format
-- hook: the on-screen question/line, max 50 characters.
-- description: 2 to 4 short lines, each max 45 characters.
-- caption: 1 to 2 sentences + ONE call to action + 5 to 8 relevant hashtags.
+- hook: the on-screen line, max 8 words / 45 characters. Specific and in Conor's voice, never a coach's handout.
+- description: teaching reels 1 to 3 short lines; moment reels 0 to 2 lines. Each max 38 characters.
+- caption: 1 to 2 sentences + ONE call to action + 3 to 5 relevant hashtags.
+- Teaching reels: one problem, one fix, how it should feel, using only the topic's checked cues.
+- Moment reels (Conor's real footage, written about what's happening in it): no technique, no invented facts.
   Calls to action that are allowed (vary them): follow for more tips, save this for your next day on snow,
   send this to a mate who needs it, tag the mate you ride with, "what should I cover next?".
   NEVER promise to send anything by DM or comment reply ("comment X and I'll send you..."), because nothing sends it.
