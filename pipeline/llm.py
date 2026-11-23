@@ -53,6 +53,14 @@ Write something his audience relates to or reacts to: a POV, an inside joke abou
 a feeling, a tiny story, a Thredbo-vs-Niseko observation, a hot take. It must make sense with THIS footage.
 Do NOT teach technique or name a fault in his riding (the clip wasn't chosen to show one). Only use facts about
 Conor and places that are in the rules."""
+    elif mode == "life":
+        facts = [c for c in str(topic.get("description", "")).split("|") if c.strip()]
+        job = f"""This is a LIFE reel ({topic.get('category', '').replace('_', ' ')}): snow life, instructor life, gear or
+Niseko/Thredbo, not a riding lesson. The footage: {clip_note}. It sets the vibe; never claim it shows something it
+doesn't. Facts may ONLY come from these checked points (and the rules): {json.dumps(facts)}
+The topic's own hook, for reference only: {json.dumps(topic.get('hook', ''))}
+Make it relatable, funny or genuinely useful in his voice: how-it-feels, expectation vs reality, a satirical list,
+an instructor's inside joke, a quick honest take. It has to make sense with this footage on screen."""
     else:
         cues = [c for c in str(topic.get("description", "")).split("|") if c.strip()]
         job = f"""This is a TEACHING reel ({topic.get('category')}, level {topic.get('level')}). The footage: {clip_note}.
@@ -84,7 +92,8 @@ ON-SCREEN TEXT RULES
 - His best performing bot reels so far (learn, don't copy): {json.dumps(winning_hooks[:8])}
 {hint}
 {taste}
-Write 3 clearly DIFFERENT candidates (different angles, not rewordings).
+Write 3 clearly DIFFERENT candidates (different angles and formats, not rewordings). Use the "How it feels..."
+format for at most one of them, and not at all if a recent hook already starts that way.
 Return only JSON: {{"candidates": [{{"angle": "2-4 words", "hook": "...", "description": ["..."], "caption": "..."}}]}}"""
 
 
@@ -109,15 +118,23 @@ def write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_t
     return [c for c in cands if not c["hook"].lower().startswith(BANNED_OPENERS)] or cands
 
 
+TEACHING = {"tip", "freestyle", "first_timer"}
+
+
+def reel_mode(topic):
+    c = topic.get("category", "tip")
+    return "moment" if c == "moment" else "teaching" if c in TEACHING else "life"
+
+
 def write_reel(topic, recent_hooks, winning_hooks, clip_note, hook_type=None, taste=""):
     """Older single-text interface (kept for anything still using it)."""
-    mode = "moment" if topic.get("category") == "moment" else "teaching"
+    mode = reel_mode(topic)
     return write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste)[0]
 
 
 def critic_prompt(cands, topic, mode, voice, with_video):
     return f"""You are the editor for Conor's snowboard Instagram (@conor_sends). {'Watch this clip: it is the footage the text will sit over.' if with_video else 'The footage: ' + str(topic.get('clip_note', ''))}
-This is a {'MOMENT reel (text about what is happening in the footage)' if mode == 'moment' else 'TEACHING reel (one problem, one fix, from the APSI manual)'}.
+This is a { {'moment': 'MOMENT reel (text about what is happening in the footage)', 'life': 'LIFE reel (snow/instructor/travel life; the footage sets the vibe and only needs to not contradict the text)'}.get(mode, 'TEACHING reel (one problem, one fix, from the APSI manual)') }.
 {voice}
 
 Score each candidate 1-5 on:

@@ -283,7 +283,7 @@ def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None):
     """Write 3 candidates, let the critic rank them, then the strict reviewer checks the winner against the
     rules. Returns (reel, source) or (None, reason) for a moment reel nobody could write well."""
     from . import ratings, voice
-    mode = mode or ("moment" if topic.get("category") == "moment" else "teaching")
+    mode = mode or llm.reel_mode(topic)
     recent = [e["hook"] for d in led["queue"].values() for e in d]
     winners = [p["hook"] for p in sorted(led["posts"].values(),
                key=lambda p: -(p.get("insights") or {}).get("views", 0))]
@@ -304,8 +304,8 @@ def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None):
                                   **{k: sc.get(k) for k in ("hook", "sense", "match", "voice", "note") if k in sc}}
                 return reel, "written"
             log(led, f"Reviewer rejected text for {topic['id']}: {why}")
-    if mode == "moment":
-        return None, "no good text for this moment"
+    if mode != "teaching":
+        return None, f"no good {mode} text"
     # Fallback for teaching reels: the topic bank's own text, which was checked against the manual by hand.
     return {"hook": topic["hook"], "description": topic["description"].split("|"),
             "caption": bank_caption(topic)}, "topic_bank"
@@ -381,7 +381,7 @@ def main():
             want_hook = draw.best("hook", learn.HOOK_TYPES)
             reel, source = text_for(topic, led, note, want_hook, src=src)
             if reel is None:
-                log(led, f"Skipped a moment reel ({topic['id']}): {source}"); continue
+                log(led, f"Skipped {topic['id']}: {source}"); continue
             critic = reel.pop("critic", None)
             music = None
             sound = None
@@ -462,7 +462,7 @@ def preview(n=8):
                 src = cut(full, meta["start"], meta["end"], WORK / f"pv_{k}.mp4")
                 note = (f"Conor's real footage: {meta.get('summary', '')} (tags: {', '.join(meta.get('tags', []))}; "
                         f"riding looks: {meta.get('technique', 'n/a')})")
-            mode = "moment" if topic.get("category") == "moment" else "teaching"
+            mode = llm.reel_mode(topic)
             cands = llm.write_candidates(topic, mode, note, [], [], draw.best("hook", learn.HOOK_TYPES),
                                          taste=ratings.writer_notes(led), voice=voice.guide(led))
             scores = critique(cands, topic, mode, src, led)
