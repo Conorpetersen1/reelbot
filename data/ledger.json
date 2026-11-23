@@ -2541,7 +2541,7 @@
     ],
     "caption": "Aussie slush vs Japan pow. Tag the mate you ride with. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
-    "status": "queued",
+    "status": "posted",
     "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
     "style": "list",
     "variation": {},
@@ -2549,7 +2549,9 @@
     "category": "snow_life",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank"
+    "source": "bank",
+    "media_id": "18106349906352509",
+    "posted_at": "2026-11-23T13:17:50.196112+11:00"
    },
    {
     "date": "2026-11-23",
@@ -2646,14 +2648,14 @@
    "posted_at": "2026-11-23T09:37:38.733124+11:00",
    "file": "2026-11-23_1_t01.mp4",
    "insights": {
-    "views": 1332,
-    "reach": 1030,
+    "views": 1356,
+    "reach": 1056,
     "likes": 4,
     "comments": 0,
     "shares": 1,
-    "saved": 6,
-    "total_interactions": 11,
-    "ig_reels_avg_watch_time": 4605
+    "saved": 7,
+    "total_interactions": 12,
+    "ig_reels_avg_watch_time": 4626
    },
    "category": "tip",
    "style": "list",
@@ -2664,7 +2666,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T12:17:37.246248+11:00",
+   "insights_at": "2026-11-23T13:18:41.329953+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2680,6 +2682,51 @@
      1030,
      1,
      6
+    ],
+    [
+     3.68,
+     1356,
+     1056,
+     1,
+     7
+    ]
+   ]
+  },
+  "18106349906352509": {
+   "topic": "s04",
+   "kind": "real",
+   "hook": "Aussie slush vs Japan pow",
+   "date": "2026-11-23",
+   "posted_at": "2026-11-23T13:17:50.196112+11:00",
+   "file": "2026-11-23_2_s04.mp4",
+   "insights": {
+    "views": 0,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0
+   },
+   "category": "snow_life",
+   "style": "list",
+   "hook_type": "statement",
+   "sound_kind": "sound",
+   "time": "13:00",
+   "variation": {},
+   "source": "bank",
+   "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
+   "fit": 3,
+   "insights_at": "2026-11-23T13:18:42.526483+11:00",
+   "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
+   "series": [
+    [
+     0.01,
+     0,
+     0,
+     0,
+     0
     ]
    ]
   }
@@ -2807,7 +2854,8 @@
   "2026-11-23 09:27 Posted trial reel 2026-11-23_1_t01.mp4 -> 17955926130342614",
   "2026-11-23 09:38 Re-queued the 9am reel: Instagram posted it as a normal reel, Conor deleted it",
   "2026-11-23 09:38 Posted trial reel 2026-11-23_1_t01.mp4 -> 18155447869514779",
-  "2026-11-23 12:17 Saved 1 rating from you"
+  "2026-11-23 12:17 Saved 1 rating from you",
+  "2026-11-23 13:18 Posted trial reel 2026-11-23_2_s04.mp4 -> 18106349906352509"
  ],
  "fal_spend": {
   "2026-11": 5.76
@@ -2842,9 +2890,13 @@
   [
    "2026-11-23T12:17+11:00",
    944
+  ],
+  [
+   "2026-11-23T13:18+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-23T12:17:35.498599+11:00",
+ "publish_heartbeat": "2026-11-23T13:17:50.196112+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
