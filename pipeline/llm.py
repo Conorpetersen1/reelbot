@@ -139,8 +139,10 @@ This is a { {'moment': 'MOMENT reel (text about what is happening in the footage
 
 Score each candidate 1-5 on:
 - hook: would a stranger who doesn't follow him stop scrolling? (5 = specific, tense or funny; 1 = generic handout)
-- sense: does it make sense and deliver what the hook promises, in order? For teaching: could a learner try it
-  on their next run? (1 = confusing, contradictory or vague)
+- sense: does it make sense and deliver EXACTLY what the hook promises, in order? If the hook names one thing
+  (e.g. the back foot) and the lines are about something else (e.g. shoulders), sense = 1. If the hook says
+  "2 things" there must be 2. For teaching: could a learner try it on their next run? (1 = confusing,
+  contradictory, vague or off-topic)
 - match: does it fit what is actually in the footage? (1 = contradicts it)
 - voice: does it sound like Conor's best reels?
 Also set "problem" to a short note if anything is wrong, misleading, unsafe or not snowboarding-accurate, else "".
