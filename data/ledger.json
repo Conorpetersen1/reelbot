@@ -2638,7 +2638,7 @@
     ],
     "caption": "Teaching a mate? Start here. Follow for more snowboard tips. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
-    "status": "queued",
+    "status": "posted",
     "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
     "style": "question",
     "variation": {},
@@ -2646,7 +2646,9 @@
     "category": "tip",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank"
+    "source": "bank",
+    "media_id": "18186268828432725",
+    "posted_at": "2026-11-23T22:01:36.441852+11:00"
    }
   ],
   "2026-11-24": [
@@ -2801,7 +2803,7 @@
    "posted_at": "2026-11-23T09:37:38.733124+11:00",
    "file": "2026-11-23_1_t01.mp4",
    "insights": {
-    "views": 1446,
+    "views": 1447,
     "reach": 1123,
     "likes": 4,
     "comments": 0,
@@ -2819,7 +2821,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T21:41:23.368718+11:00",
+   "insights_at": "2026-11-23T22:03:00.885001+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2898,6 +2900,13 @@
      1121,
      1,
      7
+    ],
+    [
+     12.43,
+     1447,
+     1123,
+     1,
+     7
     ]
    ],
    "est_follows": 0.0
@@ -2928,7 +2937,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T21:56:25.755881+11:00",
+   "insights_at": "2026-11-23T22:03:03.355987+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -2993,6 +3002,13 @@
      1634,
      1,
      1
+    ],
+    [
+     8.76,
+     2251,
+     1637,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3026,7 +3042,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T21:56:27.847353+11:00",
+   "insights_at": "2026-11-23T22:03:05.563408+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3070,6 +3086,13 @@
      221,
      0,
      0
+    ],
+    [
+     6.03,
+     292,
+     228,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3082,14 +3105,14 @@
    "posted_at": "2026-11-23T18:02:01.012479+11:00",
    "file": "2026-11-23_4_s01.mp4",
    "insights": {
-    "views": 176,
+    "views": 177,
     "reach": 149,
     "likes": 0,
     "comments": 0,
-    "shares": 4,
+    "shares": 0,
     "saved": 0,
-    "total_interactions": 4,
-    "ig_reels_avg_watch_time": 3428
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 3410
    },
    "category": "snow_life",
    "style": "question",
@@ -3100,7 +3123,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T21:56:28.857536+11:00",
+   "insights_at": "2026-11-23T22:03:08.202167+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3128,6 +3151,51 @@
      3.0,
      171,
      143,
+     0,
+     0
+    ],
+    [
+     4.02,
+     177,
+     149,
+     0,
+     0
+    ]
+   ]
+  },
+  "18186268828432725": {
+   "topic": "t31",
+   "kind": "ai",
+   "hook": "Teaching a mate? Start here",
+   "date": "2026-11-23",
+   "posted_at": "2026-11-23T22:01:36.441852+11:00",
+   "file": "2026-11-23_5_t31.mp4",
+   "insights": {
+    "views": 0,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0
+   },
+   "category": "tip",
+   "style": "question",
+   "hook_type": "statement",
+   "sound_kind": "sound",
+   "time": "21:30",
+   "variation": {},
+   "source": "bank",
+   "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
+   "fit": 4,
+   "insights_at": "2026-11-23T22:03:10.491391+11:00",
+   "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
+   "series": [
+    [
+     0.03,
+     0,
+     0,
      0,
      0
     ]
@@ -3272,7 +3340,8 @@
   "2026-11-23 17:30 Notification sent: 🗓️ Weekly 1-minute check: Instagram Account Status",
   "2026-11-23 17:30 Notification sent: 📌 Top up fal.ai: about A$6.53 left (US$4.24) (fal.ai › Billing). Then up",
   "2026-11-23 17:45 Studied 37 of your reels for your voice: Conor speaks directly to ski and snowboard culture through self-deprecating, hyper-relatable ski-bum humor and Aussie mo",
-  "2026-11-23 18:02 Posted trial reel 2026-11-23_4_s01.mp4 -> 18123869735472764"
+  "2026-11-23 18:02 Posted trial reel 2026-11-23_4_s01.mp4 -> 18123869735472764",
+  "2026-11-23 22:02 Posted trial reel 2026-11-23_5_t31.mp4 -> 18186268828432725"
  ],
  "fal_spend": {
   "2026-11": 5.76
@@ -3347,9 +3416,13 @@
   [
    "2026-11-23T21:01+11:00",
    944
+  ],
+  [
+   "2026-11-23T22:03+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-23T21:01:38.682928+11:00",
+ "publish_heartbeat": "2026-11-23T22:01:36.441852+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
