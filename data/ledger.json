@@ -2439,24 +2439,26 @@
   "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3": {
    "name": "s05_20261122_00.mp4",
    "topic": "s05",
-   "uses": 1,
+   "uses": 2,
    "created": "2026-11-22T18:03:30.835583+11:00",
-   "last_used": "2026-11-22T21:39:32.734678+11:00",
-   "last_style": "list"
+   "last_used": "2026-11-24T02:59:35.056042+11:00",
+   "last_style": "pov"
   },
   "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8": {
    "name": "s01_20261122_02.mp4",
    "topic": "s01",
-   "uses": 1,
+   "uses": 2,
    "created": "2026-11-22T18:06:49.562315+11:00",
-   "last_used": "2026-11-22T21:40:10.216701+11:00",
+   "last_used": "2026-11-24T03:02:45.905754+11:00",
    "last_style": "question"
   },
   "1w1rTFqv41EzdSrEspp29hi3DjMbMLEhS": {
    "name": "t24_20261122_03.mp4",
    "topic": "t24",
-   "uses": 0,
-   "created": "2026-11-22T18:08:02.782966+11:00"
+   "uses": 1,
+   "created": "2026-11-22T18:08:02.782966+11:00",
+   "last_used": "2026-11-24T02:56:15.980245+11:00",
+   "last_style": "pov"
   },
   "1xe7i9CctYa-aoVYJN7xhmKtnPBzLH_0O": {
    "name": "t08_20261122_04.mp4",
@@ -2469,17 +2471,19 @@
   "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS": {
    "name": "t01_20261122_05.mp4",
    "topic": "t01",
-   "uses": 1,
+   "uses": 2,
    "created": "2026-11-22T18:11:46.635164+11:00",
-   "last_used": "2026-11-22T21:37:53.385902+11:00",
-   "last_style": "list",
+   "last_used": "2026-11-24T03:06:09.209018+11:00",
+   "last_style": "question",
    "rated_high": true
   },
   "1cry745n0hpm57CIfQxs0tzNgggCP0Xv9": {
    "name": "t23_20261122_06.mp4",
    "topic": "t23",
-   "uses": 0,
-   "created": "2026-11-22T18:13:41.217753+11:00"
+   "uses": 1,
+   "created": "2026-11-22T18:13:41.217753+11:00",
+   "last_used": "2026-11-24T02:51:59.825148+11:00",
+   "last_style": "pov"
   },
   "18r0PTErnWnaplo-PV-wchUteOjYgrbEI": {
    "name": "t30_20261122_08.mp4",
@@ -2792,6 +2796,207 @@
     "sound_kind": "sound",
     "source": "bank"
    }
+  ],
+  "2026-11-25": [
+   {
+    "date": "2026-11-25",
+    "slot": 1,
+    "time": "07:30",
+    "kind": "ai",
+    "topic": "t23",
+    "clip": "1cry745n0hpm57CIfQxs0tzNgggCP0Xv9",
+    "file_id": "1DjWI4Pz5NBZPsyUUHqwuv1BTyWDjoahx",
+    "file": "2026-11-25_1_t23.mp4",
+    "fit": 5,
+    "hook": "Why you keep crashing on tiny kickers",
+    "description": [
+     "You're extending too much off the lip",
+     "Stay compact and compress in the air",
+     "Feels small and tucked, not stretched"
+    ],
+    "caption": "Every lesson, same thing: the kicker is tiny and the launch is huge. Save this for your next day on snow. #snowboarding #snowboardtips #learntosnowboard #snowboardlessons",
+    "text_source": "written",
+    "critic": {
+     "score": 22.5,
+     "angle": "Why problem hook",
+     "hook": 4,
+     "sense": 5,
+     "match": 5,
+     "voice": 4,
+     "note": "Direct, actionable fix that matches the character's compact air position perfectly."
+    },
+    "status": "queued",
+    "sound": null,
+    "style": "pov",
+    "variation": {},
+    "hook_type": "why",
+    "category": "tip",
+    "asked_hook": "why",
+    "sound_kind": "none",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-25",
+    "slot": 2,
+    "time": "09:00",
+    "kind": "ai",
+    "topic": "t24",
+    "clip": "1w1rTFqv41EzdSrEspp29hi3DjMbMLEhS",
+    "file_id": "1Vl0AbdeHPHESNnLaKRTHA7Os_eK6mLSK",
+    "file": "2026-11-25_2_t24.mp4",
+    "fit": 3,
+    "hook": "Why do park locals keep glaring at me?",
+    "description": [
+     "You dropped in without a word",
+     "Call your drop, then clear the landing",
+     "Feels cheesy. It's just park manners."
+    ],
+    "caption": "Nothing makes a park go quiet faster than someone dropping in silently. Send this to a mate who needs it. #snowboarding #terrainpark #snowboardtips #learntosnowboard",
+    "text_source": "written",
+    "critic": {
+     "score": 19.0,
+     "angle": "Call your drop",
+     "hook": 4,
+     "sense": 4,
+     "match": 3,
+     "voice": 4,
+     "note": "Relatable mountain culture hook that fits Conor's tone well; solid one problem/one fix progression."
+    },
+    "status": "queued",
+    "sound": null,
+    "style": "pov",
+    "variation": {},
+    "hook_type": "why",
+    "category": "tip",
+    "asked_hook": "why",
+    "sound_kind": "none",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-25",
+    "slot": 3,
+    "time": "11:30",
+    "kind": "ai",
+    "topic": "s05",
+    "clip": "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3",
+    "file_id": "1GrJe3A2fFJL0ACf5Nunh0lzmmgi4avFO",
+    "file": "2026-11-25_3_s05.mp4",
+    "fit": 5,
+    "hook": "Inside an instructor's bag: zero dignity",
+    "description": [
+     "Spare gloves",
+     "Snacks for the kids",
+     "Sunscreen and a backup goggle lens"
+    ],
+    "caption": "Snacks for the kids, and yes I've been eyeing them too. Tag the mate you ride with who never packs a spare anything. #snowboarding #snowboardinstructor #snowlife #skibum",
+    "text_source": "written",
+    "critic": {
+     "score": 23.5,
+     "angle": "Satirical bag list",
+     "hook": 4,
+     "sense": 5,
+     "match": 5,
+     "voice": 5,
+     "note": "Accurate, funny, and matches the bag contents shown on screen"
+    },
+    "status": "queued",
+    "sound": null,
+    "style": "pov",
+    "variation": {
+     "zoom": 1.14,
+     "pan": 0.3,
+     "mirror": false,
+     "speed": 0.95
+    },
+    "hook_type": "statement",
+    "category": "snow_life",
+    "asked_hook": "why",
+    "sound_kind": "none",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-25",
+    "slot": 4,
+    "time": "19:30",
+    "kind": "ai",
+    "topic": "s01",
+    "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8",
+    "file_id": "1atswisZBi3Liz3MzgpPn1mJZ4kD4d4nj",
+    "file": "2026-11-25_4_s01.mp4",
+    "fit": 5,
+    "hook": "How it feels clocking off into an onsen",
+    "description": [
+     "Powder mornings. Lessons all day.",
+     "Then straight into the hot water."
+    ],
+    "caption": "Every sore body should end the day this way. Save this for when you're planning your Japan trip.\n\n#snowboarding #japow #onsen #snowlife #ski",
+    "text_source": "written",
+    "critic": {
+     "score": 25.0,
+     "angle": "How it feels",
+     "hook": 5,
+     "sense": 5,
+     "match": 5,
+     "voice": 5,
+     "note": "Nails Conor's signature 'How it feels' meme hook and perfectly mirrors sliding straight off the slope into the tub."
+    },
+    "status": "queued",
+    "sound": null,
+    "style": "question",
+    "variation": {
+     "zoom": 1.13,
+     "pan": 0.85,
+     "mirror": false,
+     "speed": 0.9
+    },
+    "hook_type": "how_i",
+    "category": "snow_life",
+    "asked_hook": "why",
+    "sound_kind": "none",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-25",
+    "slot": 5,
+    "time": "21:30",
+    "kind": "ai",
+    "topic": "t01",
+    "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
+    "file_id": "12_sXm1o7x_RCQ6F8Ttn9VXYdXgsRmOyO",
+    "file": "2026-11-25_5_t01.mp4",
+    "fit": 3,
+    "hook": "Stop bowing to your snowboard",
+    "description": [
+     "Keep your hips over the board",
+     "Bend through ankles and knees instead",
+     "Feels like your hips ride the board"
+    ],
+    "caption": "Nobody's handing out points for the polite bow on the toe edge. Send this to a mate who needs it. #snowboarding #snowboardlesson #toeside #snowboardinstructor",
+    "text_source": "written",
+    "critic": {
+     "score": 24.0,
+     "angle": "Bust the bow",
+     "hook": 5,
+     "sense": 5,
+     "match": 4,
+     "voice": 5,
+     "note": "Strong visual hook with 'polite bow' banter that matches Conor's humor while delivering accurate APSI technique."
+    },
+    "status": "queued",
+    "sound": null,
+    "style": "question",
+    "variation": {
+     "zoom": 1.17,
+     "pan": 0.15,
+     "mirror": true,
+     "speed": 1.1
+    },
+    "hook_type": "statement",
+    "category": "tip",
+    "asked_hook": "why",
+    "sound_kind": "none",
+    "source": "bank"
+   }
   ]
  },
  "posts": {
@@ -2821,7 +3026,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T02:21:23.703204+11:00",
+   "insights_at": "2026-11-24T02:45:53.819280+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2972,7 +3177,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T02:02:37.477968+11:00",
+   "insights_at": "2026-11-24T02:45:57.549860+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3095,13 +3300,13 @@
    "file": "2026-11-23_3_s05.mp4",
    "insights": {
     "views": 334,
-    "reach": 250,
+    "reach": 251,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 4453
+    "ig_reels_avg_watch_time": 4475
    },
    "category": "snow_life",
    "style": "list",
@@ -3112,7 +3317,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T02:41:22.752909+11:00",
+   "insights_at": "2026-11-24T02:45:58.756738+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3210,7 +3415,7 @@
    "posted_at": "2026-11-23T18:02:01.012479+11:00",
    "file": "2026-11-23_4_s01.mp4",
    "insights": {
-    "views": 207,
+    "views": 209,
     "reach": 175,
     "likes": 0,
     "comments": 0,
@@ -3228,7 +3433,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T02:36:23.181542+11:00",
+   "insights_at": "2026-11-24T02:46:00.164997+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3301,7 +3506,8 @@
      4,
      0
     ]
-   ]
+   ],
+   "est_follows": 0.0
   },
   "18186268828432725": {
    "topic": "t31",
@@ -3329,7 +3535,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T02:11:24.115895+11:00",
+   "insights_at": "2026-11-24T02:46:02.123785+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -3374,12 +3580,14 @@
      0,
      0
     ]
-   ]
+   ],
+   "est_follows": 0.0
   }
  },
  "followers": {
   "2026-11-22": 944,
-  "2026-11-23": 944
+  "2026-11-23": 944,
+  "2026-11-24": 944
  },
  "log": [
   "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []",
@@ -3516,7 +3724,16 @@
   "2026-11-23 17:30 Notification sent: 📌 Top up fal.ai: about A$6.53 left (US$4.24) (fal.ai › Billing). Then up",
   "2026-11-23 17:45 Studied 37 of your reels for your voice: Conor speaks directly to ski and snowboard culture through self-deprecating, hyper-relatable ski-bum humor and Aussie mo",
   "2026-11-23 18:02 Posted trial reel 2026-11-23_4_s01.mp4 -> 18123869735472764",
-  "2026-11-23 22:02 Posted trial reel 2026-11-23_5_t31.mp4 -> 18186268828432725"
+  "2026-11-23 22:02 Posted trial reel 2026-11-23_5_t31.mp4 -> 18186268828432725",
+  "2026-11-24 02:46 Updated insights for 5 reels",
+  "2026-11-24 02:46 Critic rejected all 3 texts for n06 (attempt 1)",
+  "2026-11-24 02:47 Critic rejected all 3 texts for n06 (attempt 2)",
+  "2026-11-24 02:47 Skipped n06: no good life text",
+  "2026-11-24 02:47 Writer error for i01: Expecting property name enclosed in double quotes: line 2 column 402 (char 418)",
+  "2026-11-24 02:48 Reviewer rejected text for i01: gemini: The reel content does not address the assigned topic (APSI Level 1 certification pathway / how to become a snowboard instructor in Australia) and is completely off-topic.",
+  "2026-11-24 02:48 Skipped i01: no good life text",
+  "2026-11-24 02:52 Critic rejected all 3 texts for t24 (attempt 1)",
+  "2026-11-24 03:06 Queued 5 reels for 2026-11-25: ['t23', 't24', 's05', 's01', 't01']"
  ],
  "fal_spend": {
   "2026-11": 5.76
