@@ -44,7 +44,7 @@ jobs:
             if [ "$m" -le 2 ]; then
               go publish.yml && echo "$(date -u +%H:%M) started publish" || echo "publish start failed"
               # 05:01 UTC = 4:01pm Sydney (summer time). 14:01 UTC Sunday = 1:01am Monday Sydney.
-              if [ "$h" = "05" ]; then start_if_not_run daily.yml 20 || true; fi
+              if [ "$h" = "05" ]; then start_if_not_run daily.yml 6 || true; fi
               if [ "$h" = "14" ] && [ "$d" = "7" ]; then start_if_not_run weekly.yml 100 || true; fi
             elif busy; then
               echo "$(date -u +%H:%M) busy, refresh skipped"
