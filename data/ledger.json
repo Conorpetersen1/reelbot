@@ -181,8 +181,8 @@
   "1GH7BLc7qa1sWkjc5m-E8ozDi6KEXiQml": {
    "name": "F0BB0BE8-D1DD-458F-A54F-88A91D205C6A.mp4",
    "duration": 11.3,
-   "uses": 0,
-   "last_used": null,
+   "uses": 1,
+   "last_used": "2026-11-23T17:26:23.138253+11:00",
    "added": "2026-11-22T20:28:47.443505+11:00",
    "segments": [
     {
@@ -196,8 +196,9 @@
      "summary": "Conor executes a big jump off a snow feature into deep powder and rides away through the trees.",
      "technique": "good",
      "usable": true,
-     "uses": 0,
-     "last_used": null
+     "uses": 1,
+     "last_used": "2026-11-23T17:26:23.138233+11:00",
+     "last_style": "question"
     }
    ],
    "analysed_by": "gemini",
@@ -642,8 +643,8 @@
   "1hQ6By5ISvbat9XXRMHyg28a2xjHUGA55": {
    "name": "IMG_1774.MOV",
    "duration": 12.8,
-   "uses": 0,
-   "last_used": null,
+   "uses": 1,
+   "last_used": "2026-11-23T17:29:58.186790+11:00",
    "added": "2026-11-22T21:14:52.654399+11:00",
    "segments": [
     {
@@ -656,8 +657,9 @@
      "summary": "Snowboarder cruises down a deep powder slope before tumbling into the soft snow.",
      "technique": "mistake",
      "usable": true,
-     "uses": 0,
-     "last_used": null
+     "uses": 1,
+     "last_used": "2026-11-23T17:29:58.186769+11:00",
+     "last_style": "question"
     }
    ],
    "analysed_by": "gemini",
@@ -1715,8 +1717,8 @@
   "16XkcDxWGMHBr1zCCgNngpCsHKDLgxP3e": {
    "name": "IMG_6374.MOV",
    "duration": 4.8,
-   "uses": 0,
-   "last_used": null,
+   "uses": 1,
+   "last_used": "2026-11-23T17:22:18.351132+11:00",
    "added": "2026-11-22T21:25:48.610659+11:00",
    "segments": [
     {
@@ -1730,8 +1732,9 @@
      "summary": "POV shot looking down at the snowboard board and boots before panning up to reveal a steep mountain slope and scenic valley.",
      "technique": "n/a",
      "usable": true,
-     "uses": 0,
-     "last_used": null
+     "uses": 1,
+     "last_used": "2026-11-23T17:22:18.351111+11:00",
+     "last_style": "list"
     }
    ],
    "analysed_by": "gemini",
@@ -2458,8 +2461,10 @@
   "1xe7i9CctYa-aoVYJN7xhmKtnPBzLH_0O": {
    "name": "t08_20261122_04.mp4",
    "topic": "t08",
-   "uses": 0,
-   "created": "2026-11-22T18:09:46.724847+11:00"
+   "uses": 1,
+   "created": "2026-11-22T18:09:46.724847+11:00",
+   "last_used": "2026-11-23T17:19:07.747302+11:00",
+   "last_style": "list"
   },
   "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS": {
    "name": "t01_20261122_05.mp4",
@@ -2479,8 +2484,10 @@
   "18r0PTErnWnaplo-PV-wchUteOjYgrbEI": {
    "name": "t30_20261122_08.mp4",
    "topic": "t30",
-   "uses": 0,
-   "created": "2026-11-22T18:17:24.191559+11:00"
+   "uses": 1,
+   "created": "2026-11-22T18:17:24.191559+11:00",
+   "last_used": "2026-11-23T17:25:27.560881+11:00",
+   "last_style": "list"
   },
   "1MOKWz0m3YYQwISnuZTvCvbYXw0biMB0R": {
    "name": "t31_20261122_10.mp4",
@@ -2639,6 +2646,148 @@
     "sound_kind": "sound",
     "source": "bank"
    }
+  ],
+  "2026-11-24": [
+   {
+    "date": "2026-11-24",
+    "slot": 1,
+    "time": "11:30",
+    "kind": "ai",
+    "topic": "t08",
+    "clip": "1xe7i9CctYa-aoVYJN7xhmKtnPBzLH_0O",
+    "file_id": "1BufBMhdMhI2aCuwFrKqycwOMUOKJGkwo",
+    "file": "2026-11-24_1_t08.mp4",
+    "fit": 5,
+    "hook": "Why do I keep catching an edge?",
+    "description": [
+     "You're catching your downhill edge",
+     "Balance over your uphill edge",
+     "Eyes up and sink a little as you edge"
+    ],
+    "caption": "Why do I keep catching an edge? Save this for your next day on snow. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
+    "text_source": "topic_bank",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
+    "style": "list",
+    "variation": {},
+    "hook_type": "why",
+    "category": "tip",
+    "asked_hook": "how_i",
+    "sound_kind": "sound",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-24",
+    "slot": 2,
+    "time": "13:00",
+    "kind": "real",
+    "topic": "i05",
+    "clip": "16XkcDxWGMHBr1zCCgNngpCsHKDLgxP3e#0",
+    "file_id": "1woHnQdrdI1OwCu_HrLsr-r6fV5O5lqRQ",
+    "file": "2026-11-24_2_i05.mp4",
+    "fit": 3,
+    "hook": "How I teach both skiing and snowboarding",
+    "description": [
+     "Multi-skilling means more work",
+     "I'm Level 3 board, Level 1 ski",
+     "More lessons, more seasons"
+    ],
+    "caption": "Teaching both skis and snowboard is extra work, but it means more lessons and more seasons on snow. I'm APSI Level 3 board and Level 1 ski, and I reckon it's worth it. What should I cover next? #snowboardinstructor #APSI #multiskilling #snowboarding #skiing #thredbo #niseko #snowinstructor",
+    "text_source": "written",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
+    "style": "list",
+    "variation": {},
+    "hook_type": "how_i",
+    "category": "instructor",
+    "asked_hook": "how_i",
+    "sound_kind": "sound",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-24",
+    "slot": 3,
+    "time": "17:30",
+    "kind": "ai",
+    "topic": "t30",
+    "clip": "18r0PTErnWnaplo-PV-wchUteOjYgrbEI",
+    "file_id": "1Io3PNkUcvRAfwigQg0s8bQ0eXdZcjLp1",
+    "file": "2026-11-24_3_t30.mp4",
+    "fit": 3,
+    "hook": "How to learn switch faster",
+    "description": [
+     "Start with falling leaf switch on easy terrain",
+     "Same cues: eyes up, centred, rise between turns",
+     "Then link switch turns"
+    ],
+    "caption": "How to learn switch faster. Follow for more snowboard tips. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
+    "text_source": "topic_bank",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
+    "style": "list",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "tip",
+    "asked_hook": "how_i",
+    "sound_kind": "sound",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-24",
+    "slot": 4,
+    "time": "19:30",
+    "kind": "real",
+    "topic": "f05",
+    "clip": "1GH7BLc7qa1sWkjc5m-E8ozDi6KEXiQml#0",
+    "file_id": "1GVgqJnRwLCRMkEetogVumpexgctl95-k",
+    "file": "2026-11-24_4_f05.mp4",
+    "fit": 3,
+    "hook": "How I check every jump before I hit it",
+    "description": [
+     "Look at the jump first: run-in, lip, landing",
+     "Ride straight with a flat base off the lip",
+     "Stay compact and land on both feet"
+    ],
+    "caption": "Whatever the size, I check the run-in, lip and landing before I drop in, and if you're new to jumps, start small. Save this for your next day on snow. #snowboarding #snowboardtips #terrainpark #smalljump #snowboardinstructor #learntosnowboard #thredbo #niseko",
+    "text_source": "written",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - two faced - purc.m4a",
+    "style": "question",
+    "variation": {},
+    "hook_type": "how_i",
+    "category": "freestyle",
+    "asked_hook": "how_i",
+    "sound_kind": "sound",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-24",
+    "slot": 5,
+    "time": "21:30",
+    "kind": "real",
+    "topic": "b03",
+    "clip": "1hQ6By5ISvbat9XXRMHyg28a2xjHUGA55#0",
+    "file_id": "18YHWHzjRy746KxO8ERFzoK0_weAf40EG",
+    "file": "2026-11-24_5_b03.mp4",
+    "fit": 3,
+    "hook": "The one cue that makes falling less scary",
+    "description": [
+     "Yes, everyone falls. Instructors included",
+     "Relax and go with it, don't fight it",
+     "It gets easier fast"
+    ],
+    "caption": "Everyone falls when they're learning, instructors included, and the one cue is to relax and go with it instead of fighting it. Powder is a soft place to practise, and it gets easier fast. Send this to a mate who needs it. #snowboarding #learntosnowboard #snowboardlessons #beginnersnowboard #snowboardtips #niseko #thredbo #snowboardinstructor",
+    "text_source": "written",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
+    "style": "question",
+    "variation": {},
+    "hook_type": "how_i",
+    "category": "first_timer",
+    "asked_hook": "how_i",
+    "sound_kind": "sound",
+    "source": "bank"
+   }
   ]
  },
  "posts": {
@@ -2668,7 +2817,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T17:01:53.536872+11:00",
+   "insights_at": "2026-11-23T17:15:48.172613+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2720,7 +2869,8 @@
      1,
      7
     ]
-   ]
+   ],
+   "est_follows": 0.0
   },
   "18106349906352509": {
    "topic": "s04",
@@ -2730,7 +2880,7 @@
    "posted_at": "2026-11-23T13:17:50.196112+11:00",
    "file": "2026-11-23_2_s04.mp4",
    "insights": {
-    "views": 2200,
+    "views": 2208,
     "reach": 1588,
     "likes": 16,
     "comments": 0,
@@ -2748,7 +2898,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T17:11:26.191611+11:00",
+   "insights_at": "2026-11-23T17:15:48.786987+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -2789,7 +2939,8 @@
    ],
    "alerted": [
     2000
-   ]
+   ],
+   "est_follows": 0.0
   },
   "17908452777349822": {
    "topic": "s05",
@@ -2799,7 +2950,7 @@
    "posted_at": "2026-11-23T16:01:33.598859+11:00",
    "file": "2026-11-23_3_s05.mp4",
    "insights": {
-    "views": 191,
+    "views": 201,
     "reach": 127,
     "likes": 1,
     "comments": 0,
@@ -2817,7 +2968,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T17:11:27.247150+11:00",
+   "insights_at": "2026-11-23T17:15:49.394190+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -2834,11 +2985,13 @@
      0,
      0
     ]
-   ]
+   ],
+   "est_follows": 0.0
   }
  },
  "followers": {
-  "2026-11-22": 944
+  "2026-11-22": 944,
+  "2026-11-23": 944
  },
  "log": [
   "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []",
@@ -2963,7 +3116,16 @@
   "2026-11-23 12:17 Saved 1 rating from you",
   "2026-11-23 13:18 Posted trial reel 2026-11-23_2_s04.mp4 -> 18106349906352509",
   "2026-11-23 16:02 Posted trial reel 2026-11-23_3_s05.mp4 -> 17908452777349822",
-  "2026-11-23 17:01 View alert sent: Aussie slush vs Japan pow (2,174 views)"
+  "2026-11-23 17:01 View alert sent: Aussie slush vs Japan pow (2,174 views)",
+  "2026-11-23 17:15 Updated insights for 3 reels",
+  "2026-11-23 17:15 Writer error for t08: Unterminated string starting at: line 1 column 199 (char 198)",
+  "2026-11-23 17:16 Writer error for t08: Unterminated string starting at: line 1 column 197 (char 196)",
+  "2026-11-23 17:19 Writer error for i05: Unterminated string starting at: line 1 column 194 (char 193)",
+  "2026-11-23 17:22 Writer error for t30: no JSON in reply: ",
+  "2026-11-23 17:22 Writer error for t30: no JSON in reply: ",
+  "2026-11-23 17:29 Queued 5 reels for 2026-11-24: ['t08', 'i05', 't30', 'f05', 'b03']",
+  "2026-11-23 17:30 Notification sent: 🗓️ Weekly 1-minute check: Instagram Account Status",
+  "2026-11-23 17:30 Notification sent: 📌 Top up fal.ai: about A$6.53 left (US$4.24) (fal.ai › Billing). Then up"
  ],
  "fal_spend": {
   "2026-11": 5.76
@@ -2977,11 +3139,15 @@
   "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a": 1,
   "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a": 1,
   "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a": 1,
-  "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a": 1,
+  "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a": 2,
   "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a": 1,
-  "sweep 2026-11-22 - Vice City - Neon Dust.m4a": 1
+  "sweep 2026-11-22 - Vice City - Neon Dust.m4a": 1,
+  "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a": 1,
+  "sweep 2026-11-22 - eye of ra - purc.m4a": 1,
+  "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a": 1,
+  "sweep 2026-11-22 - two faced - purc.m4a": 1
  },
- "sound_newest": "2026-11-22T22:52:00+11:00",
+ "sound_newest": "2026-11-22T11:52:10.236Z",
  "followers_hourly": [
   [
    "2026-11-23T08:21+11:00",
@@ -3034,5 +3200,9 @@
  },
  "sound_ratings": {
   "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a": 4
+ },
+ "notified": {
+  "status-2026-48": "2026-11-23T17:30:00.160045+11:00",
+  "reminder-credit-fal-2026-11-22-4.24": "2026-11-23T17:30:00.482506+11:00"
  }
 }
