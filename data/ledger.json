@@ -2804,13 +2804,13 @@
    "file": "2026-11-23_1_t01.mp4",
    "insights": {
     "views": 1466,
-    "reach": 1137,
+    "reach": 1138,
     "likes": 4,
     "comments": 0,
     "shares": 1,
     "saved": 7,
     "total_interactions": 12,
-    "ig_reels_avg_watch_time": 4692
+    "ig_reels_avg_watch_time": 4688
    },
    "category": "tip",
    "style": "list",
@@ -2821,7 +2821,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T00:56:35.626140+11:00",
+   "insights_at": "2026-11-24T01:01:44.090426+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2928,6 +2928,13 @@
      1137,
      1,
      7
+    ],
+    [
+     15.4,
+     1466,
+     1138,
+     1,
+     7
     ]
    ],
    "est_follows": 0.0
@@ -2958,7 +2965,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T00:56:36.718686+11:00",
+   "insights_at": "2026-11-24T01:01:45.289959+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3051,6 +3058,13 @@
      1639,
      1,
      1
+    ],
+    [
+     11.73,
+     2255,
+     1639,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3084,7 +3098,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T00:56:37.851264+11:00",
+   "insights_at": "2026-11-24T01:01:46.127443+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3156,6 +3170,13 @@
      243,
      0,
      0
+    ],
+    [
+     9.0,
+     319,
+     243,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3186,7 +3207,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T00:56:39.362076+11:00",
+   "insights_at": "2026-11-24T01:01:47.327503+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3244,6 +3265,13 @@
      157,
      4,
      0
+    ],
+    [
+     7.0,
+     188,
+     157,
+     4,
+     0
     ]
    ]
   },
@@ -3256,13 +3284,13 @@
    "file": "2026-11-23_5_t31.mp4",
    "insights": {
     "views": 175,
-    "reach": 147,
+    "reach": 150,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 3481
+    "ig_reels_avg_watch_time": 3491
    },
    "category": "tip",
    "style": "question",
@@ -3273,7 +3301,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T00:56:40.595827+11:00",
+   "insights_at": "2026-11-24T01:01:48.078882+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -3301,6 +3329,13 @@
      2.92,
      175,
      147,
+     0,
+     0
+    ],
+    [
+     3.0,
+     175,
+     150,
      0,
      0
     ]
@@ -3537,9 +3572,13 @@
   [
    "2026-11-24T00:56+11:00",
    944
+  ],
+  [
+   "2026-11-24T01:01+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-24T00:56:34.195331+11:00",
+ "publish_heartbeat": "2026-11-24T01:01:42.999973+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
