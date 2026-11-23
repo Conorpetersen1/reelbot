@@ -67,7 +67,7 @@ The description must say the same thing as the topic's description, reworded if 
 End the caption with one call to action from the rules (never promise to DM anything).
 
 Return only JSON: {{"hook": "...", "description": ["line", "line", "line"], "caption": "..."}}"""
-    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=800, system=RULES,
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=4000, system=RULES,
                                     messages=[{"role": "user", "content": prompt}])
     out = _json(_text(msg))
     out["hook"] = out["hook"].strip()[:60]
@@ -97,7 +97,7 @@ def check_reel(topic, reel):
             return bool(r.get("ok")), "gemini: " + r.get("reason", "")
         except Exception as e:
             print("Gemini review failed, using Claude:", e)
-    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=300, system=RULES,
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=2000, system=RULES,
                                     messages=[{"role": "user", "content": prompt}])
     r = _json(_text(msg))
     return bool(r.get("ok")), r.get("reason", "")
@@ -136,7 +136,7 @@ def analyze_trend(frame_paths, duration, cuts, note, existing_hooks):
         content.append({"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
                                                      "data": base64.b64encode(p.read_bytes()).decode()}})
     content.append({"type": "text", "text": trend_prompt("These frames are from", duration, cuts, note, existing_hooks)})
-    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=1500, system=RULES,
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=4000, system=RULES,
                                     messages=[{"role": "user", "content": content}])
     return _json(_text(msg))
 
@@ -164,7 +164,7 @@ def fit_check_frames(frame_paths, reel):
     content = [{"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
                                             "data": base64.b64encode(p.read_bytes()).decode()}} for p in frame_paths]
     content.append({"type": "text", "text": fit_prompt(reel, "frames")})
-    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=300,
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=2000,
                                     messages=[{"role": "user", "content": content}])
     return _json(_text(msg))
 
@@ -189,7 +189,7 @@ def segment_clip_frames(frames_with_times, duration):
         content.append({"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
                                                      "data": base64.b64encode(p.read_bytes()).decode()}})
     content.append({"type": "text", "text": segment_prompt(duration, "These frames (with timestamps) are from")})
-    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=1500,
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=4000,
                                     messages=[{"role": "user", "content": content}])
     return _json(_text(msg))
 
@@ -205,6 +205,6 @@ Also judge: is the riding shown good technique, or does it show a mistake? Is it
 (not too dark/blurry)? Are there clearly identifiable faces of people other than a rider in goggles?
 Return only JSON: {{"tags": [...], "summary": "one short sentence", "technique": "good|mistake|n/a",
 "usable": true/false, "faces": true/false}}"""})
-    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=400,
+    msg = _client().messages.create(model=CFG["claude_model"], max_tokens=2000,
                                     messages=[{"role": "user", "content": content}])
     return _json(_text(msg))

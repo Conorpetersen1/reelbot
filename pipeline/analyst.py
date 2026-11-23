@@ -60,7 +60,7 @@ def main():
     if os.environ.get("LOCAL_LLM"):
         out = {"insights": ["offline"], "focus": "offline", "new_topics": []}
     else:
-        msg = llm._client().messages.create(model=CFG["claude_model"], max_tokens=1800, system=llm.RULES,
+        msg = llm._client().messages.create(model=CFG["claude_model"], max_tokens=6000, system=llm.RULES,
                                             messages=[{"role": "user", "content": prompt}])
         out = llm._json(llm._text(msg))
     added = []
