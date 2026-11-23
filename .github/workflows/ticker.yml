@@ -18,10 +18,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
+          go() { gh api -X POST "repos/$REPO/actions/workflows/$1/dispatches" -f ref="${{ github.ref_name }}"; }
           start_if_not_run() {  # workflow file, hours: skip if it already ran (or is running) that recently
             since=$(date -u -d "-$2 hours" +%Y-%m-%dT%H:%M:%SZ)
             n=$(gh run list -R "$REPO" -w "$1" --created ">=$since" --json databaseId -q length)
-            if [ "${n:-0}" = "0" ]; then gh workflow run "$1" -R "$REPO" && echo "started $1"; fi
+            if [ "${n:-0}" = "0" ]; then go "$1" && echo "started $1"; fi
           }
           end=$(( $(date +%s) + 5*3600 + 15*60 ))
           while true; do
@@ -29,10 +30,10 @@ jobs:
             wait=$(( ((17 - m + 60) % 60) * 60 - s )); [ $wait -le 0 ] && wait=$(( wait + 3600 ))
             [ $(( $(date +%s) + wait )) -ge $end ] && break
             sleep $wait
-            gh workflow run publish.yml -R "$REPO" && echo "$(date -u +%H:%M) started publish" || echo "publish start failed"
+            go publish.yml && echo "$(date -u +%H:%M) started publish" || echo "publish start failed"
             h=$(date -u +%H); d=$(date -u +%u)
             # 05:17 UTC = 4:17pm Sydney (summer time). 14:17 UTC Sunday = 1:17am Monday Sydney.
             if [ "$h" = "05" ]; then start_if_not_run daily.yml 20 || true; fi
             if [ "$h" = "14" ] && [ "$d" = "7" ]; then start_if_not_run weekly.yml 100 || true; fi
           done
-          gh workflow run ticker.yml -R "$REPO" && echo "handed over to a new ticker"
+          go ticker.yml && echo "handed over to a new ticker"
