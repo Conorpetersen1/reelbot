@@ -1,6 +1,7 @@
 name: Ticker
 # GitHub's own schedules run hours late or not at all on this repo, so this job keeps time instead:
-# it starts Publish every hour at :17, the Daily plan at about 4:17pm Sydney and the Weekly job on Mondays,
+# it starts Publish every hour at :01, a dashboard Refresh every 5 minutes, the Daily plan at about 4:01pm
+# Sydney and the Weekly job on Mondays,
 # then hands over to a fresh copy of itself before GitHub's 6-hour job limit. Free on a public repo.
 # If it ever stops: Actions > Ticker > Run workflow (the schedule below also tries to restart it).
 on:
@@ -24,16 +25,31 @@ jobs:
             n=$(gh run list -R "$REPO" -w "$1" --created ">=$since" --json databaseId -q length)
             if [ "${n:-0}" = "0" ]; then go "$1" && echo "started $1"; fi
           }
+          busy() {  # another bot job running or waiting: skip the dashboard refresh this time
+            n=0
+            for st in in_progress queued; do
+              k=$(gh api "repos/$REPO/actions/runs?status=$st&per_page=50" -q '[.workflow_runs[] | select(.name != "Ticker" and .name != "pages-build-deployment")] | length')
+              n=$(( n + ${k:-0} ))
+            done
+            [ "$n" -gt 0 ]
+          }
           end=$(( $(date +%s) + 5*3600 + 15*60 ))
           while true; do
             m=$((10#$(date -u +%M))); s=$((10#$(date -u +%S)))
-            wait=$(( ((17 - m + 60) % 60) * 60 - s )); [ $wait -le 0 ] && wait=$(( wait + 3600 ))
+            # next minute ending in 1 or 6 (:01, :06, ... :56)
+            wait=$(( (((1 - m % 5) + 5) % 5) * 60 - s )); [ $wait -le 0 ] && wait=$(( wait + 300 ))
             [ $(( $(date +%s) + wait )) -ge $end ] && break
             sleep $wait
-            go publish.yml && echo "$(date -u +%H:%M) started publish" || echo "publish start failed"
-            h=$(date -u +%H); d=$(date -u +%u)
-            # 05:17 UTC = 4:17pm Sydney (summer time). 14:17 UTC Sunday = 1:17am Monday Sydney.
-            if [ "$h" = "05" ]; then start_if_not_run daily.yml 20 || true; fi
-            if [ "$h" = "14" ] && [ "$d" = "7" ]; then start_if_not_run weekly.yml 100 || true; fi
+            m=$((10#$(date -u +%M))); h=$(date -u +%H); d=$(date -u +%u)
+            if [ "$m" -le 2 ]; then
+              go publish.yml && echo "$(date -u +%H:%M) started publish" || echo "publish start failed"
+              # 05:01 UTC = 4:01pm Sydney (summer time). 14:01 UTC Sunday = 1:01am Monday Sydney.
+              if [ "$h" = "05" ]; then start_if_not_run daily.yml 20 || true; fi
+              if [ "$h" = "14" ] && [ "$d" = "7" ]; then start_if_not_run weekly.yml 100 || true; fi
+            elif busy; then
+              echo "$(date -u +%H:%M) busy, refresh skipped"
+            else
+              go refresh.yml && echo "$(date -u +%H:%M) started refresh" || echo "refresh start failed"
+            fi
           done
           go ticker.yml && echo "handed over to a new ticker"
