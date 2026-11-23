@@ -2608,7 +2608,7 @@
     ],
     "caption": "What teaching snowboarding in Japan is like. Follow for more from the mountain. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
-    "status": "queued",
+    "status": "posted",
     "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
     "style": "question",
     "variation": {},
@@ -2616,7 +2616,9 @@
     "category": "snow_life",
     "asked_hook": "question",
     "sound_kind": "sound",
-    "source": "bank"
+    "source": "bank",
+    "media_id": "18123869735472764",
+    "posted_at": "2026-11-23T18:02:01.012479+11:00"
    },
    {
     "date": "2026-11-23",
@@ -2817,7 +2819,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T17:51:23.027961+11:00",
+   "insights_at": "2026-11-23T18:02:52.049652+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2868,6 +2870,13 @@
      1094,
      1,
      7
+    ],
+    [
+     8.42,
+     1415,
+     1098,
+     1,
+     7
     ]
    ],
    "est_follows": 0.0
@@ -2880,14 +2889,14 @@
    "posted_at": "2026-11-23T13:17:50.196112+11:00",
    "file": "2026-11-23_2_s04.mp4",
    "insights": {
-    "views": 2238,
-    "reach": 1631,
+    "views": 2240,
+    "reach": 1632,
     "likes": 17,
     "comments": 0,
     "shares": 1,
     "saved": 1,
     "total_interactions": 19,
-    "ig_reels_avg_watch_time": 5165
+    "ig_reels_avg_watch_time": 5186
    },
    "category": "snow_life",
    "style": "list",
@@ -2898,7 +2907,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T17:51:23.779384+11:00",
+   "insights_at": "2026-11-23T18:02:53.011620+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -2935,6 +2944,13 @@
      1550,
      1,
      1
+    ],
+    [
+     4.75,
+     2240,
+     1632,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -2950,14 +2966,14 @@
    "posted_at": "2026-11-23T16:01:33.598859+11:00",
    "file": "2026-11-23_3_s05.mp4",
    "insights": {
-    "views": 223,
-    "reach": 170,
+    "views": 233,
+    "reach": 175,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 3926
+    "ig_reels_avg_watch_time": 3938
    },
    "category": "snow_life",
    "style": "list",
@@ -2968,7 +2984,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T17:51:24.840409+11:00",
+   "insights_at": "2026-11-23T18:02:54.001475+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -2984,9 +3000,54 @@
      107,
      0,
      0
+    ],
+    [
+     2.02,
+     233,
+     175,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
+  },
+  "18123869735472764": {
+   "topic": "s01",
+   "kind": "ai",
+   "hook": "What teaching snowboarding in Japan is like",
+   "date": "2026-11-23",
+   "posted_at": "2026-11-23T18:02:01.012479+11:00",
+   "file": "2026-11-23_4_s01.mp4",
+   "insights": {
+    "views": 0,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0
+   },
+   "category": "snow_life",
+   "style": "question",
+   "hook_type": "statement",
+   "sound_kind": "sound",
+   "time": "17:30",
+   "variation": {},
+   "source": "bank",
+   "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
+   "fit": 3,
+   "insights_at": "2026-11-23T18:02:55.260430+11:00",
+   "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
+   "series": [
+    [
+     0.02,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
   }
  },
  "followers": {
@@ -3126,7 +3187,8 @@
   "2026-11-23 17:29 Queued 5 reels for 2026-11-24: ['t08', 'i05', 't30', 'f05', 'b03']",
   "2026-11-23 17:30 Notification sent: 🗓️ Weekly 1-minute check: Instagram Account Status",
   "2026-11-23 17:30 Notification sent: 📌 Top up fal.ai: about A$6.53 left (US$4.24) (fal.ai › Billing). Then up",
-  "2026-11-23 17:45 Studied 37 of your reels for your voice: Conor speaks directly to ski and snowboard culture through self-deprecating, hyper-relatable ski-bum humor and Aussie mo"
+  "2026-11-23 17:45 Studied 37 of your reels for your voice: Conor speaks directly to ski and snowboard culture through self-deprecating, hyper-relatable ski-bum humor and Aussie mo",
+  "2026-11-23 18:02 Posted trial reel 2026-11-23_4_s01.mp4 -> 18123869735472764"
  ],
  "fal_spend": {
   "2026-11": 5.76
@@ -3185,9 +3247,13 @@
   [
    "2026-11-23T17:01+11:00",
    944
+  ],
+  [
+   "2026-11-23T18:02+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-23T17:01:50.728494+11:00",
+ "publish_heartbeat": "2026-11-23T18:02:01.012479+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
