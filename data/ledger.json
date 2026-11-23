@@ -2821,7 +2821,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T23:56:18.801655+11:00",
+   "insights_at": "2026-11-24T00:01:37.396594+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2914,6 +2914,13 @@
      1129,
      1,
      7
+    ],
+    [
+     14.4,
+     1461,
+     1134,
+     1,
+     7
     ]
    ],
    "est_follows": 0.0
@@ -2944,7 +2951,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T23:56:20.608559+11:00",
+   "insights_at": "2026-11-24T00:01:38.626274+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3023,6 +3030,13 @@
      1637,
      1,
      1
+    ],
+    [
+     10.73,
+     2255,
+     1639,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3056,7 +3070,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T23:51:27.151128+11:00",
+   "insights_at": "2026-11-24T00:01:40.400347+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3114,6 +3128,13 @@
      234,
      0,
      0
+    ],
+    [
+     8.0,
+     312,
+     241,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3144,7 +3165,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T23:56:23.608540+11:00",
+   "insights_at": "2026-11-24T00:01:41.872751+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3188,6 +3209,13 @@
      151,
      4,
      0
+    ],
+    [
+     6.0,
+     187,
+     156,
+     4,
+     0
     ]
    ]
   },
@@ -3217,7 +3245,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-23T23:56:25.196691+11:00",
+   "insights_at": "2026-11-24T00:01:43.339595+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -3231,6 +3259,13 @@
      1.01,
      147,
      100,
+     0,
+     0
+    ],
+    [
+     2.0,
+     164,
+     138,
      0,
      0
     ]
@@ -3459,9 +3494,13 @@
   [
    "2026-11-23T23:02+11:00",
    944
+  ],
+  [
+   "2026-11-24T00:01+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-23T23:01:57.800007+11:00",
+ "publish_heartbeat": "2026-11-24T00:01:35.945452+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
