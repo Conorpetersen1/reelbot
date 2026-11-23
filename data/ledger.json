@@ -2819,7 +2819,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T18:56:18.706379+11:00",
+   "insights_at": "2026-11-23T19:01:33.289238+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -2877,6 +2877,13 @@
      1098,
      1,
      7
+    ],
+    [
+     9.4,
+     1424,
+     1103,
+     1,
+     7
     ]
    ],
    "est_follows": 0.0
@@ -2907,7 +2914,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T18:51:26.476187+11:00",
+   "insights_at": "2026-11-23T19:01:34.221140+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -2951,6 +2958,13 @@
      1632,
      1,
      1
+    ],
+    [
+     5.73,
+     2245,
+     1634,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -2966,14 +2980,14 @@
    "posted_at": "2026-11-23T16:01:33.598859+11:00",
    "file": "2026-11-23_3_s05.mp4",
    "insights": {
-    "views": 253,
-    "reach": 190,
+    "views": 256,
+    "reach": 195,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 4095
+    "ig_reels_avg_watch_time": 4098
    },
    "category": "snow_life",
    "style": "list",
@@ -2984,7 +2998,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-23T18:56:20.933805+11:00",
+   "insights_at": "2026-11-23T19:01:35.115452+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3007,6 +3021,13 @@
      175,
      0,
      0
+    ],
+    [
+     3.0,
+     256,
+     195,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3019,7 +3040,7 @@
    "posted_at": "2026-11-23T18:02:01.012479+11:00",
    "file": "2026-11-23_4_s01.mp4",
    "insights": {
-    "views": 138,
+    "views": 144,
     "reach": 97,
     "likes": 0,
     "comments": 0,
@@ -3037,13 +3058,20 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-23T18:56:22.141047+11:00",
+   "insights_at": "2026-11-23T19:01:36.161508+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
      0.02,
      0,
      0,
+     0,
+     0
+    ],
+    [
+     0.99,
+     144,
+     97,
      0,
      0
     ]
@@ -3251,9 +3279,13 @@
   [
    "2026-11-23T18:02+11:00",
    944
+  ],
+  [
+   "2026-11-23T19:01+11:00",
+   944
   ]
  ],
- "publish_heartbeat": "2026-11-23T18:02:01.012479+11:00",
+ "publish_heartbeat": "2026-11-23T19:01:31.002954+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
