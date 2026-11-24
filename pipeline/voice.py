@@ -132,3 +132,13 @@ def main(force=False):
 
 if __name__ == "__main__":
     main(force="--force" in sys.argv)
+
+
+def feed_formats(led):
+    """Formats trending in Conor's own feed (from his latest scroll recording), for the writer. Stale after 3 weeks."""
+    f = led.get("feed_formats") or {}
+    if not f or days_since(f.get("date")) > 21:
+        return ""
+    return ("FORMATS TRENDING IN HIS FEED RIGHT NOW (copy the format, never the words): "
+            + json.dumps([{k: x.get(k) for k in ("format_name", "hook_template", "why_it_works")} for x in f["formats"]],
+                         ensure_ascii=False))

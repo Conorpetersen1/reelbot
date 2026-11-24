@@ -292,7 +292,8 @@ def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None):
     for attempt in range(2):
         try:
             cands = llm.write_candidates(topic, mode, clip_note, recent, winners, hook_type,
-                                         taste=ratings.writer_notes(led), voice=voice.guide(led))
+                                         taste=ratings.writer_notes(led), voice=voice.guide(led),
+                                         feed=voice.feed_formats(led))
         except Exception as e:
             log(led, f"Writer error for {topic['id']}: {e}"); continue
         ranked = rank(cands, critique(cands, topic, mode, src, led), mode)
@@ -481,7 +482,8 @@ def preview(n=8):
                         f"riding looks: {meta.get('technique', 'n/a')})")
             mode = llm.reel_mode(topic)
             cands = llm.write_candidates(topic, mode, note, [], [], draw.best("hook", learn.HOOK_TYPES),
-                                         taste=ratings.writer_notes(led), voice=voice.guide(led))
+                                         taste=ratings.writer_notes(led), voice=voice.guide(led),
+                                         feed=voice.feed_formats(led))
             scores = critique(cands, topic, mode, src, led)
             ranked = rank(cands, scores, mode)
             out.append({"kind": kind, "topic": topic["id"], "category": topic.get("category"), "footage": note,

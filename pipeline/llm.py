@@ -50,7 +50,7 @@ HOOK_GUIDE = {"how_i": 'starts "How I..." / "The one cue that..." (a personal fi
 BANNED_OPENERS = ("how to ", "what ", "here's", "tips for", "the best way", "you need to know", "did you know")
 
 
-def writer_prompt(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice):
+def writer_prompt(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice, feed=""):
     if mode == "moment":
         job = f"""This is a MOMENT reel: Conor's real footage, and the text is about what is actually happening in it.
 The footage: {clip_note} (tags: {topic.get('clip_tags', '')}).
@@ -97,6 +97,7 @@ ON-SCREEN TEXT RULES
 - His best performing bot reels so far (learn, don't copy): {json.dumps(winning_hooks[:8])}
 {hint}
 {taste}
+{feed}
 Write 3 clearly DIFFERENT candidates (different angles and formats, not rewordings). Use the "How it feels..."
 format for at most one of them, and not at all if a recent hook already starts that way.
 Return only JSON: {{"candidates": [{{"angle": "2-4 words", "hook": "...", "description": ["..."], "caption": "..."}}]}}"""
@@ -109,7 +110,7 @@ def _clean(c, mode):
     return c
 
 
-def write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type=None, taste="", voice=""):
+def write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type=None, taste="", voice="", feed=""):
     """Three different on-screen texts for one reel: [{"angle", "hook", "description": [..], "caption"}]."""
     if os.environ.get("LOCAL_LLM"):  # offline test mode
         return [{"angle": "offline", "hook": topic.get("hook") or "Offline hook",
@@ -117,7 +118,7 @@ def write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_t
                  "caption": "Offline caption. Follow for more. #snowboarding"}]
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=6000, system=RULES,
                                     messages=[{"role": "user", "content": writer_prompt(
-                                        topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice)}])
+                                        topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice, feed)}])
     out = _json(_text(msg))
     cands = [_clean(c, mode) for c in (out.get("candidates") or []) if c.get("hook")]
     return [c for c in cands if not c["hook"].lower().startswith(BANNED_OPENERS)] or cands
