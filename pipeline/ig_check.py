@@ -5,6 +5,21 @@ from . import ig
 
 def main(mid):
     g, t = ig.graph(), ig._tok()
+    if mid == "top":  # his own reels ranked by views, and whether the voice study could watch each
+        from .voice import his_reels
+        from .common import load_ledger
+        rows = []
+        for m in his_reels(load_ledger(), limit=200):
+            try:
+                v = ig.insights(m["id"]).get("views", 0)
+            except Exception:
+                v = -1
+            rows.append((v, m.get("timestamp", "")[:10], bool(m.get("media_url")), (m.get("caption") or "")[:60].replace("\n", " ")))
+        rows.sort(reverse=True)
+        print("reels ->", len(rows), "readable:", sum(r[2] for r in rows))
+        for r in rows[:25]:
+            print("top ->", r)
+        return
     if mid == "list":
         r = requests.get(f"{g}/{ig.user_id()}/media", params={"fields": "id,timestamp,media_product_type,is_shared_to_feed,permalink,caption",
                                                              "limit": 6, "access_token": t}, timeout=60)
