@@ -53,15 +53,18 @@ def public_url(path):
     return fal_client.upload_file(path)
 
 
-def publish_trial_reel(path, caption):
+def publish_trial_reel(path, caption, audio=None):
+    """audio: optional {"audio_id", "audio_volume", "video_volume"} to attach an Instagram sound (Audio API)."""
     uid = user_id()
     GRAPH = graph()
     # 1) container from a public link, trial reel with MANUAL graduation (you decide what reaches followers).
     #    Never fall back to a direct upload: that posts a normal reel to followers.
-    c = _check(requests.post(f"{GRAPH}/{uid}/media", data={
-        "media_type": "REELS", "video_url": public_url(path), "caption": caption,
-        "trial_params": json.dumps({"graduation_strategy": CFG["graduation"]}),
-        "access_token": _tok()}, timeout=120))
+    data = {"media_type": "REELS", "video_url": public_url(path), "caption": caption,
+            "trial_params": json.dumps({"graduation_strategy": CFG["graduation"]}), "access_token": _tok()}
+    if audio:
+        data["audio_configuration"] = json.dumps({k: audio[k] for k in ("audio_id", "audio_volume", "video_volume")
+                                                  if k in audio})
+    c = _check(requests.post(f"{GRAPH}/{uid}/media", data=data, timeout=120))
     cid = c["id"]
     # 3) wait for Instagram to process it
     for _ in range(60):

@@ -27,30 +27,34 @@ def main():
             full = drive.download(cid, WORK / f"re_full_{e['slot']}_{clip['name']}")
             src = cut(full, meta["start"], meta["end"], WORK / f"re_src_{e['slot']}.mp4")
         music = None
-        match = [s for s in audio if s["name"] == e.get("sound")]
-        if e.get("sound") and match and not e.get("resound"):
-            music = pick_sound(led, match)["path"]
-        elif e.get("sound") or e.get("resound"):
-            if not audio:
-                log(led, f"No sounds in Drive/audio, left {e['date']} {e['time']} {e['topic']} as it was")
-                e.pop("rerender", None); e.pop("resound", None); save_ledger(led)
-                continue
-            taken = {x.get("sound") for x in led["queue"].get(e["date"], []) if x is not e}
-            pool = [s for s in audio if s["name"] not in taken] or audio
-            s = pick_sound(led, pool)
-            music = s["path"]
-            e["sound"] = s["name"]; e["sound_kind"] = "sound"
-            u = led.setdefault("sound_uses", {}); u[s["name"]] = u.get(s["name"], 0) + 1
+        if not e.get("no_music"):  # no_music: Instagram attaches the sound when posting
+            match = [s for s in audio if s["name"] == e.get("sound")]
+            if e.get("sound") and match and not e.get("resound"):
+                music = pick_sound(led, match)["path"]
+            elif e.get("sound") or e.get("resound"):
+                if not audio:
+                    log(led, f"No sounds in Drive/audio, left {e['date']} {e['time']} {e['topic']} as it was")
+                    e.pop("rerender", None); e.pop("resound", None); save_ledger(led)
+                    continue
+                taken = {x.get("sound") for x in led["queue"].get(e["date"], []) if x is not e}
+                pool = [s for s in audio if s["name"] not in taken] or audio
+                s = pick_sound(led, pool)
+                music = s["path"]
+                e["sound"] = s["name"]; e["sound_kind"] = "sound"
+                u = led.setdefault("sound_uses", {}); u[s["name"]] = u.get(s["name"], 0) + 1
         out = WORK / e["file"]
         render(src, out, e["hook"], e["description"], music=music, style=e.get("style", "question"),
                music_volume=snd.get("sound_volume", 0.9), clip_volume=snd.get("clip_sound_volume", 0.25),
                **(e.get("variation") or {}))
         old = e["file_id"]
         e["file_id"] = drive.upload(out, "queue", out.name)
-        try:
-            drive.trash(old)
-        except Exception as ex:
-            print("Couldn't remove the old file:", ex)
+        if e.get("no_music") and not e.get("fallback_file_id"):
+            e["fallback_file_id"] = old  # keep the baked version in case Instagram won't attach the sound
+        else:
+            try:
+                drive.trash(old)
+            except Exception as ex:
+                print("Couldn't remove the old file:", ex)
         e.pop("rerender", None); e.pop("resound", None)
         log(led, f"Re-rendered {e['date']} {e['time']} {e['topic']}" + (f" with sound {e['sound']}" if e.get("sound") else ""))
         save_ledger(led)

@@ -29,7 +29,21 @@ def main():
             continue
         try:
             path = drive.download(e["file_id"], WORK / e["file"])
-            mid = ig.publish_trial_reel(path, e["caption"])
+            if e.get("attach_audio"):
+                try:
+                    mid = ig.publish_trial_reel(path, e["caption"], audio=e["attach_audio"])
+                    e["audio_attached"] = True
+                    log(led, f"Attached Instagram sound {e['attach_audio'].get('title')} to {e['file']}")
+                except Exception as ex:
+                    # Never post silent: fall back to the version with the sound baked in
+                    log(led, f"Couldn't attach Instagram sound ({ex}); posting the baked version instead")
+                    e["audio_attached"] = False
+                    if not e.get("fallback_file_id"):
+                        raise
+                    path = drive.download(e["fallback_file_id"], WORK / ("baked_" + e["file"]))
+                    mid = ig.publish_trial_reel(path, e["caption"])
+            else:
+                mid = ig.publish_trial_reel(path, e["caption"])
             e.update(status="posted", media_id=mid, posted_at=t.isoformat())
             led["posts"][mid] = {"topic": e["topic"], "kind": e["kind"], "hook": e["hook"], "date": e["date"],
                                  "posted_at": t.isoformat(), "file": e["file"], "insights": {},
