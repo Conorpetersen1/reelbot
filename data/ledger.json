@@ -3016,13 +3016,13 @@
    "file": "2026-11-23_1_t01.mp4",
    "insights": {
     "views": 1505,
-    "reach": 1161,
+    "reach": 1163,
     "likes": 5,
     "comments": 0,
     "shares": 1,
     "saved": 8,
     "total_interactions": 14,
-    "ig_reels_avg_watch_time": 4762
+    "ig_reels_avg_watch_time": 4759
    },
    "category": "tip",
    "style": "list",
@@ -3033,7 +3033,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T13:51:25.020291+11:00",
+   "insights_at": "2026-11-24T14:01:45.893712+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3238,6 +3238,13 @@
      1161,
      1,
      8
+    ],
+    [
+     28.41,
+     1505,
+     1163,
+     1,
+     8
     ]
    ],
    "est_follows": 0.0
@@ -3268,7 +3275,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T13:46:21.891033+11:00",
+   "insights_at": "2026-11-24T14:01:47.446423+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3459,6 +3466,13 @@
      1643,
      1,
      1
+    ],
+    [
+     24.74,
+     2268,
+     1643,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3492,7 +3506,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T13:16:41.030284+11:00",
+   "insights_at": "2026-11-24T14:01:49.067216+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3662,6 +3676,13 @@
      290,
      0,
      0
+    ],
+    [
+     22.01,
+     385,
+     290,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3674,7 +3695,7 @@
    "posted_at": "2026-11-23T18:02:01.012479+11:00",
    "file": "2026-11-23_4_s01.mp4",
    "insights": {
-    "views": 316,
+    "views": 318,
     "reach": 272,
     "likes": 0,
     "comments": 0,
@@ -3692,7 +3713,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T13:56:32.651673+11:00",
+   "insights_at": "2026-11-24T14:01:50.923777+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3848,6 +3869,13 @@
      265,
      4,
      0
+    ],
+    [
+     20.0,
+     318,
+     272,
+     4,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3878,7 +3906,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T13:51:36.602187+11:00",
+   "insights_at": "2026-11-24T14:01:53.054460+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -4006,6 +4034,13 @@
      174,
      0,
      0
+    ],
+    [
+     16.01,
+     214,
+     176,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4018,14 +4053,14 @@
    "posted_at": "2026-11-24T12:20:19.996101+11:00",
    "file": "2026-11-24_1_t08.mp4",
    "insights": {
-    "views": 165,
-    "reach": 125,
+    "views": 167,
+    "reach": 126,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 4471
+    "ig_reels_avg_watch_time": 4473
    },
    "category": "tip",
    "style": "list",
@@ -4036,7 +4071,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T13:46:27.812718+11:00",
+   "insights_at": "2026-11-24T14:01:54.300332+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -4059,6 +4094,13 @@
      76,
      0,
      0
+    ],
+    [
+     1.69,
+     167,
+     126,
+     0,
+     0
     ]
    ]
   },
@@ -4070,7 +4112,7 @@
    "posted_at": "2026-11-24T13:15:52.452501+11:00",
    "file": "2026-11-24_2_i05.mp4",
    "insights": {
-    "views": 130,
+    "views": 140,
     "reach": 91,
     "likes": 1,
     "comments": 0,
@@ -4088,13 +4130,20 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T13:56:40.077031+11:00",
+   "insights_at": "2026-11-24T14:01:56.917995+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
      0.01,
      0,
      0,
+     0,
+     0
+    ],
+    [
+     0.77,
+     140,
+     91,
      0,
      0
     ]
@@ -4404,9 +4453,13 @@
   [
    "2026-11-24T13:16+11:00",
    945
+  ],
+  [
+   "2026-11-24T14:01+11:00",
+   945
   ]
  ],
- "publish_heartbeat": "2026-11-24T13:15:52.452501+11:00",
+ "publish_heartbeat": "2026-11-24T14:01:43.332443+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
