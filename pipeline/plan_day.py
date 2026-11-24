@@ -397,9 +397,8 @@ def main():
             critic = reel.pop("critic", None)
             music = None
             sound = None
-            sound_ok = audio and (kind == "ai" or CFG.get("sounds", {}).get("use_on", "all") == "all")
-            # Mascot clips have no audio of their own, so they always get a sound; real clips can test without one
-            if sound_ok and (kind == "ai" or draw.best("sound", ["sound", "none"]) == "sound"):
+            # Every reel gets a sound from your trending sounds (a real clip's own audio stays quietly underneath)
+            if audio:
                 sound = pick_sound(led, audio)
                 music = sound["path"]
             out = WORK / f"{day}_{len(entries)+1}_{topic['id']}.mp4"

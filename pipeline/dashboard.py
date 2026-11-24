@@ -317,6 +317,21 @@ def main():
         f"<li><b>{link(p)}</b> <span class='muted'>({E(p['date'])}, {p['insights'].get('views',0):,} views, "
         f"{p['insights'].get('shares',0)} shares)</span></li>" for _, p in grad) or "<li class='muted'>No candidates yet.</li>"
 
+    # ---- Cost per follower: everything spent since the bot started ÷ followers gained since then
+    fh_all = led.get("followers_hourly") or []
+    gained = (fh_all[-1][1] - fh_all[0][1]) if len(fh_all) > 1 else 0
+    spent_all = us["aud_total"]["total"]
+    total_views = sum(((p.get("insights") or {}).get("views", 0) or 0) for p in led["posts"].values())
+    since = f"{dt.date.fromisoformat(fh_all[0][0][:10]):%-d %b}" if fh_all else "the start"
+    if gained > 0:
+        cpf_txt = f"A${spent_all / gained:,.2f}"
+        cpf_note = f"A${spent_all:,.2f} ÷ {gained:,} follower{'s' if gained != 1 else ''} gained since {since}"
+    else:
+        cpf_txt = "–"
+        cpf_note = f"no net followers yet since {since}"
+    if total_views:
+        cpf_note += f" · A${spent_all / total_views * 1000:,.2f} per 1,000 views"
+
     # ---- Home tab pieces
     paused_now = bool(CFG.get("paused"))
     upcoming = [(d, e) for d in (today.isoformat(), tomorrow) for e in led["queue"].get(d, [])]
@@ -426,6 +441,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 <div class="card"><div class="k">Followers</div><div class="v">{fol_now:,}</div><div class="d {'up' if delta>=0 else 'down'}">{'+' if delta>=0 else ''}{delta:,} in 7 days</div></div>
 <div class="card"><div class="k">Views, last 7 days</div><div class="v">{views7:,}</div><div class="d muted">{posted7} reels posted</div></div>
 <div class="card"><div class="k">Spent this month</div><div class="v">A${us['aud_total']['month']:,.2f}</div><div class="d muted">A${us['aud_total']['total']:,.2f} on the project so far</div></div>
+<div class="card"><div class="k">Cost per follower</div><div class="v">{cpf_txt}</div><div class="d muted">{cpf_note}</div></div>
 </div>
 <div class="card"><h2>Posting schedule</h2><div class="wrap"><table><tr><th>Day</th><th>Time</th><th>Type</th><th>Hook</th><th>Status</th></tr>{sched_rows}</table></div>
 <p class="muted small" style="margin:8px 0 0">Reels go out at 1 minute past the hour they are due (e.g. 1:01pm). The dashboard refreshes every 5 minutes. Check them in the <a href="#review" data-go="review">Review</a> tab.</p></div>

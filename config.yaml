@@ -70,7 +70,7 @@ learning:
 
 # Sounds from Drive/audio
 sounds:
-  use_on: all             # all = every reel, ai = mascot reels only
+  use_on: all             # every reel gets a trending sound
   sound_volume: 0.9
   clip_sound_volume: 0.25 # your clip's own sound underneath (0 = off)
   fresh_days: 14          # sounds added in the last 14 days get used about 4x as often
