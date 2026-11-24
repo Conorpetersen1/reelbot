@@ -1,308 +1,444 @@
 [
  {
   "kind": "ai",
+  "topic": "t31",
+  "category": "tip",
+  "footage": "an animated blocky cartoon snowboarder: mascot instructor demonstrating a heelside edge to a smaller mascot on a gentle slope",
+  "candidates": [
+   {
+    "angle": "Personal first-timer fix",
+    "hook": "How I start every first timer",
+    "description": [
+     "Heelside edge first, toeside second",
+     "New skill goes on terrain they know",
+     "Keep it short, fun and warm"
+    ],
+    "caption": "Every first-timer gets the same order from me: heelside edge first, then toeside, on a slope they already feel good on. Save this for your next day on snow. #snowboarding #learntosnowboard #snowboardtips #beginnersnowboard #snowboardinstructor"
+   },
+   {
+    "angle": "Mistake every lesson",
+    "hook": "Why your mate hates your lessons",
+    "description": [
+     "Hard terrain for a brand new skill",
+     "Fix: new skill, old terrain",
+     "Keep it short, fun and warm"
+    ],
+    "caption": "The mistake I see all the time is dragging a beginner somewhere way too hard to learn something new. Send this to a mate who needs it. #snowboarding #learntosnowboard #snowboardtips #snowboardinstructor"
+   },
+   {
+    "angle": "Mate vs instructor",
+    "hook": "Mate teaching vs instructor teaching",
+    "description": [
+     "Mate: straight to the steep stuff",
+     "Me: heelside first, then toeside",
+     "Short, fun and warm. Every time"
+    ],
+    "caption": "Teaching a mate is a great way to lose a mate. Start with the heelside edge, then toeside, and keep it easy. Tag the mate you ride with. #snowboarding #snowboardtips #learntosnowboard #snowboardlessons #snowboardinstructor"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 3,
+    "sense": 4,
+    "match": 4,
+    "voice": 3,
+    "problem": "",
+    "note": "Solid APSI beginner progression advice that matches the gentle teaching animation, though the hook is a bit generic."
+   },
+   {
+    "i": 1,
+    "hook": 4,
+    "sense": 4,
+    "match": 4,
+    "voice": 4,
+    "problem": "",
+    "note": "Relatable mate-teaching premise fits Conor's tone well with a clean, classic APSI teaching rule (new skill, old terrain)."
+   },
+   {
+    "i": 2,
+    "hook": 3,
+    "sense": 3,
+    "match": 4,
+    "voice": 2,
+    "problem": "Caption includes generic engagement bait ('Tag the mate') explicitly banned in Conor's rules.",
+    "note": "The contrast between mate and instructor mixes terrain choice with edge skills rather than keeping a direct comparison."
+   }
+  ],
+  "winner": 1
+ },
+ {
+  "kind": "ai",
+  "topic": "t08",
+  "category": "tip",
+  "footage": "an animated blocky cartoon snowboarder: mascot side slipping then catching its downhill edge and slamming into the snow, comedic, unhurt",
+  "candidates": [
+   {
+    "angle": "Instructor's fix",
+    "hook": "How I stop students catching an edge",
+    "description": [
+     "Eyes up, not down at the board",
+     "Sink a little as you edge",
+     "Feels balanced over your uphill edge"
+    ],
+    "caption": "The mistake I see all the time in side slipping is looking down and staying stiff. Eyes up, sink a little and stay balanced over your uphill edge. Save this for your next day on snow. #snowboarding #learntosnowboard #snowboardtips #beginnersnowboard #snowboardinstructor"
+   },
+   {
+    "angle": "Myth bust",
+    "hook": "Catching an edge isn't bad luck",
+    "description": [
+     "You're catching your downhill edge",
+     "Eyes up, sink a little as you edge"
+    ],
+    "caption": "It feels random when you slam, but it usually isn't. Eyes up and a little more sink gets you balanced over the uphill edge. Send this to a mate who needs it. #snowboarding #learntosnowboard #snowboardlessons #beginnersnowboard #snowboardtips"
+   },
+   {
+    "angle": "How it feels",
+    "hook": "How it feels catching a downhill edge",
+    "description": [
+     "Looking down and not sinking",
+     "Fix: eyes up and sink as you edge",
+     "Balance over your uphill edge"
+    ],
+    "caption": "Everyone's done the slam, instructors included. Next time you're side slipping, look ahead, sink a little and stay over your uphill edge. Tag the mate you ride with. #snowboarding #learntosnowboard #snowboardtips #snowboardinstructor #beginnersnowboard"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 3,
+    "sense": 4,
+    "match": 4,
+    "voice": 3,
+    "problem": "",
+    "note": "Standard instructor hook and clean teaching cues, but lacks Conor's authentic degenerate/seasonnaire edge."
+   },
+   {
+    "i": 1,
+    "hook": 4,
+    "sense": 4,
+    "match": 4,
+    "voice": 4,
+    "problem": "",
+    "note": "Punchy myth-bust hook that matches the violent faceplant; concise advice without clutter."
+   },
+   {
+    "i": 2,
+    "hook": 3,
+    "sense": 2,
+    "match": 4,
+    "voice": 1,
+    "problem": "Caption uses generic engagement bait ('Tag the mate you ride with'), which violates Conor's voice guidelines. 'How it feels' hook also promises a relatable feeling/reaction rather than a technical tutorial.",
+    "note": "Hook format clashes with instructional text, and caption violates the rule against lazy 'tag a friend' engagement bait."
+   }
+  ],
+  "winner": 1
+ },
+ {
+  "kind": "ai",
+  "topic": "t30",
+  "category": "tip",
+  "footage": "an animated blocky cartoon snowboarder: mascot riding switch (other foot forward) on a gentle slope, a bit wobbly",
+  "candidates": [
+   {
+    "angle": "Personal fix",
+    "hook": "How I made switch less wobbly",
+    "description": [
+     "Falling leaf switch, easy terrain",
+     "Eyes up, stay centred over the board",
+     "Should feel slow and boring. Good"
+    ],
+    "caption": "Every lesson I see people go straight to linked turns switch and wobble all over the place. Start with falling leaf on easy terrain and keep your eyes up. Save this for your next day on snow. #snowboarding #snowboardtips #learntosnowboard #switchriding #snowboardinstructor"
+   },
+   {
+    "angle": "Instructor irony",
+    "hook": "Level 3 instructor, wobbling switch",
+    "description": [
+     "Start with falling leaf, easy terrain",
+     "Link the turns after that"
+    ],
+    "caption": "Yep, I still look a bit wobbly when I'm learning something new. Falling leaf first, then link your switch turns. Send this to a mate who needs it. #snowboarding #snowboardtips #switchriding #snowboardinstructor #thredbo"
+   },
+   {
+    "angle": "How it feels",
+    "hook": "How it feels trying switch day one",
+    "description": [
+     "Eyes up, not down at your feet",
+     "Rise up between turns, stay centred",
+     "Wobbly at first. Totally normal"
+    ],
+    "caption": "Switch feels like learning to ride all over again, and that's fine. Eyes up, rise between turns and keep centred over the board. What should I cover next? #snowboarding #learntosnowboard #snowboardtips #switchriding #snowboardlessons"
+   }
+  ],
+  "scores": [
+   {
+    "i": 0,
+    "hook": 3,
+    "sense": 4,
+    "match": 3,
+    "voice": 3,
+    "problem": "",
+    "note": "Solid technical advice, but the hook and caption feel like a generic instructor rather than Conor's irreverent voice."
+   },
+   {
+    "i": 1,
+    "hook": 4,
+    "sense": 3,
+    "match": 4,
+    "voice": 3,
+    "problem": "",
+    "note": "Good self-deprecating hook matching the goofy animation, but the teaching fix is too brief and the caption uses engagement bait ('Send this to a mate')."
+   },
+   {
+    "i": 2,
+    "hook": 4,
+    "sense": 4,
+    "match": 5,
+    "voice": 4,
+    "problem": "",
+    "note": "Strong use of Conor's proven 'How it feels' meme format paired with the animated character, backing it up with actionable APSI cues."
+   }
+  ],
+  "winner": 2
+ },
+ {
+  "kind": "ai",
   "topic": "t24",
   "category": "tip",
   "footage": "an animated blocky cartoon snowboarder: mascot standing at the top of a small terrain park looking over the features",
   "candidates": [
    {
-    "angle": "numbered park rules",
-    "hook": "2 park rules I tell every beginner",
+    "angle": "Personal fix",
+    "hook": "How I stop surprises in the park",
     "description": [
-     "Look at every feature before you ride it",
-     "Start small. One rider at a time.",
-     "Your first lap should feel boring"
+     "Check every feature first, every time",
+     "Then start small, always",
+     "Feels slow, but no surprises"
     ],
-    "caption": "Boring first laps are the good ones, trust me. Send this to a mate who's about to hit the park for the first time. #snowboarding #terrainpark #snowboardtips #learntosnowboard"
+    "caption": "Walking the park before you ride it is the habit I push on every new rider. Start small and let the confidence build. Save this for your next day on snow. #snowboarding #terrainpark #learntosnowboard #snowboardtips #snowboardinstructor"
    },
    {
-    "angle": "send it myth",
-    "hook": "Everyone wants to send. Nobody looks first",
+    "angle": "Park etiquette joke",
+    "hook": "One person per feature. Not a conga line",
     "description": [
-     "Check every feature before you ride it",
-     "Start with the smallest one in the park"
+     "Wait till the feature is clear",
+     "Call your drop, then go",
+     "Clear the landing fast"
     ],
-    "caption": "The best park riders I know look at a feature way longer than they ride it. Save this for your next day on snow. #snowboarding #terrainpark #snowboardtips #newrider"
+    "caption": "The park works best when it's one rider at a time, and everyone knows who's dropping in next. Send this to a mate who needs it. #snowboarding #terrainpark #snowboardtips #learntosnowboard #parketiquette"
    },
    {
-    "angle": "landing etiquette",
-    "hook": "Stopping in the landing is a crime",
+    "angle": "We are not the same",
+    "hook": "I check the park bc I eat sh*t",
     "description": [
-     "Call your drop before you go",
-     "Then clear the landing fast",
-     "Keep moving so the next rider's safe"
+     "Look at every feature before you ride",
+     "Start small, ego can wait"
     ],
-    "caption": "Nobody has ever been annoyed at someone for clearing the landing quickly. Tag the mate you ride with who needs to hear this. #snowboarding #terrainpark #parketiquette #snowboardtips"
+    "caption": "Some people check the features for steeze, I do it because I know how I land. Looking first and starting small is the move whatever your level. What should I cover next? #snowboarding #terrainpark #snowboardtips #beginnersnowboard #thredbo"
    }
   ],
   "scores": [
    {
     "i": 0,
     "hook": 2,
-    "sense": 2,
-    "match": 1,
+    "sense": 3,
+    "match": 2,
     "voice": 2,
-    "problem": "Hook promises 2 rules but lists 3; footage is an animated character on dirt/snow with no park features.",
-    "note": "Generic listicle format that miscounts rules and completely disconnects from the visual clip."
+    "problem": "Footage shows an animated character riding dirt/snow trail, not in a terrain park; lacks specific teaching mechanics.",
+    "note": "Too generic and polished; sounds like a standard ski-school brochure rather than Conor's degenerate humour."
    },
    {
     "i": 1,
     "hook": 3,
     "sense": 3,
-    "match": 1,
-    "voice": 3,
-    "problem": "Footage shows an animated rider on dirt patches, not terrain park features.",
-    "note": "Hook uses Conor's lingo ('send'), but the park advice does not fit the footage."
+    "match": 2,
+    "voice": 2,
+    "problem": "No park features or other riders in clip; caption relies on cliché engagement bait ('Send this to a mate').",
+    "note": "Etiquette tips are practical, but the footage doesn't show park features or traffic."
    },
    {
     "i": 2,
-    "hook": 3,
+    "hook": 4,
     "sense": 3,
-    "match": 1,
-    "voice": 3,
-    "problem": "Footage has no jumps, features, or landings.",
-    "note": "Relatable park etiquette topic, but entirely ungrounded in the animation shown."
+    "match": 2,
+    "voice": 4,
+    "problem": "Clip is animated dirt trail riding rather than park features; setup drops the first half of the 'We Are Not The Same' meme.",
+    "note": "Best voice alignment with self-deprecating 'eat sh*t' tone, though visual match is loose."
    }
   ],
   "winner": null
  },
  {
   "kind": "ai",
-  "topic": "t23",
+  "topic": "t01",
   "category": "tip",
-  "footage": "an animated blocky cartoon snowboarder: mascot hitting a small kicker, tucking up compact in the air, landing clean",
+  "footage": "an animated blocky cartoon snowboarder: mascot making a toeside turn on a groomed run, leaning slightly forward, snow spray",
   "candidates": [
    {
-    "angle": "Numbered mistakes",
-    "hook": "2 reasons you keep crashing small kickers",
+    "angle": "One cue fix",
+    "hook": "The one cue that saves your toeside",
     "description": [
-     "1. Stretching out off the lip",
-     "2. Staring at your feet",
-     "Fix: stay compact, eyes on landing"
+     "Pressure through balls of your feet",
+     "Ankles and knees bent, not stiff",
+     "Should feel planted, not wobbly"
     ],
-    "caption": "Every lesson I see one of these two on the first kicker. Easy fixes, no shame, we've all done them. Save this for your next day on snow. #snowboarding #snowboardtips #beginnersnowboard #snowboardinstructor"
+    "caption": "Toeside keeps washing out? Get pressure through the balls of your feet and keep your ankles and knees bent. Save this for your next day on snow. #snowboarding #learntosnowboard #snowboardtips #beginnersnowboard #snowboardinstructor"
    },
    {
-    "angle": "Instructor mistake fix",
-    "hook": "Stop launching yourself off small kickers",
+    "angle": "Lesson mistake",
+    "hook": "Every lesson I see this toeside mistake",
     "description": [
-     "Mistake: stretching out off the lip",
-     "Fix: stay compact in the air",
-     "Feels small and tight, not stretched"
+     "Folding at the waist",
+     "Keep your hips over the board",
+     "Bend ankles and knees instead"
     ],
-    "caption": "A small kicker doesn't need a big launch, it needs a calm one. Your future landings will thank you. Send this to a mate who needs it. #snowboarding #snowboardtips #snowboardlessons #beginnersnowboard"
+    "caption": "Folding at the waist is the one I see most on toeside, and the fix is keeping your hips over the board. Send this to a mate who needs it. #snowboarding #snowboardlessons #learntosnowboard #snowboardtips #snowboardinstructor"
    },
    {
-    "angle": "Feet myth bust",
-    "hook": "Your feet aren't where you're landing",
+    "angle": "Self-deprecating humour",
+    "hook": "Stand up straight on toeside? Enjoy the snow",
     "description": [
-     "Eyes on the landing, not your board",
-     "Pick the spot before you drop in"
+     "Stiff legs wash out your edge",
+     "Keep ankles and knees bent",
+     "Less snow-eating, more steeze"
     ],
-    "caption": "Your board has been there the whole time, it'll be fine without supervision. Tag the mate you ride with who watches their feet. #snowboarding #snowboardtips #snowboardinstructor #beginnersnowboard"
+    "caption": "Stiff and upright on your toeside is a fast track to eating snow. Bend your ankles and knees and you'll feel way more in control. What should I cover next? #snowboarding #beginnersnowboard #snowboardtips #learntosnowboard #snowboardinstructor"
    }
   ],
   "scores": [
    {
     "i": 0,
+    "hook": 3,
+    "sense": 3,
+    "match": 4,
+    "voice": 2,
+    "problem": "Hook promises 'The one cue' but delivers multiple cues.",
+    "note": "A bit generic and breaks the one-cue promise."
+   },
+   {
+    "i": 1,
     "hook": 3,
     "sense": 4,
     "match": 4,
-    "voice": 3,
-    "problem": "Prompt specifies one problem and one fix, but this has two.",
-    "note": "Standard listicle format; informative but lacks Conor's distinct punchy voice."
-   },
-   {
-    "i": 1,
-    "hook": 4,
-    "sense": 5,
-    "match": 5,
-    "voice": 4,
+    "voice": 2,
     "problem": "",
-    "note": "Direct command hook, clearly follows the one problem/one fix rule, and directly matches the compact body position shown in the clip."
+    "note": "Good APSI technical breakdown but reads like a standard corporate ski school post."
    },
    {
     "i": 2,
-    "hook": 3,
-    "sense": 3,
-    "match": 3,
-    "voice": 4,
-    "problem": "",
-    "note": "Caption has good humor, but the hook is confusing and eye direction is hard to distinguish on the animated rider."
-   }
-  ],
-  "winner": 1
- },
- {
-  "kind": "ai",
-  "topic": "s05",
-  "category": "snow_life",
-  "footage": "an animated blocky cartoon snowboarder: mascot emptying a backpack full of gloves, snacks and goggles onto a bench",
-  "candidates": [
-   {
-    "angle": "numbered bag list",
-    "hook": "3 things my instructor bag always has",
-    "description": [
-     "Spare gloves",
-     "Snacks for the kids",
-     "Sunscreen and a backup goggle lens"
-    ],
-    "caption": "Not a single one of them is a snowboard. Save this for your next day on snow. #snowboarding #snowboardinstructor #snowlife #thredbo #niseko"
-   },
-   {
-    "angle": "expectation vs reality",
-    "hook": "Instructor bag: expectation vs reality",
-    "description": [
-     "Expected: pro gear and big steeze",
-     "Reality: snacks for the kids",
-     "Plus sunscreen. Yes, in winter."
-    ],
-    "caption": "The glamour of the job, right here on this bench. Send this to a mate who needs it. #snowboarding #snowboardinstructor #snowlife #thredbo #apsi"
-   },
-   {
-    "angle": "how it feels",
-    "hook": "How it feels packing snacks for the kids",
-    "description": [
-     "Spare gloves, check",
-     "Backup goggle lens, check"
-    ],
-    "caption": "Somehow the bag is still heavier than the board. Tag the mate you ride with who always has spares. #snowboarding #snowboardinstructor #snowlife #niseko #japow"
-   }
-  ],
-  "scores": [
-   {
-    "i": 0,
-    "hook": 3,
-    "sense": 4,
-    "match": 5,
-    "voice": 3.5,
-    "problem": "",
-    "note": "Fits the visual perfectly as items are pulled from the bag, but the hook is quite standard and informative rather than punchy."
-   },
-   {
-    "i": 1,
     "hook": 4,
     "sense": 4,
-    "match": 4.5,
-    "voice": 4.2,
+    "match": 4,
+    "voice": 4,
     "problem": "",
-    "note": "Strong expectation vs reality angle that fits Conor's self-deprecating instructor humor well."
-   },
-   {
-    "i": 2,
-    "hook": 2.5,
-    "sense": 2.5,
-    "match": 3.5,
-    "voice": 3,
-    "problem": "Hook focuses purely on packing snacks, but on-screen items and description immediately shift to gloves and goggle lenses.",
-    "note": "Mismatched premise between the hook and the listed items."
+    "note": "Blends Conor's eating-snow humor and slang with an actionable riding cue."
    }
   ],
-  "winner": 1
+  "winner": 2
  },
  {
-  "kind": "ai",
-  "topic": "s01",
-  "category": "snow_life",
-  "footage": "an animated blocky cartoon snowboarder: mascot riding powder in a Japanese ski resort, then soaking in a steaming onsen",
+  "kind": "real",
+  "topic": "t12",
+  "category": "tip",
+  "footage": "Conor's real footage: Conor cruises down the groomed run with a scenic valley landscape in the background. (tags: scenery, stance; riding looks: good)",
   "candidates": [
    {
-    "angle": "Day in the life list",
-    "hook": "3 parts of a Japan instructor's day",
+    "angle": "Instructor fix",
+    "hook": "How I fix flappy arms in lessons",
     "description": [
-     "1. Powder morning",
-     "2. Lessons all day. 3. Onsen."
+     "Front hand over heel edge, near nose",
+     "Back hand over toe edge, near tail",
+     "Relaxed, around belly height"
     ],
-    "caption": "Rough gig, I know. Tag the mate you'd drag over for a season in Japan. #snowboarding #japow #snowboardinstructor #onsen"
+    "caption": "Flappy arms are the thing I see most in lessons. Think front hand toward the nose, back hand toward the tail, and keep them relaxed. Save this for your next day on snow. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor"
    },
    {
-    "angle": "Dry job description",
-    "hook": "Day job: snowboard instructor in Japan",
+    "angle": "Zombie arms myth",
+    "hook": "Arms out like a zombie? Stop it",
     "description": [
-     "Powder mornings. Lessons all day.",
-     "Then an onsen. Terrible, I know."
+     "Hands don't need to be up high",
+     "Keep them relaxed, around belly height",
+     "If your shoulders ache, they're too tense"
     ],
-    "caption": "Please don't feel sorry for me. Send this to a mate who needs it. #snowboarding #japow #snowboardinstructor #japan"
+    "caption": "Stiff zombie arms are a classic first-week habit, and the fix is simply letting your hands settle around belly height. Send this to a mate who needs it. #snowboarding #snowboardtips #beginnersnowboard #snowboardinstructor"
    },
    {
     "angle": "How it feels",
-    "hook": "How it feels clocking off at the onsen",
+    "hook": "How it feels when your hands sit right",
     "description": [
-     "Lessons all day. Worth it."
+     "Front hand over heel edge, near nose",
+     "Back hand mirrors it at the tail",
+     "Relaxed, around belly height"
     ],
-    "caption": "Legs are cooked but the soak fixes everything. What should I cover next? #snowboarding #japow #onsen #snowboardinstructor"
+    "caption": "Once the hands sit right, the whole ride feels a bit calmer. What should I cover next? #snowboarding #learntosnowboard #snowboardlessons #snowboardtips #snowboardinstructor"
    }
   ],
   "scores": [
    {
     "i": 0,
     "hook": 3,
-    "sense": 3,
+    "sense": 4,
     "match": 4,
     "voice": 3,
     "problem": "",
-    "note": "A 3-part listicle is too rushed for a 4-second clip of someone landing in a hot tub."
+    "note": "Solid standard teaching content, though a bit dry compared to Conor's usual irreverent tone."
    },
    {
     "i": 1,
-    "hook": 3.5,
-    "sense": 4,
-    "match": 4,
-    "voice": 4,
-    "problem": "",
-    "note": "Good sarcastic delivery that fits Conor's dry ski-bum humor."
-   },
-   {
-    "i": 2,
-    "hook": 4.5,
+    "hook": 4,
     "sense": 5,
-    "match": 5,
-    "voice": 4.5,
+    "match": 4,
+    "voice": 4,
     "problem": "",
-    "note": "Uses Conor's signature 'How it feels' meme format and matches the visual of riding straight into an onsen."
+    "note": "Punchy hook targeting a recognizable beginner flaw, with clear cues that match his relaxed body position."
+   },
+   {
+    "i": 2,
+    "hook": 2,
+    "sense": 3,
+    "match": 3,
+    "voice": 2,
+    "problem": "'How it feels...' hook sets up an emotional payoff/meme cut, but delivers instructional bullets and generic engagement bait.",
+    "note": "Mismatched hook and weak generic caption."
    }
   ],
-  "winner": 2
- },
- {
-  "kind": "ai",
-  "topic": "t01",
-  "error": "Expecting property name enclosed in double quotes: line 11 column 1 (char 423)"
+  "winner": 1
  },
  {
   "kind": "real",
-  "topic": "t07",
+  "topic": "t21",
   "category": "tip",
-  "footage": "Conor's real footage: A snowboarder carves smoothly down the run and slides to a stop beside the camera. (tags: heelside, turns, lifestyle; riding looks: good)",
+  "footage": "Conor's real footage: Snowboarder drops in through fresh powder beneath snow-covered trees. (tags: powder, scenery; riding looks: good)",
   "candidates": [
    {
-    "angle": "Number hook cue",
-    "hook": "1 cue I say every single lesson",
+    "angle": "One cue fix",
+    "hook": "The one cue that stops powder nosedives",
     "description": [
-     "Match your shoulders to the slope",
-     "Hill tilts, your shoulders tilt too",
-     "Stay centred, off your back foot"
+     "Don't just lean back",
+     "Push the board ahead as you hit it",
+     "Smooth and flowing, not a fight"
     ],
-    "caption": "Simple, but it fixes more turns than anything else I say. Try it on your next run and see how it feels. Save this for your next day on snow. #snowboarding #learntosnowboard #snowboardtips #beginnersnowboard"
+    "caption": "The mistake I see all the time in powder is riders only leaning back. Push the board ahead as you hit the deep stuff instead. Save this for your next day on snow. #snowboarding #powder #snowboardtips #learntosnowboard #niseko"
    },
    {
-    "angle": "Board won't turn",
-    "hook": "Your board won't turn? Check your shoulders",
+    "angle": "Myth bust",
+    "hook": "Everyone says lean back in pow",
     "description": [
-     "Heavy back foot = board stays put",
-     "Tilt your shoulders with the slope",
-     "Feels centred over the board"
+     "Leaning back isn't the whole story",
+     "Push the board ahead as you hit it",
+     "Then let it keep flowing"
     ],
-    "caption": "Nine times out of ten the board isn't the problem. Send this to a mate who needs it. #snowboarding #snowboardlessons #learntosnowboard #snowboardtips"
+    "caption": "Leaning back is the classic powder advice, but pushing the board ahead as you hit the deep snow is the bit that matters. Send this to a mate who needs it. #snowboarding #powder #snowboardtips #snowboardlessons #japow"
    },
    {
-    "angle": "Back foot joke",
-    "hook": "Your back foot is not a couch",
+    "angle": "Stop wrestling",
+    "hook": "Pow isn't a groomer, stop edging it",
     "description": [
-     "Match your shoulders to the slope",
-     "Hill tilts, shoulders tilt with it"
+     "Edging matters less in deep snow",
+     "Keep it flowing, don't force it",
+     "Smooth beats strong"
     ],
-    "caption": "Sitting back feels comfy until you try to turn. Tag the mate you ride with who lives on their back foot. #snowboarding #snowboardtips #learntosnowboard #thredbo"
+    "caption": "Deep snow is a different game to the groomers, and you don't need to fight it with your edges. Keep it flowing. What should I cover next? #snowboarding #powder #snowboardtips #learntosnowboard #snowboardinstructor"
    }
   ],
   "scores": [
@@ -313,154 +449,90 @@
     "match": 4,
     "voice": 3,
     "problem": "",
-    "note": "Clear coaching cue, but the hook reads like a standard corporate clinic rather than Conor's punchy style."
+    "note": "Clear tip matching the nosedive crash."
    },
    {
     "i": 1,
-    "hook": 4,
-    "sense": 4,
-    "match": 4,
-    "voice": 4,
-    "problem": "",
-    "note": "Strong problem/fix structure directly addressing beginner difficulty with turning."
-   },
-   {
-    "i": 2,
-    "hook": 5,
-    "sense": 4,
-    "match": 4,
-    "voice": 5,
-    "problem": "",
-    "note": "Best blend of dry Aussie banter and actual APSI technique fix, plus great community callout in caption."
-   }
-  ],
-  "winner": 2
- },
- {
-  "kind": "real",
-  "topic": "mdafb23",
-  "category": "moment",
-  "footage": "Conor's real footage: Snowboarder drops down a steep powder slope through the trees before tumbling into the deep snow. (tags: powder, falling; riding looks: mistake)",
-  "candidates": [
-   {
-    "angle": "Number countdown joke",
-    "hook": "3 seconds of steeze. 1 face plant.",
-    "description": [
-     "the trees were watching",
-     "worth it anyway"
-    ],
-    "caption": "Pow tax is non-refundable. Send this to a mate who needs it. #snowboarding #powder #treeriding #snowboard"
-   },
-   {
-    "angle": "How it feels meme",
-    "hook": "How it feels when the pow fights back",
-    "description": [
-     "no regrets, only snow in my jacket"
-    ],
-    "caption": "Went in looking like a pro and came out looking like a snowman. Tag the mate you ride with who does this every powder day. #snowboarding #powderday #treeriding #snowboard"
-   },
-   {
-    "angle": "Hot take",
-    "hook": "Falling in powder doesn't count as falling",
-    "description": [
-     "it's a deep snow nap",
-     "prove me wrong"
-    ],
-    "caption": "Soft landings are the best part of a powder day, and I'll die on this hill. What should I cover next? #snowboarding #powder #snowboard #powderday"
-   }
-  ],
-  "scores": [
-   {
-    "i": 0,
-    "hook": 4,
-    "sense": 4,
-    "match": 5,
-    "voice": 4,
-    "problem": "",
-    "note": "Punchy and accurate to the 3-second ride followed by a deep powder wipeout."
-   },
-   {
-    "i": 1,
-    "hook": 4,
-    "sense": 4,
-    "match": 5,
-    "voice": 4,
-    "problem": "",
-    "note": "Solid use of the 'How it feels' meme format matching the pow crash."
-   },
-   {
-    "i": 2,
-    "hook": 4,
+    "hook": 3,
     "sense": 3,
-    "match": 4,
+    "match": 3,
     "voice": 3,
-    "problem": "Caption asks 'What should I cover next?' which makes no sense on a 7-second crash clip.",
-    "note": "Good hook, but the caption mistakenly uses an educational tutorial CTA."
+    "problem": "",
+    "note": "Solid advice but hook lacks punch."
+   },
+   {
+    "i": 2,
+    "hook": 3,
+    "sense": 3,
+    "match": 2,
+    "voice": 3,
+    "problem": "Crash is a drop nosedive, not an edging issue.",
+    "note": "Cue mismatches the visual stack."
    }
   ],
   "winner": 0
  },
  {
   "kind": "real",
-  "topic": "m30355e",
+  "topic": "mb61514",
   "category": "moment",
-  "footage": "Conor's real footage: Conor links turns down the sunny slope overlooking the valley. (tags: turns, linked_turns, heelside, toeside, scenery; riding looks: good)",
+  "footage": "Conor's real footage: Conor drops off a snowy bank and rides through deep powder toward the camera. (tags: powder, jump, turns; riding looks: good)",
   "candidates": [
    {
-    "angle": "numbered list joke",
-    "hook": "3 thoughts on every sunny run",
+    "angle": "Pow day behaviour",
+    "hook": "How I act when it dumps overnight",
     "description": [
-     "turns, the view, what's for lunch",
-     "in that order, every time"
+     "Instructor brain: gone",
+     "Pow brain: fully loaded"
     ],
-    "caption": "Not a single thought about the knee-burn at the bottom. Tag the mate you ride with who's always thinking about lunch. #snowboarding #snowboard #bluebird #snowboardinstructor"
+    "caption": "Zero professionalism the second there's fresh snow. Send this to a mate who turns into a kid on a powder day. #snowboarding #powder #powday #snowboardinstructor #snowbum"
    },
    {
-    "angle": "instructor office POV",
-    "hook": "POV: your office looks like this",
+    "angle": "Irony and hypocrisy",
+    "hook": "Me: I'm just here to teach\nAlso me:",
     "description": [
-     "commute's a chairlift"
+     "Professional behaviour, apparently"
     ],
-    "caption": "Some people get a window seat. I get a whole valley. Follow for more tips and mountain life from Thredbo and Niseko. #snowboarding #snowboardinstructor #thredbo #niseko"
+    "caption": "Level 3 instructor, allegedly. Follow for more from the mountain. #snowboarding #powder #snowboardinstructor #seasonnaire #snowbum"
    },
    {
-    "angle": "sun vs pow hot take",
-    "hook": "Sunny days are great but I want pow",
+    "angle": "Soft landing feeling",
+    "hook": "How it feels when the landing is soft",
     "description": [
-     "sorry sun, I'm a japow guy"
+     "Bank, pow, full send"
     ],
-    "caption": "Blue skies are lovely, but light dry Niseko powder has ruined me for anything else. Sunny day or pow day, which one are you picking? #snowboarding #japow #niseko #powderday #snowboard"
+    "caption": "Nothing beats dropping off a bank into deep, soft snow. What should I cover next? #snowboarding #powder #japow #thredbo #snowboardinstructor"
    }
   ],
   "scores": [
    {
     "i": 0,
-    "hook": 2,
-    "sense": 3,
-    "match": 2,
-    "voice": 2,
-    "problem": "Generic engagement bait that ignores the sketchy slush/thin snow conditions shown in the clip.",
-    "note": "Feels generic and bland; lacks Conor's dry Aussie humor."
+    "hook": 3,
+    "sense": 4,
+    "match": 4,
+    "voice": 3,
+    "problem": "Caption includes generic engagement bait ('Send this to a mate') which is explicitly listed in what flops.",
+    "note": "Decent pow day premise but weakened by generic call to action."
    },
    {
     "i": 1,
-    "hook": 2,
-    "sense": 2,
-    "match": 2,
-    "voice": 2,
-    "problem": "Wide third-person follow shot is not a POV, and 'POV your office' is a tired influencer cliché.",
-    "note": "Clichéd corporate influencer tone that Conor's audience would roll their eyes at."
+    "hook": 4,
+    "sense": 5,
+    "match": 5,
+    "voice": 5,
+    "problem": "",
+    "note": "Fits Conor's top performing irony format perfectly, playing up the degenerate vs instructor contrast."
    },
    {
     "i": 2,
     "hook": 2,
-    "sense": 3,
-    "match": 3,
+    "sense": 4,
+    "match": 4,
     "voice": 2,
-    "problem": "Whiny engagement prompt that doesn't deliver a punchline or relatable ski-bum premise.",
-    "note": "Complaining about sunshine without a joke or meme angle falls completely flat."
+    "problem": "Generic hook and bland engagement bait caption ('What should I cover next?') that doesn't fit his voice.",
+    "note": "Too earnest and flat; lacks Conor's irreverence."
    }
   ],
-  "winner": null
+  "winner": 1
  }
 ]
