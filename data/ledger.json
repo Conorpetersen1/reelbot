@@ -2538,6 +2538,27 @@
    "uses": 0,
    "created": "2026-11-24T16:28:56.237580+11:00",
    "scene": "Mascot sitting on a chairlift bar looking over freshly groomed morning corduroy snow."
+  },
+  "1flxgRJmWmh_KCZ_acTxauRYY1VFuTfPv": {
+   "name": "x006_20261124_00.mp4",
+   "topic": "x006",
+   "uses": 0,
+   "created": "2026-11-24T17:54:56.142326+11:00",
+   "scene": "Blocky mascot shuffling like a zombie toward the chairlift in snowstorm holding a takeaway coffee"
+  },
+  "1b2ZDS_7aKEOfPQjl-yjJJvN9Htp6AuMw": {
+   "name": "x007_20261124_00.mp4",
+   "topic": "x007",
+   "uses": 0,
+   "created": "2026-11-24T17:59:17.460273+11:00",
+   "scene": "Blocky snowboarder diving dramatically into a small snowbank like it's a 30-metre cliff drop"
+  },
+  "1ONX7ALpll23JImXuZHfwk-EPH1-8Ia2M": {
+   "name": "x008_20261124_00.mp4",
+   "topic": "x008",
+   "uses": 0,
+   "created": "2026-11-24T18:02:40.271343+11:00",
+   "scene": "Blocky mascot sitting down below a big kicker knuckle while another mascot narrowly sails overhead"
   }
  },
  "queue": {
@@ -4497,10 +4518,17 @@
   "2026-11-24 14:57 Re-rendered 2026-11-25 07:30 t23 with sound sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
   "2026-11-24 16:25 Trend idea rejected (gemini: The rule for Niseko snowfall requires stating that it averages 'around' 15 metres a season ('around', never exact). Stating an exact 'Fifteen metres of light powder' contradicts this rule and is misleading.): That first look at Mount Yotei",
   "2026-11-24 16:28 Trend 'Screen Recording 2026-11-24 at 1.09.56 pm.mov' (gemini (scroll)) -> Park safety near miss / hazard callout, Beginner struggle vs pro execution contrast, Camera flip scenic mountain reveal: 5 new ideas ['x001', 'x002', 'x003', 'x004', 'x005']",
-  "2026-11-24 16:29 Updated insights for 7 reels"
+  "2026-11-24 16:29 Updated insights for 7 reels",
+  "2026-11-24 17:44 Redo trends 2026-11-24: 1 recordings back in the inbox",
+  "2026-11-24 18:02 No trend AI clip for x009: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/flux-pro/kontext",
+  "2026-11-24 18:02 No trend AI clip for x010: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/flux-pro/kontext",
+  "2026-11-24 18:03 No trend AI clip for x011: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
+  "2026-11-24 18:03 No trend AI clip for x012: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/flux-pro/kontext",
+  "2026-11-24 18:03 No trend AI clip for x013: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/flux-pro/kontext",
+  "2026-11-24 18:03 Trend 'Screen Recording 2026-11-24 at 1.09.56 pm.mov' (gemini (scroll)) -> satirical_group_behavior, park_safety_hazard_callout, airport_gear_overload, quick_fix_one_problem: 8 new ideas ['x006', 'x007', 'x008', 'x009', 'x010', 'x011', 'x012', 'x013']"
  ],
  "fal_spend": {
-  "2026-11": 9.71
+  "2026-11": 16.03
  },
  "sound_uses": {
   "ScreenRecording_11-22-2026 19-37-39_1.MP4": 5,
@@ -4910,6 +4938,456 @@
     "x005"
    ],
    "analysed_by": "gemini (scroll)"
+  },
+  {
+   "file": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "date": "2026-11-24",
+   "format": "satirical_group_behavior, park_safety_hazard_callout, airport_gear_overload, quick_fix_one_problem",
+   "template": "How [group] be moving in [location/situation]: | [Relatable danger / near miss title] 🤯 | How [riders] travel to [destination]: | Stop doing this if your [gear/turn] feels broken",
+   "why": "39 reels watched, 4 trending formats",
+   "style": null,
+   "ideas": [
+    "x006",
+    "x007",
+    "x008",
+    "x009",
+    "x010",
+    "x011",
+    "x012",
+    "x013"
+   ],
+   "analysed_by": "gemini (scroll)",
+   "reels": [
+    {
+     "t": 0,
+     "niche": "cars / comedy",
+     "hook": "\"Am I actually looking at a chandelier right now?\"",
+     "format": "dashcam dialogue + absurdity reveal",
+     "numbers": "297K likes, 878 comments, 32K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": true,
+     "why": "Bizarre conversation followed by a ridiculous car interior reveal."
+    },
+    {
+     "t": 10,
+     "niche": "family / lifestyle",
+     "hook": "In a world full of men not wanting to turn out like their dad",
+     "format": "wholesome montage + contrast",
+     "numbers": "96.5K likes, 431 comments",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Emotional, relatable text hook paired with high adrenaline outdoors clips."
+    },
+    {
+     "t": 19,
+     "niche": "snowboard stacks",
+     "hook": "none",
+     "format": "indoor stack clip",
+     "numbers": "138K likes, 468 comments",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Fast slapstick wipeout into safety netting."
+    },
+    {
+     "t": 25,
+     "niche": "ski powder trees",
+     "hook": "none",
+     "format": "deep powder line in tight trees",
+     "numbers": "41.1K likes, 63 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Pure satisfying deep powder visuals."
+    },
+    {
+     "t": 32,
+     "niche": "creator humour",
+     "hook": "\"How's your little Instagram thing going?\"",
+     "format": "dialogue prompt + ironic stat reveal",
+     "numbers": "1 like",
+     "viral": false,
+     "sound": "Where U Are - Throttle",
+     "sound_dependent": false,
+     "why": "Self-deprecating irony showing modest metrics after big efforts."
+    },
+    {
+     "t": 41,
+     "niche": "extreme travel / mountaineering",
+     "hook": "what my mom hears when I tell her my travel plans",
+     "format": "hyperbolic expectation meme",
+     "numbers": "105 likes, 4 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Relatable comedic over-exaggeration of freezing blizzard treks."
+    },
+    {
+     "t": 50,
+     "niche": "freestyle snowboarding",
+     "hook": "Pov: you tell the drone pilot \"as close as you can\"",
+     "format": "POV drone follow cam stunt",
+     "numbers": "72.1K likes, 218 comments",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Insanely tight drone proximity shot over a jump grab."
+    },
+    {
+     "t": 58,
+     "niche": "dance / snow lifestyle",
+     "hook": "none",
+     "format": "snow resort apron dance trend",
+     "numbers": "53 likes, 1 comment",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": true,
+     "why": "Fun choreography in snow gear outside apartments."
+    },
+    {
+     "t": 73,
+     "niche": "dirt bike / moto squad",
+     "hook": "life with that one friend group >",
+     "format": "group montage + rowdy riding",
+     "numbers": "808 likes, 35 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Nostalgic friend group chaos and wheelies."
+    },
+    {
+     "t": 86,
+     "niche": "cliff / bridge jumping",
+     "hook": "Privileged white kids with everything to lose:",
+     "format": "ironic label + reckless extreme stunt",
+     "numbers": "442K likes, 835 comments, 37.9K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Deadpan satirical label over an absolutely terrifying high bridge drop."
+    },
+    {
+     "t": 98,
+     "niche": "snowboarding backcountry",
+     "hook": "none",
+     "format": "cliff drop POV to third person hit",
+     "numbers": "7,251 likes, 32 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Smooth pillow line air with a follow cam perspective."
+    },
+    {
+     "t": 112,
+     "niche": "travel memes / extreme stunts",
+     "hook": "How guys with no travel insurance be moving in foreign countries:",
+     "format": "satirical situation meme + stunt montage",
+     "numbers": "70.1K likes, 122 comments, 25.2K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Hilarious relatable caption paired with reckless slips, falls, and cliffs."
+    },
+    {
+     "t": 123,
+     "niche": "offroad / sketchy driving",
+     "hook": "none",
+     "format": "night truck jump fail into trees",
+     "numbers": "2.3M likes, 22.6K comments, 930K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Pure jaw-dropping viral chaos of an SUV launching off a jump into a ditch."
+    },
+    {
+     "t": 132,
+     "niche": "snow storm / mountain driving",
+     "hook": "POV: it snows in Santa Barbara part 2",
+     "format": "rare snow weather documentation",
+     "numbers": "5,986 likes, 110 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Novelty of seeing snow in typically warm sunny coastal mountains."
+    },
+    {
+     "t": 174,
+     "niche": "ski slalom training",
+     "hook": "none",
+     "format": "sunset gate bashing POV",
+     "numbers": "140 likes, 7 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Rhythmic slalom clicks against beautiful dusk light."
+    },
+    {
+     "t": 215,
+     "niche": "extreme ski / dry slope",
+     "hook": "none",
+     "format": "forest leaf skiing madness",
+     "numbers": "5,730 likes, 19 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Absurd attempt to ski downhill through brown leaves and trees without snow."
+    },
+    {
+     "t": 239,
+     "niche": "skiing / scenery",
+     "hook": "WTF IS GTA VI?!",
+     "format": "meme caption over high alpine cloud inversion",
+     "numbers": "17 likes",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Breathtaking sea of clouds view with hyper-casual meme text."
+    },
+    {
+     "t": 252,
+     "niche": "drifting / JDM cars",
+     "hook": "none",
+     "format": "tandem drift team train compilation",
+     "numbers": "unknown",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": true,
+     "why": "Tight synchronized drifting style and 90s aesthetic."
+    },
+    {
+     "t": 283,
+     "niche": "outdoor tomfoolery",
+     "hook": "Hey bro I was wondering if you wanted to get into some shenanigans with me...",
+     "format": "copypasta audio + crazy stunts montage",
+     "numbers": "2,757 likes, 110 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": true,
+     "why": "Meme audio monologue contrasting with wild summer water slides and bridge jumps."
+    },
+    {
+     "t": 292,
+     "niche": "car repair vlog",
+     "hook": "E34 had manual swap my windows and doors went dead",
+     "format": "storytime + mechanic troubleshooting",
+     "numbers": "207 likes, 2 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Quick DIY car wiring fix under the seat."
+    },
+    {
+     "t": 325,
+     "niche": "ski contest / athlete",
+     "hook": "Just say \"yes\" to everything because...",
+     "format": "audio lip-sync + athlete contest reel",
+     "numbers": "2,308 likes, 10 comments",
+     "viral": false,
+     "sound": "One Day - Asaf Avidan",
+     "sound_dependent": true,
+     "why": "Inspirational audio matched to huge halfpipe hits at night."
+    },
+    {
+     "t": 340,
+     "niche": "wakeboarding crashes",
+     "hook": "LOVE",
+     "format": "slam compilation with letter reveal",
+     "numbers": "unknown",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Painful wipeouts on rail features."
+    },
+    {
+     "t": 357,
+     "niche": "snowmobile pow",
+     "hook": "none",
+     "format": "fresh powder lake/valley rip",
+     "numbers": "123 likes",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Endless untouched deep white snowfield."
+    },
+    {
+     "t": 367,
+     "niche": "outdoor fitness / mental health",
+     "hook": "Depression can't hit a moving target",
+     "format": "bold one-liner + multi-sport gear loading",
+     "numbers": "21.8K likes, 2,042 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Relatable humor about buying/carrying every action sport tool at once."
+    },
+    {
+     "t": 377,
+     "niche": "mountain biking snow",
+     "hook": "male dopamine",
+     "format": "micro-meme label + steep muddy snow riding",
+     "numbers": "143 likes",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Fast chaotic downhill singletrack in the woods."
+    },
+    {
+     "t": 390,
+     "niche": "university ski rail jam",
+     "hook": "\"Why did you choose to go to the university of Utah?\" ...",
+     "format": "mock question + chaotic rail jam clips",
+     "numbers": "13.6K likes, 131 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "College campus ski culture, loud crowds, and savage rail crashes."
+    },
+    {
+     "t": 411,
+     "niche": "travel / ski luggage",
+     "hook": "none",
+     "format": "ridiculous luggage drag train at airport",
+     "numbers": "4,947 likes, 57 comments, 5,404 shares",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "One guy pulling a 10-metre train of 6 connected snowboard roller bags."
+    },
+    {
+     "t": 424,
+     "niche": "pit bike / moto stunts",
+     "hook": "Please don't @ the COPS was just trying to play golf",
+     "format": "ironic police evasion / wheelie clip",
+     "numbers": "118 likes",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Riding a tiny red pit bike with a golf bag strapped to back doing wheelies."
+    },
+    {
+     "t": 439,
+     "niche": "world news / skiing",
+     "hook": "Kim Jong Un's daughter skis without helmet in rare public appearance",
+     "format": "news broadcast clip",
+     "numbers": "198K likes, 1,945 comments, 42.7K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Bizarre geopolitical curiosity on a ski slope."
+    },
+    {
+     "t": 460,
+     "niche": "Aussie driving banter",
+     "hook": "none",
+     "format": "casual banter driving past Highway Patrol",
+     "numbers": "14.8K likes, 279 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Classic Aussie highway patrol passing encounter."
+    },
+    {
+     "t": 470,
+     "niche": "celebrity spotting / comedy",
+     "hook": "HARRY STYLES SPOTTED MELBOURNE",
+     "format": "chaotic in-car reaction skit",
+     "numbers": "2,891 likes, 735 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "High energy Melbourne girls screaming after spotting a pop star."
+    },
+    {
+     "t": 512,
+     "niche": "ski resort park wipeout",
+     "hook": "Jerry head tap 🤯",
+     "format": "park jump near-miss / collision clip",
+     "numbers": "172K likes, 1,413 comments, 41.5K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Snowboarder flies off a kicker and clips the helmet of a skier standing in the landing."
+    },
+    {
+     "t": 528,
+     "niche": "snowmobile blooper",
+     "hook": "\"I don't know if I'll ever be able ride this thing\"",
+     "format": "expectation vs instant roll fail",
+     "numbers": "4,180 likes, 47 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Instant roll-over stack 2 seconds into riding across flat snow."
+    },
+    {
+     "t": 542,
+     "niche": "mountain landscape",
+     "hook": "none",
+     "format": "scenic 360 mountain summit view",
+     "numbers": "188K likes, 1,913 comments, 10.7K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Incredible sunlit peaks above cloud deck."
+    },
+    {
+     "t": 551,
+     "niche": "travel hacks / flights",
+     "hook": "The Japan trip is CHEAP rn",
+     "format": "talking head deal breakdown",
+     "numbers": "499 likes, 6 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Direct consumer hack for booking budget flights to Tokyo."
+    },
+    {
+     "t": 592,
+     "niche": "car / lifestyle humor",
+     "hook": "“I called you” Yea I know you paused my fucking Spotify",
+     "format": "relatable phone call pet peeve",
+     "numbers": "4,897 likes, 427 comments",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Universal driver annoyance with incoming calls over music."
+    },
+    {
+     "t": 606,
+     "niche": "F1 race recap",
+     "hook": "the las vegas gp was genuinely unbelievable",
+     "format": "talking head race breakdown with overlay screens",
+     "numbers": "166K likes, 807 comments, 21.6K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Fast-paced fan commentary on sports drama."
+    },
+    {
+     "t": 784,
+     "niche": "moguls / ski wipeout",
+     "hook": "none",
+     "format": "mogul run backflip crash",
+     "numbers": "72 likes, 1 comment",
+     "viral": false,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Olympic mogul skier overshooting and tumbling."
+    },
+    {
+     "t": 811,
+     "niche": "bikepacking / adventure",
+     "hook": "Biking to Kyrgyzstan day 36 📍Tajikistan",
+     "format": "daily vlog roughing it",
+     "numbers": "508K likes, 1,713 comments, 25.8K shares",
+     "viral": true,
+     "sound": "original audio",
+     "sound_dependent": false,
+     "why": "Extreme isolation, broken bike racks, and raw travel survival in high desert."
+    }
+   ]
   }
  ],
  "trend_topics": {
@@ -4987,33 +5465,169 @@
    "added": "2026-11-24T16:25:29.293740+11:00",
    "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
    "needs_sound": ""
+  },
+  "x006": {
+   "id": "x006",
+   "category": "snow_life",
+   "level": "any",
+   "hook": "How seasonnaires move on day 90",
+   "description": "First lift on 3 hours sleep|Coffee in one hand, board in other|Legs running purely on vibes",
+   "manual_ref": "",
+   "cta_keyword": "SEASON",
+   "clip_tags": "lifestyle,chairlift",
+   "ai_scene": "Blocky mascot shuffling like a zombie toward the chairlift in snowstorm holding a takeaway coffee",
+   "style": "pov",
+   "added": "2026-11-24T17:51:56.178314+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x007": {
+   "id": "x007",
+   "category": "snow_life",
+   "level": "any",
+   "hook": "How riders act in 10cm of fresh snow",
+   "description": "Claiming it's the run of the year|Calling in sick to work|Diving head first into soft slush",
+   "manual_ref": "",
+   "cta_keyword": "POWDER",
+   "clip_tags": "powder,lifestyle",
+   "ai_scene": "Blocky snowboarder diving dramatically into a small snowbank like it's a 30-metre cliff drop",
+   "style": "pov",
+   "added": "2026-11-24T17:55:03.228990+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x008": {
+   "id": "x008",
+   "category": "snow_life",
+   "level": "any",
+   "hook": "Why you never chill in park landings",
+   "description": "Blind knuckles mean zero visibility|Clear the landing instantly|Save yourself and the rider dropping",
+   "manual_ref": "Park: clear the landing, one person per feature",
+   "cta_keyword": "PARK",
+   "clip_tags": "park,jump,falling",
+   "ai_scene": "Blocky mascot sitting down below a big kicker knuckle while another mascot narrowly sails overhead",
+   "style": "list",
+   "added": "2026-11-24T17:59:21.503660+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x009": {
+   "id": "x009",
+   "category": "snow_life",
+   "level": "any",
+   "hook": "Packing for one week in Japan be like",
+   "description": "Three boards you won't ride|Ten base layers and two jackets|Dragged through New Chitose airport",
+   "manual_ref": "",
+   "cta_keyword": "JAPAN",
+   "clip_tags": "gear,lifestyle",
+   "ai_scene": "Blocky mascot dragging a giant daisy chain of three wheeled snowboard bags across an airport terminal crosswalk",
+   "style": "pov",
+   "added": "2026-11-24T18:02:45.233675+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x010": {
+   "id": "x010",
+   "category": "tip",
+   "level": "beginner",
+   "hook": "Board chattering on heelside?",
+   "description": "Riders often fold at the waist|Heelside actually needs more flexion|Sink down through knees and hips",
+   "manual_ref": "APSI Manual: Heel side needs more flexion than toe side; core and glutes engaged so rider does not fold at waist",
+   "cta_keyword": "HEELSIDE",
+   "clip_tags": "heelside,turns,stance",
+   "ai_scene": "Side profile of blocky snowboarder bending smoothly at the knees and hips on heel edge without breaking waist",
+   "style": "list",
+   "added": "2026-11-24T18:02:49.892103+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x011": {
+   "id": "x011",
+   "category": "tip",
+   "level": "beginner",
+   "hook": "Stop doing this on your toe turn",
+   "description": "Don't lift heels inside your boots|Keep ankles, knees and hips flexed|Drive pressure through balls of feet",
+   "manual_ref": "APSI Manual: Toe side weight on balls of feet, flexed joints. Never tippy toes or lifting heels.",
+   "cta_keyword": "TOESIDE",
+   "clip_tags": "toeside,turns,stance",
+   "ai_scene": "Close up of blocky mascot boots flexing forward naturally pressing into the snowboard toe edge smoothly",
+   "style": "list",
+   "added": "2026-11-24T18:02:55.493846+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x012": {
+   "id": "x012",
+   "category": "snow_life",
+   "level": "any",
+   "hook": "Telling your mate to ride trees in Japan",
+   "description": "First time in deep powder|Pushed board ahead into the fluff|Buried up to his goggles in seconds",
+   "manual_ref": "APSI Manual: Deep powder - push board ahead as you hit deep snow.",
+   "cta_keyword": "TREES",
+   "clip_tags": "powder,falling,scenery",
+   "ai_scene": "Blocky snowboarder sinking into deep Japanese tree powder snow leaving only a bright beanie visible",
+   "style": "pov",
+   "added": "2026-11-24T18:03:14.668764+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x013": {
+   "id": "x013",
+   "category": "tip",
+   "level": "new_rider",
+   "hook": "Why your board refuses to turn",
+   "description": "Heavy back foot locks you straight|Bring weight forward over front foot|Match your shoulders to the pitch",
+   "manual_ref": "APSI Manual: Weight on back foot stops turning. Fix is more weight on front foot and matching shoulders to pitch.",
+   "cta_keyword": "TURNS",
+   "clip_tags": "turns,linked_turns,stance",
+   "ai_scene": "Blocky mascot shifting weight smoothly forward to initiate a clean carve across the slope",
+   "style": "list",
+   "added": "2026-11-24T18:03:19.392286+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
   }
  },
  "feed_formats": {
-  "date": "2026-11-24T16:10:32.128582+11:00",
+  "date": "2026-11-24T17:51:50.563927+11:00",
   "formats": [
    {
-    "format_name": "Park safety near miss / hazard callout",
-    "hook_template": "Why you never do [dangerous action]",
-    "why_it_works": "Taps into adrenaline, fear of collisions, and crucial etiquette everyone debates in comments.",
+    "format_name": "satirical_group_behavior",
+    "hook_template": "How [group] be moving in [location/situation]:",
+    "why_it_works": "Pairs relatable or reckless behavior with comedic social observation.",
     "style": "pov",
-    "seen": 2,
+    "seen": 3,
+    "viral_examples": 2,
+    "kind": "entertainment",
     "needs_sound": ""
    },
    {
-    "format_name": "Beginner struggle vs pro execution contrast",
-    "hook_template": "Day 1 vs season 3",
-    "why_it_works": "Validates the frustrating beginner phase while demonstrating clean inspiring technique.",
-    "style": "pov",
+    "format_name": "park_safety_hazard_callout",
+    "hook_template": "[Relatable danger / near miss title] 🤯",
+    "why_it_works": "Shows jaw-dropping near-misses in terrain parks that spark heavy debate in comments.",
+    "style": "list",
     "seen": 2,
+    "viral_examples": 1,
+    "kind": "entertainment",
     "needs_sound": ""
    },
    {
-    "format_name": "Camera flip scenic mountain reveal",
-    "hook_template": "Turn the camera around at [resort]",
-    "why_it_works": "Stops the scroll instantly with dramatic natural scale and alpine views.",
+    "format_name": "airport_gear_overload",
+    "hook_template": "How [riders] travel to [destination]:",
+    "why_it_works": "Exaggerated real gear hauling resonates deeply with mountain holiday travelers.",
     "style": "pov",
     "seen": 2,
+    "viral_examples": 1,
+    "kind": "entertainment",
+    "needs_sound": ""
+   },
+   {
+    "format_name": "quick_fix_one_problem",
+    "hook_template": "Stop doing this if your [gear/turn] feels broken",
+    "why_it_works": "Immediately identifies a painful riding habit and offers one clear tactile cue.",
+    "style": "list",
+    "seen": 1,
+    "viral_examples": 1,
+    "kind": "teaching",
     "needs_sound": ""
    }
   ]
@@ -5021,15 +5635,21 @@
  "sounds_wanted": [
   {
    "sound": "Where U Are - Throttle",
-   "seen": 1,
+   "seen": 2,
    "for": [],
-   "date": "2026-11-24T16:10:32.128602+11:00"
+   "date": "2026-11-24T17:51:50.563945+11:00"
   },
   {
    "sound": "One Day - Asaf Avidan remix",
    "seen": 1,
    "for": [],
    "date": "2026-11-24T16:10:32.128609+11:00"
+  },
+  {
+   "sound": "One Day - Asaf Avidan",
+   "seen": 1,
+   "for": [],
+   "date": "2026-11-24T17:51:50.563950+11:00"
   }
  ]
 }
