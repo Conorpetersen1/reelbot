@@ -2802,7 +2802,7 @@
     "asked_hook": "how_i",
     "sound_kind": "sound",
     "source": "bank",
-    "attempts": 1,
+    "attempts": 2,
     "error": "Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
    },
    {
@@ -3099,7 +3099,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T18:16:28.819032+11:00",
+   "insights_at": "2026-11-24T19:01:37.375068+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3339,6 +3339,13 @@
      1169,
      1,
      8
+    ],
+    [
+     33.4,
+     1517,
+     1170,
+     1,
+     8
     ]
    ],
    "est_follows": 0.0
@@ -3369,7 +3376,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T18:04:07.091250+11:00",
+   "insights_at": "2026-11-24T19:01:38.399708+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3595,6 +3602,13 @@
      1643,
      1,
      1
+    ],
+    [
+     29.73,
+     2270,
+     1643,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3628,7 +3642,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T18:21:27.695370+11:00",
+   "insights_at": "2026-11-24T19:01:40.367754+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3833,6 +3847,13 @@
      296,
      0,
      0
+    ],
+    [
+     27.0,
+     396,
+     297,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3863,7 +3884,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T18:04:09.570850+11:00",
+   "insights_at": "2026-11-24T19:01:41.305979+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -4054,6 +4075,13 @@
      355,
      4,
      0
+    ],
+    [
+     25.0,
+     395,
+     355,
+     4,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4084,7 +4112,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T18:04:10.655852+11:00",
+   "insights_at": "2026-11-24T19:01:42.175143+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -4247,6 +4275,13 @@
      183,
      0,
      0
+    ],
+    [
+     21.0,
+     223,
+     183,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4277,7 +4312,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T18:04:12.222178+11:00",
+   "insights_at": "2026-11-24T19:01:43.029416+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -4335,6 +4370,13 @@
      131,
      0,
      0
+    ],
+    [
+     6.69,
+     170,
+     131,
+     0,
+     0
     ]
    ]
   },
@@ -4364,7 +4406,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T18:56:26.536063+11:00",
+   "insights_at": "2026-11-24T19:01:43.937928+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
@@ -4406,6 +4448,13 @@
      4.81,
      350,
      258,
+     0,
+     0
+    ],
+    [
+     5.76,
+     365,
+     264,
      0,
      0
     ]
@@ -4570,7 +4619,8 @@
   "2026-11-24 16:25 Trend idea rejected (gemini: The rule for Niseko snowfall requires stating that it averages 'around' 15 metres a season ('around', never exact). Stating an exact 'Fifteen metres of light powder' contradicts this rule and is misleading.): That first look at Mount Yotei",
   "2026-11-24 16:28 Trend 'Screen Recording 2026-11-24 at 1.09.56 pm.mov' (gemini (scroll)) -> Park safety near miss / hazard callout, Beginner struggle vs pro execution contrast, Camera flip scenic mountain reveal: 5 new ideas ['x001', 'x002', 'x003', 'x004', 'x005']",
   "2026-11-24 16:29 Updated insights for 7 reels",
-  "2026-11-24 18:04 Post failed for 2026-11-24_3_t30.mp4 (attempt 1): Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  "2026-11-24 18:04 Post failed for 2026-11-24_3_t30.mp4 (attempt 1): Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+  "2026-11-24 19:01 Post failed for 2026-11-24_3_t30.mp4 (attempt 2): Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
  ],
  "fal_spend": {
   "2026-11": 16.03
@@ -4740,9 +4790,13 @@
   [
    "2026-11-24T18:04+11:00",
    945
+  ],
+  [
+   "2026-11-24T19:01+11:00",
+   945
   ]
  ],
- "publish_heartbeat": "2026-11-24T18:04:01.734156+11:00",
+ "publish_heartbeat": "2026-11-24T19:01:34.769864+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
