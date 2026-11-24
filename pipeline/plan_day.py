@@ -398,7 +398,8 @@ def main():
             music = None
             sound = None
             sound_ok = audio and (kind == "ai" or CFG.get("sounds", {}).get("use_on", "all") == "all")
-            if sound_ok and draw.best("sound", ["sound", "none"]) == "sound":
+            # Mascot clips have no audio of their own, so they always get a sound; real clips can test without one
+            if sound_ok and (kind == "ai" or draw.best("sound", ["sound", "none"]) == "sound"):
                 sound = pick_sound(led, audio)
                 music = sound["path"]
             out = WORK / f"{day}_{len(entries)+1}_{topic['id']}.mp4"

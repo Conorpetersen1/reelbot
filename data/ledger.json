@@ -2833,7 +2833,9 @@
     "category": "tip",
     "asked_hook": "why",
     "sound_kind": "none",
-    "source": "bank"
+    "source": "bank",
+    "rerender": true,
+    "resound": true
    },
    {
     "date": "2026-11-25",
@@ -2870,7 +2872,9 @@
     "category": "tip",
     "asked_hook": "why",
     "sound_kind": "none",
-    "source": "bank"
+    "source": "bank",
+    "rerender": true,
+    "resound": true
    },
    {
     "date": "2026-11-25",
@@ -2912,7 +2916,9 @@
     "category": "snow_life",
     "asked_hook": "why",
     "sound_kind": "none",
-    "source": "bank"
+    "source": "bank",
+    "rerender": true,
+    "resound": true
    },
    {
     "date": "2026-11-25",
@@ -2953,7 +2959,9 @@
     "category": "snow_life",
     "asked_hook": "why",
     "sound_kind": "none",
-    "source": "bank"
+    "source": "bank",
+    "rerender": true,
+    "resound": true
    },
    {
     "date": "2026-11-25",
@@ -2995,7 +3003,9 @@
     "category": "tip",
     "asked_hook": "why",
     "sound_kind": "none",
-    "source": "bank"
+    "source": "bank",
+    "rerender": true,
+    "resound": true
    }
   ]
  },
