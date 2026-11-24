@@ -2839,8 +2839,16 @@
     "hook_type": "why",
     "category": "tip",
     "asked_hook": "why",
-    "sound_kind": "sound",
-    "source": "bank"
+    "sound_kind": "attached",
+    "source": "bank",
+    "rerender": true,
+    "no_music": true,
+    "attach_audio": {
+     "audio_id": "1500358294806818",
+     "title": "Young Folks - NCWU Spectrum",
+     "audio_volume": 100,
+     "video_volume": 100
+    }
    },
    {
     "date": "2026-11-25",
