@@ -2805,7 +2805,7 @@
     "kind": "ai",
     "topic": "t23",
     "clip": "1cry745n0hpm57CIfQxs0tzNgggCP0Xv9",
-    "file_id": "1DjWI4Pz5NBZPsyUUHqwuv1BTyWDjoahx",
+    "file_id": "1v0He2Sp7y2QFL3IpmpXHfPaxA2SVznpx",
     "file": "2026-11-25_1_t23.mp4",
     "fit": 5,
     "hook": "Why you keep crashing on tiny kickers",
@@ -2826,16 +2826,14 @@
      "note": "Direct, actionable fix that matches the character's compact air position perfectly."
     },
     "status": "queued",
-    "sound": null,
+    "sound": "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
     "style": "pov",
     "variation": {},
     "hook_type": "why",
     "category": "tip",
     "asked_hook": "why",
-    "sound_kind": "none",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "sound_kind": "sound",
+    "source": "bank"
    },
    {
     "date": "2026-11-25",
@@ -2844,7 +2842,7 @@
     "kind": "ai",
     "topic": "t24",
     "clip": "1w1rTFqv41EzdSrEspp29hi3DjMbMLEhS",
-    "file_id": "1Vl0AbdeHPHESNnLaKRTHA7Os_eK6mLSK",
+    "file_id": "1chhejr8OEDKVfYZ2NdoCzqm0snnj_-bn",
     "file": "2026-11-25_2_t24.mp4",
     "fit": 3,
     "hook": "Why do park locals keep glaring at me?",
@@ -2865,16 +2863,14 @@
      "note": "Relatable mountain culture hook that fits Conor's tone well; solid one problem/one fix progression."
     },
     "status": "queued",
-    "sound": null,
+    "sound": "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a",
     "style": "pov",
     "variation": {},
     "hook_type": "why",
     "category": "tip",
     "asked_hook": "why",
-    "sound_kind": "none",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "sound_kind": "sound",
+    "source": "bank"
    },
    {
     "date": "2026-11-25",
@@ -2883,7 +2879,7 @@
     "kind": "ai",
     "topic": "s05",
     "clip": "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3",
-    "file_id": "1GrJe3A2fFJL0ACf5Nunh0lzmmgi4avFO",
+    "file_id": "1-lpOSbvWTLRsZ66ap8m81HgQUeunttkn",
     "file": "2026-11-25_3_s05.mp4",
     "fit": 5,
     "hook": "Inside an instructor's bag: zero dignity",
@@ -2904,7 +2900,7 @@
      "note": "Accurate, funny, and matches the bag contents shown on screen"
     },
     "status": "queued",
-    "sound": null,
+    "sound": "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a",
     "style": "pov",
     "variation": {
      "zoom": 1.14,
@@ -2915,10 +2911,8 @@
     "hook_type": "statement",
     "category": "snow_life",
     "asked_hook": "why",
-    "sound_kind": "none",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "sound_kind": "sound",
+    "source": "bank"
    },
    {
     "date": "2026-11-25",
@@ -2927,7 +2921,7 @@
     "kind": "ai",
     "topic": "s01",
     "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8",
-    "file_id": "1atswisZBi3Liz3MzgpPn1mJZ4kD4d4nj",
+    "file_id": "1W3hy5rKXZjAhpvHd19v4PD_IrJVFGH1U",
     "file": "2026-11-25_4_s01.mp4",
     "fit": 5,
     "hook": "How it feels clocking off into an onsen",
@@ -2947,7 +2941,7 @@
      "note": "Nails Conor's signature 'How it feels' meme hook and perfectly mirrors sliding straight off the slope into the tub."
     },
     "status": "queued",
-    "sound": null,
+    "sound": "sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a",
     "style": "question",
     "variation": {
      "zoom": 1.13,
@@ -2958,10 +2952,8 @@
     "hook_type": "how_i",
     "category": "snow_life",
     "asked_hook": "why",
-    "sound_kind": "none",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "sound_kind": "sound",
+    "source": "bank"
    },
    {
     "date": "2026-11-25",
@@ -2970,7 +2962,7 @@
     "kind": "ai",
     "topic": "t01",
     "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
-    "file_id": "12_sXm1o7x_RCQ6F8Ttn9VXYdXgsRmOyO",
+    "file_id": "1SIlFPgIGkC90LUSqw4CM9C9FD6jFMGrw",
     "file": "2026-11-25_5_t01.mp4",
     "fit": 3,
     "hook": "Stop bowing to your snowboard",
@@ -2991,7 +2983,7 @@
      "note": "Strong visual hook with 'polite bow' banter that matches Conor's humor while delivering accurate APSI technique."
     },
     "status": "queued",
-    "sound": null,
+    "sound": "sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a",
     "style": "question",
     "variation": {
      "zoom": 1.17,
@@ -3002,10 +2994,8 @@
     "hook_type": "statement",
     "category": "tip",
     "asked_hook": "why",
-    "sound_kind": "none",
-    "source": "bank",
-    "rerender": true,
-    "resound": true
+    "sound_kind": "sound",
+    "source": "bank"
    }
   ]
  },
@@ -4058,17 +4048,22 @@
   "2026-11-24 02:48 Reviewer rejected text for i01: gemini: The reel content does not address the assigned topic (APSI Level 1 certification pathway / how to become a snowboard instructor in Australia) and is completely off-topic.",
   "2026-11-24 02:48 Skipped i01: no good life text",
   "2026-11-24 02:52 Critic rejected all 3 texts for t24 (attempt 1)",
-  "2026-11-24 03:06 Queued 5 reels for 2026-11-25: ['t23', 't24', 's05', 's01', 't01']"
+  "2026-11-24 03:06 Queued 5 reels for 2026-11-25: ['t23', 't24', 's05', 's01', 't01']",
+  "2026-11-24 11:56 Re-rendered 2026-11-25 07:30 t23 with sound sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
+  "2026-11-24 11:59 Re-rendered 2026-11-25 09:00 t24 with sound sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a",
+  "2026-11-24 12:01 Re-rendered 2026-11-25 11:30 s05 with sound sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a",
+  "2026-11-24 12:04 Re-rendered 2026-11-25 19:30 s01 with sound sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a",
+  "2026-11-24 12:06 Re-rendered 2026-11-25 21:30 t01 with sound sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a"
  ],
  "fal_spend": {
   "2026-11": 5.76
  },
  "sound_uses": {
   "ScreenRecording_11-22-2026 19-37-39_1.MP4": 5,
-  "sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a": 1,
+  "sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a": 2,
   "sweep 2026-11-22 - Original audio - mitchbrothers.m4a": 1,
   "sweep 2026-11-22 - Time - Pink Floyd.m4a": 1,
-  "sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a": 1,
+  "sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a": 2,
   "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a": 1,
   "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a": 1,
   "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a": 1,
@@ -4078,7 +4073,10 @@
   "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a": 1,
   "sweep 2026-11-22 - eye of ra - purc.m4a": 1,
   "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a": 1,
-  "sweep 2026-11-22 - two faced - purc.m4a": 1
+  "sweep 2026-11-22 - two faced - purc.m4a": 1,
+  "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a": 1,
+  "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a": 1,
+  "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a": 1
  },
  "sound_newest": "2026-11-22T11:52:10.236Z",
  "followers_hourly": [
