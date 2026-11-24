@@ -2812,7 +2812,7 @@
     "kind": "ai",
     "topic": "t23",
     "clip": "1cry745n0hpm57CIfQxs0tzNgggCP0Xv9",
-    "file_id": "1v0He2Sp7y2QFL3IpmpXHfPaxA2SVznpx",
+    "file_id": "11aKeBb69c9UHlgzW7zfalE4w63XyXTMH",
     "file": "2026-11-25_1_t23.mp4",
     "fit": 5,
     "hook": "Why you keep crashing on tiny kickers",
@@ -2841,14 +2841,14 @@
     "asked_hook": "why",
     "sound_kind": "attached",
     "source": "bank",
-    "rerender": true,
     "no_music": true,
     "attach_audio": {
      "audio_id": "1500358294806818",
      "title": "Young Folks - NCWU Spectrum",
      "audio_volume": 100,
      "video_volume": 100
-    }
+    },
+    "fallback_file_id": "1v0He2Sp7y2QFL3IpmpXHfPaxA2SVznpx"
    },
    {
     "date": "2026-11-25",
@@ -4311,7 +4311,8 @@
   "2026-11-24 12:21 Posted trial reel 2026-11-24_1_t08.mp4 -> 18001465518105133",
   "2026-11-24 12:21 Saved 14 ratings from you",
   "2026-11-24 12:36 Studied 85 of your reels for your voice: Conor's voice is self-deprecating, irreverent, and deeply rooted in authentic ski-town and seasonnaire culture. His audi",
-  "2026-11-24 13:16 Posted trial reel 2026-11-24_2_i05.mp4 -> 18111453002627188"
+  "2026-11-24 13:16 Posted trial reel 2026-11-24_2_i05.mp4 -> 18111453002627188",
+  "2026-11-24 14:57 Re-rendered 2026-11-25 07:30 t23 with sound sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a"
  ],
  "fal_spend": {
   "2026-11": 5.76
@@ -4673,5 +4674,27 @@
    "https://www.instagram.com/reel/DTxDja9EYTc/",
    "https://www.instagram.com/reel/DS_9lkrESuz/"
   ]
- }
+ },
+ "sound_names": [
+  "sweep 2026-11-22 - Midnight City - M83.m4a",
+  "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a",
+  "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
+  "sweep 2026-11-22 - two faced - purc.m4a",
+  "sweep 2026-11-22 - eye of ra - purc.m4a",
+  "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a",
+  "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
+  "sweep 2026-11-22 - A GTA 6 - Dianzi.m4a",
+  "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
+  "sweep 2026-11-22 - Original audio - mitchbrothers.m4a",
+  "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
+  "sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a",
+  "sweep 2026-11-22 - Dancing On My Own (Instrumental) - Pink Gloves.m4a",
+  "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
+  "sweep 2026-11-22 - Think I'm going dumb - ACE aqougounk.m4a",
+  "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
+  "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
+  "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a",
+  "sweep 2026-11-22 - Time - Pink Floyd.m4a",
+  "sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a"
+ ]
 }
