@@ -46,23 +46,31 @@ SCROLL_SECONDS = 75  # recordings longer than this are treated as a scroll throu
 SCROLL_PROMPT = """This is a screen recording of Conor scrolling his Instagram Reels / Explore feed (his feed is tuned
 to snow content). A yellow clock in the corner shows seconds. Watch every reel that appears, even briefly.
 
+{voice}
+
 1. List each distinct reel: when it appears (seconds), its niche, the exact on-screen hook text, the format
-   (e.g. "POV + reaction", "expectation vs reality", "satirical list", "tutorial with numbered steps"), any
-   visible likes/views/comments, the SOUND (the song/audio name Instagram shows at the bottom of the reel), whether
-   the edit only works with that exact sound (beat-synced cuts, an audio meme where the joke is in the sound), and
-   why it holds attention.
-2. Then pick the formats that are clearly TRENDING (repeated, high numbers, strong hooks) and that would work
-   for Conor's snowboard instructor account. Adapt the best ones into reel ideas (max 6 ideas in total, max 2 per
-   format). Each will be made with an animated blocky mascot clip or his riding footage, plus on-screen text.
-   Copy the FORMAT only, never another creator's words or footage. Use a technique only if the rules allow it.
+   (e.g. "POV + reaction", "expectation vs reality", "satirical list", "tutorial with numbered steps"), the likes /
+   views / comments you can see (Instagram shows like and comment counts beside or under each reel; copy them
+   exactly, e.g. "412K likes"), the SOUND (song/audio name shown on screen), whether the edit only works with that
+   exact sound (beat-synced cuts, an audio meme), and why it holds attention.
+   Set "viral": true for reels with clearly huge numbers (roughly 50K+ likes or 1M+ views) or that are obviously
+   blowing up.
+2. Find the formats that are TRENDING. Rank them by how VIRAL they are (big numbers first), then by how often they
+   repeat. Include entertainment formats (relatable humour, memes, POVs, skits, satire), not only tutorials:
+   Conor's own biggest reels (up to 1.2M views) are relatable humour, as his voice guide above shows.
+3. Adapt the best formats into ideas for his account (max 8 ideas, max 2 per format). At least HALF must be
+   entertainment / relatable / snow-life ideas in his voice (category "snow_life"); the rest can be teaching tips.
+   Each will be made with an animated blocky mascot clip or his riding footage, plus on-screen text. Copy the
+   FORMAT only, never another creator's words or footage. Teaching ideas may only use technique the rules allow.
    Don't repeat these existing hooks: {hooks}
 
 Return only JSON:
-{{"reels": [{{"t": seconds, "niche": "...", "hook": "...", "format": "...", "numbers": "...", "sound": "Song - Artist or ''",
-   "sound_dependent": true/false, "why": "..."}}],
+{{"reels": [{{"t": seconds, "niche": "...", "hook": "...", "format": "...", "numbers": "...", "viral": true/false,
+   "sound": "Song - Artist or ''", "sound_dependent": true/false, "why": "..."}}],
  "trending_sounds": [{{"sound": "Song - Artist", "seen": n}}],
  "trending_formats": [{{"format_name": "...", "hook_template": "...", "why_it_works": "one sentence",
-   "style": "question|list|pov", "seen": n, "needs_sound": "Song - Artist if the format only works with it, else ''"}}],
+   "style": "question|list|pov", "seen": n, "viral_examples": n, "kind": "entertainment|teaching",
+   "needs_sound": "Song - Artist if the format only works with it, else ''"}}],
  "ideas": [{{"format_name": "...", "category": "tip|snow_life", "level": "beginner|new_rider|any",
    "hook": "max 45 chars", "description": ["0-3 lines, max 38 chars each"], "manual_ref": "APSI section or empty",
    "cta_keyword": "ONEWORD", "clip_tags": "main_tag,other_tags from {tags}",
@@ -73,8 +81,21 @@ Return only JSON:
 def scroll_analysis(p, hooks):
     from .sound_sweep import clocked_video
     vid = clocked_video(p, height=480, fps=2, crf=34, max_seconds=1200)  # up to 20 minutes; enough to read hooks
-    return gemini.ask(SCROLL_PROMPT.format(hooks=json.dumps(hooks[-60:]), tags=llm.TAGS), system=llm.RULES,
-                      video=vid, video_fps=2)
+    from .voice import guide
+    led = load_ledger()
+    return gemini.ask(SCROLL_PROMPT.format(hooks=json.dumps(hooks[-60:]), tags=llm.TAGS, voice=guide(led)),
+                      system=llm.RULES, video=vid, video_fps=2)
+
+
+def redo(date):
+    """Re-analyse scroll recordings from a date: move them from trends_done back into the inbox."""
+    led = load_ledger()
+    back = [f for f in drive.list_files("trends_done") if f["name"].lower().endswith(VIDEO)
+            and (f.get("createdTime") or "")[:10] >= date]
+    for f in back:
+        drive.move(f["id"], "trends")
+    log(led, f"Redo trends {date}: {len(back)} recordings back in the inbox")
+    save_ledger(led)
 
 
 def main():
@@ -127,7 +148,7 @@ def main():
             if a is None:
                 a = llm.analyze_trend(fr, dur, cuts, note, hooks)
             kept = []
-            for idea in a.get("ideas", [])[:(6 if scroll else 3)]:
+            for idea in a.get("ideas", [])[:(8 if scroll else 3)]:
                 idea["description"] = idea["description"] if isinstance(idea["description"], list) \
                     else str(idea["description"]).split("|")
                 ok, why = llm.check_reel(idea, {"hook": idea["hook"], "description": idea["description"]})
@@ -160,7 +181,8 @@ def main():
             led["trends"].append({"file": f["name"], "date": now().date().isoformat(),
                                   "format": a.get("format_name"), "template": a.get("hook_template"),
                                   "why": a.get("why_it_works"), "style": a.get("style"), "ideas": kept,
-                                  "analysed_by": who})
+                                  "analysed_by": who,
+                                  "reels": (a.get("reels") or [])[:80] if scroll else None})
             drive.move(f["id"], "trends_done")
             log(led, f"Trend '{f['name']}' ({who}) -> {a.get('format_name')}: {len(kept)} new ideas {kept}")
             save_ledger(led)
@@ -170,4 +192,7 @@ def main():
 
 
 if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 2 and sys.argv[1] == "--redo":
+        redo(sys.argv[2])
     main()

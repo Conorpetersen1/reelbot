@@ -247,6 +247,18 @@ def main():
         f"<br><span class='muted'>{E(t.get('why') or '')}</span>"
         + "".join(f"<br>→ {E(topics[i]['hook'])}" for i in t.get('ideas', []) if i in topics) + "</li>"
         for t in reversed(led.get("trends", [])[-8:])) or "<li class='muted'>Save trending reels to Drive › reelbot › trends.</li>"
+    last_scroll = next((t for t in reversed(led.get("trends", [])) if t.get("reels")), None)
+    viral_rows = ""
+    if last_scroll:
+        vr = sorted(last_scroll["reels"], key=lambda r: (not r.get("viral"), r.get("t", 0)))
+        viral_rows = "".join(
+            f"<tr><td>{'🔥' if r.get('viral') else ''}</td><td>{E(r.get('hook') or '–')}</td><td>{E(r.get('format') or '')}</td>"
+            f"<td class='small'>{E(r.get('numbers') or '')}</td><td class='small muted'>{E(r.get('sound') or '')}</td></tr>"
+            for r in vr[:30])
+        viral_rows = (f"<div class='card'><h2>Your last feed scroll ({E(last_scroll['date'])})</h2>"
+                      f"<p class='muted small' style='margin:0 0 6px'>{len(last_scroll['reels'])} reels watched; 🔥 = clearly viral.</p>"
+                      "<div class='wrap'><table><tr><th></th><th>Hook on screen</th><th>Format</th><th>Numbers</th><th>Sound</th></tr>"
+                      + viral_rows + "</table></div></div>")
     # ---- sounds trending in Conor's feed that aren't in his library yet
     from .plan_day import find_sound
     lib = [{"name": n} for n in led.get("sound_names", [])]
@@ -481,6 +493,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 <section id="tab-library" role="tabpanel" hidden>
 {taste_html}
 <div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
+{viral_rows}
 <div class="card"><h2>Sounds to grab in your next sweep</h2><p class="muted small" style="margin:0 0 6px">Songs trending in your feed (from your scroll recordings). ✓ = already in your library. Trend ideas that need a specific sound wait until it's there.</p><ul>{grab_rows}</ul></div>
 <div class="card"><h2>Sounds</h2><p class="muted small" style="margin:0 0 6px">Newest sound added {E(newest_sound) or 'never'}. Drop a new sweep in Drive › sound_sweeps every week or two.</p>
 <div class="wrap"><table><tr><th>Sound</th><th class='n'>Reels</th></tr>{sound_rows}</table></div></div>
