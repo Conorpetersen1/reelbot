@@ -31,7 +31,8 @@ Return only JSON:
 def his_reels(led, limit=120):
     g, t, uid = ig.graph(), ig._tok(), ig.user_id()
     url = f"{g}/{uid}/media"
-    params = {"fields": "id,caption,media_product_type,media_url,timestamp,permalink", "limit": 50, "access_token": t}
+    params = {"fields": "id,caption,media_product_type,media_url,thumbnail_url,timestamp,permalink", "limit": 50,
+              "access_token": t}
     out = []
     while url and len(out) < limit:
         r = requests.get(url, params=params, timeout=60).json()
@@ -56,8 +57,8 @@ def study(led):
     reels = his_reels(led)
     scored = []
     for m in reels:
-        if not m.get("media_url"):
-            continue  # Instagram hides the file for some reels with licensed music
+        if not m.get("media_url") and not m.get("thumbnail_url"):
+            continue
         try:
             i = ig.insights(m["id"])
         except Exception:
@@ -70,24 +71,37 @@ def study(led):
     scored.sort(key=lambda m: -m["score"])
     picks = [("TOP", n + 1, m) for n, m in enumerate(scored[:TOP])] + \
             [("LOW", n + 1, m) for n, m in enumerate(scored[-BOTTOM:])]
-    parts, details = [], []
+    parts, details, images = [], [], []
     for kind, n, m in picks:
         label = f"{kind} {n}"
+        s = m["stats"]
+        how = "video"
         try:
-            raw = WORK / f"voice_{kind}{n}.mp4"
-            raw.write_bytes(requests.get(m["media_url"], timeout=120).content)
-            parts.append(_labelled(raw, label, WORK / f"voice_lab_{kind}{n}.mp4"))
+            if m.get("media_url"):
+                raw = WORK / f"voice_{kind}{n}.mp4"
+                raw.write_bytes(requests.get(m["media_url"], timeout=120).content)
+                parts.append(_labelled(raw, label, WORK / f"voice_lab_{kind}{n}.mp4"))
+            else:  # licensed music: Instagram only gives the cover image, which usually shows the on-screen text
+                img = WORK / f"voice_{kind}{n}.jpg"
+                img.write_bytes(requests.get(m["thumbnail_url"], timeout=60).content)
+                images.append(img); how = f"cover image {len(images)} (video not available)"
         except Exception as e:
             print("Couldn't fetch", m.get("permalink"), e); continue
-        s = m["stats"]
-        details.append(f"{label}: views {s.get('views', 0)}, shares {s.get('shares', 0)}, saves {s.get('saved', 0)}; "
-                       f"caption: {json.dumps((m.get('caption') or '')[:220])}")
-    lst = WORK / "voice_list.txt"
-    lst.write_text("".join(f"file '{p}'\n" for p in parts))
-    reel = WORK / "voice_study.mp4"
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(reel)],
-                   check=True)
-    r = gemini.ask(PROMPT.format(secs=SECONDS, details="\n".join(details)), video=reel, video_fps=2)
+        details.append(f"{label} [{how}]: views {s.get('views', 0)}, shares {s.get('shares', 0)}, "
+                       f"saves {s.get('saved', 0)}; caption: {json.dumps((m.get('caption') or '')[:220])}")
+    if not parts and not images:
+        log(led, "Voice study skipped: none of your reels could be fetched"); return
+    reel = None
+    if parts:
+        lst = WORK / "voice_list.txt"
+        lst.write_text("".join(f"file '{p}'\n" for p in parts))
+        reel = WORK / "voice_study.mp4"
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy",
+                        str(reel)], check=True)
+    note = ("\nSome reels are given as cover images instead (numbered in order after the video), because "
+            "Instagram hides videos with licensed music; read their on-screen text from the image." if images else "")
+    r = gemini.ask(PROMPT.format(secs=SECONDS, details="\n".join(details)) + note, video=reel,
+                   images=images, video_fps=2)
     keep = ("voice_summary", "what_works", "what_flops", "top_hooks", "formats", "tone_rules", "do_not")
     led["voice"] = {k: r.get(k) for k in keep if r.get(k)}
     led["voice"].update({"updated": now().isoformat(), "reels_studied": len(scored),
