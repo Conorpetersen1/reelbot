@@ -2793,7 +2793,7 @@
     ],
     "caption": "How to learn switch faster. Follow for more snowboard tips. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
-    "status": "retry",
+    "status": "failed",
     "sound": "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
     "style": "list",
     "variation": {},
@@ -2802,7 +2802,7 @@
     "asked_hook": "how_i",
     "sound_kind": "sound",
     "source": "bank",
-    "attempts": 2,
+    "attempts": 3,
     "error": "Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
    },
    {
@@ -3099,7 +3099,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T19:41:35.290823+11:00",
+   "insights_at": "2026-11-24T20:02:55.524121+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3346,6 +3346,13 @@
      1170,
      1,
      8
+    ],
+    [
+     34.42,
+     1518,
+     1170,
+     1,
+     8
     ]
    ],
    "est_follows": 0.0
@@ -3376,7 +3383,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T19:56:23.987148+11:00",
+   "insights_at": "2026-11-24T20:02:56.194870+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3609,6 +3616,13 @@
      1643,
      1,
      1
+    ],
+    [
+     30.75,
+     2272,
+     1646,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3625,13 +3639,13 @@
    "file": "2026-11-23_3_s05.mp4",
    "insights": {
     "views": 398,
-    "reach": 297,
+    "reach": 298,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 4657
+    "ig_reels_avg_watch_time": 4645
    },
    "category": "snow_life",
    "style": "list",
@@ -3642,7 +3656,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T19:56:25.114537+11:00",
+   "insights_at": "2026-11-24T20:02:56.790625+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3854,6 +3868,13 @@
      297,
      0,
      0
+    ],
+    [
+     28.02,
+     398,
+     298,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3884,7 +3905,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T19:01:41.305979+11:00",
+   "insights_at": "2026-11-24T20:02:57.261871+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -4082,6 +4103,13 @@
      355,
      4,
      0
+    ],
+    [
+     26.02,
+     395,
+     355,
+     4,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4095,13 +4123,13 @@
    "file": "2026-11-23_5_t31.mp4",
    "insights": {
     "views": 225,
-    "reach": 184,
+    "reach": 185,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 3891
+    "ig_reels_avg_watch_time": 3882
    },
    "category": "tip",
    "style": "question",
@@ -4112,7 +4140,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T19:51:29.343049+11:00",
+   "insights_at": "2026-11-24T20:02:57.811115+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -4282,6 +4310,13 @@
      183,
      0,
      0
+    ],
+    [
+     22.02,
+     225,
+     185,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4312,7 +4347,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T19:01:43.029416+11:00",
+   "insights_at": "2026-11-24T20:02:58.412822+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -4377,6 +4412,13 @@
      131,
      0,
      0
+    ],
+    [
+     7.71,
+     170,
+     131,
+     0,
+     0
     ]
    ]
   },
@@ -4388,7 +4430,7 @@
    "posted_at": "2026-11-24T13:15:52.452501+11:00",
    "file": "2026-11-24_2_i05.mp4",
    "insights": {
-    "views": 394,
+    "views": 395,
     "reach": 278,
     "likes": 3,
     "comments": 0,
@@ -4406,7 +4448,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T19:56:29.262474+11:00",
+   "insights_at": "2026-11-24T20:03:00.229794+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
@@ -4455,6 +4497,13 @@
      5.76,
      365,
      264,
+     0,
+     0
+    ],
+    [
+     6.79,
+     395,
+     278,
      0,
      0
     ]
@@ -4620,7 +4669,9 @@
   "2026-11-24 16:28 Trend 'Screen Recording 2026-11-24 at 1.09.56 pm.mov' (gemini (scroll)) -> Park safety near miss / hazard callout, Beginner struggle vs pro execution contrast, Camera flip scenic mountain reveal: 5 new ideas ['x001', 'x002', 'x003', 'x004', 'x005']",
   "2026-11-24 16:29 Updated insights for 7 reels",
   "2026-11-24 18:04 Post failed for 2026-11-24_3_t30.mp4 (attempt 1): Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
-  "2026-11-24 19:01 Post failed for 2026-11-24_3_t30.mp4 (attempt 2): Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  "2026-11-24 19:01 Post failed for 2026-11-24_3_t30.mp4 (attempt 2): Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+  "2026-11-24 20:02 Post failed for 2026-11-24_3_t30.mp4 (attempt 3): Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+  "2026-11-24 20:02 Notification sent: ❌ A reel failed to post: How to learn switch faster"
  ],
  "fal_spend": {
   "2026-11": 16.03
@@ -4794,9 +4845,13 @@
   [
    "2026-11-24T19:01+11:00",
    945
+  ],
+  [
+   "2026-11-24T20:03+11:00",
+   945
   ]
  ],
- "publish_heartbeat": "2026-11-24T19:01:34.769864+11:00",
+ "publish_heartbeat": "2026-11-24T20:02:53.111467+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
@@ -4933,7 +4988,8 @@
  },
  "notified": {
   "status-2026-48": "2026-11-23T17:30:00.160045+11:00",
-  "reminder-credit-fal-2026-11-22-4.24": "2026-11-23T17:30:00.482506+11:00"
+  "reminder-credit-fal-2026-11-22-4.24": "2026-11-23T17:30:00.482506+11:00",
+  "postfail-2026-11-24_3_t30.mp4": "2026-11-24T20:02:54.762791+11:00"
  },
  "voice": {
   "voice_summary": "Conor's voice is self-deprecating, irreverent, and deeply rooted in authentic ski-town and seasonnaire culture. His audience responds strongly to extreme powder riding and brutal stacks contrasted with degenerate humor (hangovers, reckless behavior), timely on-mountain resort drama, and niche skier-vs-snowboarder banter.",
