@@ -2793,7 +2793,7 @@
     ],
     "caption": "How to learn switch faster. Follow for more snowboard tips. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
-    "status": "queued",
+    "status": "retry",
     "sound": "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
     "style": "list",
     "variation": {},
@@ -2801,7 +2801,9 @@
     "category": "tip",
     "asked_hook": "how_i",
     "sound_kind": "sound",
-    "source": "bank"
+    "source": "bank",
+    "attempts": 1,
+    "error": "Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
    },
    {
     "date": "2026-11-24",
@@ -3079,14 +3081,14 @@
    "posted_at": "2026-11-23T09:37:38.733124+11:00",
    "file": "2026-11-23_1_t01.mp4",
    "insights": {
-    "views": 1516,
-    "reach": 1168,
+    "views": 1517,
+    "reach": 1169,
     "likes": 5,
     "comments": 0,
     "shares": 1,
     "saved": 8,
     "total_interactions": 14,
-    "ig_reels_avg_watch_time": 4781
+    "ig_reels_avg_watch_time": 4778
    },
    "category": "tip",
    "style": "list",
@@ -3097,7 +3099,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T17:41:21.844949+11:00",
+   "insights_at": "2026-11-24T18:04:05.180306+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3330,6 +3332,13 @@
      1167,
      1,
      8
+    ],
+    [
+     32.44,
+     1517,
+     1169,
+     1,
+     8
     ]
    ],
    "est_follows": 0.0
@@ -3360,7 +3369,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T17:01:41.472469+11:00",
+   "insights_at": "2026-11-24T18:04:07.091250+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3579,6 +3588,13 @@
      1643,
      1,
      1
+    ],
+    [
+     28.77,
+     2270,
+     1643,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3594,7 +3610,7 @@
    "posted_at": "2026-11-23T16:01:33.598859+11:00",
    "file": "2026-11-23_3_s05.mp4",
    "insights": {
-    "views": 394,
+    "views": 396,
     "reach": 296,
     "likes": 1,
     "comments": 0,
@@ -3612,7 +3628,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T17:01:42.143757+11:00",
+   "insights_at": "2026-11-24T18:04:08.119338+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3810,6 +3826,13 @@
      296,
      0,
      0
+    ],
+    [
+     26.04,
+     396,
+     296,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3822,14 +3845,14 @@
    "posted_at": "2026-11-23T18:02:01.012479+11:00",
    "file": "2026-11-23_4_s01.mp4",
    "insights": {
-    "views": 394,
-    "reach": 353,
+    "views": 395,
+    "reach": 355,
     "likes": 0,
     "comments": 0,
     "shares": 4,
     "saved": 0,
     "total_interactions": 4,
-    "ig_reels_avg_watch_time": 2438
+    "ig_reels_avg_watch_time": 2430
    },
    "category": "snow_life",
    "style": "question",
@@ -3840,7 +3863,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T17:41:25.975520+11:00",
+   "insights_at": "2026-11-24T18:04:09.570850+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -4024,6 +4047,13 @@
      330,
      4,
      0
+    ],
+    [
+     24.04,
+     395,
+     355,
+     4,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4037,13 +4067,13 @@
    "file": "2026-11-23_5_t31.mp4",
    "insights": {
     "views": 223,
-    "reach": 182,
+    "reach": 183,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 3883
+    "ig_reels_avg_watch_time": 3877
    },
    "category": "tip",
    "style": "question",
@@ -4054,7 +4084,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T17:36:32.128349+11:00",
+   "insights_at": "2026-11-24T18:04:10.655852+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -4210,6 +4240,13 @@
      179,
      0,
      0
+    ],
+    [
+     20.04,
+     223,
+     183,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4222,14 +4259,14 @@
    "posted_at": "2026-11-24T12:20:19.996101+11:00",
    "file": "2026-11-24_1_t08.mp4",
    "insights": {
-    "views": 169,
-    "reach": 130,
+    "views": 170,
+    "reach": 131,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 4476
+    "ig_reels_avg_watch_time": 4451
    },
    "category": "tip",
    "style": "list",
@@ -4240,7 +4277,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T17:01:44.447962+11:00",
+   "insights_at": "2026-11-24T18:04:12.222178+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -4291,6 +4328,13 @@
      130,
      0,
      0
+    ],
+    [
+     5.73,
+     170,
+     131,
+     0,
+     0
     ]
    ]
   },
@@ -4302,14 +4346,14 @@
    "posted_at": "2026-11-24T13:15:52.452501+11:00",
    "file": "2026-11-24_2_i05.mp4",
    "insights": {
-    "views": 342,
-    "reach": 255,
+    "views": 350,
+    "reach": 258,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 4830
+    "ig_reels_avg_watch_time": 4869
    },
    "category": "instructor",
    "style": "list",
@@ -4320,7 +4364,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T17:41:29.942001+11:00",
+   "insights_at": "2026-11-24T18:04:13.613026+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
@@ -4355,6 +4399,13 @@
      3.76,
      334,
      248,
+     0,
+     0
+    ],
+    [
+     4.81,
+     350,
+     258,
      0,
      0
     ]
@@ -4519,13 +4570,7 @@
   "2026-11-24 16:25 Trend idea rejected (gemini: The rule for Niseko snowfall requires stating that it averages 'around' 15 metres a season ('around', never exact). Stating an exact 'Fifteen metres of light powder' contradicts this rule and is misleading.): That first look at Mount Yotei",
   "2026-11-24 16:28 Trend 'Screen Recording 2026-11-24 at 1.09.56 pm.mov' (gemini (scroll)) -> Park safety near miss / hazard callout, Beginner struggle vs pro execution contrast, Camera flip scenic mountain reveal: 5 new ideas ['x001', 'x002', 'x003', 'x004', 'x005']",
   "2026-11-24 16:29 Updated insights for 7 reels",
-  "2026-11-24 17:44 Redo trends 2026-11-24: 1 recordings back in the inbox",
-  "2026-11-24 18:02 No trend AI clip for x009: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/flux-pro/kontext",
-  "2026-11-24 18:02 No trend AI clip for x010: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/flux-pro/kontext",
-  "2026-11-24 18:03 No trend AI clip for x011: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
-  "2026-11-24 18:03 No trend AI clip for x012: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/flux-pro/kontext",
-  "2026-11-24 18:03 No trend AI clip for x013: 403 Client Error: Forbidden for url: https://queue.fal.run/fal-ai/flux-pro/kontext",
-  "2026-11-24 18:03 Trend 'Screen Recording 2026-11-24 at 1.09.56 pm.mov' (gemini (scroll)) -> satirical_group_behavior, park_safety_hazard_callout, airport_gear_overload, quick_fix_one_problem: 8 new ideas ['x006', 'x007', 'x008', 'x009', 'x010', 'x011', 'x012', 'x013']"
+  "2026-11-24 18:04 Post failed for 2026-11-24_3_t30.mp4 (attempt 1): Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
  ],
  "fal_spend": {
   "2026-11": 16.03
@@ -4691,9 +4736,13 @@
   [
    "2026-11-24T17:01+11:00",
    945
+  ],
+  [
+   "2026-11-24T18:04+11:00",
+   945
   ]
  ],
- "publish_heartbeat": "2026-11-24T17:01:39.744529+11:00",
+ "publish_heartbeat": "2026-11-24T18:04:01.734156+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
