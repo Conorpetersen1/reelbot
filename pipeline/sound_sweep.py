@@ -48,7 +48,7 @@ def quiet_gaps(path, dur):
     return out
 
 
-def clocked_video(path):
+def clocked_video(path, height=640, fps=4, crf=32, max_seconds=900):
     """A small copy of the recording with a big running clock in the corner. Gemini's own sense of time drifts
     over a long video (it once put a 5:49 recording's last song at 9:08), but it reads an on-screen clock reliably."""
     from .render import FONT_BOLD
@@ -56,8 +56,8 @@ def clocked_video(path):
     font = FONT_BOLD.replace(":", r"\:")
     clock = (f"drawtext=fontfile='{font}':text='%{{eif\\:t\\:d}}.%{{eif\\:mod(t*10\\,10)\\:d}}s':"
              "x=12:y=12:fontsize=44:fontcolor=yellow:box=1:boxcolor=black@0.8:boxborderw=8")
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(path), "-t", "900",
-                    "-vf", f"scale=-2:640,fps=4,{clock}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "32",
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(path), "-t", str(max_seconds),
+                    "-vf", f"scale=-2:{height},fps={fps},{clock}", "-c:v", "libx264", "-preset", "veryfast", "-crf", str(crf),
                     "-c:a", "aac", "-b:a", "64k", "-ac", "1", str(out)], check=True)
     return out
 

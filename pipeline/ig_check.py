@@ -5,6 +5,16 @@ from . import ig
 
 def main(mid):
     g, t = ig.graph(), ig._tok()
+    if mid == "gemini-upload":  # test Gemini's large-file route with a ~20MB video
+        import subprocess
+        from . import gemini
+        from .common import WORK
+        v = WORK / "upload_test.mp4"
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "testsrc2=s=720x1280:r=30", "-t", "90",
+                        "-c:v", "libx264", "-preset", "ultrafast", "-crf", "18", str(v)], check=True)
+        print("upload ->", round(v.stat().st_size / 1e6, 1), "MB")
+        print("upload ->", gemini.ask('What is shown? Return only JSON: {"what": "short"}', video=v, video_fps=1))
+        return
     if mid == "top":  # his own reels ranked by views, and whether the voice study could watch each
         from .voice import his_reels
         from .common import load_ledger

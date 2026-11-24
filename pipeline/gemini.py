@@ -53,12 +53,44 @@ def analysis_video(path, max_seconds=600):
     return out
 
 
+INLINE_MAX = 15 * 1024 * 1024  # bigger videos go through the Files API (inline requests are capped at ~20MB)
+
+
+def upload(path, mime="video/mp4"):
+    """Upload a large file to Gemini's Files API (kept 48h) and wait until it's ready. Returns its URI."""
+    key = os.environ["GEMINI_API_KEY"]
+    size = path.stat().st_size
+    r = requests.post("https://generativelanguage.googleapis.com/upload/v1beta/files", timeout=60,
+                      headers={"x-goog-api-key": key, "X-Goog-Upload-Protocol": "resumable",
+                               "X-Goog-Upload-Command": "start", "X-Goog-Upload-Header-Content-Length": str(size),
+                               "X-Goog-Upload-Header-Content-Type": mime, "Content-Type": "application/json"},
+                      json={"file": {"display_name": path.name}})
+    r.raise_for_status()
+    up = r.headers["X-Goog-Upload-URL"]
+    r = requests.post(up, data=path.read_bytes(), timeout=600,
+                      headers={"Content-Length": str(size), "X-Goog-Upload-Offset": "0",
+                               "X-Goog-Upload-Command": "upload, finalize"})
+    r.raise_for_status()
+    f = r.json()["file"]
+    for _ in range(60):
+        if f.get("state") != "PROCESSING":
+            break
+        time.sleep(5)
+        f = requests.get(f"{BASE}/{f['name']}", headers={"x-goog-api-key": key}, timeout=60).json()
+    if f.get("state") != "ACTIVE":
+        raise RuntimeError(f"Gemini couldn't process the upload: {f.get('state')}")
+    return f["uri"]
+
+
 def ask(prompt, system=None, video=None, images=(), video_fps=None):
     """Send a prompt (plus optional video or images) and return the JSON object in the reply."""
     global _working_model
     parts = []
     if video:
-        part = {"inline_data": {"mime_type": "video/mp4", "data": base64.b64encode(video.read_bytes()).decode()}}
+        if video.stat().st_size > INLINE_MAX:
+            part = {"file_data": {"mime_type": "video/mp4", "file_uri": upload(video)}}
+        else:
+            part = {"inline_data": {"mime_type": "video/mp4", "data": base64.b64encode(video.read_bytes()).decode()}}
         if video_fps:  # Gemini looks at 1 frame a second unless told otherwise
             part["video_metadata"] = {"fps": video_fps}
         parts.append(part)

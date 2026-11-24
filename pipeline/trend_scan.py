@@ -67,7 +67,7 @@ Return only JSON:
 
 def scroll_analysis(p, hooks):
     from .sound_sweep import clocked_video
-    vid = clocked_video(p)
+    vid = clocked_video(p, height=480, fps=2, crf=34, max_seconds=1200)  # up to 20 minutes; enough to read hooks
     return gemini.ask(SCROLL_PROMPT.format(hooks=json.dumps(hooks[-60:]), tags=llm.TAGS), system=llm.RULES,
                       video=vid, video_fps=2)
 
