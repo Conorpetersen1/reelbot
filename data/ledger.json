@@ -3031,7 +3031,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T12:21:36.321135+11:00",
+   "insights_at": "2026-11-24T12:27:47.788892+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3222,6 +3222,13 @@
      1161,
      1,
      8
+    ],
+    [
+     26.84,
+     1503,
+     1161,
+     1,
+     8
     ]
    ],
    "est_follows": 0.0
@@ -3252,7 +3259,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T12:21:37.199642+11:00",
+   "insights_at": "2026-11-24T12:27:48.634043+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3429,6 +3436,13 @@
      1641,
      1,
      1
+    ],
+    [
+     23.17,
+     2265,
+     1641,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3462,7 +3476,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T12:26:26.536152+11:00",
+   "insights_at": "2026-11-24T12:27:49.368581+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3618,6 +3632,13 @@
      284,
      0,
      0
+    ],
+    [
+     20.44,
+     379,
+     285,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3648,7 +3669,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T12:21:39.445344+11:00",
+   "insights_at": "2026-11-24T12:27:50.053888+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3790,6 +3811,13 @@
      261,
      4,
      0
+    ],
+    [
+     18.43,
+     299,
+     261,
+     4,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3820,7 +3848,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T12:21:40.340852+11:00",
+   "insights_at": "2026-11-24T12:27:50.761336+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -3934,6 +3962,13 @@
      173,
      0,
      0
+    ],
+    [
+     14.44,
+     208,
+     173,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -3964,11 +3999,18 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T12:21:41.691401+11:00",
+   "insights_at": "2026-11-24T12:27:51.714713+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
      0.02,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0.13,
      0,
      0,
      0,
@@ -4270,9 +4312,13 @@
   [
    "2026-11-24T12:21+11:00",
    945
+  ],
+  [
+   "2026-11-24T12:27+11:00",
+   945
   ]
  ],
- "publish_heartbeat": "2026-11-24T12:20:19.996101+11:00",
+ "publish_heartbeat": "2026-11-24T12:27:46.739448+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
