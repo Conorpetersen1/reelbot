@@ -5,6 +5,21 @@ from . import ig
 
 def main(mid):
     g, t = ig.graph(), ig._tok()
+    if mid == "audio":  # what the Instagram Audio API offers this account (read only)
+        uid = ig.user_id()
+        for typ, q in (("original_sound", None), ("music", None), ("music", "Young Folks"), ("original_sound", "snowboard"),
+                       ("music", "Pitbull Don't Stop the Party"), ("music", "James Bond Theme")):
+            params = {"audio_type": typ, "user_id": uid, "access_token": t}
+            if q:
+                params["search_query"] = q
+            r = requests.get(f"{g}/ig_audio", params=params, timeout=60)
+            j = r.json()
+            items = j.get("audio") or j.get("data") or []
+            print("audio ->", typ, repr(q), r.status_code, len(items), json.dumps(j.get("error", {}))[:300])
+            for a in items[:12]:
+                print("audio ->    ", a.get("audio_id"), "|", a.get("title"), "|", a.get("display_artist") or a.get("username") or "",
+                      "|", round((a.get("duration_in_ms") or 0) / 1000), "s", "| ads:", a.get("is_ads_eligible"))
+        return
     if mid == "gemini-upload":  # test Gemini's large-file route with a ~20MB video
         import subprocess
         from . import gemini
