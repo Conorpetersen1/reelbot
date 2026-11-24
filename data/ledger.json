@@ -2793,7 +2793,7 @@
     ],
     "caption": "How to learn switch faster. Follow for more snowboard tips. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor",
     "text_source": "topic_bank",
-    "status": "failed",
+    "status": "queued",
     "sound": "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
     "style": "list",
     "variation": {},
@@ -2802,8 +2802,7 @@
     "asked_hook": "how_i",
     "sound_kind": "sound",
     "source": "bank",
-    "attempts": 3,
-    "error": "Client error '403 Forbidden' for url 'https://rest.fal.ai/storage/auth/token?storage_type=fal-cdn-v3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    "attempts": 0
    },
    {
     "date": "2026-11-24",

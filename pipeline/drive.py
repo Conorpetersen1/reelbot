@@ -90,6 +90,20 @@ def trash(file_id):
     svc().files().update(fileId=file_id, body={"trashed": True}, supportsAllDrives=True).execute()
 
 
+def share_link(file_id):
+    """Make a file readable by anyone with the link (for Instagram to fetch), return a direct download URL."""
+    svc().permissions().create(fileId=file_id, body={"type": "anyone", "role": "reader"}, fields="id").execute()
+    return f"https://drive.usercontent.google.com/download?id={file_id}&export=download&confirm=t"
+
+
+def unshare(file_id):
+    """Undo share_link: remove 'anyone with the link' access."""
+    perms = svc().permissions().list(fileId=file_id, fields="permissions(id,type)").execute().get("permissions", [])
+    for perm in perms:
+        if perm.get("type") == "anyone":
+            svc().permissions().delete(fileId=file_id, permissionId=perm["id"]).execute()
+
+
 def quota():
     """(used_bytes, limit_bytes or None)."""
     q = svc().about().get(fields="storageQuota").execute()["storageQuota"]

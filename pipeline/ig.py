@@ -53,13 +53,35 @@ def public_url(path):
     return fal_client.upload_file(path)
 
 
-def publish_trial_reel(path, caption, audio=None):
-    """audio: optional {"audio_id", "audio_volume", "video_volume"} to attach an Instagram sound (Audio API)."""
+def publish_trial_reel(path, caption, audio=None, drive_id=None):
+    """audio: optional {"audio_id", "audio_volume", "video_volume"} to attach an Instagram sound (Audio API).
+    drive_id: the reel's Drive file, used as the public link if fal's file host is unavailable."""
+    shared = False
+    try:
+        try:
+            url = public_url(path)
+        except Exception as e:
+            if not drive_id:
+                raise
+            from . import drive
+            print("fal file host unavailable, sharing from Drive instead:", e)
+            url = drive.share_link(drive_id); shared = True
+        return _publish(url, caption, audio)
+    finally:
+        if shared:
+            try:
+                from . import drive
+                drive.unshare(drive_id)
+            except Exception as e:
+                print("Couldn't make the Drive file private again:", e)
+
+
+def _publish(video_url, caption, audio=None):
     uid = user_id()
     GRAPH = graph()
     # 1) container from a public link, trial reel with MANUAL graduation (you decide what reaches followers).
     #    Never fall back to a direct upload: that posts a normal reel to followers.
-    data = {"media_type": "REELS", "video_url": public_url(path), "caption": caption,
+    data = {"media_type": "REELS", "video_url": video_url, "caption": caption,
             "trial_params": json.dumps({"graduation_strategy": CFG["graduation"]}), "access_token": _tok()}
     if audio:
         data["audio_configuration"] = json.dumps({k: audio[k] for k in ("audio_id", "audio_volume", "video_volume")
