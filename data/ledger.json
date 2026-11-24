@@ -2503,6 +2503,41 @@
    "last_used": "2026-11-22T21:40:45.407345+11:00",
    "last_style": "question",
    "rated_high": true
+  },
+  "1wrdkJ7yJ_2kS6yg1kIBZG1gJSPCeRIqt": {
+   "name": "x001_20261124_00.mp4",
+   "topic": "x001",
+   "uses": 0,
+   "created": "2026-11-24T16:13:12.480947+11:00",
+   "scene": "Mascot landing off a park jump, looking ahead, and swiftly riding to the side to clear the landing zone."
+  },
+  "1maFImHblmX-hQDcopDJmf4HUVIkTkleK": {
+   "name": "x002_20261124_00.mp4",
+   "topic": "x002",
+   "uses": 0,
+   "created": "2026-11-24T16:16:42.493394+11:00",
+   "scene": "Mascot slowly cruising past park rails and kickers on a flat board, inspecting takeoffs carefully."
+  },
+  "1wSNZrDU42ymoQSy3KF0Ho5U_bcJ8IsFM": {
+   "name": "x003_20261124_00.mp4",
+   "topic": "x003",
+   "uses": 0,
+   "created": "2026-11-24T16:20:08.020125+11:00",
+   "scene": "Mascot leaning back and struggling to pivot, then shifting weight forward with ankles flexed to carve cleanly."
+  },
+  "1F4d8O-OdVSon7K4AMH_G-4H9I902D6L9": {
+   "name": "x004_20261124_00.mp4",
+   "topic": "x004",
+   "uses": 0,
+   "created": "2026-11-24T16:25:09.082176+11:00",
+   "scene": "Mascot riding deep snow, actively pushing the board forward under a flexed athletic stance."
+  },
+  "1tbnEF-YfA0ClZIT1pfZkQo8inaPAv6St": {
+   "name": "x005_20261124_00.mp4",
+   "topic": "x005",
+   "uses": 0,
+   "created": "2026-11-24T16:28:56.237580+11:00",
+   "scene": "Mascot sitting on a chairlift bar looking over freshly groomed morning corduroy snow."
   }
  },
  "queue": {
@@ -3023,14 +3058,14 @@
    "posted_at": "2026-11-23T09:37:38.733124+11:00",
    "file": "2026-11-23_1_t01.mp4",
    "insights": {
-    "views": 1508,
-    "reach": 1165,
+    "views": 1511,
+    "reach": 1166,
     "likes": 5,
     "comments": 0,
     "shares": 1,
     "saved": 8,
     "total_interactions": 14,
-    "ig_reels_avg_watch_time": 4760
+    "ig_reels_avg_watch_time": 4770
    },
    "category": "tip",
    "style": "list",
@@ -3041,7 +3076,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T16:01:34.999625+11:00",
+   "insights_at": "2026-11-24T16:28:59.757701+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3297,7 +3332,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T16:01:35.995785+11:00",
+   "insights_at": "2026-11-24T16:29:00.536621+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3525,13 +3560,13 @@
    "file": "2026-11-23_3_s05.mp4",
    "insights": {
     "views": 392,
-    "reach": 293,
+    "reach": 294,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 4612
+    "ig_reels_avg_watch_time": 4627
    },
    "category": "snow_life",
    "style": "list",
@@ -3542,7 +3577,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T16:01:36.901077+11:00",
+   "insights_at": "2026-11-24T16:29:01.350495+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -3745,14 +3780,14 @@
    "posted_at": "2026-11-23T18:02:01.012479+11:00",
    "file": "2026-11-23_4_s01.mp4",
    "insights": {
-    "views": 356,
-    "reach": 312,
+    "views": 361,
+    "reach": 321,
     "likes": 0,
     "comments": 0,
     "shares": 4,
     "saved": 0,
     "total_interactions": 4,
-    "ig_reels_avg_watch_time": 2577
+    "ig_reels_avg_watch_time": 2546
    },
    "category": "snow_life",
    "style": "question",
@@ -3763,7 +3798,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T16:01:37.749961+11:00",
+   "insights_at": "2026-11-24T16:29:02.154336+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -3970,7 +4005,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-24T16:01:38.659936+11:00",
+   "insights_at": "2026-11-24T16:29:03.041852+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -4149,7 +4184,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-24T16:01:39.626520+11:00",
+   "insights_at": "2026-11-24T16:29:03.944330+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -4204,14 +4239,14 @@
    "posted_at": "2026-11-24T13:15:52.452501+11:00",
    "file": "2026-11-24_2_i05.mp4",
    "insights": {
-    "views": 256,
-    "reach": 189,
+    "views": 297,
+    "reach": 220,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 4219
+    "ig_reels_avg_watch_time": 4429
    },
    "category": "instructor",
    "style": "list",
@@ -4222,7 +4257,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-24T16:01:40.602196+11:00",
+   "insights_at": "2026-11-24T16:29:04.885199+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
@@ -4259,7 +4294,7 @@
  "followers": {
   "2026-11-22": 944,
   "2026-11-23": 944,
-  "2026-11-24": 944
+  "2026-11-24": 945
  },
  "log": [
   "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []",
@@ -4410,10 +4445,13 @@
   "2026-11-24 12:21 Saved 14 ratings from you",
   "2026-11-24 12:36 Studied 85 of your reels for your voice: Conor's voice is self-deprecating, irreverent, and deeply rooted in authentic ski-town and seasonnaire culture. His audi",
   "2026-11-24 13:16 Posted trial reel 2026-11-24_2_i05.mp4 -> 18111453002627188",
-  "2026-11-24 14:57 Re-rendered 2026-11-25 07:30 t23 with sound sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a"
+  "2026-11-24 14:57 Re-rendered 2026-11-25 07:30 t23 with sound sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
+  "2026-11-24 16:25 Trend idea rejected (gemini: The rule for Niseko snowfall requires stating that it averages 'around' 15 metres a season ('around', never exact). Stating an exact 'Fifteen metres of light powder' contradicts this rule and is misleading.): That first look at Mount Yotei",
+  "2026-11-24 16:28 Trend 'Screen Recording 2026-11-24 at 1.09.56 pm.mov' (gemini (scroll)) -> Park safety near miss / hazard callout, Beginner struggle vs pro execution contrast, Camera flip scenic mountain reveal: 5 new ideas ['x001', 'x002', 'x003', 'x004', 'x005']",
+  "2026-11-24 16:29 Updated insights for 7 reels"
  ],
  "fal_spend": {
-  "2026-11": 5.76
+  "2026-11": 9.71
  },
  "sound_uses": {
   "ScreenRecording_11-22-2026 19-37-39_1.MP4": 5,
@@ -4802,5 +4840,143 @@
   "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a",
   "sweep 2026-11-22 - Time - Pink Floyd.m4a",
   "sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a"
+ ],
+ "trends": [
+  {
+   "file": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "date": "2026-11-24",
+   "format": "Park safety near miss / hazard callout, Beginner struggle vs pro execution contrast, Camera flip scenic mountain reveal",
+   "template": "Why you never do [dangerous action] | Day 1 vs season 3 | Turn the camera around at [resort]",
+   "why": "37 reels watched, 3 trending formats",
+   "style": null,
+   "ideas": [
+    "x001",
+    "x002",
+    "x003",
+    "x004",
+    "x005"
+   ],
+   "analysed_by": "gemini (scroll)"
+  }
+ ],
+ "trend_topics": {
+  "x001": {
+   "id": "x001",
+   "category": "tip",
+   "level": "beginner",
+   "hook": "Never stand below a park jump",
+   "description": "Landings are completely blind.|Take your hit, then clear out.|One person per feature always.",
+   "manual_ref": "Park etiquette and safety checklist",
+   "cta_keyword": "PARK",
+   "clip_tags": "park,jump",
+   "ai_scene": "Mascot landing off a park jump, looking ahead, and swiftly riding to the side to clear the landing zone.",
+   "style": "pov",
+   "added": "2026-11-24T16:10:37.072085+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x002": {
+   "id": "x002",
+   "category": "tip",
+   "level": "beginner",
+   "hook": "Why you inspect the park first",
+   "description": "Features change every morning.|Take a slow run through first.|Start small before going big.",
+   "manual_ref": "Park inspection rules",
+   "cta_keyword": "SAFETY",
+   "clip_tags": "park,teaching",
+   "ai_scene": "Mascot slowly cruising past park rails and kickers on a flat board, inspecting takeoffs carefully.",
+   "style": "pov",
+   "added": "2026-11-24T16:13:16.829221+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x003": {
+   "id": "x003",
+   "category": "tip",
+   "level": "new_rider",
+   "hook": "Why back foot heavy kills turns",
+   "description": "Weight back locks the tail.|Pressure your front foot.|Match shoulders to the slope.",
+   "manual_ref": "Weight distribution & turn initiation",
+   "cta_keyword": "TURNS",
+   "clip_tags": "turns,stance",
+   "ai_scene": "Mascot leaning back and struggling to pivot, then shifting weight forward with ankles flexed to carve cleanly.",
+   "style": "pov",
+   "added": "2026-11-24T16:16:46.538646+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x004": {
+   "id": "x004",
+   "category": "tip",
+   "level": "new_rider",
+   "hook": "Leaning back in deep powder?",
+   "description": "Push your board ahead instead.|Leaning back burns your quad.|Keep your core engaged.",
+   "manual_ref": "Powder riding body position",
+   "cta_keyword": "POWDER",
+   "clip_tags": "powder,stance",
+   "ai_scene": "Mascot riding deep snow, actively pushing the board forward under a flexed athletic stance.",
+   "style": "pov",
+   "added": "2026-11-24T16:20:11.309690+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  },
+  "x005": {
+   "id": "x005",
+   "category": "snow_life",
+   "level": "any",
+   "hook": "First chair on Thredbo groomers",
+   "description": "Untouched morning corduroy.|Fresh air before lessons start.",
+   "manual_ref": "",
+   "cta_keyword": "THREDBO",
+   "clip_tags": "lifestyle,scenery",
+   "ai_scene": "Mascot sitting on a chairlift bar looking over freshly groomed morning corduroy snow.",
+   "style": "pov",
+   "added": "2026-11-24T16:25:29.293740+11:00",
+   "source": "Screen Recording 2026-11-24 at 1.09.56 pm.mov",
+   "needs_sound": ""
+  }
+ },
+ "feed_formats": {
+  "date": "2026-11-24T16:10:32.128582+11:00",
+  "formats": [
+   {
+    "format_name": "Park safety near miss / hazard callout",
+    "hook_template": "Why you never do [dangerous action]",
+    "why_it_works": "Taps into adrenaline, fear of collisions, and crucial etiquette everyone debates in comments.",
+    "style": "pov",
+    "seen": 2,
+    "needs_sound": ""
+   },
+   {
+    "format_name": "Beginner struggle vs pro execution contrast",
+    "hook_template": "Day 1 vs season 3",
+    "why_it_works": "Validates the frustrating beginner phase while demonstrating clean inspiring technique.",
+    "style": "pov",
+    "seen": 2,
+    "needs_sound": ""
+   },
+   {
+    "format_name": "Camera flip scenic mountain reveal",
+    "hook_template": "Turn the camera around at [resort]",
+    "why_it_works": "Stops the scroll instantly with dramatic natural scale and alpine views.",
+    "style": "pov",
+    "seen": 2,
+    "needs_sound": ""
+   }
+  ]
+ },
+ "sounds_wanted": [
+  {
+   "sound": "Where U Are - Throttle",
+   "seen": 1,
+   "for": [],
+   "date": "2026-11-24T16:10:32.128602+11:00"
+  },
+  {
+   "sound": "One Day - Asaf Avidan remix",
+   "seen": 1,
+   "for": [],
+   "date": "2026-11-24T16:10:32.128609+11:00"
+  }
  ]
 }
