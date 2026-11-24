@@ -383,6 +383,22 @@ def main():
     main_picks = [p for p in picks if p[0] == "ai"][:n_ai] + [p for p in picks if p[0] == "real"][:n_real]
     random.shuffle(main_picks)  # mix AI and real across the day's posting times
     spares = {k: [p for p in picks if p[0] == k and p not in main_picks] for k in ("ai", "real")}
+    # Balance: at least N teaching reels and N humour/relatable reels a day (the rest is the learner's call)
+    mix = CFG.get("content_mix", {})
+    fun = lambda p: llm.reel_mode(p[1]) != "teaching"
+    for want_fun, need in ((True, mix.get("min_fun", 2)), (False, mix.get("min_teaching", 2))):
+        other_min = mix.get("min_teaching", 2) if want_fun else mix.get("min_fun", 2)
+        while sum(fun(p) == want_fun for p in main_picks) < need:
+            swapped = False
+            for k in ("ai", "real"):
+                sp = next((p for p in spares[k] if fun(p) == want_fun), None)
+                out = next((p for p in main_picks if p[0] == k and fun(p) != want_fun), None)
+                if sp and out and sum(fun(p) != want_fun for p in main_picks) > other_min:
+                    main_picks[main_picks.index(out)] = sp
+                    spares[k].remove(sp); spares[k].append(out); swapped = True
+                    break
+            if not swapped:
+                break
     want = {"ai": n_ai, "real": n_real}
     entries, n = [], 0
     queue = list(main_picks)
