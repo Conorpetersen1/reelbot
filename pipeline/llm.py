@@ -30,7 +30,12 @@ def _json(text):
     i = t.find("{")
     if i < 0:
         raise ValueError("no JSON in reply: " + t[:200])
-    obj, _ = json.JSONDecoder().raw_decode(t[i:])
+    try:
+        obj, _ = json.JSONDecoder().raw_decode(t[i:])
+    except json.JSONDecodeError:
+        # Repair the usual slips: trailing commas and raw line breaks inside strings
+        fixed = re.sub(r",\s*([}\]])", r"\1", t[i:])
+        obj, _ = json.JSONDecoder(strict=False).raw_decode(fixed)
     return obj
 
 

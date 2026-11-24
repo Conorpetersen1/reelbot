@@ -112,11 +112,10 @@ def choose(led, topics, n_ai, n_real, draw):
         if random.random() < CFG.get("real_moment_share", 0.5):
             picks.append(("real", moment_topic(cid, i, c), (cid, i))); used_clips.add(cid); n_real -= 1
             continue
-        # Tips need the clip to show their main subject (first tag); snow-life topics just need some overlap.
-        cands = [(t, (cid, i)) for t in topics if t["id"] not in today
-                 and t["id"] not in c.get("misfit", []) and (
-                 t["clip_tags"].split(",")[0] in ctags if t["category"] in TECHNIQUE
-                 else set(t["clip_tags"].split(",")) & ctags)]
+        # Real footage is only used for teaching reels whose main subject (first tag) the clip shows. Life topics
+        # (Niseko, gear, instructor life) go to mascot clips, which are made for them; otherwise it's a moment reel.
+        cands = [(t, (cid, i)) for t in topics if t["id"] not in today and t["category"] in TECHNIQUE
+                 and t["id"] not in c.get("misfit", []) and t["clip_tags"].split(",")[0] in ctags]
         # Prefer topics whose angle matches the riding: mistakes -> "why do I...", good riding -> "how I fixed..."
         cands = [x for x in cands if technique_ok(x[0], c)] or cands
         rested = [x for x in cands if x[0]["id"] not in used_topics]
@@ -246,7 +245,10 @@ def retire_losers(led, model):
 
 def critique(cands, topic, mode, src, led):
     """Score each candidate on hook, sense, footage match and voice. Gemini watches the clip; Claude reads only."""
+    import os
     from . import voice
+    if os.environ.get("LOCAL_LLM"):
+        return []  # offline test mode
     v = voice.guide(led)
     if gemini.available() and src is not None:
         try:
@@ -355,14 +357,24 @@ def main():
     picks = choose(led, topics, n_ai + spare, n_real + spare, draw)
     main_picks = [p for p in picks if p[0] == "ai"][:n_ai] + [p for p in picks if p[0] == "real"][:n_real]
     random.shuffle(main_picks)  # mix AI and real across the day's posting times
-    picks = main_picks + [p for p in picks if p not in main_picks]
+    spares = {k: [p for p in picks if p[0] == k and p not in main_picks] for k in ("ai", "real")}
+    want = {"ai": n_ai, "real": n_real}
     audio = sound_library(led)
     entries, n = [], 0
-    for kind, topic, clip_id in picks:
+    queue = list(main_picks)
+    while queue:
+        kind, topic, clip_id = queue.pop(0)
         if len(entries) >= target:
             break
         if any(e["topic"] == topic["id"] for e in entries):
             continue
+        done_kind = sum(1 for e in entries if e["kind"] == kind)
+        if done_kind >= want[kind] and any(spares[k] for k in want if k != kind):
+            continue
+        # If this one fails, the next spare of the same kind takes its place (then the other kind, if none left)
+        backup = spares[kind].pop(0) if spares[kind] else (spares["ai" if kind == "real" else "real"].pop(0)
+                                                            if any(spares.values()) else None)
+        before = len(entries)
         n += 1
         try:
             if kind == "ai":
@@ -431,6 +443,11 @@ def main():
             save_ledger(led)
         except Exception as e:
             log(led, f"Couldn't build a reel for {topic['id']}: {e}")
+        finally:  # runs even when the attempt ends early (text skipped, fit check failed)
+            if len(entries) == before and backup:
+                queue.insert(0, backup)
+            elif backup:
+                spares[backup[0]].insert(0, backup)  # not needed: put it back
     led["queue"][day] = entries
     log(led, f"Queued {len(entries)} reels for {day}: {[e['topic'] for e in entries]}")
     if len(entries) < max(1, target // 2):
