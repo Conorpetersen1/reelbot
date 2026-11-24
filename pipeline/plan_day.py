@@ -170,6 +170,7 @@ def sound_library(led):
     """Your sounds in Drive/audio. Audio files are used as they are; for screen recordings the sound is pulled out."""
     out = []
     files = drive.list_files("audio")
+    led["sound_names"] = [f["name"] for f in files]  # for the dashboard's "sounds to grab" ticks
     stamps = [f["createdTime"] for f in files if f.get("createdTime")]
     if stamps:
         led["sound_newest"] = max(stamps)  # for the "time for a sound sweep" reminder
@@ -182,6 +183,23 @@ def sound_library(led):
             continue  # old trend: retired from rotation
         out.append({"id": f["id"], "name": f["name"], "created": created, "video": n.endswith(VIDEO)})
     return out
+
+
+def _words(t):
+    return set(re.findall(r"[a-z0-9]+", re.sub(r"^sweep \S+ - ", "", t.lower()).rsplit(".", 1)[0])) - {"feat", "ft", "the", "a", "official"}
+
+
+def find_sound(name, lib):
+    """The library sound matching a song name like 'Young Folks - Peter Bjorn and John' (None if not there)."""
+    want = _words(name)
+    best, score = None, 0.0
+    for s in lib:
+        have = _words(s["name"])
+        if want and have:
+            overlap = len(want & have) / len(want)
+            if overlap > score:
+                best, score = s, overlap
+    return best if score >= 0.6 else None
 
 
 def pick_sound(led, lib):
@@ -350,6 +368,12 @@ def main():
         n_ai, n_real = n_ai - 1, n_real + 1
     elif gap < -0.15 and n_real > 1 and led["ai_clips"]:
         n_ai, n_real = n_ai + 1, n_real - 1
+    # Trend ideas that only work with one sound wait until that sound is in Drive/audio
+    audio = sound_library(led)
+    held = [t["id"] for t in topics if t.get("needs_sound") and not find_sound(t["needs_sound"], audio)]
+    if held:
+        topics = [t for t in topics if t["id"] not in held]
+        print("Waiting for sounds:", held)
     target = n_ai + n_real
     times = learn.choose_times(draw, target, CFG.get("learning", {}).get("candidate_times") or CFG["post_times"])
     target = min(target, len(times))
@@ -360,7 +384,6 @@ def main():
     random.shuffle(main_picks)  # mix AI and real across the day's posting times
     spares = {k: [p for p in picks if p[0] == k and p not in main_picks] for k in ("ai", "real")}
     want = {"ai": n_ai, "real": n_real}
-    audio = sound_library(led)
     entries, n = [], 0
     queue = list(main_picks)
     while queue:
@@ -400,7 +423,8 @@ def main():
             sound = None
             # Every reel gets a sound from your trending sounds (a real clip's own audio stays quietly underneath)
             if audio:
-                sound = pick_sound(led, audio)
+                need = find_sound(topic["needs_sound"], audio) if topic.get("needs_sound") else None
+                sound = pick_sound(led, [need] if need else audio)
                 music = sound["path"]
             out = WORK / f"{day}_{len(entries)+1}_{topic['id']}.mp4"
             snd = CFG.get("sounds", {})

@@ -247,6 +247,14 @@ def main():
         f"<br><span class='muted'>{E(t.get('why') or '')}</span>"
         + "".join(f"<br>→ {E(topics[i]['hook'])}" for i in t.get('ideas', []) if i in topics) + "</li>"
         for t in reversed(led.get("trends", [])[-8:])) or "<li class='muted'>Save trending reels to Drive › reelbot › trends.</li>"
+    # ---- sounds trending in Conor's feed that aren't in his library yet
+    from .plan_day import find_sound
+    lib = [{"name": n} for n in led.get("sound_names", [])]
+    wanted = led.get("sounds_wanted") or []
+    grab_rows = "".join(
+        f"<li>{'✓ ' if find_sound(w['sound'], lib) else ''}<b>{E(w['sound'])}</b> <span class='muted'>"
+        f"(seen {w.get('seen', 1)}×" + (f", needed for {len(w['for'])} trend idea{'s' if len(w['for']) != 1 else ''}" if w.get("for") else "")
+        + ")</span></li>" for w in wanted) or "<li class='muted'>Drop a feed scroll in Drive › trends to see what's trending.</li>"
     # ---- what the follower learner has found
     m = led.get("model") or {}
     names = {"category": {"tip": "Technique tips", "snow_life": "Snow-life reels", "niseko": "Niseko reels",
@@ -473,6 +481,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 <section id="tab-library" role="tabpanel" hidden>
 {taste_html}
 <div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
+<div class="card"><h2>Sounds to grab in your next sweep</h2><p class="muted small" style="margin:0 0 6px">Songs trending in your feed (from your scroll recordings). ✓ = already in your library. Trend ideas that need a specific sound wait until it's there.</p><ul>{grab_rows}</ul></div>
 <div class="card"><h2>Sounds</h2><p class="muted small" style="margin:0 0 6px">Newest sound added {E(newest_sound) or 'never'}. Drop a new sweep in Drive › sound_sweeps every week or two.</p>
 <div class="wrap"><table><tr><th>Sound</th><th class='n'>Reels</th></tr>{sound_rows}</table></div></div>
 {clips_html}

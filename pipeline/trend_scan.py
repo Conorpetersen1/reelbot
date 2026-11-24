@@ -48,7 +48,9 @@ to snow content). A yellow clock in the corner shows seconds. Watch every reel t
 
 1. List each distinct reel: when it appears (seconds), its niche, the exact on-screen hook text, the format
    (e.g. "POV + reaction", "expectation vs reality", "satirical list", "tutorial with numbered steps"), any
-   visible likes/views/comments, the audio if you can tell, and why it holds attention.
+   visible likes/views/comments, the SOUND (the song/audio name Instagram shows at the bottom of the reel), whether
+   the edit only works with that exact sound (beat-synced cuts, an audio meme where the joke is in the sound), and
+   why it holds attention.
 2. Then pick the formats that are clearly TRENDING (repeated, high numbers, strong hooks) and that would work
    for Conor's snowboard instructor account. Adapt the best ones into reel ideas (max 6 ideas in total, max 2 per
    format). Each will be made with an animated blocky mascot clip or his riding footage, plus on-screen text.
@@ -56,13 +58,16 @@ to snow content). A yellow clock in the corner shows seconds. Watch every reel t
    Don't repeat these existing hooks: {hooks}
 
 Return only JSON:
-{{"reels": [{{"t": seconds, "niche": "...", "hook": "...", "format": "...", "numbers": "...", "why": "..."}}],
+{{"reels": [{{"t": seconds, "niche": "...", "hook": "...", "format": "...", "numbers": "...", "sound": "Song - Artist or ''",
+   "sound_dependent": true/false, "why": "..."}}],
+ "trending_sounds": [{{"sound": "Song - Artist", "seen": n}}],
  "trending_formats": [{{"format_name": "...", "hook_template": "...", "why_it_works": "one sentence",
-   "style": "question|list|pov", "seen": n}}],
+   "style": "question|list|pov", "seen": n, "needs_sound": "Song - Artist if the format only works with it, else ''"}}],
  "ideas": [{{"format_name": "...", "category": "tip|snow_life", "level": "beginner|new_rider|any",
    "hook": "max 45 chars", "description": ["0-3 lines, max 38 chars each"], "manual_ref": "APSI section or empty",
    "cta_keyword": "ONEWORD", "clip_tags": "main_tag,other_tags from {tags}",
-   "ai_scene": "what the animated mascot clip should show"}}]}}"""
+   "ai_scene": "what the animated mascot clip should show",
+   "needs_sound": "Song - Artist if this idea only works with that sound, else ''"}}]}}"""
 
 
 def scroll_analysis(p, hooks):
@@ -101,6 +106,15 @@ def main():
                 a["hook_template"] = " | ".join(x.get("hook_template", "") for x in fmts[:4])
                 a["why_it_works"] = f"{len(a.get('reels') or [])} reels watched, {len(fmts)} trending formats"
                 led["feed_formats"] = {"date": now().isoformat(), "formats": fmts[:8]}
+                want = {w["sound"].lower(): w for w in led.get("sounds_wanted", [])}
+                for x in (a.get("trending_sounds") or [])[:15]:
+                    if x.get("sound"):
+                        w = want.setdefault(x["sound"].lower(), {"sound": x["sound"], "seen": 0, "for": []})
+                        w["seen"] += int(x.get("seen", 1) or 1); w["date"] = now().isoformat()
+                for i in a.get("ideas") or []:
+                    if i.get("needs_sound"):
+                        want.setdefault(i["needs_sound"].lower(), {"sound": i["needs_sound"], "seen": 1, "for": []})
+                led["sounds_wanted"] = sorted(want.values(), key=lambda w: -w["seen"])[:20]
             elif gemini.available():  # Gemini watches the whole video with sound; Claude only sees frames
                 try:
                     vid = gemini.small_video(p) if f["name"].lower().endswith(VIDEO) else None
@@ -125,7 +139,12 @@ def main():
                          "manual_ref": idea.get("manual_ref", ""), "cta_keyword": idea.get("cta_keyword", "LESSON"),
                          "clip_tags": idea.get("clip_tags", "lifestyle"), "ai_scene": idea.get("ai_scene", ""),
                          "style": a.get("style", "question") if not scroll else next((x.get("style", "question") for x in (a.get("trending_formats") or []) if x.get("format_name") == idea.get("format_name")), "question"),
-                         "added": now().isoformat(), "source": f["name"]}
+                         "added": now().isoformat(), "source": f["name"],
+                         "needs_sound": (idea.get("needs_sound") or "").strip()}
+                if topic["needs_sound"]:
+                    for w in led.get("sounds_wanted", []):
+                        if w["sound"].lower() == topic["needs_sound"].lower():
+                            w.setdefault("for", []).append(tid)
                 led["trend_topics"][tid] = topic; kept.append(tid)
                 # Trends go stale fast, so make a couple of AI clips now rather than waiting for Monday
                 if topic["ai_scene"] and CFG.get("trend_ai_clips", 0):
