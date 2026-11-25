@@ -106,7 +106,7 @@ def _publish(video_url, caption, audio=None):
 
 
 METRICS = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions",
-           "ig_reels_avg_watch_time"]
+           "ig_reels_avg_watch_time", "reels_skip_rate"]  # skip rate: % of views skipped in the first 3 seconds
 
 
 def insights(media_id):

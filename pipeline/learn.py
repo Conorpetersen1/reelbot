@@ -150,14 +150,26 @@ def _targets(led, att):
         s = [x for x in p["series"] if x[0] <= MATURE_HOURS + 6] or p["series"]
         last = s[-1]
         engagement = last[1] + 20 * last[3] + 10 * last[4]  # views + 20 x shares + 10 x saves at ~72h
-        rows.append((m, p, att.get(m, 0.0), engagement))
+        skip = (p.get("insights") or {}).get("reels_skip_rate")
+        hold = (1 - float(skip) / 100) if isinstance(skip, (int, float)) else None  # share who stayed past 3s
+        rows.append((m, p, att.get(m, 0.0), engagement, hold))
     if not rows:
         return [], 0.0
     total_f = sum(r[2] for r in rows)
     total_e = sum(r[3] for r in rows)
     k = (total_f + 1) / (total_e + 2000)  # follows per unit of engagement, calibrated on your own data
     w = min(1.0, total_f / lc().get("trust_follows_after", 60))
-    return [(m, p, w * f + (1 - w) * k * e) for m, p, f, e in rows], w
+    # Skip rate: reels that hold people past the first 3 seconds score higher than ones with the same views that
+    # get skipped (a better hook). Compared with your own typical hold rate, capped so it nudges rather than rules.
+    holds = sorted(r[4] for r in rows if r[4])
+    base = holds[len(holds) // 2] if holds else None
+    sw = lc().get("skip_weight", 1.0)
+
+    def hf(hold, power):
+        if not hold or not base:
+            return 1.0
+        return max(0.6, min(1.6, (hold / base) ** (sw * power)))
+    return [(m, p, w * f * hf(h, 0.5) + (1 - w) * k * e * hf(h, 1.0)) for m, p, f, e, h in rows], w
 
 
 class Model:

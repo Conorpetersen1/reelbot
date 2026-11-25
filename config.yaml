@@ -60,7 +60,8 @@ key_expiry:
 # times to maximise followers, learning from your account's hourly follower count.
 learning:
   candidate_times: ["07:30", "09:00", "11:30", "13:00", "15:30", "17:30", "18:30", "19:30", "20:30", "21:30"]
-  trust_follows_after: 60     # until ~60 followers have been attributed, it leans on engagement (views/shares/saves)
+  trust_follows_after: 60  # until ~60 followers have been attributed, it leans on engagement (views/shares/saves)
+  skip_weight: 1.0          # how much skip rate (first-3-second hold) moves a reel's score; 0 = ignore
   fresh_trend_boost: 1.5      # head start for new trend/analyst ideas while they're fresh
   retire_below: -0.4          # topics clearly worse than average for followers...
   retire_sure: 0.8            # ...with this confidence...

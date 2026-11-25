@@ -96,8 +96,9 @@ def main():
                      f"<td class='n'>{i.get('views',0):,}</td><td class='n'>{i.get('reach',0):,}</td>"
                      f"<td class='n'>{i.get('shares',0):,}</td><td class='n'>{i.get('saved',0):,}</td>"
                      f"<td class='n'>{(i.get('ig_reels_avg_watch_time',0) or 0)/1000:.1f}s</td>"
+                     f"<td class='n'>{(str(round(i['reels_skip_rate'])) + '%') if isinstance(i.get('reels_skip_rate'), (int, float)) else '–'}</td>"
                      f"<td class='n'>{p.get('est_follows', '–')}</td></tr>")
-        return "".join(r) or "<tr><td colspan=9 class='muted'>Nothing posted yet.</td></tr>"
+        return "".join(r) or "<tr><td colspan=10 class='muted'>Nothing posted yet.</td></tr>"
 
     from .common import CFG
     fal_spent = led.get("fal_spend", {}).get(now().strftime("%Y-%m"), 0)
@@ -347,6 +348,9 @@ def main():
         f"<li><b>{link(p)}</b> <span class='muted'>({E(p['date'])}, {p['insights'].get('views',0):,} views, "
         f"{p['insights'].get('shares',0)} shares)</span></li>" for _, p in grad) or "<li class='muted'>No candidates yet.</li>"
 
+    sk = [float((p.get("insights") or {}).get("reels_skip_rate")) for p in led["posts"].values()
+          if isinstance((p.get("insights") or {}).get("reels_skip_rate"), (int, float))]
+    avg_skip = f"{sum(sk) / len(sk):.0f}%" if sk else "–"
     # ---- Cost per follower: everything spent since the bot started ÷ followers gained since then
     fh_all = led.get("followers_hourly") or []
     gained = (fh_all[-1][1] - fh_all[0][1]) if len(fh_all) > 1 else 0
@@ -487,6 +491,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 <section id="tab-results" role="tabpanel" hidden>
 <div class="tiles">
 <div class="card"><div class="k">Avg views per mascot reel</div><div class="v">{avg['ai']:,.0f}</div><div class="d muted">{len(by_kind['ai'])} reels with stats</div></div>
+<div class="card"><div class="k">Avg skip rate (first 3s)</div><div class="v">{avg_skip}</div><div class="d muted">lower = stronger hooks</div></div>
 <div class="card"><div class="k">Avg views per real-clip reel</div><div class="v">{avg['real']:,.0f}</div><div class="d muted">{len(by_kind['real'])} reels with stats</div></div>
 </div>
 <div class="two">
@@ -497,7 +502,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 {ratings_html}
 <div class="card"><h2>Best topics (avg score)</h2>{bar_chart(board, "Best topics")}
 <p class="muted small" style="margin:8px 0 0">Score = views + 20×shares + 10×saves. The planner picks high scorers more often.</p></div>
-<div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
+<div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n' title='Share of views skipped in the first 3 seconds (lower is better)'>Skip</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
 </section>
 
 <section id="tab-library" role="tabpanel" hidden>
