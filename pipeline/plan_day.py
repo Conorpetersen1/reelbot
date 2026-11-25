@@ -21,6 +21,11 @@ def last_used_topic(led, tid):
     return max([e["date"] for d in led["queue"].values() for e in d if e["topic"] == tid] or [""])
 
 
+def economy_max_uses(c):
+    from .economy import max_uses
+    return max_uses(c)
+
+
 def weighted_pick(cands, draw, kind, uses_of, led=None):
     """Pick the candidate the learner's current Thompson draw rates highest for followers.
     Fresh trend ideas get a head start because trends fade."""
@@ -47,11 +52,19 @@ LIFE_CTAS = ['Follow for more snow life', 'Send this to a mate who needs a snow 
              'Save this for your next snow trip', 'Follow for more from the mountain']
 
 
-def bank_caption(topic):
+CTA_BY_TYPE = {"follow": ["Follow for more snowboard tips", "Follow for a tip every day", "Follow for more snow life"],
+               "save": ["Save this for your next day on snow", "Save this and try it next run", "Save this for your next snow trip"],
+               "share": ["Send this to a mate who needs it", "Tag the mate you ride with", "Send this to a mate who needs a snow trip"]}
+
+
+def bank_caption(topic, cta_type=None):
     hook = topic["hook"].strip()
     if hook[-1:] not in "?!.":
         hook += "."
-    cta = random.choice(CTAS if topic.get("category") in ("tip", "first_timer", "freestyle") else LIFE_CTAS)
+    if cta_type in CTA_BY_TYPE:
+        cta = random.choice(CTA_BY_TYPE[cta_type])
+    else:
+        cta = random.choice(CTAS if topic.get("category") in ("tip", "first_timer", "freestyle") else LIFE_CTAS)
     return f"{hook} {cta}. #snowboarding #snowboardtips #learntosnowboard #snowboardinstructor"
 
 MISTAKE = re.compile(r"^(why|stop|\d+ mistakes)|mistake|catch|fall|wash|skid|stuck|lock|chatter|crash|"
@@ -82,7 +95,7 @@ def choose(led, topics, n_ai, n_real, draw):
     # AI slots: topics that have unused AI clips in the library
     for _ in range(n_ai):
         stock = [(by_id[c["topic"]], cid) for cid, c in led["ai_clips"].items()
-                 if c["uses"] < CFG["ai_clip_max_uses"] + (1 if c.get("rated_high") else 0) and not c.get("rejected")
+                 if c["uses"] < economy_max_uses(c)
                  and c["topic"] in by_id and c["topic"] not in today
                  and not any(pk[2] == cid for pk in picks)]
         cands = [x for x in stock if x[0]["id"] not in used_topics]
@@ -109,7 +122,7 @@ def choose(led, topics, n_ai, n_real, draw):
             continue
         ctags = set(c.get("tags", []))
         # Footage first: some real reels are written about what's actually happening in the clip
-        if random.random() < CFG.get("real_moment_share", 0.5):
+        if random.random() < CFG.get("_moment_share", CFG.get("real_moment_share", 0.5)):
             picks.append(("real", moment_topic(cid, i, c), (cid, i))); used_clips.add(cid); n_real -= 1
             continue
         # Real footage is only used for teaching reels whose main subject (first tag) the clip shows. Life topics
@@ -299,7 +312,7 @@ def rank(cands, scores, mode):
     return sorted(out, key=lambda x: -x[0])
 
 
-def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None):
+def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None, cta="follow"):
     """Write 3 candidates, let the critic rank them, then the strict reviewer checks the winner against the
     rules. Returns (reel, source) or (None, reason) for a moment reel nobody could write well."""
     from . import ratings, voice
@@ -311,7 +324,7 @@ def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None):
         try:
             cands = llm.write_candidates(topic, mode, clip_note, recent, winners, hook_type,
                                          taste=ratings.writer_notes(led), voice=voice.guide(led),
-                                         feed=voice.feed_formats(led))
+                                         feed=voice.feed_formats(led), cta=cta)
         except Exception as e:
             log(led, f"Writer error for {topic['id']}: {e}"); continue
         ranked = rank(cands, critique(cands, topic, mode, src, led), mode)
@@ -329,7 +342,7 @@ def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None):
         return None, f"no good {mode} text"
     # Fallback for teaching reels: the topic bank's own text, which was checked against the manual by hand.
     return {"hook": topic["hook"], "description": topic["description"].split("|"),
-            "caption": bank_caption(topic)}, "topic_bank"
+            "caption": bank_caption(topic, cta)}, "topic_bank"
 
 
 def moment_topic(cid, i, seg):
@@ -362,12 +375,11 @@ def main():
     draw = model.draw()
     retire_losers(led, model)
     topics = [t for t in topics if t["id"] not in active_retired(led)]
-    # Shift the mascot/real split by one reel towards whichever the learner currently rates higher
-    gap = draw.effect("kind", "real") - draw.effect("kind", "ai")
-    if gap > 0.15 and n_ai > 1 and led["clips"]:
-        n_ai, n_real = n_ai - 1, n_real + 1
-    elif gap < -0.15 and n_real > 1 and led["ai_clips"]:
-        n_ai, n_real = n_ai + 1, n_real - 1
+    # Spend less per follower: rate clips, shift the mascot/real split towards what converts
+    from . import economy
+    economy.rate_clips(led)
+    n_ai, n_real = economy.daily_mix(led, model, draw, n_ai, n_real)
+    CFG["_moment_share"] = economy.moment_share(model)
     # Trend ideas that only work with one sound wait until that sound is in Drive/audio
     audio = sound_library(led)
     held = [t["id"] for t in topics if t.get("needs_sound") and not find_sound(t["needs_sound"], audio)]
@@ -430,8 +442,11 @@ def main():
                 src = cut(full, meta["start"], meta["end"], WORK / f"src_{n}.mp4")
                 note = (f"Conor's real footage: {meta.get('summary', '')} (tags: {', '.join(meta.get('tags', []))}; "
                         f"riding looks: {meta.get('technique', 'n/a')})")
-            want_hook = draw.best("hook", learn.HOOK_TYPES)
-            reel, source = text_for(topic, led, note, want_hook, src=src)
+            # A fresh draw per reel, so hook styles and calls to action vary within a day and get tested
+            d1 = model.draw()
+            want_hook = d1.best("hook", learn.HOOK_TYPES)
+            want_cta = d1.best("cta", learn.CTA_TYPES)  # which call to action brings follows
+            reel, source = text_for(topic, led, note, want_hook, src=src, cta=want_cta)
             if reel is None:
                 log(led, f"Skipped {topic['id']}: {source}"); continue
             critic = reel.pop("critic", None)
@@ -476,7 +491,7 @@ def main():
                             "topic": topic["id"], "clip": clip_id if kind == "ai" else f"{clip_id[0]}#{clip_id[1]}",
                             "file_id": fid, "file": out.name, "fit": score,
                             "hook": reel["hook"], "description": reel["description"], "caption": reel["caption"],
-                            "text_source": source, "critic": critic, "status": "queued", "sound": sound["name"] if sound else None,
+                            "text_source": source, "critic": critic, "cta": want_cta, "status": "queued", "sound": sound["name"] if sound else None,
                             "style": style, "variation": var, "hook_type": learn.hook_type(reel["hook"]),
                             "category": topic.get("category", "tip"),
                             "asked_hook": want_hook, "sound_kind": "sound" if sound else "none",
@@ -523,7 +538,7 @@ def preview(n=8):
             mode = llm.reel_mode(topic)
             cands = llm.write_candidates(topic, mode, note, [], [], draw.best("hook", learn.HOOK_TYPES),
                                          taste=ratings.writer_notes(led), voice=voice.guide(led),
-                                         feed=voice.feed_formats(led))
+                                         feed=voice.feed_formats(led), cta=cta)
             scores = critique(cands, topic, mode, src, led)
             ranked = rank(cands, scores, mode)
             out.append({"kind": kind, "topic": topic["id"], "category": topic.get("category"), "footage": note,

@@ -50,7 +50,14 @@ HOOK_GUIDE = {"how_i": 'starts "How I..." / "The one cue that..." (a personal fi
 BANNED_OPENERS = ("how to ", "what ", "here's", "tips for", "the best way", "you need to know", "did you know")
 
 
-def writer_prompt(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice, feed=""):
+CTA_GUIDE = {
+    "follow": "FOLLOW, giving a reason to (e.g. 'Follow for a tip every day', 'Follow for part 2', 'Follow if this is you')",
+    "save": "SAVE (e.g. 'Save this for your next day on snow', 'Save it and try it first run')",
+    "share": "SHARE (e.g. 'Send this to the mate who does this', 'Tag who needs to hear it')",
+}
+
+
+def writer_prompt(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice, feed="", cta="follow"):
     if mode == "moment":
         job = f"""This is a MOMENT reel: Conor's real footage, and the text is about what is actually happening in it.
 The footage: {clip_note} (tags: {topic.get('clip_tags', '')}).
@@ -91,8 +98,8 @@ ON-SCREEN TEXT RULES
 - Lines under the hook: 0-2 for moment reels, 1-3 for teaching reels. Max 38 characters each. Each line must add
   something (the fix, the feel, the punchline); no filler, no repeating the hook.
 - No hashtags or emojis on screen. Plain Aussie English.
-- Caption: 1-2 short sentences that add context or a question, then one call to action from the rules (never
-  promise to DM anything), then 3-5 relevant hashtags.
+- Caption: 1-2 short sentences that add context or a question, then ONE call to action of this type (never
+  promise to DM anything): {CTA_GUIDE.get(cta, CTA_GUIDE['follow'])}. Then 3-5 relevant hashtags.
 - Don't reuse these recent hooks: {json.dumps(recent_hooks[-40:])}
 - His best performing bot reels so far (learn, don't copy): {json.dumps(winning_hooks[:8])}
 {hint}
@@ -110,7 +117,8 @@ def _clean(c, mode):
     return c
 
 
-def write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type=None, taste="", voice="", feed=""):
+def write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_type=None, taste="", voice="", feed="",
+                     cta="follow"):
     """Three different on-screen texts for one reel: [{"angle", "hook", "description": [..], "caption"}]."""
     if os.environ.get("LOCAL_LLM"):  # offline test mode
         return [{"angle": "offline", "hook": topic.get("hook") or "Offline hook",
@@ -118,7 +126,7 @@ def write_candidates(topic, mode, clip_note, recent_hooks, winning_hooks, hook_t
                  "caption": "Offline caption. Follow for more. #snowboarding"}]
     msg = _client().messages.create(model=CFG["claude_model"], max_tokens=6000, system=RULES,
                                     messages=[{"role": "user", "content": writer_prompt(
-                                        topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice, feed)}])
+                                        topic, mode, clip_note, recent_hooks, winning_hooks, hook_type, taste, voice, feed, cta)}])
     out = _json(_text(msg))
     cands = [_clean(c, mode) for c in (out.get("candidates") or []) if c.get("hook")]
     return [c for c in cands if not c["hook"].lower().startswith(BANNED_OPENERS)] or cands

@@ -24,10 +24,11 @@ import datetime as dt, math, re
 import numpy as np
 from .common import CFG, now
 
-GROUPS = ["category", "topic", "kind", "style", "hook", "sound", "slot", "reuse", "source"]
+GROUPS = ["category", "topic", "kind", "style", "hook", "sound", "slot", "reuse", "source", "cta"]
 PRIOR_SD = {"category": 0.5, "topic": 0.6, "kind": 0.5, "style": 0.5, "hook": 0.5, "sound": 0.5, "slot": 0.4,
-            "reuse": 0.4, "source": 0.5}
+            "reuse": 0.4, "source": 0.5, "cta": 0.4}
 HOOK_TYPES = ["how_i", "why", "question", "pov", "number", "statement"]
+CTA_TYPES = ["follow", "save", "share"]  # the caption's call to action, tested like hooks
 MATURE_HOURS = 72
 
 
@@ -58,7 +59,8 @@ def features(rec):
     return {"category": rec.get("category") or "tip", "topic": rec.get("topic", "?"), "kind": rec.get("kind", "ai"), "style": rec.get("style") or "question",
             "hook": rec.get("hook_type") or hook_type(rec.get("hook", "")),
             "sound": rec.get("sound_kind") or ("sound" if rec.get("sound") else "none"),
-            "slot": t.split(":")[0].zfill(2), "reuse": "reuse" if rec.get("variation") else "first", "source": src}
+            "slot": t.split(":")[0].zfill(2), "reuse": "reuse" if rec.get("variation") else "first", "source": src,
+            "cta": rec.get("cta") or "mixed"}
 
 
 # ---------------------------------------------------------------- data collection (hourly)

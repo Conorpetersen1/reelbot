@@ -11,7 +11,8 @@ def pick_topics(led, n):
     topics = load_topics(led)
     stock = {}
     for c in led["ai_clips"].values():
-        if c["uses"] < CFG["ai_clip_max_uses"]:
+        from .economy import max_uses
+        if c["uses"] < max_uses(c):
             stock[c["topic"]] = stock.get(c["topic"], 0) + 1
     # topics with the least unused stock first, then the ones the learner rates most promising for followers
     draw = learn.fit(led).draw()
@@ -59,8 +60,8 @@ def main():
         print("reelbot is paused (paused: true in config.yaml)"); return
     led = load_ledger()
     # If you ran a batch by hand in the last few days, skip the automatic Monday one (saves money).
-    newest = max([c.get("created", "") for c in led["ai_clips"].values()] + [led.get("last_batch") or ""])
-    if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and newest and days_since(newest) < 5:
+    last = led.get("last_batch") or ""
+    if not os.environ.get("FORCE_BATCH") and last and days_since(last) < 5:
         log(led, "Skipped weekly AI clips: a batch was made in the last 5 days"); save_ledger(led); return
     # Learn from any clips binned since the last daily run before making new ones
     from . import taste
@@ -72,7 +73,11 @@ def main():
     save_ledger(led)
     ref = mascot_ref()
     made = 0
-    for t in pick_topics(led, CFG["ai_clips_per_week"]):
+    from . import economy
+    economy.rate_clips(led)
+    n = economy.weekly_clip_count(led, learn.fit(led))
+    log(led, f"This week's mascot clip budget: {n} clips (based on clips left and how mascot reels convert)")
+    for t in pick_topics(led, n):
         try:
             make_clip(led, t, ref, made); made += 1
         except fal.BudgetReached as e:
