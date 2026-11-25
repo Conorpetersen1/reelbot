@@ -3068,7 +3068,7 @@
      "voice": 5,
      "note": "Nails Conor's signature 'How it feels' meme hook and perfectly mirrors sliding straight off the slope into the tub."
     },
-    "status": "queued",
+    "status": "posted",
     "sound": "sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a",
     "style": "question",
     "variation": {
@@ -3081,7 +3081,9 @@
     "category": "snow_life",
     "asked_hook": "why",
     "sound_kind": "sound",
-    "source": "bank"
+    "source": "bank",
+    "media_id": "17980362068935922",
+    "posted_at": "2026-11-25T20:01:42.244399+11:00"
    },
    {
     "date": "2026-11-25",
@@ -3346,7 +3348,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T19:02:02.419715+11:00",
+   "insights_at": "2026-11-25T20:02:31.772489+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3789,6 +3791,13 @@
      1175,
      1,
      8
+    ],
+    [
+     58.42,
+     1524,
+     1175,
+     1,
+     8
     ]
    ],
    "est_follows": 0.06,
@@ -3821,7 +3830,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T19:02:03.046062+11:00",
+   "insights_at": "2026-11-25T20:02:32.638002+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -4250,6 +4259,13 @@
      1659,
      1,
      1
+    ],
+    [
+     54.75,
+     2290,
+     1659,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -4285,7 +4301,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T19:02:03.924044+11:00",
+   "insights_at": "2026-11-25T20:02:33.452171+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -4693,6 +4709,13 @@
      304,
      0,
      0
+    ],
+    [
+     52.02,
+     402,
+     304,
+     0,
+     0
     ]
    ],
    "est_follows": 0.08,
@@ -4725,7 +4748,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T19:02:05.245307+11:00",
+   "insights_at": "2026-11-25T20:02:34.261957+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -5119,6 +5142,13 @@
      355,
      4,
      0
+    ],
+    [
+     50.01,
+     395,
+     355,
+     4,
+     0
     ]
    ],
    "est_follows": 0.11,
@@ -5151,7 +5181,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-25T19:02:05.896904+11:00",
+   "insights_at": "2026-11-25T20:02:35.077370+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -5517,6 +5547,13 @@
      195,
      0,
      0
+    ],
+    [
+     46.02,
+     237,
+     195,
+     0,
+     0
     ]
    ],
    "est_follows": 0.05,
@@ -5549,7 +5586,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T19:02:06.654017+11:00",
+   "insights_at": "2026-11-25T20:02:36.314922+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -5810,6 +5847,13 @@
      139,
      0,
      0
+    ],
+    [
+     31.71,
+     184,
+     139,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0,
@@ -5823,15 +5867,15 @@
    "posted_at": "2026-11-24T13:15:52.452501+11:00",
    "file": "2026-11-24_2_i05.mp4",
    "insights": {
-    "views": 871,
-    "reach": 581,
+    "views": 872,
+    "reach": 584,
     "likes": 4,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 4,
-    "ig_reels_avg_watch_time": 6086,
-    "reels_skip_rate": 43.7
+    "ig_reels_avg_watch_time": 6081,
+    "reels_skip_rate": 43.8
    },
    "category": "instructor",
    "style": "list",
@@ -5842,7 +5886,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T19:51:22.411493+11:00",
+   "insights_at": "2026-11-25T20:02:37.102861+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
@@ -6089,6 +6133,13 @@
      577,
      0,
      0
+    ],
+    [
+     30.78,
+     872,
+     584,
+     0,
+     0
     ]
    ],
    "est_follows": 0.35,
@@ -6121,7 +6172,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T19:56:29.689360+11:00",
+   "insights_at": "2026-11-25T20:02:37.768954+11:00",
    "permalink": "https://www.instagram.com/reel/DgHmoMepJGn/",
    "series": [
     [
@@ -6312,6 +6363,13 @@
      1061,
      2,
      7
+    ],
+    [
+     23.86,
+     1446,
+     1064,
+     2,
+     7
     ]
    ],
    "est_follows": 0.93,
@@ -6344,7 +6402,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - two faced - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T19:26:28.966735+11:00",
+   "insights_at": "2026-11-25T20:02:38.576427+11:00",
    "permalink": "https://www.instagram.com/reel/DgHsYj3T0B2/",
    "series": [
     [
@@ -6528,6 +6586,13 @@
      1168,
      0,
      0
+    ],
+    [
+     23.02,
+     1386,
+     1168,
+     0,
+     0
     ]
    ],
    "est_follows": 0.39,
@@ -6542,13 +6607,13 @@
    "file": "2026-11-24_5_b03.mp4",
    "insights": {
     "views": 2078,
-    "reach": 1517,
+    "reach": 1518,
     "likes": 11,
     "comments": 0,
     "shares": 5,
     "saved": 3,
     "total_interactions": 19,
-    "ig_reels_avg_watch_time": 5670,
+    "ig_reels_avg_watch_time": 5676,
     "reels_skip_rate": 43.6
    },
    "category": "first_timer",
@@ -6560,7 +6625,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T19:51:24.268304+11:00",
+   "insights_at": "2026-11-25T20:02:39.562931+11:00",
    "permalink": "https://www.instagram.com/reel/DgHzPaFBlEB/",
    "series": [
     [
@@ -6737,6 +6802,13 @@
      1517,
      5,
      3
+    ],
+    [
+     22.02,
+     2078,
+     1518,
+     5,
+     3
     ]
    ],
    "alerted": [
@@ -6753,8 +6825,8 @@
    "posted_at": "2026-11-25T08:01:36.003121+11:00",
    "file": "2026-11-25_1_t23.mp4",
    "insights": {
-    "views": 1485,
-    "reach": 1096,
+    "views": 1488,
+    "reach": 1099,
     "likes": 3,
     "comments": 0,
     "shares": 2,
@@ -6772,7 +6844,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T19:56:31.983525+11:00",
+   "insights_at": "2026-11-25T20:02:41.332554+11:00",
    "permalink": "https://www.instagram.com/reel/DgI35zQlTH6/",
    "series": [
     [
@@ -6872,6 +6944,13 @@
      1086,
      2,
      2
+    ],
+    [
+     12.02,
+     1488,
+     1099,
+     2,
+     2
     ]
    ],
    "est_follows": 0.0,
@@ -6885,15 +6964,15 @@
    "posted_at": "2026-11-25T09:01:47.952619+11:00",
    "file": "2026-11-25_2_t24.mp4",
    "insights": {
-    "views": 359,
-    "reach": 266,
+    "views": 360,
+    "reach": 268,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
     "ig_reels_avg_watch_time": 4955,
-    "reels_skip_rate": 50.9
+    "reels_skip_rate": 50.8
    },
    "category": "tip",
    "style": "pov",
@@ -6904,7 +6983,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T19:56:32.938271+11:00",
+   "insights_at": "2026-11-25T20:02:42.267543+11:00",
    "permalink": "https://www.instagram.com/reel/DgI-ylrSJKE/",
    "series": [
     [
@@ -6990,6 +7069,13 @@
      258,
      0,
      0
+    ],
+    [
+     11.02,
+     360,
+     268,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0,
@@ -7027,7 +7113,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T19:02:11.857561+11:00",
+   "insights_at": "2026-11-25T20:02:43.349593+11:00",
    "permalink": "https://www.instagram.com/reel/DgJTYibMTwJ/",
    "series": [
     [
@@ -7092,10 +7178,63 @@
      149,
      0,
      0
+    ],
+    [
+     8.02,
+     183,
+     149,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0,
    "clip": "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3"
+  },
+  "17980362068935922": {
+   "topic": "s01",
+   "kind": "ai",
+   "hook": "How it feels clocking off into an onsen",
+   "date": "2026-11-25",
+   "posted_at": "2026-11-25T20:01:42.244399+11:00",
+   "file": "2026-11-25_4_s01.mp4",
+   "insights": {
+    "views": 0,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0,
+    "reels_skip_rate": 0
+   },
+   "category": "snow_life",
+   "style": "question",
+   "hook_type": "how_i",
+   "sound_kind": "sound",
+   "time": "19:30",
+   "variation": {
+    "zoom": 1.13,
+    "pan": 0.85,
+    "mirror": false,
+    "speed": 0.9
+   },
+   "source": "bank",
+   "sound": "sweep 2026-11-22 - GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey.m4a",
+   "fit": 5,
+   "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8",
+   "cta": null,
+   "insights_at": "2026-11-25T20:02:44.118281+11:00",
+   "permalink": "https://www.instagram.com/reel/DgKKUA_BzDO/",
+   "series": [
+    [
+     0.02,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
   }
  },
  "followers": {
@@ -7274,7 +7413,8 @@
   "2026-11-25 16:06 Fit check 1/5, swapped out x006 (ai): The text states 'board in other [hand]', but the board is under his feet; additionally, the AI footage glitches with his feet stepping through the board and a random object falling from the sky at the end.",
   "2026-11-25 16:07 Reviewer rejected text for x011: gemini: \"Follow for part 2\" is not one of the allowed calls to action and misleadingly promises a follow-up reel.",
   "2026-11-25 16:08 Fit check 2/5, swapped out x011 (ai): The footage shows static, animated legs/boots on a board without bindings, failing to demonstrate an actual toe turn or heels lifting inside boots.",
-  "2026-11-25 16:15 Queued 5 reels for 2026-11-26: ['mda7594', 'x013', 'f03', 'x002', 't21']"
+  "2026-11-25 16:15 Queued 5 reels for 2026-11-26: ['mda7594', 'x013', 'f03', 'x002', 't21']",
+  "2026-11-25 20:02 Posted trial reel 2026-11-25_4_s01.mp4 -> 17980362068935922"
  ],
  "fal_spend": {
   "2026-11": 19.98
@@ -7560,9 +7700,13 @@
   [
    "2026-11-25T19:02+11:00",
    946
+  ],
+  [
+   "2026-11-25T20:02+11:00",
+   946
   ]
  ],
- "publish_heartbeat": "2026-11-25T19:02:01.511861+11:00",
+ "publish_heartbeat": "2026-11-25T20:01:42.244399+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
