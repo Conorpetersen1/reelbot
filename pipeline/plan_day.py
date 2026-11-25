@@ -1,6 +1,6 @@
 """Evening job: build tomorrow's reels and put them in Drive/queue. Delete any you don't want before they post."""
 import datetime as dt, math, random, re, subprocess
-from . import drive, gemini, learn, llm
+from . import drive, gemini, learn, llm, voiceover
 from .common import CFG, ROOT, WORK, days_since, load_ledger, load_topics, log, now, save_ledger, paused, notify_once
 from .render import render
 
@@ -239,6 +239,11 @@ def pick_sound(led, lib):
     return s
 
 
+def trim_start(kind):
+    """Mascot clips are animated from a still picture, so their first ~second barely moves: skip it."""
+    return float(CFG.get("ai_trim_start", 0.8)) if kind == "ai" else 0.0
+
+
 def variation(uses):
     """First use: footage as shot. Reuses: a different crop, zoom, mirror and speed so it isn't a duplicate."""
     if not uses:
@@ -308,7 +313,10 @@ def rank(cands, scores, mode):
         g = lambda k: int(sc.get(k, 0) or 0)
         if sc.get("problem") or g("sense") < 3 or g("match") < (3 if mode == "moment" else 2) or g("hook") < 2:
             continue
-        out.append((1.5 * g("hook") + 1.5 * g("sense") + g("match") + g("voice"), n, sc))
+        first = g("first") if "first" in sc else 3  # first-second clarity (older critic replies lack it)
+        if first and first < 2:
+            continue
+        out.append((1.5 * g("hook") + 1.5 * g("sense") + g("match") + g("voice") + first, n, sc))
     return sorted(out, key=lambda x: -x[0])
 
 
@@ -335,7 +343,7 @@ def text_for(topic, led, clip_note, hook_type=None, src=None, mode=None, cta="fo
             ok, why = llm.check_reel(topic, reel)
             if ok:
                 reel["critic"] = {"score": round(total, 1), "angle": cands[n].get("angle", ""),
-                                  **{k: sc.get(k) for k in ("hook", "sense", "match", "voice", "note") if k in sc}}
+                                  **{k: sc.get(k) for k in ("hook", "sense", "match", "voice", "first", "note") if k in sc}}
                 return reel, "written"
             log(led, f"Reviewer rejected text for {topic['id']}: {why}")
     if mode != "teaching":
@@ -459,6 +467,14 @@ def main():
                 music = sound["path"]
             out = WORK / f"{day}_{len(entries)+1}_{topic['id']}.mp4"
             snd = CFG.get("sounds", {})
+            # Voiceover test: a couple of reels a day get a spoken voiceover (Gemini voice) with word captions
+            vo = None
+            voiced = sum(1 for e in entries if e.get("voiceover"))
+            if voiceover.wanted(len(entries), target, voiced, topic, d1):
+                try:
+                    vo = voiceover.make(topic, reel, llm.reel_mode(topic), led, out.stem)
+                except Exception as e:
+                    log(led, f"Voiceover failed for {topic['id']}, posting it without: {e}")
             var = variation(meta.get("uses", 0))
             style = pick_style(topic, led, draw, avoid=meta.get("last_style"))
             style = style if len(reel["description"]) > 1 or style != "list" else "question"
@@ -469,6 +485,7 @@ def main():
                 style = "list" if style == "question" and topic.get("category") == "tip" else "question"
             render(src, out, reel["hook"], reel["description"], music=music, style=style,
                    music_volume=snd.get("sound_volume", 0.9), clip_volume=snd.get("clip_sound_volume", 0.25),
+                   start=trim_start(kind), voice=vo["wav"] if vo else None, words=vo["words"] if vo else None,
                    **var)
             fit = fit_check(out, reel)
             score = int(fit.get("score", 3))
@@ -495,6 +512,7 @@ def main():
                             "style": style, "variation": var, "hook_type": learn.hook_type(reel["hook"]),
                             "category": topic.get("category", "tip"),
                             "asked_hook": want_hook, "sound_kind": "sound" if sound else "none",
+                            "voiceover": vo["script"] if vo else None, "voice_name": vo["voice"] if vo else None,
                             "source": topic.get("source_kind") or ("trend" if topic["id"].startswith("x") else "bank")})
             save_ledger(led)
         except Exception as e:
@@ -538,7 +556,7 @@ def preview(n=8):
             mode = llm.reel_mode(topic)
             cands = llm.write_candidates(topic, mode, note, [], [], draw.best("hook", learn.HOOK_TYPES),
                                          taste=ratings.writer_notes(led), voice=voice.guide(led),
-                                         feed=voice.feed_formats(led), cta=cta)
+                                         feed=voice.feed_formats(led), cta="follow")
             scores = critique(cands, topic, mode, src, led)
             ranked = rank(cands, scores, mode)
             out.append({"kind": kind, "topic": topic["id"], "category": topic.get("category"), "footage": note,

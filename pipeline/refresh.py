@@ -1,6 +1,6 @@
 """Every 5 minutes (started by the Ticker): pick up Conor's ratings, refresh the stats of reels posted in the
 last 2 days, and rebuild the dashboard. Follower history and view alerts stay hourly (pipeline.alerts)."""
-from . import dashboard, ig, ratings
+from . import dashboard, follows, ig, ratings
 from .common import load_ledger, now, save_ledger, days_since
 
 
@@ -10,6 +10,10 @@ def main():
         ratings.collect(led)
     except Exception as e:
         print("Ratings not collected:", e)
+    try:
+        follows.main(led)  # new follows screenshots in Drive › insights
+    except Exception as e:
+        print("Follows screenshots not read:", e)
     for mid, p in led["posts"].items():
         if days_since(p.get("posted_at", p.get("date", "2000-01-01"))) > 2:
             continue

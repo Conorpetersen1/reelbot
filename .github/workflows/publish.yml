@@ -9,7 +9,7 @@ concurrency: {group: ledger, cancel-in-progress: false}
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     env:
       GITHUB_TOKEN: ${{ github.token }}
       PUBLISH_ONLY: ${{ inputs.only }}
@@ -30,6 +30,9 @@ jobs:
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: pip install -q -r requirements.txt
       - run: python -m pipeline.publish
+      - name: Fix flagged queued reels (new text, sound or voiceover)
+        run: python -m pipeline.rerender
+        continue-on-error: true
       - run: python -m pipeline.alerts
         continue-on-error: true
       - run: python -m pipeline.ratings

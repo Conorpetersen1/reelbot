@@ -159,9 +159,13 @@ Score each candidate 1-5 on:
   contradictory, vague or off-topic)
 - match: does it fit what is actually in the footage? (1 = contradicts it)
 - voice: does it sound like Conor's best reels?
+- first: the FIRST SECOND. Viewers decide in about 1.5 seconds, before reading the points: is the hook short
+  enough to take in at a glance, and does it fit what is on screen in the opening frames (and the mascot or
+  rider's expression, if visible)? 5 = the opening shot and the hook instantly make sense together and create a
+  question; 1 = the hook describes something the opening doesn't show, or needs the later lines to make sense.
 Also set "problem" to a short note if anything is wrong, misleading, unsafe or not snowboarding-accurate, else "".
 Candidates: {json.dumps(cands, ensure_ascii=False)}
-Return only JSON: {{"scores": [{{"i": 0, "hook": n, "sense": n, "match": n, "voice": n, "problem": "", "note": "short"}}]}}"""
+Return only JSON: {{"scores": [{{"i": 0, "hook": n, "sense": n, "match": n, "voice": n, "first": n, "problem": "", "note": "short"}}]}}"""
 
 
 def review_prompt(topic, reel):

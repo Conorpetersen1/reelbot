@@ -48,7 +48,7 @@ def main():
             led["posts"][mid] = {"topic": e["topic"], "kind": e["kind"], "hook": e["hook"], "date": e["date"],
                                  "posted_at": t.isoformat(), "file": e["file"], "insights": {},
                                  **{k: e.get(k) for k in ("category", "style", "hook_type", "sound_kind", "time", "variation",
-                                                          "source", "sound", "fit", "clip", "cta")}}
+                                                          "source", "sound", "fit", "clip", "cta", "voiceover")}}
             drive.move(e["file_id"], "posted")
             log(led, f"Posted trial reel {e['file']} -> {mid}")
         except Exception as err:

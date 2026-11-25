@@ -24,9 +24,9 @@ import datetime as dt, math, re
 import numpy as np
 from .common import CFG, now
 
-GROUPS = ["category", "topic", "kind", "style", "hook", "sound", "slot", "reuse", "source", "cta"]
+GROUPS = ["category", "topic", "kind", "style", "hook", "sound", "slot", "reuse", "source", "cta", "voice"]
 PRIOR_SD = {"category": 0.5, "topic": 0.6, "kind": 0.5, "style": 0.5, "hook": 0.5, "sound": 0.5, "slot": 0.4,
-            "reuse": 0.4, "source": 0.5, "cta": 0.4}
+            "reuse": 0.4, "source": 0.5, "cta": 0.4, "voice": 0.5}
 HOOK_TYPES = ["how_i", "why", "question", "pov", "number", "statement"]
 CTA_TYPES = ["follow", "save", "share"]  # the caption's call to action, tested like hooks
 MATURE_HOURS = 72
@@ -60,7 +60,7 @@ def features(rec):
             "hook": rec.get("hook_type") or hook_type(rec.get("hook", "")),
             "sound": rec.get("sound_kind") or ("sound" if rec.get("sound") else "none"),
             "slot": t.split(":")[0].zfill(2), "reuse": "reuse" if rec.get("variation") else "first", "source": src,
-            "cta": rec.get("cta") or "mixed"}
+            "cta": rec.get("cta") or "mixed", "voice": "voice" if rec.get("voiceover") else "none"}
 
 
 # ---------------------------------------------------------------- data collection (hourly)
@@ -154,7 +154,9 @@ def _targets(led, att):
         engagement = last[1] + 20 * last[3] + 10 * last[4]  # views + 20 x shares + 10 x saves at ~72h
         skip = (p.get("insights") or {}).get("reels_skip_rate")
         hold = (1 - float(skip) / 100) if isinstance(skip, (int, float)) else None  # share who stayed past 3s
-        rows.append((m, p, att.get(m, 0.0), engagement, hold))
+        app = p.get("follows_app")  # follows Instagram's app showed for this reel (from Conor's screenshots)
+        rows.append((m, p, float(app) if isinstance(app, (int, float)) else att.get(m, 0.0), engagement, hold,
+                     isinstance(app, (int, float))))
     if not rows:
         return [], 0.0
     total_f = sum(r[2] for r in rows)
@@ -171,7 +173,9 @@ def _targets(led, att):
         if not hold or not base:
             return 1.0
         return max(0.6, min(1.6, (hold / base) ** (sw * power)))
-    return [(m, p, w * f * hf(h, 0.5) + (1 - w) * k * e * hf(h, 1.0)) for m, p, f, e, h in rows], w
+    # A reel whose follows were read off Instagram's own count is taken at its word (real follows, not an estimate)
+    return [(m, p, f * hf(h, 0.5) if known else w * f * hf(h, 0.5) + (1 - w) * k * e * hf(h, 1.0))
+            for m, p, f, e, h, known in rows], w
 
 
 class Model:

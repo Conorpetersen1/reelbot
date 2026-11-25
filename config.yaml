@@ -102,6 +102,21 @@ drive:
   sound_sweeps_done: sound_sweeps_done
   trends: trends        # save trending reels here from your phone (screen recording or download)
   trends_done: trends_done
+  insights: insights    # weekly screenshot of Instagram's "Most follows" list (real follows per reel)
+  insights_done: insights_done
+
+# ---- Hooks and voiceovers ----
+ai_trim_start: 0.8      # seconds skipped at the start of mascot clips (they're animated from a still, so open nearly frozen)
+voiceover:              # the Gemini voice test: a spoken voiceover with word captions, music dipped under it
+  enabled: true
+  per_day: 2            # reels a day voiced during the test, picked at random so the learner can compare fairly
+  test_until: "2026-12-10"   # after this, the learner decides per reel from follows and skip rate
+  voice: auto           # auto = an Australian voice from Gemini's library if there is one, else fallback_voice
+  fallback_voice: Puck  # Gemini prebuilt voice ("upbeat")
+  style: "casual, quick and upbeat, like a snowboard instructor chatting to a mate on the chairlift"
+  price_usd_per_m: [0.5, 9.0]   # Gemini TTS [text in, audio out] per million tokens
+  whisper_model: base.en        # times each spoken word for the captions (free, runs on GitHub)
+  # Reels are not given Instagram's "AI info" label (Conor's choice).
 
 # Trend inbox
 trend_boost_days: 7     # new trend-based ideas get picked more often for this many days

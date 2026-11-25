@@ -42,8 +42,13 @@ def make_clip(led, t, ref, n):
                   f"colours and blocky low-poly 3D style identical. Vertical 9:16 composition, no text."
                   + taste.scene_extra(led),
         "image_url": fal.data_uri(ref), "aspect_ratio": "9:16"})
+    from .llm import reel_mode
+    # Hooks: motion from the very first frame; humour clips open on the mascot's face reacting
+    opening = ("Opens on a close-up of the character's face with a big, clear reaction, then pulls back to show: "
+               if reel_mode(t) != "teaching" else "Already mid-action in the first frame: ")
     vid = fal.run(CFG["video_model"], {
-        "prompt": f"{t['ai_scene']}. Stylised blocky 3D animation, smooth motion, camera follows, no text, no logos.",
+        "prompt": f"{opening}{t['ai_scene']}. Movement starts immediately, no still opening. Stylised blocky 3D "
+                  f"animation, smooth motion, camera follows, no text, no logos.",
         "image_url": fal.first_url(scene, "image"), "duration": str(CFG["video_seconds"]),
         "negative_prompt": taste.negative(led)})
     name = f"{t['id']}_{now():%Y%m%d}_{n:02d}.mp4"

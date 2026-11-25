@@ -53,6 +53,16 @@ def active(led):
     else:
         out.append({"key": "sweep-none", "due": today,
                     "text": "Do a sound sweep: no sounds in Drive › audio yet."})
+    # Weekly follows screenshot (Instagram's real follows per reel, for the learner)
+    from . import follows
+    seen = led.get("follows_screens") or []
+    if follows.due(led) and (not seen or today.weekday() in (6, 0) or
+                             (today - dt.date.fromisoformat(seen[-1]["date"][:10])).days >= 9):
+        wk = today.isocalendar()
+        out.append({"key": f"follows-{wk[0]}-{wk[1]}", "due": today,
+                    "text": "Drop this week's follows screenshot into Drive › insights: Instagram app › Professional "
+                            "dashboard › Views (or Interactions) › Most follows, last 7 days. Scroll if needed; "
+                            "several screenshots are fine. The learner uses the real numbers."})
     # Keys expiring within 2 weeks
     for key, d in (CFG.get("key_expiry") or {}).items():
         days = (dt.date.fromisoformat(str(d)) - today).days

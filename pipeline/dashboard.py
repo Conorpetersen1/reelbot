@@ -92,12 +92,12 @@ def main():
         r = []
         for mid, p in items:
             i = p.get("insights") or {}
-            r.append(f"<tr><td>{E(p['date'])}</td><td>{'AI' if p['kind']=='ai' else 'Real'}</td><td>{'🔥 ' if p.get('alerted') else ''}{link(p)}</td>"
+            r.append(f"<tr><td>{E(p['date'])}</td><td>{'AI' if p['kind']=='ai' else 'Real'}</td><td>{'🔥 ' if p.get('alerted') else ''}{'🎙 ' if p.get('voiceover') else ''}{link(p)}</td>"
                      f"<td class='n'>{i.get('views',0):,}</td><td class='n'>{i.get('reach',0):,}</td>"
                      f"<td class='n'>{i.get('shares',0):,}</td><td class='n'>{i.get('saved',0):,}</td>"
                      f"<td class='n'>{(i.get('ig_reels_avg_watch_time',0) or 0)/1000:.1f}s</td>"
                      f"<td class='n'>{(str(round(i['reels_skip_rate'])) + '%') if isinstance(i.get('reels_skip_rate'), (int, float)) else '–'}</td>"
-                     f"<td class='n'>{p.get('est_follows', '–')}</td></tr>")
+                     f"<td class='n'>{(str(p['follows_app']) + ' ✓') if isinstance(p.get('follows_app'), (int, float)) else p.get('est_follows', '–')}</td></tr>")
         return "".join(r) or "<tr><td colspan=10 class='muted'>Nothing posted yet.</td></tr>"
 
     from .common import CFG
@@ -139,7 +139,10 @@ def main():
                 f"{E(str(e.get('fit', '?')))}/5 · <a href='https://drive.google.com/file/d/{E(fid)}/view'>open in Drive</a>{link}</div>"
                 f"<div class='k'>b. Words on screen <span class='muted'>({E(src)})</span></div>"
                 f"<div><b>{E(e['hook'])}</b><ul>{lines}</ul></div>"
-                f"<div class='k'>c. Sound</div><div>{E(sound_name(e.get('sound')))}</div>"
+                + (f"<div class='k'>🎙 Voiceover <span class='muted'>(spoken, shown as captions instead of the points)</span></div>"
+                   f"<div>“{E(e['voiceover'])}”</div>" if e.get("voiceover") else "")
+                + (f"<div class='muted small'>🎙 Voiceover being added in the next hourly run</div>" if e.get("voice") else "")
+                + f"<div class='k'>c. Sound</div><div>{E(sound_name(e.get('sound')))}</div>"
                 f"<div class='k'>d. Caption</div><div class='cap'>{E(e.get('caption', ''))}</div>"
                 f"{rate_form(d, e)}"
                 f"<div class='muted' style='margin-top:8px;font-size:12px'>To stop a reel posting, delete it from Drive › queue.</div>"
@@ -289,6 +292,7 @@ def main():
                       "pov": '"POV:" hooks', "number": 'Number hooks ("3 mistakes…")', "statement": "Bold-statement hooks"},
              "sound": {"sound": "With a sound", "none": "No added sound"},
              "reuse": {"reuse": "Reused footage", "first": "Fresh footage"},
+             "voice": {"voice": "Spoken voiceover", "none": "No voiceover"},
              "source": {"bank": "Your topic bank", "trend": "Trend-inbox ideas", "analyst": "Analyst ideas"}}
 
     def label(e):
@@ -502,7 +506,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 {ratings_html}
 <div class="card"><h2>Best topics (avg score)</h2>{bar_chart(board, "Best topics")}
 <p class="muted small" style="margin:8px 0 0">Score = views + 20×shares + 10×saves. The planner picks high scorers more often.</p></div>
-<div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n' title='Share of views skipped in the first 3 seconds (lower is better)'>Skip</th><th class='n'>Est. followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
+<div class="card"><h2>Latest 50 reels</h2><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Hook</th><th class='n'>Views</th><th class='n'>Reach</th><th class='n'>Shares</th><th class='n'>Saves</th><th class='n'>Avg watch</th><th class='n' title='Share of views skipped in the first 3 seconds (lower is better)'>Skip</th><th class='n' title='✓ = counted by Instagram (from your follows screenshots); otherwise estimated'>Followers</th></tr>{reel_rows(posts[:50])}</table></div></div>
 </section>
 
 <section id="tab-library" role="tabpanel" hidden>
