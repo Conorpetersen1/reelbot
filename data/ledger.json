@@ -6968,7 +6968,7 @@
    "posted_at": "2026-11-25T08:01:36.003121+11:00",
    "file": "2026-11-25_1_t23.mp4",
    "insights": {
-    "views": 1540,
+    "views": 1541,
     "reach": 1140,
     "likes": 3,
     "comments": 0,
@@ -6987,7 +6987,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T22:51:35.099896+11:00",
+   "insights_at": "2026-11-25T22:56:41.887081+11:00",
    "permalink": "https://www.instagram.com/reel/DgI35zQlTH6/",
    "series": [
     [
@@ -7121,7 +7121,7 @@
    "posted_at": "2026-11-25T09:01:47.952619+11:00",
    "file": "2026-11-25_2_t24.mp4",
    "insights": {
-    "views": 375,
+    "views": 376,
     "reach": 282,
     "likes": 2,
     "comments": 0,
@@ -7129,7 +7129,7 @@
     "saved": 0,
     "total_interactions": 2,
     "ig_reels_avg_watch_time": 4898,
-    "reels_skip_rate": 51.4
+    "reels_skip_rate": 51.3
    },
    "category": "tip",
    "style": "pov",
@@ -7140,7 +7140,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T22:51:37.691677+11:00",
+   "insights_at": "2026-11-25T22:56:43.614553+11:00",
    "permalink": "https://www.instagram.com/reel/DgI-ylrSJKE/",
    "series": [
     [
@@ -7443,15 +7443,15 @@
    "posted_at": "2026-11-25T22:01:33.827500+11:00",
    "file": "2026-11-25_5_t01.mp4",
    "insights": {
-    "views": 137,
-    "reach": 55,
+    "views": 141,
+    "reach": 100,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 3867,
-    "reels_skip_rate": 27.1
+    "ig_reels_avg_watch_time": 4326,
+    "reels_skip_rate": 49.5
    },
    "category": "tip",
    "style": "question",
@@ -7469,7 +7469,7 @@
    "fit": 3,
    "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
    "cta": null,
-   "insights_at": "2026-11-25T22:51:46.170295+11:00",
+   "insights_at": "2026-11-25T22:56:50.973066+11:00",
    "permalink": "https://www.instagram.com/reel/DgKYBkEhFVx/",
    "series": [
     [
@@ -7661,7 +7661,8 @@
   "2026-11-25 16:15 Queued 5 reels for 2026-11-26: ['mda7594', 'x013', 'f03', 'x002', 't21']",
   "2026-11-25 20:02 Posted trial reel 2026-11-25_4_s01.mp4 -> 17980362068935922",
   "2026-11-25 22:02 Posted trial reel 2026-11-25_5_t01.mp4 -> 18136460410741523",
-  "2026-11-25 22:51 Saved 2 ratings from you"
+  "2026-11-25 22:51 Saved 2 ratings from you",
+  "2026-11-25 22:56 Saved 3 ratings from you"
  ],
  "fal_spend": {
   "2026-11": 19.98
@@ -8101,18 +8102,47 @@
    "why": "Look I like the humour, everything makes sense. Produce similar things. The issue is promoting the lazy snowboard culture I'm more of rip till I drop. I also dont like the text blocks, more subtle text no background",
    "at": "2026-11-25T22:51:19.312820+11:00",
    "issue": 21
+  },
+  "2026-11-26#5": {
+   "video": 4,
+   "words": 3,
+   "sound": 4,
+   "caption": 5,
+   "why": "no text boxes. it all works but no real hook to get the viewer watching",
+   "at": "2026-11-25T22:56:25.178752+11:00",
+   "issue": 25
+  },
+  "2026-11-26#4": {
+   "video": 4,
+   "words": 3,
+   "sound": 5,
+   "caption": 5,
+   "why": "Yes use pre ride re ride free ride terms tho. And the park doesn't change EVERY morning its more like it runs a little different",
+   "at": "2026-11-25T22:56:26.841136+11:00",
+   "issue": 24
+  },
+  "2026-11-26#3": {
+   "video": 3,
+   "words": 2,
+   "sound": 5,
+   "caption": 5,
+   "why": "It isnt evident on first look/watch that im talking abt a nose press. video isnt of a nose press whioch isnt the end of the day but theres nothing in the text - right genre of video tho",
+   "at": "2026-11-25T22:56:28.012179+11:00",
+   "issue": 23
   }
  },
  "sound_ratings": {
   "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a": 4,
   "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a": 4,
   "sweep 2026-11-22 - eye of ra - purc.m4a": 4,
-  "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a": 4,
+  "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a": 5,
   "sweep 2026-11-22 - two faced - purc.m4a": 4,
   "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a": 5,
   "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a": 2,
   "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a": 4,
-  "sweep 2026-11-22 - Vice City - Neon Dust.m4a": 5
+  "sweep 2026-11-22 - Vice City - Neon Dust.m4a": 5,
+  "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a": 4,
+  "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a": 5
  },
  "notified": {
   "status-2026-48": "2026-11-23T17:30:00.160045+11:00",
