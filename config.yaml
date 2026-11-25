@@ -134,7 +134,7 @@ api_credits:
     spent_before_tracking: 0.89
   fal:
     currency: USD
-    balance: {date: "2026-11-22", amount: 4.24}
+    balance: {date: "2026-11-25", amount: 50}
     spent_before_tracking: 5.76
   warn_when_left: {claude: 1.5, gemini: 3, fal: 12}   # in each one's currency; fal: one weekly clip batch
 usd_to_aud: 1.54                # approximate; only used to show Gemini costs in A$

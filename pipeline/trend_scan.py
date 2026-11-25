@@ -11,7 +11,7 @@ formats are also given to the writer (led["feed_formats"]).
 """
 import json, re, subprocess
 from . import drive, gemini, llm
-from .common import CFG, WORK, load_ledger, load_topics, log, now, save_ledger, paused
+from .common import CFG, WORK, days_since, load_ledger, load_topics, log, now, save_ledger, paused
 from .render import probe_duration
 
 VIDEO = (".mp4", ".mov", ".m4v", ".webm")
@@ -87,6 +87,30 @@ def scroll_analysis(p, hooks):
                       system=llm.RULES, video=vid, video_fps=2)
 
 
+def catch_up_clips(led, max_n=8):
+    """Fresh trend ideas (last 14 days) with no mascot clip yet, e.g. because fal was out of credit: make one each."""
+    from . import gen_ai_clips
+    have = {c["topic"] for c in led["ai_clips"].values()}
+    todo = [t for tid, t in led.get("trend_topics", {}).items()
+            if tid not in have and t.get("ai_scene") and days_since(t.get("added")) <= 14][:max_n]
+    if not todo:
+        return
+    ref = gen_ai_clips.mascot_ref()
+    made = 0
+    for t in todo:
+        try:
+            gen_ai_clips.make_clip(led, t, ref, 0); made += 1
+            save_ledger(led)
+        except SystemExit as e:
+            log(led, str(e)); break
+        except Exception as e:
+            log(led, f"Still no trend AI clip for {t['id']}: {e}")
+            if "403" in str(e) or "budget" in str(e).lower():
+                break
+    if made:
+        log(led, f"Made {made} mascot clips for trend ideas that were waiting")
+
+
 def redo(date):
     """Re-analyse scroll recordings from a date: move them from trends_done back into the inbox."""
     led = load_ledger()
@@ -102,6 +126,10 @@ def main():
     if paused():
         print("reelbot is paused (paused: true in config.yaml)"); return
     led = load_ledger()
+    try:
+        catch_up_clips(led)
+    except Exception as e:
+        print("Trend clip catch-up skipped:", e)
     led.setdefault("trends", []); led.setdefault("trend_topics", {})
     files = [f for f in drive.list_files("trends") if f["name"].lower().endswith(VIDEO + IMAGE)]
     if not files:
