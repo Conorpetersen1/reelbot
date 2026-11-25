@@ -5,6 +5,13 @@ from . import ig
 
 def main(mid):
     g, t = ig.graph(), ig._tok()
+    if mid.startswith("metrics:"):  # which insight metrics Instagram returns for one reel
+        m_id = mid.split(":", 1)[1]
+        for m in ("reels_skip_rate", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "views", "reach",
+                  "follows", "profile_visits", "facebook_views", "crossposted_views"):
+            r = requests.get(f"{g}/{m_id}/insights", params={"metric": m, "access_token": t}, timeout=60)
+            print("metric ->", m, r.status_code, json.dumps(r.json())[:260])
+        return
     if mid == "audio":  # what the Instagram Audio API offers this account (read only)
         uid = ig.user_id()
         for typ, q in (("original_sound", None), ("music", None), ("music", "Young Folks"), ("original_sound", "snowboard"),
