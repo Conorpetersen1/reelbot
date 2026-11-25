@@ -3135,7 +3135,8 @@
     "shares": 1,
     "saved": 8,
     "total_interactions": 14,
-    "ig_reels_avg_watch_time": 4777
+    "ig_reels_avg_watch_time": 4777,
+    "reels_skip_rate": 48.9
    },
    "category": "tip",
    "style": "list",
@@ -3146,7 +3147,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T14:18:15.587975+11:00",
+   "insights_at": "2026-11-25T15:01:38.341311+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3547,6 +3548,13 @@
      1175,
      1,
      8
+    ],
+    [
+     53.41,
+     1524,
+     1175,
+     1,
+     8
     ]
    ],
    "est_follows": 0.0
@@ -3566,7 +3574,8 @@
     "shares": 1,
     "saved": 1,
     "total_interactions": 19,
-    "ig_reels_avg_watch_time": 5200
+    "ig_reels_avg_watch_time": 5200,
+    "reels_skip_rate": 47.1
    },
    "category": "snow_life",
    "style": "list",
@@ -3577,7 +3586,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T14:18:16.550918+11:00",
+   "insights_at": "2026-11-25T15:01:39.408444+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -3964,6 +3973,13 @@
      1655,
      1,
      1
+    ],
+    [
+     49.74,
+     2281,
+     1655,
+     1,
+     1
     ]
    ],
    "alerted": [
@@ -3998,7 +4014,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T14:21:27.669849+11:00",
+   "insights_at": "2026-11-25T15:01:40.482258+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -4364,6 +4380,13 @@
      303,
      0,
      0
+    ],
+    [
+     47.01,
+     401,
+     303,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4395,7 +4418,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T14:21:28.715751+11:00",
+   "insights_at": "2026-11-25T15:01:42.698646+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -4747,6 +4770,13 @@
      355,
      4,
      0
+    ],
+    [
+     45.0,
+     395,
+     355,
+     4,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -4778,7 +4808,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-25T14:21:29.497225+11:00",
+   "insights_at": "2026-11-25T15:01:44.322050+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -5102,6 +5132,13 @@
      194,
      0,
      0
+    ],
+    [
+     41.01,
+     236,
+     194,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -5133,7 +5170,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T14:46:27.931349+11:00",
+   "insights_at": "2026-11-25T15:01:45.397131+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -5352,6 +5389,13 @@
      135,
      0,
      0
+    ],
+    [
+     26.69,
+     176,
+     136,
+     0,
+     0
     ]
    ]
   },
@@ -5363,15 +5407,15 @@
    "posted_at": "2026-11-24T13:15:52.452501+11:00",
    "file": "2026-11-24_2_i05.mp4",
    "insights": {
-    "views": 837,
-    "reach": 563,
+    "views": 840,
+    "reach": 564,
     "likes": 4,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 4,
-    "ig_reels_avg_watch_time": 5950,
-    "reels_skip_rate": 44.6
+    "ig_reels_avg_watch_time": 5947,
+    "reels_skip_rate": 44.5
    },
    "category": "instructor",
    "style": "list",
@@ -5382,7 +5426,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T14:41:28.336657+11:00",
+   "insights_at": "2026-11-25T15:01:47.226411+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
@@ -5587,6 +5631,13 @@
      563,
      0,
      0
+    ],
+    [
+     25.77,
+     840,
+     564,
+     0,
+     0
     ]
    ]
   },
@@ -5617,7 +5668,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T14:26:30.587161+11:00",
+   "insights_at": "2026-11-25T15:01:48.446869+11:00",
    "permalink": "https://www.instagram.com/reel/DgHmoMepJGn/",
    "series": [
     [
@@ -5766,6 +5817,13 @@
      1048,
      2,
      7
+    ],
+    [
+     18.85,
+     1423,
+     1049,
+     2,
+     7
     ]
    ]
   },
@@ -5796,7 +5854,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - two faced - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T14:51:29.892250+11:00",
+   "insights_at": "2026-11-25T15:01:50.088563+11:00",
    "permalink": "https://www.instagram.com/reel/DgHsYj3T0B2/",
    "series": [
     [
@@ -5938,6 +5996,13 @@
      1161,
      0,
      0
+    ],
+    [
+     18.0,
+     1372,
+     1161,
+     0,
+     0
     ]
    ]
   },
@@ -5968,7 +6033,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T14:21:34.348422+11:00",
+   "insights_at": "2026-11-25T15:01:51.375518+11:00",
    "permalink": "https://www.instagram.com/reel/DgHzPaFBlEB/",
    "series": [
     [
@@ -6103,6 +6168,13 @@
      1516,
      5,
      3
+    ],
+    [
+     17.01,
+     2074,
+     1516,
+     5,
+     3
     ]
    ],
    "alerted": [
@@ -6136,7 +6208,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T14:31:28.392952+11:00",
+   "insights_at": "2026-11-25T15:01:52.714316+11:00",
    "permalink": "https://www.instagram.com/reel/DgI35zQlTH6/",
    "series": [
     [
@@ -6194,6 +6266,13 @@
      1053,
      2,
      2
+    ],
+    [
+     7.01,
+     1418,
+     1056,
+     2,
+     2
     ]
    ]
   },
@@ -6224,7 +6303,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a",
    "fit": 3,
-   "insights_at": "2026-11-25T14:56:31.635988+11:00",
+   "insights_at": "2026-11-25T15:01:54.989639+11:00",
    "permalink": "https://www.instagram.com/reel/DgI-ylrSJKE/",
    "series": [
     [
@@ -6268,6 +6347,13 @@
      246,
      0,
      0
+    ],
+    [
+     6.0,
+     328,
+     248,
+     0,
+     0
     ]
    ]
   },
@@ -6303,7 +6389,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a",
    "fit": 5,
-   "insights_at": "2026-11-25T14:21:37.575430+11:00",
+   "insights_at": "2026-11-25T15:01:56.368877+11:00",
    "permalink": "https://www.instagram.com/reel/DgJTYibMTwJ/",
    "series": [
     [
@@ -6322,6 +6408,13 @@
     ],
     [
      2.28,
+     183,
+     149,
+     0,
+     0
+    ],
+    [
+     3.0,
      183,
      149,
      0,
@@ -6761,9 +6854,13 @@
   [
    "2026-11-25T14:18+11:00",
    946
+  ],
+  [
+   "2026-11-25T15:01+11:00",
+   946
   ]
  ],
- "publish_heartbeat": "2026-11-25T14:18:13.925297+11:00",
+ "publish_heartbeat": "2026-11-25T15:01:35.613094+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
