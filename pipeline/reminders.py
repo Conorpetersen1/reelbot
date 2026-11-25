@@ -38,7 +38,15 @@ def active(led):
     newest = led.get("sound_newest")
     if newest:
         age = (today - dt.date.fromisoformat(newest[:10])).days
-        if age >= every:
+        from .plan_day import find_sound
+        lib = [{"name": n} for n in led.get("sound_names", [])]
+        missing = [x["sound"] for x in ((led.get("ig_trending") or {}).get("items") or [])[:20]
+                   if not find_sound(x["sound"], lib)]
+        if len(missing) >= 6 and age >= 5:
+            out.append({"key": f"sweep-trending-{newest[:10]}", "due": today,
+                        "text": f"Do a sound sweep: {len(missing)} of Instagram's top 20 trending songs aren't in your "
+                                f"library (e.g. {', '.join(missing[:3])}). The list is in the dashboard's Library tab."})
+        elif age >= every:
             out.append({"key": f"sweep-{newest[:10]}", "due": today,
                         "text": f"Do a sound sweep: your newest sound is {age} days old. Screen-record yourself "
                                 "playing 15-25 trending sounds (10+ s each) and drop it in Drive › sound_sweeps."})

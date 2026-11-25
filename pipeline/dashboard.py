@@ -267,6 +267,16 @@ def main():
         f"<li>{'✓ ' if find_sound(w['sound'], lib) else ''}<b>{E(w['sound'])}</b> <span class='muted'>"
         f"(seen {w.get('seen', 1)}×" + (f", needed for {len(w['for'])} trend idea{'s' if len(w['for']) != 1 else ''}" if w.get("for") else "")
         + ")</span></li>" for w in wanted) or "<li class='muted'>Drop a feed scroll in Drive › trends to see what's trending.</li>"
+    igt = (led.get("ig_trending") or {}).get("items") or []
+    ig_rows = "".join(
+        f"<tr><td class='n'>{x['rank']}</td><td>{'✓ ' if find_sound(x['sound'], lib) else ''}<b>{E(x['sound'])}</b>"
+        f"{' <span class=\'badge\'>new</span>' if x.get('new') else ''}</td>"
+        f"<td class='small muted'>{'in your library' if find_sound(x['sound'], lib) else 'grab it'}</td></tr>" for x in igt[:20])
+    missing = sum(1 for x in igt[:20] if not find_sound(x["sound"], lib))
+    ig_html = (f"<div class='card'><h2>Trending on Instagram now</h2><p class='muted small' style='margin:0 0 6px'>Instagram's own "
+               f"trending music, checked daily. {missing} of the top {min(20, len(igt))} aren't in your library yet: play those in "
+               f"your next sound sweep.</p><div class='wrap'><table><tr><th class='n'>#</th><th>Song</th><th></th></tr>{ig_rows}"
+               "</table></div></div>") if igt else ""
     # ---- what the follower learner has found
     m = led.get("model") or {}
     names = {"category": {"tip": "Technique tips", "snow_life": "Snow-life reels", "niseko": "Niseko reels",
@@ -494,6 +504,7 @@ Updated {now():%a %d %b, %-I:%M%p}<br><span class="small">Next reel: {nxt_txt}</
 {taste_html}
 <div class="card"><h2>Trend inbox</h2><ul>{trend_rows}</ul></div>
 {viral_rows}
+{ig_html}
 <div class="card"><h2>Sounds to grab in your next sweep</h2><p class="muted small" style="margin:0 0 6px">Songs trending in your feed (from your scroll recordings). ✓ = already in your library. Trend ideas that need a specific sound wait until it's there.</p><ul>{grab_rows}</ul></div>
 <div class="card"><h2>Sounds</h2><p class="muted small" style="margin:0 0 6px">Newest sound added {E(newest_sound) or 'never'}. Drop a new sweep in Drive › sound_sweeps every week or two.</p>
 <div class="wrap"><table><tr><th>Sound</th><th class='n'>Reels</th></tr>{sound_rows}</table></div></div>

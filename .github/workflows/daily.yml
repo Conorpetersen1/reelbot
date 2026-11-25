@@ -30,6 +30,8 @@ jobs:
         continue-on-error: true
       - run: python -m pipeline.trend_scan
         continue-on-error: true
+      - run: python -m pipeline.ig_trending
+        continue-on-error: true
       - run: python -m pipeline.insights
         continue-on-error: true
       - run: python -m pipeline.plan_day
