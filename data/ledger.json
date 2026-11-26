@@ -346,8 +346,8 @@
   "1vkZS2aTNKvIxIXC5Tg1fZ4DE0l4D9WHn": {
    "name": "IMG_1738.MOV",
    "duration": 22.64,
-   "uses": 0,
-   "last_used": null,
+   "uses": 1,
+   "last_used": "2026-11-26T16:10:57.945278+11:00",
    "added": "2026-11-22T20:31:27.739475+11:00",
    "segments": [
     {
@@ -375,8 +375,9 @@
      "summary": "Snowboarder carves close to the camera creating a massive powder spray explosion.",
      "technique": "good",
      "usable": true,
-     "uses": 0,
-     "last_used": null
+     "uses": 1,
+     "last_used": "2026-11-26T16:10:57.945256+11:00",
+     "last_style": "pov"
     }
    ],
    "analysed_by": "gemini",
@@ -421,8 +422,8 @@
   "1ZbNhfC52tNsGHFsWRVurLj5-Ti3IlJyx": {
    "name": "IMG_1772.MOV",
    "duration": 12.466667,
-   "uses": 0,
-   "last_used": null,
+   "uses": 1,
+   "last_used": "2026-11-26T16:09:49.375024+11:00",
    "added": "2026-11-22T20:32:07.794436+11:00",
    "segments": [
     {
@@ -437,8 +438,9 @@
      "summary": "Conor rides smoothly down an open powder slope making fluid turns.",
      "technique": "good",
      "usable": true,
-     "uses": 0,
-     "last_used": null
+     "uses": 1,
+     "last_used": "2026-11-26T16:09:49.375002+11:00",
+     "last_style": "pov"
     }
    ],
    "analysed_by": "gemini",
@@ -1174,8 +1176,8 @@
   "1tH-45ve11miDaheeGio11de3QrY6mcKQ": {
    "name": "IMG_6018.MOV",
    "duration": 16.198333,
-   "uses": 0,
-   "last_used": null,
+   "uses": 1,
+   "last_used": "2026-11-26T16:12:03.831255+11:00",
    "added": "2026-11-22T21:20:21.182376+11:00",
    "segments": [
     {
@@ -1188,8 +1190,9 @@
      "summary": "A snowboarder traverses a deep powder ridge before tumbling headfirst into the snow.",
      "technique": "mistake",
      "usable": true,
-     "uses": 0,
-     "last_used": null
+     "uses": 1,
+     "last_used": "2026-11-26T16:12:03.831236+11:00",
+     "last_style": "question"
     }
    ],
    "analysed_by": "gemini",
@@ -2540,9 +2543,11 @@
   "1tbnEF-YfA0ClZIT1pfZkQo8inaPAv6St": {
    "name": "x005_20261124_00.mp4",
    "topic": "x005",
-   "uses": 0,
+   "uses": 1,
    "created": "2026-11-24T16:28:56.237580+11:00",
-   "scene": "Mascot sitting on a chairlift bar looking over freshly groomed morning corduroy snow."
+   "scene": "Mascot sitting on a chairlift bar looking over freshly groomed morning corduroy snow.",
+   "last_used": "2026-11-26T16:13:47.548907+11:00",
+   "last_style": "pov"
   },
   "1flxgRJmWmh_KCZ_acTxauRYY1VFuTfPv": {
    "name": "x006_20261124_00.mp4",
@@ -2557,21 +2562,25 @@
    "topic": "x007",
    "uses": 0,
    "created": "2026-11-24T17:59:17.460273+11:00",
-   "scene": "Blocky snowboarder diving dramatically into a small snowbank like it's a 30-metre cliff drop"
+   "scene": "Blocky snowboarder diving dramatically into a small snowbank like it's a 30-metre cliff drop",
+   "rejected": "The text describes an embarrassing crash ('head first into soft slush'), but the video shows the character jumping and riding smoothly without falling."
   },
   "1ONX7ALpll23JImXuZHfwk-EPH1-8Ia2M": {
    "name": "x008_20261124_00.mp4",
    "topic": "x008",
    "uses": 0,
    "created": "2026-11-24T18:02:40.271343+11:00",
-   "scene": "Blocky mascot sitting down below a big kicker knuckle while another mascot narrowly sails overhead"
+   "scene": "Blocky mascot sitting down below a big kicker knuckle while another mascot narrowly sails overhead",
+   "rejected": "The AI footage is distorted and bizarre, featuring surreal glitchy giant flesh fingers/toes instead of snowboarding, with no boards and heavily distorted body elements."
   },
   "1AGeMJfO3_l7fyB1VQUuzeiexE2qB3Xr-": {
    "name": "x009_20261125_00.mp4",
    "topic": "x009",
-   "uses": 0,
+   "uses": 1,
    "created": "2026-11-25T14:01:36.330493+11:00",
-   "scene": "Blocky mascot dragging a giant daisy chain of three wheeled snowboard bags across an airport terminal crosswalk"
+   "scene": "Blocky mascot dragging a giant daisy chain of three wheeled snowboard bags across an airport terminal crosswalk",
+   "last_used": "2026-11-26T16:05:45.860976+11:00",
+   "last_style": "pov"
   },
   "1oS3qbMutArwadIjcEbH6zEnrGFkLmrUV": {
    "name": "x010_20261125_00.mp4",
@@ -3334,6 +3343,209 @@
     "source": "bank",
     "voiceover": null
    }
+  ],
+  "2026-11-27": [
+   {
+    "date": "2026-11-27",
+    "slot": 1,
+    "time": "11:30",
+    "kind": "ai",
+    "topic": "x009",
+    "clip": "1AGeMJfO3_l7fyB1VQUuzeiexE2qB3Xr-",
+    "file_id": "1SZYzJgkbxDHOhTKIN3Rg8sLy0972JkVa",
+    "file": "2026-11-27_1_x009.mp4",
+    "fit": 3,
+    "hook": "How snow bums travel to Japan:",
+    "description": [
+     "Three boards I won't even ride",
+     "Ten base layers, two jackets"
+    ],
+    "caption": "One week away and the bag count is still out of control. Tag who needs to hear it before their next flight. #snowboarding #japansnow #snowboardtravel #snowbum #snowlife",
+    "text_source": "written",
+    "critic": {
+     "score": 30.0,
+     "angle": "Airport gear overload",
+     "hook": 5,
+     "sense": 5,
+     "match": 5,
+     "voice": 5,
+     "first": 5,
+     "note": "Great fit for the animated rolling visual, uses authentic snow bum voice and relatable travel humor."
+    },
+    "cta": "share",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - A GTA 6 - Dianzi.m4a",
+    "style": "pov",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "snow_life",
+    "asked_hook": "question",
+    "sound_kind": "sound",
+    "voiceover": "How snow bums travel to Japan. Three boards I won't even ride, ten base layers, and two jackets.",
+    "voice_name": "en-au-podcaster-2",
+    "source": "trend"
+   },
+   {
+    "date": "2026-11-27",
+    "slot": 2,
+    "time": "13:00",
+    "kind": "real",
+    "topic": "t26",
+    "clip": "1ZbNhfC52tNsGHFsWRVurLj5-Ti3IlJyx#0",
+    "file_id": "1o6Qh8BnbhTv8x52PevhF9GkEygwNQrP9",
+    "file": "2026-11-27_2_t26.mp4",
+    "fit": 4,
+    "hook": "Your board turns faster than you think",
+    "description": [
+     "Commit to the fall line",
+     "Don't bail before the turn starts",
+     "Practise on terrain you already know"
+    ],
+    "caption": "Most nervous riders back off right when the board is about to do the work. Commit to the turn on a run you're comfortable on and see how quick it responds. Save this for your next day on snow. #snowboarding #powder #snowboardtips #learntosnowboard #snowboardinstructor",
+    "text_source": "written",
+    "critic": {
+     "score": 23.0,
+     "angle": "Myth bust",
+     "hook": 4,
+     "sense": 4,
+     "match": 4,
+     "voice": 3,
+     "first": 4,
+     "note": "Stronger hook that matches the rider committing down the fall line smoothly in open terrain."
+    },
+    "cta": "save",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
+    "style": "pov",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "tip",
+    "asked_hook": "number",
+    "sound_kind": "sound",
+    "voiceover": "Board turns faster than you think. Commit to the fall line, don't bail before the turn starts, and practise on terrain you already know.",
+    "voice_name": "en-au-podcaster-2",
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-27",
+    "slot": 3,
+    "time": "15:30",
+    "kind": "real",
+    "topic": "m21b64d",
+    "clip": "1vkZS2aTNKvIxIXC5Tg1fZ4DE0l4D9WHn#1",
+    "file_id": "1AHodXWtXMbZFkTGLuhRc7svbH3Gu9gkn",
+    "file": "2026-11-27_3_m21b64d.mp4",
+    "fit": 5,
+    "hook": "Me: just a few easy laps today",
+    "description": [
+     "Also me, one face shot later:"
+    ],
+    "caption": "The plan lasted about one turn. Save this for your next day on snow. #snowboarding #powder #powderday #seasonlife #snowboardinstructor",
+    "text_source": "written",
+    "critic": {
+     "score": 30.0,
+     "angle": "Irony and hypocrisy",
+     "hook": 5,
+     "sense": 5,
+     "match": 5,
+     "voice": 5,
+     "first": 5,
+     "note": "Classic Conor 'Me / Also me' format, perfectly matches the massive powder spray right into the camera."
+    },
+    "cta": "save",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - two faced - purc.m4a",
+    "style": "pov",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "moment",
+    "asked_hook": "question",
+    "sound_kind": "sound",
+    "voiceover": null,
+    "voice_name": null,
+    "source": "moment"
+   },
+   {
+    "date": "2026-11-27",
+    "slot": 4,
+    "time": "17:30",
+    "kind": "real",
+    "topic": "t15",
+    "clip": "1tH-45ve11miDaheeGio11de3QrY6mcKQ#0",
+    "file_id": "13YITbZ12hZniUGiR3hOi1SvSaNqMYW5T",
+    "file": "2026-11-27_4_t15.mp4",
+    "fit": 5,
+    "hook": "Me: I'll stay in control up here",
+    "description": [
+     "Also me: headfirst into the pow",
+     "Tensing up is what makes falls hurt",
+     "Relax and go with it"
+    ],
+    "caption": "Traversing the ridge like a pro, then the snow had other plans. Don't fight the fall, just relax and go with it. Follow for more tips from the mountain. #snowboarding #powder #snowboardtips #japow #snowboardinstructor",
+    "text_source": "written",
+    "critic": {
+     "score": 28.5,
+     "angle": "irony contrast",
+     "hook": 5,
+     "sense": 4,
+     "match": 5,
+     "voice": 5,
+     "first": 5,
+     "note": "Perfect fit for Conor's proven 'Me vs Also me' format and matches the casual audio ('pretty mellow') right before he eats pow."
+    },
+    "cta": "follow",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a",
+    "style": "question",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "tip",
+    "asked_hook": "how_i",
+    "sound_kind": "sound",
+    "voiceover": null,
+    "voice_name": null,
+    "source": "bank"
+   },
+   {
+    "date": "2026-11-27",
+    "slot": 5,
+    "time": "19:30",
+    "kind": "ai",
+    "topic": "x005",
+    "clip": "1tbnEF-YfA0ClZIT1pfZkQo8inaPAv6St",
+    "file_id": "1dTyew6fhKQ0Bvtaoc7dy6xVJbqCcG14p",
+    "file": "2026-11-27_5_x005.mp4",
+    "fit": 5,
+    "hook": "The calm before the lesson chaos",
+    "description": [
+     "Fresh air, untouched corduroy",
+     "Soak it up before lessons start"
+    ],
+    "caption": "Every instructor knows this quiet bit of the morning is the best bit. Save this for your next day on snow. #snowboardinstructor #thredbo #snowlife #corduroy #snowboarding",
+    "text_source": "written",
+    "critic": {
+     "score": 20.5,
+     "angle": "instructor calm",
+     "hook": 3,
+     "sense": 4,
+     "match": 4,
+     "voice": 3,
+     "first": 3,
+     "note": "Fits the quiet morning chairlift shot well for instructor life, though caption is a bit tame and generic."
+    },
+    "cta": "save",
+    "status": "queued",
+    "sound": "sweep 2026-11-22 - Dancing On My Own (Instrumental) - Pink Gloves.m4a",
+    "style": "pov",
+    "variation": {},
+    "hook_type": "statement",
+    "category": "snow_life",
+    "asked_hook": "number",
+    "sound_kind": "sound",
+    "voiceover": null,
+    "voice_name": null,
+    "source": "trend"
+   }
   ]
  },
  "posts": {
@@ -3364,7 +3576,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a",
    "fit": 5,
-   "insights_at": "2026-11-26T09:02:42.220870+11:00",
+   "insights_at": "2026-11-26T16:03:02.784413+11:00",
    "permalink": "https://www.instagram.com/reel/DgD5TrUh5-g/",
    "series": [
     [
@@ -3907,7 +4119,7 @@
      8
     ]
    ],
-   "est_follows": 0.06,
+   "est_follows": 0.07,
    "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS"
   },
   "18106349906352509": {
@@ -3937,7 +4149,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T13:02:14.777958+11:00",
+   "insights_at": "2026-11-26T16:03:04.022180+11:00",
    "permalink": "https://www.instagram.com/reel/DgESgPsBgd6/",
    "series": [
     [
@@ -4534,7 +4746,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 5,
-   "insights_at": "2026-11-26T15:02:09.203277+11:00",
+   "insights_at": "2026-11-26T16:03:05.058231+11:00",
    "permalink": "https://www.instagram.com/reel/DgElPLAN0gl/",
    "series": [
     [
@@ -5091,7 +5303,7 @@
      0
     ]
    ],
-   "est_follows": 0.08,
+   "est_follows": 0.09,
    "clip": "1S86KbiIR7EK5FmeaPe3XmVAfrQ6vGAt3"
   },
   "18123869735472764": {
@@ -5121,7 +5333,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T16:01:53.569270+11:00",
+   "insights_at": "2026-11-26T16:03:06.073443+11:00",
    "permalink": "https://www.instagram.com/reel/DgEzBe-vgS5/",
    "series": [
     [
@@ -5671,7 +5883,7 @@
      0
     ]
    ],
-   "est_follows": 0.11,
+   "est_follows": 0.12,
    "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8"
   },
   "18186268828432725": {
@@ -5701,7 +5913,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-26T16:01:54.781632+11:00",
+   "insights_at": "2026-11-26T16:03:06.976967+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -6223,7 +6435,7 @@
      0
     ]
    ],
-   "est_follows": 0.05,
+   "est_follows": 0.06,
    "clip": "1MOKWz0m3YYQwISnuZTvCvbYXw0biMB0R"
   },
   "18001465518105133": {
@@ -6253,7 +6465,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-26T16:01:55.941066+11:00",
+   "insights_at": "2026-11-26T16:03:08.073209+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -6700,7 +6912,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T16:01:57.304854+11:00",
+   "insights_at": "2026-11-26T16:03:09.224201+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
@@ -7103,7 +7315,7 @@
      0
     ]
    ],
-   "est_follows": 0.35,
+   "est_follows": 0.36,
    "clip": "16XkcDxWGMHBr1zCCgNngpCsHKDLgxP3e#0"
   },
   "18001353348104587": {
@@ -7133,7 +7345,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T16:01:58.507398+11:00",
+   "insights_at": "2026-11-26T16:03:10.194260+11:00",
    "permalink": "https://www.instagram.com/reel/DgHmoMepJGn/",
    "series": [
     [
@@ -7480,7 +7692,7 @@
      7
     ]
    ],
-   "est_follows": 0.93,
+   "est_follows": 0.98,
    "clip": "18r0PTErnWnaplo-PV-wchUteOjYgrbEI"
   },
   "18656049007045521": {
@@ -7510,7 +7722,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - two faced - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T16:01:59.822438+11:00",
+   "insights_at": "2026-11-26T16:03:11.233032+11:00",
    "permalink": "https://www.instagram.com/reel/DgHsYj3T0B2/",
    "series": [
     [
@@ -7880,7 +8092,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T16:02:01.693231+11:00",
+   "insights_at": "2026-11-26T16:03:12.147285+11:00",
    "permalink": "https://www.instagram.com/reel/DgHzPaFBlEB/",
    "series": [
     [
@@ -8216,7 +8428,7 @@
    "alerted": [
     2000
    ],
-   "est_follows": 0.73,
+   "est_follows": 0.78,
    "clip": "1hQ6By5ISvbat9XXRMHyg28a2xjHUGA55#0"
   },
   "18177196378458850": {
@@ -8246,7 +8458,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
    "fit": 5,
-   "insights_at": "2026-11-26T16:02:02.549318+11:00",
+   "insights_at": "2026-11-26T16:03:13.113122+11:00",
    "permalink": "https://www.instagram.com/reel/DgI35zQlTH6/",
    "series": [
     [
@@ -8532,7 +8744,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T16:02:04.058249+11:00",
+   "insights_at": "2026-11-26T16:03:15.323306+11:00",
    "permalink": "https://www.instagram.com/reel/DgI-ylrSJKE/",
    "series": [
     [
@@ -8809,7 +9021,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a",
    "fit": 5,
-   "insights_at": "2026-11-26T16:02:05.140590+11:00",
+   "insights_at": "2026-11-26T16:03:16.302269+11:00",
    "permalink": "https://www.instagram.com/reel/DgJTYibMTwJ/",
    "series": [
     [
@@ -9067,7 +9279,7 @@
    "fit": 5,
    "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8",
    "cta": null,
-   "insights_at": "2026-11-26T16:02:06.789706+11:00",
+   "insights_at": "2026-11-26T16:03:17.263552+11:00",
    "permalink": "https://www.instagram.com/reel/DgKKUA_BzDO/",
    "series": [
     [
@@ -9224,7 +9436,8 @@
      0,
      0
     ]
-   ]
+   ],
+   "est_follows": 0.0
   },
   "18136460410741523": {
    "topic": "t01",
@@ -9260,7 +9473,7 @@
    "fit": 3,
    "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
    "cta": null,
-   "insights_at": "2026-11-26T16:02:07.968578+11:00",
+   "insights_at": "2026-11-26T16:03:18.562384+11:00",
    "permalink": "https://www.instagram.com/reel/DgKYBkEhFVx/",
    "series": [
     [
@@ -9403,7 +9616,8 @@
      0,
      0
     ]
-   ]
+   ],
+   "est_follows": 0.0
   },
   "18137148550664477": {
    "topic": "mda7594",
@@ -9435,7 +9649,7 @@
    "clip": "1Eh2xuE2V4YjfIXbSMfcE6Lvyr_YerePb#0",
    "cta": "follow",
    "voiceover": null,
-   "insights_at": "2026-11-26T16:02:09.248983+11:00",
+   "insights_at": "2026-11-26T16:03:19.417152+11:00",
    "permalink": "https://www.instagram.com/reel/DgLjmFdhdKG/",
    "series": [
     [
@@ -9501,7 +9715,8 @@
      0,
      0
     ]
-   ]
+   ],
+   "est_follows": 0.0
   },
   "17999016312113738": {
    "topic": "x013",
@@ -9511,15 +9726,15 @@
    "posted_at": "2026-11-26T12:01:37.192014+11:00",
    "file": "2026-11-26_2_x013.mp4",
    "insights": {
-    "views": 1600,
+    "views": 1610,
     "reach": 1074,
     "likes": 8,
     "comments": 0,
     "shares": 5,
     "saved": 0,
     "total_interactions": 13,
-    "ig_reels_avg_watch_time": 6250,
-    "reels_skip_rate": 39.8
+    "ig_reels_avg_watch_time": 6287,
+    "reels_skip_rate": 39.6
    },
    "category": "tip",
    "style": "list",
@@ -9533,7 +9748,7 @@
    "clip": "1a2locaqKnxhdLa5VdV11Stk7Uy1bJHYq",
    "cta": "save",
    "voiceover": "Board's fine. Your back foot isn't. Heavy back foot locks you straight. Bring your weight over the front foot. Front foot leads, board follows.",
-   "insights_at": "2026-11-26T16:02:10.552565+11:00",
+   "insights_at": "2026-11-26T16:03:20.449491+11:00",
    "permalink": "https://www.instagram.com/reel/DgL4KykhYVx/",
    "series": [
     [
@@ -9571,7 +9786,8 @@
      5,
      0
     ]
-   ]
+   ],
+   "est_follows": 0.0
   },
   "17895602019686238": {
    "topic": "f03",
@@ -9581,7 +9797,7 @@
    "posted_at": "2026-11-26T13:01:35.805149+11:00",
    "file": "2026-11-26_3_f03.mp4",
    "insights": {
-    "views": 2495,
+    "views": 2499,
     "reach": 1619,
     "likes": 9,
     "comments": 0,
@@ -9603,7 +9819,7 @@
    "clip": "1SlFbP_kiC9IpPXQCdVjencJUvWKXJJJj#0",
    "cta": "follow",
    "voiceover": "Your back leg's doing nothing. Lift it to lighten the tail, keep your weight over the nose, and start small on flat, mellow ground.",
-   "insights_at": "2026-11-26T16:02:11.789689+11:00",
+   "insights_at": "2026-11-26T16:03:21.465783+11:00",
    "permalink": "https://www.instagram.com/reel/DgL_B6dhTx4/",
    "series": [
     [
@@ -9637,14 +9853,16 @@
    ],
    "alerted": [
     2000
-   ]
+   ],
+   "est_follows": 0.0
   }
  },
  "followers": {
   "2026-11-22": 944,
   "2026-11-23": 944,
   "2026-11-24": 945,
-  "2026-11-25": 946
+  "2026-11-25": 946,
+  "2026-11-26": 946
  },
  "log": [
   "2026-11-22 16:57 Queued 0 reels for 2026-11-23: []",
@@ -9829,7 +10047,13 @@
   "2026-11-26 09:02 Posted trial reel 2026-11-26_1_mda7594.mp4 -> 18137148550664477",
   "2026-11-26 12:02 Posted trial reel 2026-11-26_2_x013.mp4 -> 17999016312113738",
   "2026-11-26 13:02 Posted trial reel 2026-11-26_3_f03.mp4 -> 17895602019686238",
-  "2026-11-26 15:02 View alert sent: Your back leg is doing nothing (2,090 views)"
+  "2026-11-26 15:02 View alert sent: Your back leg is doing nothing (2,090 views)",
+  "2026-11-26 16:03 Instagram trending music: 25 songs, 9 new today",
+  "2026-11-26 16:03 Updated insights for 18 reels",
+  "2026-11-26 16:04 Fit check 1/5, swapped out x007 (ai): The text describes an embarrassing crash ('head first into soft slush'), but the video shows the character jumping and riding smoothly without falling.",
+  "2026-11-26 16:12 Fit check 1/5, swapped out x008 (ai): The AI footage is distorted and bizarre, featuring surreal glitchy giant flesh fingers/toes instead of snowboarding, with no boards and heavily distorted body elements.",
+  "2026-11-26 16:13 Queued 5 reels for 2026-11-27: ['x009', 't26', 'm21b64d', 't15', 'x005']",
+  "2026-11-26 16:13 Notification sent: 📌 Drop this week's follows screenshot into Drive › insights: Instagram a"
  ],
  "fal_spend": {
   "2026-11": 19.98
@@ -9840,19 +10064,21 @@
   "sweep 2026-11-22 - Original audio - mitchbrothers.m4a": 1,
   "sweep 2026-11-22 - Time - Pink Floyd.m4a": 1,
   "sweep 2026-11-22 - Grand Theft Auto San Andreas (Official Theme Song) - Michael.m4a": 2,
-  "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a": 2,
+  "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a": 3,
   "sweep 2026-11-22 - Draw You Out - Noah Kahan The Hunger Games.m4a": 1,
   "sweep 2026-11-22 - November Magic - Peaceful Reveries.m4a": 1,
   "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a": 2,
   "sweep 2026-11-22 - Think I'm going dumb - ACE aqqugunk.m4a": 1,
-  "sweep 2026-11-22 - Vice City - Neon Dust.m4a": 3,
+  "sweep 2026-11-22 - Vice City - Neon Dust.m4a": 4,
   "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a": 1,
   "sweep 2026-11-22 - eye of ra - purc.m4a": 1,
   "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a": 2,
-  "sweep 2026-11-22 - two faced - purc.m4a": 1,
+  "sweep 2026-11-22 - two faced - purc.m4a": 2,
   "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a": 1,
   "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a": 2,
-  "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a": 1
+  "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a": 1,
+  "sweep 2026-11-22 - A GTA 6 - Dianzi.m4a": 1,
+  "sweep 2026-11-22 - Dancing On My Own (Instrumental) - Pink Gloves.m4a": 1
  },
  "sound_newest": "2026-11-22T11:52:10.236Z",
  "followers_hourly": [
@@ -10390,7 +10616,8 @@
  "notified": {
   "status-2026-48": "2026-11-23T17:30:00.160045+11:00",
   "reminder-credit-fal-2026-11-22-4.24": "2026-11-23T17:30:00.482506+11:00",
-  "postfail-2026-11-24_3_t30.mp4": "2026-11-24T20:02:54.762791+11:00"
+  "postfail-2026-11-24_3_t30.mp4": "2026-11-24T20:02:54.762791+11:00",
+  "reminder-follows-2026-48": "2026-11-26T16:13:49.957195+11:00"
  },
  "voice": {
   "voice_summary": "Conor's voice is self-deprecating, irreverent, and deeply rooted in authentic ski-town and seasonnaire culture. His audience responds strongly to extreme powder riding and brutal stacks contrasted with degenerate humor (hangovers, reckless behavior), timely on-mountain resort drama, and niche skier-vs-snowboarder banter.",
@@ -11237,160 +11464,304 @@
   "rinse & repeat (again) - kolter, riton, kah-lo": "2026-11-25",
   "hawaiian roller coaster ride (from  \"lilo & stitch\"/soundtrack version) - mark keali'i ho'omalu, kamehameha schools children's chorus": "2026-11-25",
   "sunday morning - maroon 5": "2026-11-25",
-  "3 times (feat. sun.e rai) - a.s. kullar, harry pannu": "2026-11-25"
+  "3 times (feat. sun.e rai) - a.s. kullar, harry pannu": "2026-11-25",
+  "satgur nanak pargateya | gurubani shabad - gurtone": "2026-11-26",
+  "aar nanak paar nanak - diljit dosanjh": "2026-11-26",
+  "living in the dark - myuu": "2026-11-26",
+  "don't stop the party (feat. tjr) - pitbull": "2026-11-26",
+  "last christmas (remastered) - wham!": "2026-11-26",
+  "it's the most wonderful time of the year - andy williams": "2026-11-26",
+  "gurpurab - ranjit bawa": "2026-11-26",
+  "nanak aadh jugaadh jiyo - diljit dosanjh": "2026-11-26",
+  "fa fa fa (from \"o.m: operation mole\") - sai abhyankkar, thamizh aadhavan": "2026-11-26"
  },
  "ig_trending": {
-  "date": "2026-11-25T16:02:31.405239+11:00",
+  "date": "2026-11-26T16:03:01.161709+11:00",
   "items": [
    {
-    "sound": "Think I'm going dumb - ACE aqugounk",
+    "sound": "Crazy For You - Lana Del Rey",
     "rank": 1,
     "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Vice City - Neon Dust",
-    "rank": 2,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Draw You Out - Noah Kahan, The Hunger Games",
-    "rank": 3,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Innerbloom XI - RÜFÜS DU SOL, Hans Zimmer",
-    "rank": 4,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Young Folks - NCWU Spectrum",
-    "rank": 5,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "GTA 6 (Grand Theft Auto Six Song) - AURIX232",
-    "rank": 6,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Grand Theft Auto: San Andreas (Official Theme Song) - Michael Hunter",
-    "rank": 7,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Crazy For You - Lana Del Rey",
-    "rank": 8,
-    "first_seen": "2026-11-25",
-    "new": true
+    "new": false
    },
    {
     "sound": "Huss Huss Huss - Virexo Aelvix",
-    "rank": 9,
+    "rank": 2,
     "first_seen": "2026-11-25",
-    "new": true
+    "new": false
    },
    {
-    "sound": "two faced - purc",
-    "rank": 10,
+    "sound": "Think I'm going dumb - ACE aqugounk",
+    "rank": 3,
     "first_seen": "2026-11-25",
-    "new": true
+    "new": false
    },
    {
-    "sound": "NON MI INNAMORERÓ (Brazilian Remix) - Pucho, Gordinho Bolado, Mia, Cristy",
-    "rank": 11,
+    "sound": "Draw You Out - Noah Kahan, The Hunger Games",
+    "rank": 4,
     "first_seen": "2026-11-25",
-    "new": true
+    "new": false
    },
    {
-    "sound": "It's Beginning to Look a Lot like Christmas - Michael Bublé",
-    "rank": 12,
+    "sound": "Vice City - Neon Dust",
+    "rank": 5,
     "first_seen": "2026-11-25",
-    "new": true
+    "new": false
    },
    {
     "sound": "Yellow - Coldplay",
+    "rank": 6,
+    "first_seen": "2026-11-25",
+    "new": false
+   },
+   {
+    "sound": "Young Folks - NCWU Spectrum",
+    "rank": 7,
+    "first_seen": "2026-11-25",
+    "new": false
+   },
+   {
+    "sound": "NON MI INNAMORERÓ (Brazilian Remix) - Pucho, Gordinho Bolado, Mia, Cristy",
+    "rank": 8,
+    "first_seen": "2026-11-25",
+    "new": false
+   },
+   {
+    "sound": "two faced - purc",
+    "rank": 9,
+    "first_seen": "2026-11-25",
+    "new": false
+   },
+   {
+    "sound": "It's Beginning to Look a Lot like Christmas - Michael Bublé",
+    "rank": 10,
+    "first_seen": "2026-11-25",
+    "new": false
+   },
+   {
+    "sound": "SatGur Nanak Pargateya | Gurubani Shabad - GurTone",
+    "rank": 11,
+    "first_seen": "2026-11-26",
+    "new": true
+   },
+   {
+    "sound": "Aar Nanak Paar Nanak - Diljit Dosanjh",
+    "rank": 12,
+    "first_seen": "2026-11-26",
+    "new": true
+   },
+   {
+    "sound": "Rinse & Repeat (Again) - Kolter, Riton, Kah-Lo",
     "rank": 13,
     "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Pusher (feat. Gesaffelstein) [From GTAVI: Original Score] - Justice, Gesaffelstein, Grand Theft Auto VI",
-    "rank": 14,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "GiiiRIP - BIGBANG",
-    "rank": 15,
-    "first_seen": "2026-11-25",
-    "new": true
+    "new": false
    },
    {
     "sound": "Rockin' Around The Christmas Tree - Brenda Lee",
+    "rank": 14,
+    "first_seen": "2026-11-25",
+    "new": false
+   },
+   {
+    "sound": "November Vibes - Luna Jason Hart",
+    "rank": 15,
+    "first_seen": "2026-11-25",
+    "new": false
+   },
+   {
+    "sound": "Sand Drawing - Judah Earl",
     "rank": 16,
     "first_seen": "2026-11-25",
-    "new": true
+    "new": false
    },
    {
     "sound": "03' Bonnie & Clyde (feat. Beyoncé Knowles) - JAŸ-Z",
     "rank": 17,
     "first_seen": "2026-11-25",
-    "new": true
+    "new": false
    },
    {
-    "sound": "November Vibes - Luna Jason Hart",
+    "sound": "Living in the Dark - Myuu",
     "rank": 18,
-    "first_seen": "2026-11-25",
+    "first_seen": "2026-11-26",
     "new": true
    },
    {
-    "sound": "Sand Drawing - Judah Earl",
+    "sound": "Don't Stop the Party (feat. TJR) - Pitbull",
     "rank": 19,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Dilruba Dilnasheen - Rito Riba, Siddhant kaushal",
-    "rank": 20,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Monkeys Spinning Monkeys - Kevin MacLeod, Kevin",
-    "rank": 21,
-    "first_seen": "2026-11-25",
-    "new": true
-   },
-   {
-    "sound": "Rinse & Repeat (Again) - Kolter, Riton, Kah-Lo",
-    "rank": 22,
-    "first_seen": "2026-11-25",
+    "first_seen": "2026-11-26",
     "new": true
    },
    {
     "sound": "Hawaiian Roller Coaster Ride (From  \"Lilo & Stitch\"/Soundtrack Version) - Mark Keali'i Ho'omalu, Kamehameha Schools Children's Chorus",
+    "rank": 20,
+    "first_seen": "2026-11-25",
+    "new": false
+   },
+   {
+    "sound": "Last Christmas (Remastered) - Wham!",
+    "rank": 21,
+    "first_seen": "2026-11-26",
+    "new": true
+   },
+   {
+    "sound": "It's the Most Wonderful Time of the Year - Andy Williams",
+    "rank": 22,
+    "first_seen": "2026-11-26",
+    "new": true
+   },
+   {
+    "sound": "Gurpurab - Ranjit Bawa",
     "rank": 23,
-    "first_seen": "2026-11-25",
+    "first_seen": "2026-11-26",
     "new": true
    },
    {
-    "sound": "Sunday Morning - Maroon 5",
+    "sound": "Nanak Aadh Jugaadh Jiyo - Diljit Dosanjh",
     "rank": 24,
-    "first_seen": "2026-11-25",
+    "first_seen": "2026-11-26",
     "new": true
    },
    {
-    "sound": "3 Times (feat. Sun.E Rai) - a.s. kullar, Harry Pannu",
+    "sound": "FA FA FA (From \"O.M: Operation Mole\") - Sai Abhyankkar, Thamizh Aadhavan",
     "rank": 25,
-    "first_seen": "2026-11-25",
+    "first_seen": "2026-11-26",
     "new": true
+   }
+  ]
+ },
+ "model": {
+  "updated": "2026-11-26T16:03+11:00",
+  "reels_learned_from": 3,
+  "follower_data_weight": 0.0,
+  "background_follows_per_day": 0.3,
+  "attributed_follows": 2.9,
+  "effects": [
+   {
+    "group": "category",
+    "level": "snow_life",
+    "x": 0.99,
+    "sure": 0.51,
+    "better": false
+   },
+   {
+    "group": "category",
+    "level": "tip",
+    "x": 1.01,
+    "sure": 0.51,
+    "better": true
+   },
+   {
+    "group": "cta",
+    "level": "mixed",
+    "x": 1.0,
+    "sure": 0.5,
+    "better": false
+   },
+   {
+    "group": "hook",
+    "level": "statement",
+    "x": 0.99,
+    "sure": 0.51,
+    "better": false
+   },
+   {
+    "group": "hook",
+    "level": "why",
+    "x": 1.01,
+    "sure": 0.51,
+    "better": true
+   },
+   {
+    "group": "kind",
+    "level": "ai",
+    "x": 0.97,
+    "sure": 0.53,
+    "better": false
+   },
+   {
+    "group": "kind",
+    "level": "real",
+    "x": 1.04,
+    "sure": 0.53,
+    "better": true
+   },
+   {
+    "group": "reuse",
+    "level": "first",
+    "x": 1.0,
+    "sure": 0.5,
+    "better": false
+   },
+   {
+    "group": "slot",
+    "level": "09",
+    "x": 1.0,
+    "sure": 0.5,
+    "better": true
+   },
+   {
+    "group": "slot",
+    "level": "13",
+    "x": 1.02,
+    "sure": 0.52,
+    "better": true
+   },
+   {
+    "group": "slot",
+    "level": "15",
+    "x": 0.97,
+    "sure": 0.53,
+    "better": false
+   },
+   {
+    "group": "sound",
+    "level": "sound",
+    "x": 1.0,
+    "sure": 0.5,
+    "better": false
+   },
+   {
+    "group": "source",
+    "level": "bank",
+    "x": 1.0,
+    "sure": 0.5,
+    "better": false
+   },
+   {
+    "group": "style",
+    "level": "list",
+    "x": 1.0,
+    "sure": 0.5,
+    "better": false
+   },
+   {
+    "group": "topic",
+    "level": "s04",
+    "x": 1.05,
+    "sure": 0.53,
+    "better": true
+   },
+   {
+    "group": "topic",
+    "level": "s05",
+    "x": 0.94,
+    "sure": 0.54,
+    "better": false
+   },
+   {
+    "group": "topic",
+    "level": "t01",
+    "x": 1.01,
+    "sure": 0.51,
+    "better": true
+   },
+   {
+    "group": "voice",
+    "level": "none",
+    "x": 1.0,
+    "sure": 0.5,
+    "better": false
    }
   ]
  }
