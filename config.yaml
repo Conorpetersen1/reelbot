@@ -109,7 +109,7 @@ drive:
 ai_trim_start: 0.8      # seconds skipped at the start of mascot clips (they're animated from a still, so open nearly frozen)
 voiceover:              # the Gemini voice test: a spoken voiceover with word captions, music dipped under it
   enabled: true
-  per_day: 2            # reels a day voiced during the test, picked at random so the learner can compare fairly
+  per_day: 3            # reels a day voiced during the test (3 from 28 Nov), picked at random so the learner can compare fairly
   test_until: "2026-12-10"   # after this, the learner decides per reel from follows and skip rate
   voice: auto           # auto = an Australian voice from Gemini's library if there is one, else fallback_voice
   fallback_voice: Puck  # Gemini prebuilt voice ("upbeat")
