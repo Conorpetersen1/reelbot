@@ -3336,7 +3336,7 @@
      "note": "Uses his proven 'How [group] be moving' format combined with 'eat snow' slang and solid actionable coaching."
     },
     "cta": "share",
-    "status": "queued",
+    "status": "posted",
     "sound": "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a",
     "style": "list",
     "variation": {},
@@ -3345,7 +3345,9 @@
     "asked_hook": "question",
     "sound_kind": "sound",
     "source": "bank",
-    "voiceover": null
+    "voiceover": null,
+    "media_id": "18165934915435985",
+    "posted_at": "2026-11-26T21:01:37.222131+11:00"
    }
   ],
   "2026-11-27": [
@@ -5931,7 +5933,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Vice City - Neon Dust.m4a",
    "fit": 4,
-   "insights_at": "2026-11-26T20:01:52.421580+11:00",
+   "insights_at": "2026-11-26T21:02:59.678716+11:00",
    "permalink": "https://www.instagram.com/reel/DgFOgt9A7CC/",
    "series": [
     [
@@ -6486,6 +6488,13 @@
      195,
      0,
      0
+    ],
+    [
+     71.03,
+     238,
+     195,
+     0,
+     0
     ]
    ],
    "est_follows": 0.06,
@@ -6518,7 +6527,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Love Is A Long Road - Tom Petty.m4a",
    "fit": 5,
-   "insights_at": "2026-11-26T20:01:53.764186+11:00",
+   "insights_at": "2026-11-26T21:03:00.934197+11:00",
    "permalink": "https://www.instagram.com/reel/DgGwxWqzuQ7/",
    "series": [
     [
@@ -6968,6 +6977,13 @@
      141,
      0,
      0
+    ],
+    [
+     56.72,
+     186,
+     141,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0,
@@ -7000,7 +7016,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T20:01:56.206761+11:00",
+   "insights_at": "2026-11-26T21:03:01.978761+11:00",
    "permalink": "https://www.instagram.com/reel/DgG3EkWvC0h/",
    "series": [
     [
@@ -7436,6 +7452,13 @@
      601,
      0,
      0
+    ],
+    [
+     55.79,
+     894,
+     601,
+     0,
+     0
     ]
    ],
    "est_follows": 0.36,
@@ -7468,7 +7491,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Don't Stop the Party (feat TJR) - Pitbull.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T20:01:57.776531+11:00",
+   "insights_at": "2026-11-26T21:03:02.859495+11:00",
    "permalink": "https://www.instagram.com/reel/DgHmoMepJGn/",
    "series": [
     [
@@ -7848,6 +7871,13 @@
      1086,
      2,
      8
+    ],
+    [
+     48.87,
+     1469,
+     1086,
+     2,
+     8
     ]
    ],
    "est_follows": 0.98,
@@ -7880,7 +7910,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - two faced - purc.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T20:01:59.007431+11:00",
+   "insights_at": "2026-11-26T21:03:03.900313+11:00",
    "permalink": "https://www.instagram.com/reel/DgHsYj3T0B2/",
    "series": [
     [
@@ -8253,6 +8283,13 @@
      1187,
      0,
      0
+    ],
+    [
+     48.03,
+     1421,
+     1187,
+     0,
+     0
     ]
    ],
    "est_follows": 0.39,
@@ -8285,7 +8322,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - James Bond Theme - John Barry Orchestra.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T20:02:00.748861+11:00",
+   "insights_at": "2026-11-26T21:03:04.787294+11:00",
    "permalink": "https://www.instagram.com/reel/DgHzPaFBlEB/",
    "series": [
     [
@@ -8651,6 +8688,13 @@
      1523,
      5,
      3
+    ],
+    [
+     47.03,
+     2086,
+     1523,
+     5,
+     3
     ]
    ],
    "alerted": [
@@ -8686,7 +8730,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Young Folks - NCWU Spectrum.m4a",
    "fit": 5,
-   "insights_at": "2026-11-26T20:02:02.220992+11:00",
+   "insights_at": "2026-11-26T21:03:05.771289+11:00",
    "permalink": "https://www.instagram.com/reel/DgI35zQlTH6/",
    "series": [
     [
@@ -8975,6 +9019,13 @@
      1195,
      2,
      2
+    ],
+    [
+     37.03,
+     1623,
+     1195,
+     2,
+     2
     ]
    ],
    "est_follows": 0.0,
@@ -8988,15 +9039,15 @@
    "posted_at": "2026-11-25T09:01:47.952619+11:00",
    "file": "2026-11-25_2_t24.mp4",
    "insights": {
-    "views": 443,
-    "reach": 327,
+    "views": 444,
+    "reach": 328,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 5029,
-    "reels_skip_rate": 48.3
+    "ig_reels_avg_watch_time": 5036,
+    "reels_skip_rate": 48.1
    },
    "category": "tip",
    "style": "pov",
@@ -9007,7 +9058,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Blood in Your Eyes (from GTAVI The Album) - Tove Lo Grand Th.m4a",
    "fit": 3,
-   "insights_at": "2026-11-26T20:02:05.153215+11:00",
+   "insights_at": "2026-11-26T21:03:06.775401+11:00",
    "permalink": "https://www.instagram.com/reel/DgI-ylrSJKE/",
    "series": [
     [
@@ -9282,6 +9333,13 @@
      327,
      0,
      0
+    ],
+    [
+     36.02,
+     444,
+     328,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0,
@@ -9319,7 +9377,7 @@
    "source": "bank",
    "sound": "sweep 2026-11-22 - Goldeneye 007 (cinematic) - BERT0LI.m4a",
    "fit": 5,
-   "insights_at": "2026-11-26T20:02:06.721992+11:00",
+   "insights_at": "2026-11-26T21:03:07.796879+11:00",
    "permalink": "https://www.instagram.com/reel/DgJTYibMTwJ/",
    "series": [
     [
@@ -9573,6 +9631,13 @@
      151,
      0,
      0
+    ],
+    [
+     33.03,
+     186,
+     151,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0,
@@ -9612,7 +9677,7 @@
    "fit": 5,
    "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8",
    "cta": null,
-   "insights_at": "2026-11-26T20:02:09.263005+11:00",
+   "insights_at": "2026-11-26T21:03:09.055717+11:00",
    "permalink": "https://www.instagram.com/reel/DgKKUA_BzDO/",
    "series": [
     [
@@ -9803,6 +9868,13 @@
      120,
      0,
      0
+    ],
+    [
+     25.03,
+     138,
+     120,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -9815,7 +9887,7 @@
    "posted_at": "2026-11-25T22:01:33.827500+11:00",
    "file": "2026-11-25_5_t01.mp4",
    "insights": {
-    "views": 208,
+    "views": 210,
     "reach": 156,
     "likes": 0,
     "comments": 0,
@@ -9823,7 +9895,7 @@
     "saved": 0,
     "total_interactions": 0,
     "ig_reels_avg_watch_time": 4618,
-    "reels_skip_rate": 56
+    "reels_skip_rate": 55.6
    },
    "category": "tip",
    "style": "question",
@@ -9841,7 +9913,7 @@
    "fit": 3,
    "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
    "cta": null,
-   "insights_at": "2026-11-26T20:02:11.701774+11:00",
+   "insights_at": "2026-11-26T21:03:10.110736+11:00",
    "permalink": "https://www.instagram.com/reel/DgKYBkEhFVx/",
    "series": [
     [
@@ -10018,6 +10090,13 @@
      156,
      0,
      0
+    ],
+    [
+     23.03,
+     210,
+     156,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -10030,15 +10109,15 @@
    "posted_at": "2026-11-26T09:01:51.690404+11:00",
    "file": "2026-11-26_1_mda7594.mp4",
    "insights": {
-    "views": 735,
-    "reach": 565,
+    "views": 742,
+    "reach": 572,
     "likes": 5,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 5,
-    "ig_reels_avg_watch_time": 4453,
-    "reels_skip_rate": 53.5
+    "ig_reels_avg_watch_time": 4454,
+    "reels_skip_rate": 53.4
    },
    "category": "moment",
    "style": "question",
@@ -10052,7 +10131,7 @@
    "clip": "1Eh2xuE2V4YjfIXbSMfcE6Lvyr_YerePb#0",
    "cta": "follow",
    "voiceover": null,
-   "insights_at": "2026-11-26T20:02:13.488755+11:00",
+   "insights_at": "2026-11-26T21:03:11.668645+11:00",
    "permalink": "https://www.instagram.com/reel/DgLjmFdhdKG/",
    "series": [
     [
@@ -10152,6 +10231,13 @@
      565,
      0,
      0
+    ],
+    [
+     12.02,
+     742,
+     572,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -10164,15 +10250,15 @@
    "posted_at": "2026-11-26T12:01:37.192014+11:00",
    "file": "2026-11-26_2_x013.mp4",
    "insights": {
-    "views": 2246,
-    "reach": 1591,
+    "views": 2257,
+    "reach": 1595,
     "likes": 9,
     "comments": 0,
     "shares": 6,
     "saved": 1,
     "total_interactions": 16,
-    "ig_reels_avg_watch_time": 6306,
-    "reels_skip_rate": 42
+    "ig_reels_avg_watch_time": 6319,
+    "reels_skip_rate": 42.1
    },
    "category": "tip",
    "style": "list",
@@ -10186,7 +10272,7 @@
    "clip": "1a2locaqKnxhdLa5VdV11Stk7Uy1bJHYq",
    "cta": "save",
    "voiceover": "Board's fine. Your back foot isn't. Heavy back foot locks you straight. Bring your weight over the front foot. Front foot leads, board follows.",
-   "insights_at": "2026-11-26T20:02:16.302458+11:00",
+   "insights_at": "2026-11-26T21:03:12.459118+11:00",
    "permalink": "https://www.instagram.com/reel/DgL4KykhYVx/",
    "series": [
     [
@@ -10258,6 +10344,13 @@
      1591,
      6,
      1
+    ],
+    [
+     9.03,
+     2257,
+     1595,
+     6,
+     1
     ]
    ],
    "est_follows": 0.0,
@@ -10273,15 +10366,15 @@
    "posted_at": "2026-11-26T13:01:35.805149+11:00",
    "file": "2026-11-26_3_f03.mp4",
    "insights": {
-    "views": 2602,
-    "reach": 1691,
+    "views": 2606,
+    "reach": 1693,
     "likes": 9,
     "comments": 0,
     "shares": 0,
     "saved": 2,
     "total_interactions": 12,
     "ig_reels_avg_watch_time": 7215,
-    "reels_skip_rate": 37.9
+    "reels_skip_rate": 37.8
    },
    "category": "freestyle",
    "style": "list",
@@ -10295,7 +10388,7 @@
    "clip": "1SlFbP_kiC9IpPXQCdVjencJUvWKXJJJj#0",
    "cta": "follow",
    "voiceover": "Your back leg's doing nothing. Lift it to lighten the tail, keep your weight over the nose, and start small on flat, mellow ground.",
-   "insights_at": "2026-11-26T20:02:17.848504+11:00",
+   "insights_at": "2026-11-26T21:03:13.204875+11:00",
    "permalink": "https://www.instagram.com/reel/DgL_B6dhTx4/",
    "series": [
     [
@@ -10360,6 +10453,13 @@
      1691,
      0,
      2
+    ],
+    [
+     8.03,
+     2606,
+     1693,
+     0,
+     2
     ]
    ],
    "alerted": [
@@ -10375,15 +10475,15 @@
    "posted_at": "2026-11-26T18:01:35.162928+11:00",
    "file": "2026-11-26_4_x002.mp4",
    "insights": {
-    "views": 227,
-    "reach": 165,
+    "views": 241,
+    "reach": 181,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 5100,
-    "reels_skip_rate": 45.9
+    "ig_reels_avg_watch_time": 5036,
+    "reels_skip_rate": 46.2
    },
    "category": "tip",
    "style": "pov",
@@ -10397,7 +10497,7 @@
    "clip": "1maFImHblmX-hQDcopDJmf4HUVIkTkleK",
    "cta": "save",
    "voiceover": null,
-   "insights_at": "2026-11-26T20:02:19.210824+11:00",
+   "insights_at": "2026-11-26T21:03:14.110591+11:00",
    "permalink": "https://www.instagram.com/reel/DgMhXKUiuvt/",
    "series": [
     [
@@ -10418,6 +10518,55 @@
      2.01,
      227,
      165,
+     0,
+     0
+    ],
+    [
+     3.03,
+     241,
+     181,
+     0,
+     0
+    ]
+   ]
+  },
+  "18165934915435985": {
+   "topic": "t21",
+   "kind": "real",
+   "hook": "How newbies be moving in powder:",
+   "date": "2026-11-26",
+   "posted_at": "2026-11-26T21:01:37.222131+11:00",
+   "file": "2026-11-26_5_t21.mp4",
+   "insights": {
+    "views": 0,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0,
+    "reels_skip_rate": 0
+   },
+   "category": "tip",
+   "style": "list",
+   "hook_type": "statement",
+   "sound_kind": "sound",
+   "time": "20:30",
+   "variation": {},
+   "source": "bank",
+   "sound": "sweep 2026-11-22 - DROP IT LIKE ITS HOT x STAYIN ALIVE (ALTGO MIX) - altegomusi.m4a",
+   "fit": 5,
+   "clip": "1iMKdv2v4G6u6lY00VK0CbaqrfCxVqr7G#0",
+   "cta": "share",
+   "voiceover": null,
+   "insights_at": "2026-11-26T21:03:15.197552+11:00",
+   "permalink": "https://www.instagram.com/reel/DgM2Cl4Ji9e/",
+   "series": [
+    [
+     0.03,
+     0,
+     0,
      0,
      0
     ]
@@ -10623,7 +10772,8 @@
   "2026-11-26 16:13 Notification sent: 📌 Drop this week's follows screenshot into Drive › insights: Instagram a",
   "2026-11-26 17:09 Saved 5 ratings from you",
   "2026-11-26 18:02 Posted trial reel 2026-11-26_4_x002.mp4 -> 18139620076660901",
-  "2026-11-26 18:02 View alert sent: Your board isn't broken. Your back foot is. (2,099 views)"
+  "2026-11-26 18:02 View alert sent: Your board isn't broken. Your back foot is. (2,099 views)",
+  "2026-11-26 21:02 Posted trial reel 2026-11-26_5_t21.mp4 -> 18165934915435985"
  ],
  "fal_spend": {
   "2026-11": 19.98
@@ -11019,9 +11169,13 @@
   [
    "2026-11-26T20:02+11:00",
    946
+  ],
+  [
+   "2026-11-26T21:03+11:00",
+   946
   ]
  ],
- "publish_heartbeat": "2026-11-26T20:01:50.083993+11:00",
+ "publish_heartbeat": "2026-11-26T21:01:37.222131+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
