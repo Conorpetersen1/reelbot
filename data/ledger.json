@@ -3685,7 +3685,7 @@
      "note": "Classic snow bum angle that fits the deep pow drop, though 'office view' is a bit cliché."
     },
     "cta": "follow",
-    "status": "queued",
+    "status": "posted",
     "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
     "style": "pov",
     "variation": {},
@@ -3695,7 +3695,9 @@
     "sound_kind": "sound",
     "voiceover": null,
     "voice_name": null,
-    "source": "moment"
+    "source": "moment",
+    "media_id": "17908866453605934",
+    "posted_at": "2026-11-28T13:01:33.848696+11:00"
    },
    {
     "date": "2026-11-28",
@@ -11533,7 +11535,7 @@
    "fit": 5,
    "clip": "1_LTIzgJdVaAolu5vcR41Q-kJ-GnSmBz8",
    "cta": null,
-   "insights_at": "2026-11-28T12:01:52.993419+11:00",
+   "insights_at": "2026-11-28T13:02:21.556857+11:00",
    "permalink": "https://www.instagram.com/reel/DgKKUA_BzDO/",
    "series": [
     [
@@ -12032,6 +12034,13 @@
      120,
      0,
      0
+    ],
+    [
+     65.01,
+     139,
+     120,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -12070,7 +12079,7 @@
    "fit": 3,
    "clip": "1P_cy5jfnbKn54Q5rGDrXZmO7I8XT-JoS",
    "cta": null,
-   "insights_at": "2026-11-28T12:01:54.012893+11:00",
+   "insights_at": "2026-11-28T13:02:22.408813+11:00",
    "permalink": "https://www.instagram.com/reel/DgKYBkEhFVx/",
    "series": [
     [
@@ -12555,6 +12564,13 @@
      160,
      0,
      0
+    ],
+    [
+     63.02,
+     215,
+     160,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -12589,7 +12605,7 @@
    "clip": "1Eh2xuE2V4YjfIXbSMfcE6Lvyr_YerePb#0",
    "cta": "follow",
    "voiceover": null,
-   "insights_at": "2026-11-28T12:01:54.848472+11:00",
+   "insights_at": "2026-11-28T13:02:23.447310+11:00",
    "permalink": "https://www.instagram.com/reel/DgLjmFdhdKG/",
    "series": [
     [
@@ -12997,6 +13013,13 @@
      695,
      0,
      0
+    ],
+    [
+     52.01,
+     904,
+     695,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -13031,7 +13054,7 @@
    "clip": "1a2locaqKnxhdLa5VdV11Stk7Uy1bJHYq",
    "cta": "save",
    "voiceover": "Board's fine. Your back foot isn't. Heavy back foot locks you straight. Bring your weight over the front foot. Front foot leads, board follows.",
-   "insights_at": "2026-11-28T12:01:55.701661+11:00",
+   "insights_at": "2026-11-28T13:02:24.252236+11:00",
    "permalink": "https://www.instagram.com/reel/DgL4KykhYVx/",
    "series": [
     [
@@ -13411,6 +13434,13 @@
      1643,
      6,
      2
+    ],
+    [
+     49.02,
+     2334,
+     1643,
+     6,
+     2
     ]
    ],
    "est_follows": 0.0,
@@ -13448,7 +13478,7 @@
    "clip": "1SlFbP_kiC9IpPXQCdVjencJUvWKXJJJj#0",
    "cta": "follow",
    "voiceover": "Your back leg's doing nothing. Lift it to lighten the tail, keep your weight over the nose, and start small on flat, mellow ground.",
-   "insights_at": "2026-11-28T12:01:56.776305+11:00",
+   "insights_at": "2026-11-28T13:02:25.183019+11:00",
    "permalink": "https://www.instagram.com/reel/DgL_B6dhTx4/",
    "series": [
     [
@@ -13821,6 +13851,13 @@
      1744,
      0,
      2
+    ],
+    [
+     48.02,
+     2696,
+     1744,
+     0,
+     2
     ]
    ],
    "alerted": [
@@ -13858,7 +13895,7 @@
    "clip": "1maFImHblmX-hQDcopDJmf4HUVIkTkleK",
    "cta": "save",
    "voiceover": null,
-   "insights_at": "2026-11-28T12:01:57.448005+11:00",
+   "insights_at": "2026-11-28T13:02:26.134366+11:00",
    "permalink": "https://www.instagram.com/reel/DgMhXKUiuvt/",
    "series": [
     [
@@ -14189,6 +14226,13 @@
      235,
      0,
      0
+    ],
+    [
+     43.02,
+     308,
+     235,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -14201,14 +14245,14 @@
    "posted_at": "2026-11-26T21:01:37.222131+11:00",
    "file": "2026-11-26_5_t21.mp4",
    "insights": {
-    "views": 2164,
-    "reach": 1569,
+    "views": 2167,
+    "reach": 1571,
     "likes": 9,
     "comments": 0,
     "shares": 0,
     "saved": 3,
     "total_interactions": 12,
-    "ig_reels_avg_watch_time": 6120,
+    "ig_reels_avg_watch_time": 6127,
     "reels_skip_rate": 31.7
    },
    "category": "tip",
@@ -14223,7 +14267,7 @@
    "clip": "1iMKdv2v4G6u6lY00VK0CbaqrfCxVqr7G#0",
    "cta": "share",
    "voiceover": null,
-   "insights_at": "2026-11-28T12:01:58.272883+11:00",
+   "insights_at": "2026-11-28T13:02:27.447561+11:00",
    "permalink": "https://www.instagram.com/reel/DgM2Cl4Ji9e/",
    "series": [
     [
@@ -14533,6 +14577,13 @@
      1569,
      0,
      3
+    ],
+    [
+     40.02,
+     2167,
+     1571,
+     0,
+     3
     ]
    ],
    "alerted": [
@@ -14548,14 +14599,14 @@
    "posted_at": "2026-11-27T12:01:34.281899+11:00",
    "file": "2026-11-27_1_x009.mp4",
    "insights": {
-    "views": 1721,
-    "reach": 1135,
+    "views": 1731,
+    "reach": 1141,
     "likes": 3,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 3,
-    "ig_reels_avg_watch_time": 5945,
+    "ig_reels_avg_watch_time": 5954,
     "reels_skip_rate": 36.7
    },
    "category": "snow_life",
@@ -14570,7 +14621,7 @@
    "clip": "1AGeMJfO3_l7fyB1VQUuzeiexE2qB3Xr-",
    "cta": "share",
    "voiceover": "How snow bums travel to Japan. Three boards I won't even ride, ten base layers, and two jackets.",
-   "insights_at": "2026-11-28T12:01:59.294063+11:00",
+   "insights_at": "2026-11-28T13:02:28.192752+11:00",
    "permalink": "https://www.instagram.com/reel/DgOc83HtZNP/",
    "series": [
     [
@@ -14768,6 +14819,13 @@
      1135,
      0,
      0
+    ],
+    [
+     25.02,
+     1731,
+     1141,
+     0,
+     0
     ]
    ],
    "est_follows": 0.0
@@ -14781,13 +14839,13 @@
    "file": "2026-11-27_2_t26.mp4",
    "insights": {
     "views": 3716,
-    "reach": 2341,
+    "reach": 2342,
     "likes": 23,
     "comments": 0,
     "shares": 0,
     "saved": 1,
     "total_interactions": 24,
-    "ig_reels_avg_watch_time": 7037,
+    "ig_reels_avg_watch_time": 7042,
     "reels_skip_rate": 33.2
    },
    "category": "tip",
@@ -14802,7 +14860,7 @@
    "clip": "1ZbNhfC52tNsGHFsWRVurLj5-Ti3IlJyx#0",
    "cta": "save",
    "voiceover": "Board turns faster than you think. Commit to the fall line, don't bail before the turn starts, and practise on terrain you already know.",
-   "insights_at": "2026-11-28T12:02:00.205583+11:00",
+   "insights_at": "2026-11-28T13:02:28.907435+11:00",
    "permalink": "https://www.instagram.com/reel/DgOj4LSicQX/",
    "series": [
     [
@@ -14986,6 +15044,13 @@
      2341,
      0,
      1
+    ],
+    [
+     24.02,
+     3716,
+     2342,
+     0,
+     1
     ]
    ],
    "alerted": [
@@ -15001,15 +15066,15 @@
    "posted_at": "2026-11-27T18:01:35.041712+11:00",
    "file": "2026-11-27_4_t15.mp4",
    "insights": {
-    "views": 1662,
-    "reach": 1245,
+    "views": 1664,
+    "reach": 1247,
     "likes": 6,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 6,
-    "ig_reels_avg_watch_time": 5067,
-    "reels_skip_rate": 46.2
+    "ig_reels_avg_watch_time": 5069,
+    "reels_skip_rate": 46.3
    },
    "category": "tip",
    "style": "question",
@@ -15023,7 +15088,7 @@
    "clip": "1tH-45ve11miDaheeGio11de3QrY6mcKQ#0",
    "cta": "follow",
    "voiceover": null,
-   "insights_at": "2026-11-28T12:02:01.145999+11:00",
+   "insights_at": "2026-11-28T13:02:29.537398+11:00",
    "permalink": "https://www.instagram.com/reel/DgPGNW2A9gP/",
    "series": [
     [
@@ -15172,6 +15237,13 @@
      1245,
      0,
      0
+    ],
+    [
+     19.02,
+     1664,
+     1247,
+     0,
+     0
     ]
    ]
   },
@@ -15205,7 +15277,7 @@
    "clip": "1tbnEF-YfA0ClZIT1pfZkQo8inaPAv6St",
    "cta": "save",
    "voiceover": null,
-   "insights_at": "2026-11-28T12:02:01.964549+11:00",
+   "insights_at": "2026-11-28T13:02:30.560680+11:00",
    "permalink": "https://www.instagram.com/reel/DgPT5FCs-xQ/",
    "series": [
     [
@@ -15340,6 +15412,13 @@
      627,
      0,
      0
+    ],
+    [
+     17.02,
+     760,
+     627,
+     0,
+     0
     ]
    ]
   },
@@ -15351,15 +15430,15 @@
    "posted_at": "2026-11-28T08:01:37.340857+11:00",
    "file": "2026-11-28_1_x012.mp4",
    "insights": {
-    "views": 1898,
-    "reach": 1266,
-    "likes": 14,
+    "views": 1997,
+    "reach": 1353,
+    "likes": 15,
     "comments": 0,
     "shares": 0,
     "saved": 1,
-    "total_interactions": 15,
-    "ig_reels_avg_watch_time": 5675,
-    "reels_skip_rate": 39.7
+    "total_interactions": 16,
+    "ig_reels_avg_watch_time": 5573,
+    "reels_skip_rate": 40.7
    },
    "category": "snow_life",
    "style": "pov",
@@ -15373,7 +15452,7 @@
    "clip": "1TBUlzgpClWZQBCS3S8Im1J6akIhkEQ3L",
    "cta": "share",
    "voiceover": "Beginner's guide to deep Japow. Step one, push the board ahead. Step two, get buried to the goggles.",
-   "insights_at": "2026-11-28T12:02:02.924580+11:00",
+   "insights_at": "2026-11-28T13:02:31.435809+11:00",
    "permalink": "https://www.instagram.com/reel/DgQmSRIBFRH/",
    "series": [
     [
@@ -15410,6 +15489,13 @@
      1266,
      0,
      1
+    ],
+    [
+     5.02,
+     1997,
+     1353,
+     0,
+     1
     ]
    ]
   },
@@ -15421,15 +15507,15 @@
    "posted_at": "2026-11-28T09:01:42.060681+11:00",
    "file": "2026-11-28_2_x011.mp4",
    "insights": {
-    "views": 2504,
-    "reach": 1700,
+    "views": 2618,
+    "reach": 1810,
     "likes": 3,
     "comments": 0,
     "shares": 0,
     "saved": 3,
     "total_interactions": 6,
-    "ig_reels_avg_watch_time": 6626,
-    "reels_skip_rate": 31.1
+    "ig_reels_avg_watch_time": 6702,
+    "reels_skip_rate": 32.3
    },
    "category": "tip",
    "style": "list",
@@ -15443,7 +15529,7 @@
    "clip": "1AmrLrSR682mNgEKTS0oUhOCmaIKHC7da",
    "cta": "share",
    "voiceover": null,
-   "insights_at": "2026-11-28T12:02:03.907400+11:00",
+   "insights_at": "2026-11-28T13:02:32.192544+11:00",
    "permalink": "https://www.instagram.com/reel/DgQtKnOBEa1/",
    "series": [
     [
@@ -15473,10 +15559,59 @@
      1700,
      0,
      3
+    ],
+    [
+     4.01,
+     2618,
+     1810,
+     0,
+     3
     ]
    ],
    "alerted": [
     2000
+   ]
+  },
+  "17908866453605934": {
+   "topic": "mb61514",
+   "kind": "real",
+   "hook": "Why do I work two winters a year?",
+   "date": "2026-11-28",
+   "posted_at": "2026-11-28T13:01:33.848696+11:00",
+   "file": "2026-11-28_3_mb61514.mp4",
+   "insights": {
+    "views": 0,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0,
+    "reels_skip_rate": 0
+   },
+   "category": "moment",
+   "style": "pov",
+   "hook_type": "why",
+   "sound_kind": "sound",
+   "time": "13:00",
+   "variation": {},
+   "source": "moment",
+   "sound": "sweep 2026-11-22 - eye of ra - purc.m4a",
+   "fit": 5,
+   "clip": "1gPvKkeKKWzjyzTVCaJLRTem1GHK2U_vk#0",
+   "cta": "follow",
+   "voiceover": null,
+   "insights_at": "2026-11-28T13:02:32.992866+11:00",
+   "permalink": "https://www.instagram.com/reel/DgRInMtBHh4/",
+   "series": [
+    [
+     0.02,
+     0,
+     0,
+     0,
+     0
+    ]
    ]
   }
  },
@@ -15697,7 +15832,8 @@
   "2026-11-27 20:02 Posted trial reel 2026-11-27_5_x005.mp4 -> 18002225009822510",
   "2026-11-28 08:02 Posted trial reel 2026-11-28_1_x012.mp4 -> 18137974783775745",
   "2026-11-28 09:02 Posted trial reel 2026-11-28_2_x011.mp4 -> 18210505072370266",
-  "2026-11-28 11:02 View alert sent: Lifting your heels won't save your toe turn (2,142 views)"
+  "2026-11-28 11:02 View alert sent: Lifting your heels won't save your toe turn (2,142 views)",
+  "2026-11-28 13:02 Posted trial reel 2026-11-28_3_mb61514.mp4 -> 17908866453605934"
  ],
  "fal_spend": {
   "2026-11": 19.98
@@ -16270,9 +16406,13 @@
   [
    "2026-11-28T12:02+11:00",
    948
+  ],
+  [
+   "2026-11-28T13:02+11:00",
+   948
   ]
  ],
- "publish_heartbeat": "2026-11-28T12:01:50.077378+11:00",
+ "publish_heartbeat": "2026-11-28T13:01:33.848696+11:00",
  "ratings": {
   "2026-11-23#1": {
    "video": 5,
